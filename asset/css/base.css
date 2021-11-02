@@ -1,0 +1,41 @@
+:root {
+    --line-height: 36px;
+}
+html {
+    font-size: 62.5%; /*1rem = 10px trong th nay*/
+    line-height: 1.6rem;
+    font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
+}
+.grid {
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+.grid-with-width {
+    width: 100%;
+}
+.grid__row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* margin: 0 -5px; */
+}
+.grid__column-3 {
+    width: 32%;
+    margin: 10px 0;
+}
+.grid__column-2 {
+    width: 50%;
+    /* margin: 0 5px; */
+}
+.grid__column-4 {
+    width: 25%;
+    /* margin: 0 5px; */
+    position: relative;
+}
+.icon-right {
+    line-height: var(--line-height);
+    margin: 0 16px;
+    float: right;
+}
