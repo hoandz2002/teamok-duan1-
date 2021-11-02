@@ -1,3 +1,3 @@
 <?php 
-echo "anh hoàn đẹp zai nhất thế giới alo alo";
+echo "dep cai db";
 ?>
