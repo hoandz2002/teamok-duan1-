@@ -1,0 +1,21 @@
+.box {
+  width: 24%;
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 16px;
+  padding: 24px;
+  box-sizing: border-box;
+  color: white;
+}
+.box-icon {
+  font-size: 36px;
+}
+.box-name {
+  font-size: 24px;
+  margin: 16px 0px;
+}
+.box-quantity {
+  font-size: 24px;
+}
