@@ -3,7 +3,7 @@
 require_once "./../connection.php";
 function getall(){
     $conn = connect();
-    $sql = "SELECT * FROM tours inner join location on tours.id_tours = location.id_location";
+    $sql = "SELECT * FROM tours inner join location on tours.id_location = location.id_location";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $result = [];
@@ -28,7 +28,7 @@ function getall(){
 
 function getid($id){
     $conn = connect();
-    $sql = "SELECT * FROM tours inner join location on tour.id_tours = location.id_location";
+    $sql = "SELECT * FROM tours inner join location on tours.id_location = location.id_location";
     $stmt = $conn->prepare($sql);
     $stmt->execute(['id_tour' => $id]);
     

@@ -33,11 +33,6 @@
                         <div class="box-name">Customer</div>
                         <div class="box-quantity">7</div>
                     </div>
-                    <div class="box" style="background-color: #CC99FF;">
-                        <i class="box-icon fas fa-user"></i>
-                        <div class="box-name">Employee</div>
-                        <div class="box-quantity">7</div>
-                    </div>
                     <div class="box" style="background-color: #999999;">
                         <i class="box-icon fas fa-torii-gate"></i>
                         <div class="box-name">Tours</div>

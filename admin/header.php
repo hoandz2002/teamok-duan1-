@@ -11,7 +11,7 @@
 <body>
     <div class="right_header">
         <div class="header-bgr">
-            <img src="./../asset/img/logohthtravel.png" alt="" class="header-img">
+            <img src="/duan1/asset/img/logohthtravel.png" alt="" class="header-img">
             <p class="header-heading">
                 TRAVEL MANAGEMENT SYSTEM
             </p>
