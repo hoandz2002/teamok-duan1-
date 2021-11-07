@@ -1,2 +1,0 @@
-<?php 
-//List các hàm

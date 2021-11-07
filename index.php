@@ -15,122 +15,32 @@
 
 <body>
     <div class="main">
-        <header class="header" style="background-image: url(./asset/img/bannner-home.jpg);">
+        <header class="header" style="background-image: url(./asset/img/bannner-home.jpg); height: 720px;">
             <div class="header__navbar">
                 <div class="header__navbar-logo">
-                    <img src="./asset/img/logo.png" alt="" class="header__navbar-logo-img">
+                    <img src="./asset/img/logohthtravel.png" alt="" class="header__navbar-logo-img">
                 </div>
 
                 <div class="header__navbar-list">
-                    <li class="header__navbar-item"><a href="" class="header__navbar-item__link">HOME</a></li>
+                    <li class="header__navbar-item"><a href="/duan1/index.php" class="header__navbar-item__link">Trang Chủ</a></li>
                     <li class="header__navbar-item">
-                        <a href="" class="header__navbar-item__link">PACKAGES</a>
-                        <ul class="header__navbar-list-child">
-                            <li class="header__navbar-item-child"><a href="" class="header__navbar-link-child">Search
-                                    1</a></li>
-                            <li class="header__navbar-item-child"><a href="" class="header__navbar-link-child">Search
-                                    2</a></li>
-                            <li class="header__navbar-item-child">
-                                <a href="" class="header__navbar-link-child">Tour Package <i
-                                        class="icon-right fas fa-caret-right"></i></a>
-                                <ul class="header__navbar-list-child-list">
-                                    <li class="header__navbar-item-child-item"><a href=""
-                                            class="header__navbar-link-child-link">Archive</a></li>
-                                    <li class="header__navbar-item-child-item"><a href=""
-                                            class="header__navbar-link-child-link">Single Product</a></li>
-                                    <li class="header__navbar-item-child-item"><a href=""
-                                            class="header__navbar-link-child-link">Cart</a></li>
-                                    <li class="header__navbar-item-child-item"><a href=""
-                                            class="header__navbar-link-child-link">Checkout</a></li>
-                                </ul>
-                            </li>
-                            <li class="header__navbar-item-child"><a href=""
-                                    class="header__navbar-link-child">Destination</a></li>
-                            <li class="header__navbar-item-child"><a href=""
-                                    class="header__navbar-link-child">Typology</a></li>
-                        </ul>
+                        <a href="/duan1/tours.php" class="header__navbar-item__link">Tours</a>
                     </li>
                     <li class="header__navbar-item">
-                        <a href="" class="header__navbar-item__link">SHOP</a>
-                        <ul class="header__navbar-list-child">
-                            <li class="header__navbar-item-child"><a href=""
-                                    class="header__navbar-link-child">Archive</a></li>
-                            <li class="header__navbar-item-child"><a href="" class="header__navbar-link-child">Single
-                                    Product</a></li>
-                            <li class="header__navbar-item-child"><a href="" class="header__navbar-link-child">Cart</a>
-                            </li>
-                            <li class="header__navbar-item-child"><a href=""
-                                    class="header__navbar-link-child">Checkout</a></li>
-
-                        </ul>
+                        <a href="/duan1/about.php" class="header__navbar-item__link">Giới Thiệu</a>
                     </li>
                     <li class="header__navbar-item">
-                        <a href="" class="header__navbar-item__link">ABOUT US</a>
+                        <a href="/duan1/post.php" class="header__navbar-item__link">Bài Viết</a>
                         <ul class="header__navbar-list-child">
-                            <li class="header__navbar-item-child"><a href="" class="header__navbar-link-child">About
-                                    Us</a></li>
-                            <li class="header__navbar-item-child"><a href="" class="header__navbar-link-child">About Us
-                                    1</a></li>
-                            <li class="header__navbar-item-child"><a href="" class="header__navbar-link-child">About Us
-                                    2</a></li>
-
-                        </ul>
-
-                    </li>
-                    <li class="header__navbar-item">
-                        <a href="" class="header__navbar-item__link">PAGES</a>
-                        <ul class="header__navbar-list-child">
-                            <li class="header__navbar-item-child"><a href=""
-                                    class="header__navbar-link-child">Services</a></li>
+                            <li class="header__navbar-item-child"><a href="" class="header__navbar-link-child">Services</a></li>
                             <li class="header__navbar-item-child"><a href="" class="header__navbar-link-child">Agentcy
                                     Tours</a></li>
-                            <li class="header__navbar-item-child"><a href=""
-                                    class="header__navbar-link-child">Testimonials</a></li>
-                            <li class="header__navbar-item-child"><a href=""
-                                    class="header__navbar-link-child">Prices</a></li>
-                            <li class="header__navbar-item-child"><a href="" class="header__navbar-link-child">Faq</a>
-                            </li>
-                            <li class="header__navbar-item-child"><a href="" class="header__navbar-link-child">Coming
-                                    Soon</a></li>
-
+                            <li class="header__navbar-item-child"><a href="" class="header__navbar-link-child">Testimonials</a></li>
                         </ul>
-
                     </li>
+
                     <li class="header__navbar-item">
-                        <a href="" class="header__navbar-item__link">NEWS</a>
-                        <ul class="header__navbar-list-child">
-                            <li class="header__navbar-item-child"><a href=""
-                                    class="header__navbar-link-child">Archive</a></li>
-                            <li class="header__navbar-item-child">
-                                <a href="" class="header__navbar-link-child">Single Port <i
-                                        class="icon-right fas fa-caret-right"></i></a>
-                                <ul class="header__navbar-list-child-list-1">
-                                    <li class="header__navbar-item-child-item"><a href=""
-                                            class="header__navbar-link-child-link">Archive</a></li>
-                                    <li class="header__navbar-item-child-item"><a href=""
-                                            class="header__navbar-link-child-link">Single Product</a></li>
-                                    <li class="header__navbar-item-child-item"><a href=""
-                                            class="header__navbar-link-child-link">Cart</a></li>
-                                </ul>
-                            </li>
-
-                        </ul>
-
-                    </li>
-                    <li class="header__navbar-item">
-                        <a href="" class="header__navbar-item__link">CONTACT</a>
-                        <ul class="header__navbar-list-child">
-                            <li class="header__navbar-item-child"><a href="" class="header__navbar-link-child">Contact
-                                    1</a></li>
-                            <li class="header__navbar-item-child"><a href="" class="header__navbar-link-child">Contact
-                                    2</a></li>
-
-                        </ul>
-
-                    </li>
-                    <li class="header__navbar-item header__navbar-item--active">
-                        <a href="" class="header__navbar-item__link">BOOK NOW</a>
-
+                        <a href="/duan1/contact.php" class="header__navbar-item__link">Liên Hệ</a>
                     </li>
                 </div>
 
@@ -263,23 +173,22 @@
                         <i class="fas fa-times"></i>
                     </label>
                     <!-- <li class="header__navbar-item-child"></li> -->
-                    <li class="header__navbar-item-child"><a href="" class="header__navbar-link-child">Archive</a></li>
-                    <li class="header__navbar-item-child"><a href="" class="header__navbar-link-child">Single
-                            Product</a></li>
-                    <li class="header__navbar-item-child"><a href="" class="header__navbar-link-child">Cart</a>
-                    </li>
-                    <li class="header__navbar-item-child"><a href="" class="header__navbar-link-child">Checkout</a></li>
+                    <li class="header__navbar-item-child"><a href="/duan1/index.php" class="header__navbar-link-child">Trang chủ</a></li>
+                    <li class="header__navbar-item-child"><a href="/duan1/tours.php" class="header__navbar-link-child">Tours</a></li>
+                    <li class="header__navbar-item-child"><a href="/duan1/abput.php" class="header__navbar-link-child">Giới thiệu</a></li>
+                    <li class="header__navbar-item-child"><a href="/duan1/post.php" class="header__navbar-link-child">Bài viết</a></li>
+                    <li class="header__navbar-item-child"><a href="/duan1/contact.php" class="header__navbar-link-child">Liên hệ</a></li>
 
                 </div>
                 <label for="menu" class="overlay__tablet"></label>
             </div>
             <div class="header__search">
                 <div class="header__search-content">
-                    <h3 class="header__search-heading">Search your next <u>Holiday</u></h3>
+                    <h3 class="header__search-heading">Những Kỳ Nghỉ <u>Du Lịch</u></h3>
                     <p class="header__search-title">
-                        CHECK OUR BEST PROMOTIONS
+                        KHUYẾN MÃI TỐT NHẤT
                     </p>
-                    <div class="header__search-history">
+                    <!-- <div class="header__search-history">
                         <select class="header__search-history-pla">
                             <option class="header__search-history-op">Choose your Destination ... </option>
                             <option class="header__search-history-op">Europe</option>
@@ -289,11 +198,8 @@
                             <option class="header__search-history-op">-Thailandia</option>
                             <option class="header__search-history-op">United States</option>
                             <option class="header__search-history-op">Oceania</option>
-                            <!-- <ul class="header__navbar-list-child">
-                                <li class="header__navbar-item-child"><a href=""></a></li>
-                            </ul> -->
                         </select>
-                    </div>
+                    </div> -->
                     <div class="header__search-item">
                         <a href=""><img src="./asset/img/t-relax.png" alt="" class="header__search-img"></a>
                         <a href=""><img src="./asset/img/t-cultural.png" alt="" class="header__search-img"></a>
@@ -302,7 +208,6 @@
                     </div>
                 </div>
             </div>
-
         </header>
 
         <div class="body">
@@ -310,8 +215,8 @@
                 <div class="grid">
                     <div class="grid__row">
                         <div class="body__content">
-                            <span>OUR PROPOSALS</span>
-                            <p>OUR <u>DESTINATIONS</u></p>
+                            <span>Đề xuất của chúng tôi</span>
+                            <p>Các <u>Điểm Đến Du Lịch</u></p>
                         </div>
                         <div class="grid__column-3">
                             <div class="nav__full">
@@ -447,10 +352,10 @@
                 <div class="grid">
                     <div class="banner__block">
                         <div class="body__banner-content ">
-                            <p class="banner__heading-1">Your</p>
-                            <p class="banner__heading-1">Next <u>Holiday</u></p>
+                            <p class="banner__heading-1">Relax</p>
+                            <p class="banner__heading-1">HTH <u>Travel</u></p>
                         </div>
-                        <button class="body__banner-button">VIEW ALL PACKAGES</button>
+                        <button class="body__banner-button">UY TÍN - CHẤT LƯỢNG</button>
                     </div>
                 </div>
             </div>
@@ -461,19 +366,12 @@
                         <div class="grid__column-3">
                             <div class="body__sale-left">
                                 <div class="sale-left__heading">
-                                    <span>NORTH AMERICA</span>
-                                    <p>The Best Beaches</p>
+                                    <span>KHÁM PHÁ</span>
+                                    <p>Địa Điểm Du Lịch</p>
                                 </div>
                                 <div class="sale-left__body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adip iscing elit. Proin rhoncus urna
-                                        dictum neque molestie ultricies mauris ac.</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adip iscing elit. Proin rhoncus urna
-                                        dictum neque molestie ultricies mauris ac.</p>
-                                    <div class="sale-price">
-                                        <p><u>800</u>500 $ <span>/ FOR PERSON</span></p>
-                                    </div>
+                                    <p>Du lịch là việc đi lại nhằm mục đích niềm vui hoặc kinh doanh; cũng là lý thuyết và thực hành về tổ chức các chương trình đi du lịch, ngành kinh doanh nhằm thu hút, cung cấp và giải trí cho khách du lịch, và việc kinh doanh của các tổ chức điều hành các tour du lịch.Chúng ta cùng khám phá.</p>
                                 </div>
-                                <button class="sale-left__button">BOOK NOW</button>
                             </div>
                         </div>
                         <div class="body__sale-content">
@@ -555,19 +453,17 @@
             <div class="body__details">
                 <div class="grid-with-width">
                     <div class="grid__row">
-                        <div class="grid__column-2 body__details-content"
-                            style="background-image: url(./asset/img/parallax-5-filter.jpg);">
+                        <div class="grid__column-2 body__details-content" style="background-image: url(./asset/img/parallax-5-filter.jpg);">
                             <div class="body__details-content-child">
-                                <div class="content-child__title">01. LAST MINUTE</div>
-                                <div class="content-child__heading">Discover Cities</div>
+                                <div class="content-child__title">01. Du Lịch</div>
+                                <div class="content-child__heading">Khám Phá Thành Phố</div>
                                 <button class="content-child__button content-child__button-top">DETAILS</button>
                             </div>
                         </div>
-                        <div class="grid__column-2 body__details-content"
-                            style="background-image: url(./asset/img/parallax-6-filter.jpg);">
+                        <div class="grid__column-2 body__details-content" style="background-image: url(./asset/img/parallax-6-filter.jpg);">
                             <div class="body__details-content-child">
-                                <div class="content-child__title">02. PROMOTIONS</div>
-                                <div class="content-child__heading">Discover Nature</div>
+                                <div class="content-child__title">02. Du Lịch</div>
+                                <div class="content-child__heading">Khám Phá Thiên Nhiên</div>
                                 <button class="content-child__button content-child__button-bottom">DETAILS</button>
 
 
@@ -581,8 +477,8 @@
                 <div class="grid">
                     <div class="grid__row">
                         <div class="body__content">
-                            <span>PROMOTIONS</span>
-                            <p>OUR <u>PACKAGES</u></p>
+                            <span>KHUYẾN MÃI</span>
+                            <p>CÁC <u>ĐỊA ĐIỂM</u></p>
                         </div>
                         <div class="grid__column-3 bordered">
                             <img src="./asset/img/berlin.jpg" alt="" class="body__bottom-img">
@@ -712,7 +608,7 @@
                         <div class="footer__content-top grid__row">
                             <div class="grid__column-2">
                                 <div class="footer__logo">
-                                    <img src="./asset/img/logo-color-footer.png" alt="" class="footer__logo-img">
+                                    <img src="./asset/img/logohthtravel.png" alt="" class="footer__logo-img">
                                 </div>
                                 <div class="footer__text">
                                     <p>
