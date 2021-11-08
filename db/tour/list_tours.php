@@ -1,6 +1,7 @@
 <?php
 require_once "./../../db/tour/tour.php";
-$data = getall();
+$data = getAll();
+// var_dump($data);die;
 ?>
 <!DOCTYPE html>
 <html lang="en">

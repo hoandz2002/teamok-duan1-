@@ -1,9 +1,9 @@
 <?php 
 
 require_once "./../connection.php";
-function getall(){
+function getAll(){
     $conn = connect();
-    $sql = "SELECT * FROM tours inner join location on tours.id_tours = location.id_location";
+    $sql = "SELECT * FROM tours inner join location on tours.id_location = location.id_location";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $result = [];
@@ -49,8 +49,8 @@ function getid($id){
 }
 function insert(array $data){
     $conn = connect();
-    $sql = "INSERT INTO tours(image_tours,name_tours, description_tours, price_tours, time_tours,id_location)" . 
-    "VALUES(:image_tours, :name_tours, :description_tours, :price_tours, :time_tours,:id_location)";
+    $sql  = "INSERT INTO tours(image_tours, name_tours, description_tours, price_tours, time_tours, id_location)" .
+    "VALUES(:image_tours, :name_tours, :description_tours, :price_tours, :time_tours, :id_location)";
     $stmt = $conn->prepare($sql);
     $stmt->execute($data);
 }
