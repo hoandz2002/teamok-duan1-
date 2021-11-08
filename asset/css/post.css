@@ -1,0 +1,16 @@
+.post-heading {
+    color: white;
+}
+.post-heading p {
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+.post-heading h2 {
+    font-size: 18px;
+    margin: 8px 0px 16px;
+}
+.post-heading span {
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+}
