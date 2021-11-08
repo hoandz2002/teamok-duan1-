@@ -1,34 +1,35 @@
 <?php 
-require_once "./customer.php";
+session_start();
+require_once './customer.php';
 $id = $_GET['id_customer'];
 $data = getid($id);
+// var_dump($data); die;
+
 if(isset($_POST['btn_save'])){
-    $data1 = [
+    $data = [
         'id_customer' => $_POST['id_customer'],
-        'name_customer' => $_POST['name_customer'],
-        'cmt_customer' => $_POST['cmt_customer'],
-        'phone_customer' => $_POST['phone_customer'],
-        'email_customer' => $_POST['email_customer'],
-        'password' => $_POST['password'],
-        'classify_customer' => $_POST['classify_customer'],
+            'name_customer' => $_POST['name_customer'],
+            'cmt_customer' => $_POST['cmt_customer'],
+            'phone_customer' => $_POST['phone_customer'],
+            'email_customer' => $_POST['email_customer'],
+            'password' => $_POST['password'],
+            'classify_customer' => $_POST['classify_customer'],
     ];
-    // var_dump($data); die;
-     update($data1);
+
+    update($data);
     header("location: ./list_customer.php");
 }
-?> 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update</title>
-</head>
-<body>
-<form action="edit.php?id_customer=<?php echo $data['id_customer']; ?>" method="POST">
-<input type="text" name="id_customer" hidden id="">
-    <div>
+?>
+   
+    <h2 class="alert alert-danger">UPDATE TOURS</h2>
+    <form action="edit.php?id_customer=<?= $data['id_customer'] ?>" method="post" enctype="multipart/form-data">
+        <fieldset hidden>
+            <div class="mb-3">
+                <label for="disabledTextInput" hidden class="form-label">Mã khách hàng</label>
+                <input style="background-color: rgba( 0, 0, 0, 0.3);" id="disabledTextInput" name="id_customer" class="form-control" type="hidden" value="<?= $data['id_customer'] ?>">
+            </div>
+        </fieldset>
+           <div>
         <label for="">name_customer</label>
         <input type="text" name="name_customer" value="<?php echo $data['name_customer'] ?>" id="">
     </div>
@@ -52,7 +53,14 @@ if(isset($_POST['btn_save'])){
         <label for="">classify_customer</label>
         <input type="text" name="classify_customer" value="<?php echo $data['classify_customer'] ?>" id="">
     </div>
-    <input type="submit" name="btn_save" id="">
-</form>    
+        </p>
+        <div class="form-group">
+            <button name="btn_save" class="btn btn-default">Sửa</button>
+        </div>
+    </form>
+  
+
+    </div>
 </body>
+
 </html>
