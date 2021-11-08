@@ -3,7 +3,7 @@
 require_once "./../connection.php";
 function getall(){
     $conn = connect();
-    $sql = "SELECT * FROM tours inner join location on tours.id_location = location.id_location";
+    $sql = "SELECT * FROM service";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $result = [];
@@ -13,13 +13,10 @@ function getall(){
             break;
         }
         $row = [
-            'id_tours' => $data['id_tours'],
-            'image_tours' => $data['image_tours'],
-            'name_tours' => $data['name_tours'],
-            'description_tours' => $data['description_tours'],
-            'price_tours' => $data['price_tours'],
-            'time_tours' => $data['time_tours'],
-            'name_location' => $data['name_location'],
+            'id_service' => $data['id_service'],
+            'name_service' => $data['name_service'],
+            'description_service' => $data['description_service'],
+            'price_service' => $data['price_service'],
         ];
         array_push($result, $row);
     }   
@@ -28,42 +25,39 @@ function getall(){
 
 function getid($id){
     $conn = connect();
-    $sql = "SELECT * FROM tours inner join location on tours.id_location = location.id_location WHERE id_tours =:id_tours ";
+    $sql = "SELECT * FROM service  WHERE id_service =:id_service ";
     $stmt = $conn->prepare($sql);
-    $stmt->execute(['id_tours' => $id]);
+    $stmt->execute(['id_service' => $id]);
     
         $data = $stmt->fetch();
         
         $row = [
-            'id_tours' => $data['id_tours'],
-            'image_tours' => $data['image_tours'],
-            'name_tours' => $data['name_tours'],
-            'description_tours' => $data['description_tours'],
-            'price_tours' => $data['price_tours'],
-            'time_tours' => $data['time_tours'],
-            'id_location' => $data['id_location'],
+            'id_service' => $data['id_service'],
+            'name_service' => $data['name_service'],
+            'description_service' => $data['description_service'],
+            'price_service' => $data['price_service'],
         ];
    
     return $row;
 }
 function insert(array $data){
     $conn = connect();
-    $sql = "INSERT INTO tours(image_tours,name_tours, description_tours, price_tours, time_tours,id_location)" . 
-    "VALUES(:image_tours, :name_tours, :description_tours, :price_tours, :time_tours,:id_location)";
+    $sql = "INSERT INTO service(name_service, description_service,price_service)" . 
+    "VALUES(:name_service, :description_service, :price_service)";
     $stmt = $conn->prepare($sql);
     $stmt->execute($data);
 }
 function update($data){
     $conn = connect();
-    $sql = "UPDATE tours SET image_tours =:image_tours, name_tours =:name_tours, description_tours =:description_tours, price_tours =:price_tours, time_tours =:time_tours, id_location =:id_location WHERE id_tours =:id_tours";
+    $sql= "UPDATE service SET name_service=:name_service, description_service=:description_service, price_service=:price_service WHERE id_service=:id_service";
     $stmt = $conn->prepare($sql);
     $stmt->execute($data);
     return true;
 }
 function delete($id){
     $conn = connect();
-    $sql = "DELETE FROM tours WHERE id_tours = :id_tours";
+    $sql = "DELETE FROM service WHERE id_service = :id_service";
     $stmt = $conn->prepare($sql);
-    $stmt->execute(['id_tours' => $id]);
+    $stmt->execute(['id_service' => $id]);
 }
 

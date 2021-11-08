@@ -28,10 +28,7 @@ function getAll(){
 
 function getid($id){
     $conn = connect();
-
     $sql = "SELECT * FROM tours inner join location on tours.id_location = location.id_location WHERE id_tours =:id_tours ";
-
-  
     $stmt = $conn->prepare($sql);
     $stmt->execute(['id_tours' => $id]);
     
