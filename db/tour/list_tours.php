@@ -97,16 +97,11 @@ $data = getAll();
                     <td style="border: solid 1px black;font-weight: bold; text-align: center;"><?= $datas['price_tours'] ?> </td>
                     <td style="border: solid 1px black;font-weight: bold; text-align: center;"><?= $datas['time_tours']  ?></td>
                     <td style="border: solid 1px black;font-weight: bold; text-align: center;"><?= $datas['name_location']  ?></td>
-                    <!-- <td style="border: solid 1px black;font-weight: bold; text-align: center;">
-                    <button style="background-color: blue; width: 100%; height: 90%;"><a style="color: white; font-weight: bold;text-decoration: none;" href="./edit.php?ma_kh=<?= $datas['ma_kh'] ?>" class="btn btn-sm btn-default">cập nhật</a></button>
-                    </td> -->
-                    <td><button>Cập nhật</button></td>
+                   
+                    <td><button><a href="./edit.php?id_tours=<?= $datas['id_tours'] ?>">Cập nhật</a></button></td>
 
-                    <!-- <td style="border: solid 1px black;font-weight: bold; text-align: center;">
-                        <button style="background-color: red; width: 100%; height: 90%;"> <a style="color: white; font-weight: bold;text-decoration: none;" href="delete.php?ma_kh=<?= $datas['ma_kh'] ?>" onclick="return confirm('ban co muon xo du lieu khong??')" class="btn btn-sm btn-default">Xóa</a>
-                        </button>
-                    </td> -->
-                    <td><button>Xóa</button></td>
+                   
+                    <td><button><a href="./delete.php?id_tours=<?= $datas['id_tours'] ?>">Xóa</a></button></td>
 
                 </tr>
             <?php } ?>
