@@ -508,6 +508,7 @@ i.footer__icon {
   color: #14b9d5;
   outline: none;
   border: none;
+  background-color: white;
 }
 /* tablet */
 .nav__tablet {

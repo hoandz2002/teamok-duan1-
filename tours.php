@@ -31,7 +31,7 @@
                             <div class="tours-content">
                                 <h6 class="tours-heading">Redamancy</h6>
                                 <p>$1,000.00</p>
-                                <a href="" class="tours-btn">SELECT OPTION</a>
+                                <a href="/duan1/tours_detail.php" class="tours-btn">SELECT OPTION</a>
                             </div>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                             <div class="tours-content">
                                 <h6 class="tours-heading">Redamancy</h6>
                                 <p>$1,000.00</p>
-                                <a href="" class="tours-btn">SELECT OPTION</a>
+                                <a href="/duan1/tours_detail.php" class="tours-btn">SELECT OPTION</a>
                             </div>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                             <div class="tours-content">
                                 <h6 class="tours-heading">Redamancy</h6>
                                 <p>$1,000.00</p>
-                                <a href="" class="tours-btn">SELECT OPTION</a>
+                                <a href="/duan1/tours_detail.php" class="tours-btn">SELECT OPTION</a>
                             </div>
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                             <div class="tours-content">
                                 <h6 class="tours-heading">Redamancy</h6>
                                 <p>$1,000.00</p>
-                                <a href="" class="tours-btn">SELECT OPTION</a>
+                                <a href="/duan1/tours_detail.php" class="tours-btn">SELECT OPTION</a>
                             </div>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                             <div class="tours-content">
                                 <h6 class="tours-heading">Redamancy</h6>
                                 <p>$1,000.00</p>
-                                <a href="" class="tours-btn">SELECT OPTION</a>
+                                <a href="/duan1/tours_detail.php" class="tours-btn">SELECT OPTION</a>
                             </div>
                         </div>
                     </div>
@@ -81,7 +81,7 @@
                             <div class="tours-content">
                                 <h6 class="tours-heading">Redamancy</h6>
                                 <p>$1,000.00</p>
-                                <a href="" class="tours-btn">SELECT OPTION</a>
+                                <a href="/duan1/tours_detail.php" class="tours-btn">SELECT OPTION</a>
                             </div>
                         </div>
                     </div>
@@ -91,7 +91,7 @@
                             <div class="tours-content">
                                 <h6 class="tours-heading">Redamancy</h6>
                                 <p>$1,000.00</p>
-                                <a href="" class="tours-btn">SELECT OPTION</a>
+                                <a href="/duan1/tours_detail.php" class="tours-btn">SELECT OPTION</a>
                             </div>
                         </div>
                     </div>
@@ -101,7 +101,7 @@
                             <div class="tours-content">
                                 <h6 class="tours-heading">Redamancy</h6>
                                 <p>$1,000.00</p>
-                                <a href="" class="tours-btn">SELECT OPTION</a>
+                                <a href="/duan1/tours_detail.php" class="tours-btn">SELECT OPTION</a>
                             </div>
                         </div>
                     </div>

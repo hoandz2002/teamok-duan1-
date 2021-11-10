@@ -115,7 +115,7 @@
                                         <p>Amsterdam</p>
                                         <p>Tuscany</p>
                                     </div>
-                                    <button class="nav__full-hover-btn">VIEW DESTINATION</button>
+                                    <a href="/duan1/location_detail.php" class="nav__full-hover-btn">VIEW DESTINATION</a>
                                 </div>
                             </div>
 
@@ -235,7 +235,7 @@
                                         <p>Amsterdam</p>
                                         <p>Tuscany</p>
                                     </div>
-                                    <button class="nav__full-hover-btn">VIEW DESTINATION</button>
+                                    <a href="/duan1/location_detail.php" class="nav__full-hover-btn">VIEW DESTINATION</a>
                                 </div>
                             </div>
                         </div>
@@ -256,7 +256,7 @@
                                         <p>Amsterdam</p>
                                         <p>Tuscany</p>
                                     </div>
-                                    <button class="nav__full-hover-btn">VIEW DESTINATION</button>
+                                    <a href="/duan1/location_detail.php" class="nav__full-hover-btn">VIEW DESTINATION</a>
                                 </div>
                             </div>
                         </div>
@@ -277,7 +277,7 @@
                                         <p>Amsterdam</p>
                                         <p>Tuscany</p>
                                     </div>
-                                    <button class="nav__full-hover-btn">VIEW DESTINATION</button>
+                                    <a href="/duan1/location_detail.php" class="nav__full-hover-btn">VIEW DESTINATION</a>
                                 </div>
                             </div>
                         </div>
@@ -298,7 +298,7 @@
                                         <p>Amsterdam</p>
                                         <p>Tuscany</p>
                                     </div>
-                                    <button class="nav__full-hover-btn">VIEW DESTINATION</button>
+                                    <a href="/duan1/location_detail.php" class="nav__full-hover-btn">VIEW DESTINATION</a>
                                 </div>
                             </div>
                         </div>
@@ -319,7 +319,7 @@
                                         <p>Amsterdam</p>
                                         <p>Tuscany</p>
                                     </div>
-                                    <button class="nav__full-hover-btn">VIEW DESTINATION</button>
+                                    <a href="/duan1/location_detail.php" class="nav__full-hover-btn">VIEW DESTINATION</a>
                                 </div>
                             </div>
                         </div>
@@ -340,7 +340,7 @@
                                         <p>Amsterdam</p>
                                         <p>Tuscany</p>
                                     </div>
-                                    <button class="nav__full-hover-btn">VIEW DESTINATION</button>
+                                    <a href="/duan1/location_detail.php" class="nav__full-hover-btn">VIEW DESTINATION</a>
                                 </div>
                             </div>
                         </div>

@@ -21,6 +21,12 @@ html {
   justify-content: space-between;
   /* margin: 0 -5px; */
 }
+.grid__column {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+}
 .grid__column-3 {
   width: 32%;
   margin: 10px 0;
@@ -48,6 +54,9 @@ html {
 .ml-8 {
   margin-left: 8px;
 }
+.mt-8 {
+  margin-top: 8px;
+}
 .btn {
     padding: 12px 16px;
     border-radius: 18px;
@@ -68,3 +77,4 @@ html {
   .pd-24 {
     padding: 24px;
   }
+  

@@ -37,7 +37,7 @@
                                 Phasellus enim libero, blandit vel sapien vitae, condimentum ultricies magna et. Quisque euismod orci ut et lobortis.
                                 </span>
                             </div>
-                            <a href="" class="btn" style="padding: 8px 16px; margin-top: 20px; font-size: 10px;">READ MORE</a>
+                            <a href="/duan1/post_detail.php" class="btn" style="padding: 8px 16px; margin-top: 20px; font-size: 10px;">READ MORE</a>
                         </div>
                     </div>
                     <div class="grid__row pd-16 grid__column-2">
@@ -52,7 +52,7 @@
                                 Phasellus enim libero, blandit vel sapien vitae, condimentum ultricies magna et. Quisque euismod orci ut et lobortis.
                                 </span>
                             </div>
-                            <a href="" class="btn" style="padding: 8px 16px; margin-top: 20px; font-size: 10px;">READ MORE</a>
+                            <a href="/duan1/post_detail.php" class="btn" style="padding: 8px 16px; margin-top: 20px; font-size: 10px;">READ MORE</a>
                         </div>
                     </div>
                     <div class="grid__row pd-16 grid__column-2">
@@ -67,7 +67,7 @@
                                 Phasellus enim libero, blandit vel sapien vitae, condimentum ultricies magna et. Quisque euismod orci ut et lobortis.
                                 </span>
                             </div>
-                            <a href="" class="btn" style="padding: 8px 16px; margin-top: 20px; font-size: 10px;">READ MORE</a>
+                            <a href="/duan1/post_detail.php" class="btn" style="padding: 8px 16px; margin-top: 20px; font-size: 10px;">READ MORE</a>
                         </div>
                     </div>
                     <div class="grid__row pd-16 grid__column-2">
@@ -82,7 +82,7 @@
                                 Phasellus enim libero, blandit vel sapien vitae, condimentum ultricies magna et. Quisque euismod orci ut et lobortis.
                                 </span>
                             </div>
-                            <a href="" class="btn" style="padding: 8px 16px; margin-top: 20px; font-size: 10px;">READ MORE</a>
+                            <a href="/duan1/post_detail.php" class="btn" style="padding: 8px 16px; margin-top: 20px; font-size: 10px;">READ MORE</a>
                         </div>
                     </div>
                     <div class="grid__row pd-16 grid__column-2">
@@ -97,7 +97,7 @@
                                 Phasellus enim libero, blandit vel sapien vitae, condimentum ultricies magna et. Quisque euismod orci ut et lobortis.
                                 </span>
                             </div>
-                            <a href="" class="btn" style="padding: 8px 16px; margin-top: 20px; font-size: 10px;">READ MORE</a>
+                            <a href="/duan1/post_detail.php" class="btn" style="padding: 8px 16px; margin-top: 20px; font-size: 10px;">READ MORE</a>
                         </div>
                     </div>
                     <div class="grid__row pd-16 grid__column-2">
@@ -112,7 +112,7 @@
                                 Phasellus enim libero, blandit vel sapien vitae, condimentum ultricies magna et. Quisque euismod orci ut et lobortis.
                                 </span>
                             </div>
-                            <a href="" class="btn" style="padding: 8px 16px; margin-top: 20px; font-size: 10px;">READ MORE</a>
+                            <a href="/duan1/post_detail.php" class="btn" style="padding: 8px 16px; margin-top: 20px; font-size: 10px;">READ MORE</a>
                         </div>
                     </div>
                 </div>
