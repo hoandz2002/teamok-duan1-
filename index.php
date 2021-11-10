@@ -30,12 +30,12 @@
                         <a href="/duan1/about.php" class="header__navbar-item__link">Giới Thiệu</a>
                     </li>
                     <li class="header__navbar-item">
-                        <a href="/duan1/post.php" class="header__navbar-item__link">Bài Viết</a>
+                        <a href="#" class="header__navbar-item__link">Bài Viết</a>
                         <ul class="header__navbar-list-child">
-                            <li class="header__navbar-item-child"><a href="" class="header__navbar-link-child">Services</a></li>
-                            <li class="header__navbar-item-child"><a href="" class="header__navbar-link-child">Agentcy
+                            <li class="header__navbar-item-child"><a href="/duan1/post.php" class="header__navbar-link-child">Services</a></li>
+                            <li class="header__navbar-item-child"><a href="/duan1/post.php" class="header__navbar-link-child">Agentcy
                                     Tours</a></li>
-                            <li class="header__navbar-item-child"><a href="" class="header__navbar-link-child">Testimonials</a></li>
+                            <li class="header__navbar-item-child"><a href="/duan1/post.php" class="header__navbar-link-child">Testimonials</a></li>
                         </ul>
                     </li>
 
@@ -115,7 +115,7 @@
                                         <p>Amsterdam</p>
                                         <p>Tuscany</p>
                                     </div>
-                                    <button class="nav__full-hover-btn">VIEW DESTINATION</button>
+                                    <a href="/duan1/location_detail.php" class="nav__full-hover-btn">VIEW DESTINATION</a>
                                 </div>
                             </div>
 
@@ -176,7 +176,7 @@
                     <li class="header__navbar-item-child"><a href="/duan1/index.php" class="header__navbar-link-child">Trang chủ</a></li>
                     <li class="header__navbar-item-child"><a href="/duan1/tours.php" class="header__navbar-link-child">Tours</a></li>
                     <li class="header__navbar-item-child"><a href="/duan1/abput.php" class="header__navbar-link-child">Giới thiệu</a></li>
-                    <li class="header__navbar-item-child"><a href="/duan1/post.php" class="header__navbar-link-child">Bài viết</a></li>
+                    <li class="header__navbar-item-child"><a href="#" class="header__navbar-link-child">Bài viết</a></li>
                     <li class="header__navbar-item-child"><a href="/duan1/contact.php" class="header__navbar-link-child">Liên hệ</a></li>
 
                 </div>
@@ -235,7 +235,7 @@
                                         <p>Amsterdam</p>
                                         <p>Tuscany</p>
                                     </div>
-                                    <button class="nav__full-hover-btn">VIEW DESTINATION</button>
+                                    <a href="/duan1/location_detail.php" class="nav__full-hover-btn">VIEW DESTINATION</a>
                                 </div>
                             </div>
                         </div>
@@ -256,7 +256,7 @@
                                         <p>Amsterdam</p>
                                         <p>Tuscany</p>
                                     </div>
-                                    <button class="nav__full-hover-btn">VIEW DESTINATION</button>
+                                    <a href="/duan1/location_detail.php" class="nav__full-hover-btn">VIEW DESTINATION</a>
                                 </div>
                             </div>
                         </div>
@@ -277,7 +277,7 @@
                                         <p>Amsterdam</p>
                                         <p>Tuscany</p>
                                     </div>
-                                    <button class="nav__full-hover-btn">VIEW DESTINATION</button>
+                                    <a href="/duan1/location_detail.php" class="nav__full-hover-btn">VIEW DESTINATION</a>
                                 </div>
                             </div>
                         </div>
@@ -298,7 +298,7 @@
                                         <p>Amsterdam</p>
                                         <p>Tuscany</p>
                                     </div>
-                                    <button class="nav__full-hover-btn">VIEW DESTINATION</button>
+                                    <a href="/duan1/location_detail.php" class="nav__full-hover-btn">VIEW DESTINATION</a>
                                 </div>
                             </div>
                         </div>
@@ -319,7 +319,7 @@
                                         <p>Amsterdam</p>
                                         <p>Tuscany</p>
                                     </div>
-                                    <button class="nav__full-hover-btn">VIEW DESTINATION</button>
+                                    <a href="/duan1/location_detail.php" class="nav__full-hover-btn">VIEW DESTINATION</a>
                                 </div>
                             </div>
                         </div>
@@ -340,7 +340,7 @@
                                         <p>Amsterdam</p>
                                         <p>Tuscany</p>
                                     </div>
-                                    <button class="nav__full-hover-btn">VIEW DESTINATION</button>
+                                    <a href="/duan1/location_detail.php" class="nav__full-hover-btn">VIEW DESTINATION</a>
                                 </div>
                             </div>
                         </div>
