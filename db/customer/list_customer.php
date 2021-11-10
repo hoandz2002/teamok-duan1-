@@ -1,7 +1,6 @@
 <?php
-require_once "./../../db/tour/tour.php";
-$data = getAll();
-// var_dump($data);die;
+require_once "./customer.php";
+$data = getall();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -73,14 +72,14 @@ $data = getAll();
     <table class="table" border="1">
         <thead>
             <tr>
-                <th style="font-size: 20px;text-align: center;border: solid 1px black;font-weight: bold;background-color: wheat;">id tours</th>
-                <th style="font-size: 20px;text-align: center;border: solid 1px black;font-weight: bold;background-color: wheat;">Hình ảnh</th>
+                <th style="font-size: 20px;text-align: center;border: solid 1px black;font-weight: bold;background-color: wheat;">id_customer</th>
+                <th style="font-size: 20px;text-align: center;border: solid 1px black;font-weight: bold;background-color: wheat;">name_customer</th>
 
-                <th style="font-size: 20px;text-align: center;border: solid 1px black;font-weight: bold;background-color: wheat;">Tên tours</th>
-                <th style="font-size: 20px;text-align: center;border: solid 1px black;font-weight: bold;background-color: wheat;">Mô tả</th>
-                <th style="font-size: 20px;text-align: center;border: solid 1px black;font-weight: bold;background-color: wheat;">giá tours</th>
-                <th style="font-size: 20px;text-align: center;border: solid 1px black;font-weight: bold;background-color: wheat;">Thời gian</th>
-                <th style="font-size: 20px;text-align: center;border: solid 1px black;font-weight: bold;background-color: wheat;">tên địa danh</th>
+                <th style="font-size: 20px;text-align: center;border: solid 1px black;font-weight: bold;background-color: wheat;">cmt_customer</th>
+                <th style="font-size: 20px;text-align: center;border: solid 1px black;font-weight: bold;background-color: wheat;">phone_customer</th>
+                <th style="font-size: 20px;text-align: center;border: solid 1px black;font-weight: bold;background-color: wheat;">email_customer</th>
+                <th style="font-size: 20px;text-align: center;border: solid 1px black;font-weight: bold;background-color: wheat;">password</th>
+                <th style="font-size: 20px;text-align: center;border: solid 1px black;font-weight: bold;background-color: wheat;">classify_customer</th>
 
                 <!-- <th style="font-size: 20px;text-align: center;border: solid 1px black;font-weight: bold;background-color: wheat;">người giới thiệu</th> -->
 
@@ -90,18 +89,18 @@ $data = getAll();
         <tbody>
             <?php foreach ($data as $datas) { ?>
                 <tr>
-                    <td style="border: solid 1px black;font-weight: bold; text-align: center;height: 50px;"><?= $datas['id_tours'] ?></td>
-                    <td style="border: solid 1px black;font-weight: bold; text-align: center;"><img width="60px" src="./../../asset/img/<?= $datas['image_tours'] ?>" alt=""></td>
-                    <td style="border: solid 1px black;font-weight: bold; text-align: center;"><?= $datas['name_tours'] ?></td>
-                    <td style="border: solid 1px black;font-weight: bold; text-align: center;"><?= $datas['description_tours'] ?></td>
-                    <td style="border: solid 1px black;font-weight: bold; text-align: center;"><?= $datas['price_tours'] ?> </td>
-                    <td style="border: solid 1px black;font-weight: bold; text-align: center;"><?= $datas['time_tours']  ?></td>
-                    <td style="border: solid 1px black;font-weight: bold; text-align: center;"><?= $datas['name_location']  ?></td>
+                    <td style="border: solid 1px black;font-weight: bold; text-align: center;height: 50px;"><?= $datas['id_customer'] ?></td>
+                    <td style="border: solid 1px black;font-weight: bold; text-align: center"><?= $datas['name_customer'] ?></td>
+                    <td style="border: solid 1px black;font-weight: bold; text-align: center;"><?= $datas['cmt_customer'] ?></td>
+                    <td style="border: solid 1px black;font-weight: bold; text-align: center;"><?= $datas['phone_customer'] ?></td>
+                    <td style="border: solid 1px black;font-weight: bold; text-align: center;"><?= $datas['email_customer'] ?> </td>
+                    <td style="border: solid 1px black;font-weight: bold; text-align: center;"><?= $datas['password']  ?></td>
+                    <td style="border: solid 1px black;font-weight: bold; text-align: center;"><?= $datas['classify_customer']  ?></td>
                    
-                    <td><button><a href="./edit.php?id_tours=<?= $datas['id_tours'] ?>">Cập nhật</a></button></td>
+                    <td><button><a href="./edit.php?id_customer=<?= $datas['id_customer'] ?>">Cập nhật</a></button></td>
 
                    
-                    <td><button><a href="./delete.php?id_tours=<?= $datas['id_tours'] ?>">Xóa</a></button></td>
+                    <td><button><a href="./delete.php?id_customer=<?= $datas['id_customer'] ?>">Xóa</a></button></td>
 
                 </tr>
             <?php } ?>
@@ -112,3 +111,4 @@ $data = getAll();
 </body>
 
 </html>
+

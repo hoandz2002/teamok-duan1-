@@ -1,7 +1,6 @@
 <?php
-require_once "./../../db/tour/tour.php";
-$data = getAll();
-// var_dump($data);die;
+require_once "./service.php";
+$data = getall();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,9 +62,9 @@ $data = getAll();
     <div style="width: 100%;height: 60px;background-color: black;">
 
         <ul>
-        <li><a href="./../hanghoa/list.php">Hàng hóa</a></li>
-            <li><a href="./../khach-hang/list.php">Tài khoản</a></li>
-            <li><a href="./../binh-luan/list_bl.php">Bình luận</a></li>
+        <li><a href="./../tour/list_tours.php">Tours</a></li>
+            <li><a href="./../location/">Location</a></li>
+            <li><a href="./../service/list_service.php">Service</a></li>
             <li><a href="./../loaihang/list_loaihang.php">Loại hàng</a></li>
             <li><a href="./../thong-ke/list.php">Thông kê</a></li>
         </ul>
@@ -73,14 +72,10 @@ $data = getAll();
     <table class="table" border="1">
         <thead>
             <tr>
-                <th style="font-size: 20px;text-align: center;border: solid 1px black;font-weight: bold;background-color: wheat;">id tours</th>
-                <th style="font-size: 20px;text-align: center;border: solid 1px black;font-weight: bold;background-color: wheat;">Hình ảnh</th>
-
-                <th style="font-size: 20px;text-align: center;border: solid 1px black;font-weight: bold;background-color: wheat;">Tên tours</th>
+                <th style="font-size: 20px;text-align: center;border: solid 1px black;font-weight: bold;background-color: wheat;">id service</th>
+                <th style="font-size: 20px;text-align: center;border: solid 1px black;font-weight: bold;background-color: wheat;">Tên service</th>
                 <th style="font-size: 20px;text-align: center;border: solid 1px black;font-weight: bold;background-color: wheat;">Mô tả</th>
-                <th style="font-size: 20px;text-align: center;border: solid 1px black;font-weight: bold;background-color: wheat;">giá tours</th>
-                <th style="font-size: 20px;text-align: center;border: solid 1px black;font-weight: bold;background-color: wheat;">Thời gian</th>
-                <th style="font-size: 20px;text-align: center;border: solid 1px black;font-weight: bold;background-color: wheat;">tên địa danh</th>
+                <th style="font-size: 20px;text-align: center;border: solid 1px black;font-weight: bold;background-color: wheat;">giá dich vu</th>
 
                 <!-- <th style="font-size: 20px;text-align: center;border: solid 1px black;font-weight: bold;background-color: wheat;">người giới thiệu</th> -->
 
@@ -90,18 +85,15 @@ $data = getAll();
         <tbody>
             <?php foreach ($data as $datas) { ?>
                 <tr>
-                    <td style="border: solid 1px black;font-weight: bold; text-align: center;height: 50px;"><?= $datas['id_tours'] ?></td>
-                    <td style="border: solid 1px black;font-weight: bold; text-align: center;"><img width="60px" src="./../../asset/img/<?= $datas['image_tours'] ?>" alt=""></td>
-                    <td style="border: solid 1px black;font-weight: bold; text-align: center;"><?= $datas['name_tours'] ?></td>
-                    <td style="border: solid 1px black;font-weight: bold; text-align: center;"><?= $datas['description_tours'] ?></td>
-                    <td style="border: solid 1px black;font-weight: bold; text-align: center;"><?= $datas['price_tours'] ?> </td>
-                    <td style="border: solid 1px black;font-weight: bold; text-align: center;"><?= $datas['time_tours']  ?></td>
-                    <td style="border: solid 1px black;font-weight: bold; text-align: center;"><?= $datas['name_location']  ?></td>
+                    <td style="border: solid 1px black;font-weight: bold; text-align: center;height: 50px;"><?= $datas['id_service'] ?></td>
+                    <td style="border: solid 1px black;font-weight: bold; text-align: center;"><?= $datas['name_service'] ?></td>
+                    <td style="border: solid 1px black;font-weight: bold; text-align: center;"><?= $datas['description_service'] ?></td>
+                    <td style="border: solid 1px black;font-weight: bold; text-align: center;"><?= $datas['price_service'] ?> </td>
                    
-                    <td><button><a href="./edit.php?id_tours=<?= $datas['id_tours'] ?>">Cập nhật</a></button></td>
+                    <td><button><a href="./edit.php?id_service=<?= $datas['id_service'] ?>">Cập nhật</a></button></td>
 
                    
-                    <td><button><a href="./delete.php?id_tours=<?= $datas['id_tours'] ?>">Xóa</a></button></td>
+                    <td><button><a href="./delete.php?id_service=<?= $datas['id_service'] ?>">Xóa</a></button></td>
 
                 </tr>
             <?php } ?>
