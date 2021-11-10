@@ -20,7 +20,7 @@
     </style>
 </head>
 
-<body class="img js-fullheight" style="background-image: url(asset/img/pexels-photo-24377.jpg);">
+<body class="img js-fullheight" style="background-image: url(https://media.cntraveler.com/photos/5fd43196b405c65ac7294577/master/w_4387,h_2982,c_limit/533554773);">
     <section class="ftco-section">
         <div class="container">
             <div class="row justify-content-center">
@@ -53,12 +53,12 @@
                                 <button type="submit" class="form-control btn btn-primary submit px-3">Sign Up</button>
                             </div>
                             <div class="form-group d-md-flex">
-                                <div class="w-50">
+                                <!-- <div class="w-50"> -->
                                     <label class="checkbox-wrap checkbox-primary">Agree Terms and Conditions
                                         <input type="checkbox" checked>
                                         <span class="checkmark"></span>
                                     </label>
-                                </div>
+                                <!-- </div> -->
                                 <!-- <div class="w-50 text-md-right">
                                     <a href="#" style="color: #fff">Forgot Password</a>
                                 </div> -->
