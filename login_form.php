@@ -20,25 +20,25 @@
                     <h2 style="margin-bottom:50px" class="heading-section">HTH TRAVEL</h2>
                 </div>
                 <div id="toast">
-                <div class="tst_test tst--error">
-                    <div class="toast__icon">
-                        <i class="fas fa-exclamation"></i>
-                    </div>
-                    <div class="toast__body">
-                        <h3 class="toast__title" style="font-weight: 600;color: #333;">
-                            Error
-                        </h3>
-                        <p class="toast__msg">
-                            Không được để trống
-                        </p>
-                    </div>
-                    <div class="toast__close">
-                        <i class='fas fa-times'></i>
+                    <div class="tst_test tst--error">
+                        <div class="toast__icon">
+                            <i class="fas fa-exclamation"></i>
+                        </div>
+                        <div class="toast__body">
+                            <h3 class="toast__title" style="font-weight: 600;color: #333;">
+                                Error
+                            </h3>
+                            <p class="toast__msg">
+                                Không được để trống
+                            </p>
+                        </div>
+                        <div class="toast__close">
+                            <i class='fas fa-times'></i>
+                        </div>
                     </div>
                 </div>
             </div>
-            </div>
-            
+
             <div class="row justify-content-center">
                 <div class="col-md-6 col-lg-4">
                     <div class="login-wrap p-0">
@@ -77,11 +77,11 @@
         </div>
     </section>
 
-    <script src="asset/js/jquery.min.js"></script>
-    <script src="asset/js/popper.js"></script>
-    <script src="asset/js/bootstrap.min.js"></script>
-    <script src="asset/js/main.js"></script>
-
+    <script src="./asset/js/jquery.min.js"></script>
+    <script src="./asset/js/popper.js"></script>
+    <script src="./asset/js/bootstrap.min.js"></script>
+    <script src="./asset/js/main.js"></script>
+    <script src="./asset/js/toast.js"></script>
 </body>
 
 </html>

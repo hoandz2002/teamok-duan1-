@@ -8,6 +8,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="asset/css/style.css">
     <style>
         .form-control {
@@ -16,7 +17,7 @@
         }
 
         .ftco-section {
-            padding: 3em 0;
+            padding: 4em 0;
         }
     </style>
 </head>
@@ -25,8 +26,26 @@
     <section class="ftco-section">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-md-6 text-center mb-5">
+                <div class="col-md-6 text-center mb-5" style="margin-bottom:5.5em;">
                     <h2 class="heading-section">HTH TRAVEL</h2>
+                </div>
+                <div id="toast" style="top: 135px;">
+                    <div class="tst_test tst--error">
+                        <div class="toast__icon">
+                            <i class="fas fa-exclamation"></i>
+                        </div>
+                        <div class="toast__body">
+                            <h3 class="toast__title" style="font-weight: 600;color: #333;">
+                                Error
+                            </h3>
+                            <p class="toast__msg">
+                                Không được để trống
+                            </p>
+                        </div>
+                        <div class="toast__close">
+                            <i class='fas fa-times'></i>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row justify-content-center">
@@ -63,7 +82,7 @@
     <script src="asset/js/popper.js"></script>
     <script src="asset/js/bootstrap.min.js"></script>
     <script src="asset/js/main.js"></script>
-
+    <script src="asset/js/toast.js"></script>
 </body>
 
 </html>

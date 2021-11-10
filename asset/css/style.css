@@ -8911,7 +8911,7 @@ button.bg-dark:focus {
 
 .mb-5,
 .my-5 {
-    margin-bottom: 3rem !important;
+    margin-bottom: 3rem;
 }
 
 .ml-5,
@@ -11216,14 +11216,14 @@ textarea.form-control {
     display: flex;
     align-items: center;
     background-color: #fff;
-    border-radius: 40px;
     border-left: 4px solid;
     box-shadow: 0 5px 8px rgba(0, 0, 0, 0.08);
     padding: 20px;
     height: 50px;
     width: 350px;
     margin-bottom: 20px;
-    transition: slideInLeft ease 0.3s;
+    animation: slideInLeft ease 0.3s, fadeOut linear 1s 3s forwards;
+    transition: all linear 1s;
 }
 
 @keyframes slideInLeft {
