@@ -85,7 +85,7 @@
                 </div>
                 <div class="grid-with-width">
                     <ul class="list-child">
-                        <li class="item-child" id="okK"><a class="link-child" onclick="myFunction()">Description</a></li>
+                        <li class="item-child" id="okK"  style="border-color: red;"><a class="link-child" onclick="myFunction()">Description</a></li>
                         <li class="item-child" id="okK1"><a class="link-child" onclick="myFunction1()">Additional information</a></li>
                         <li class="item-child" id="okK2"><a class="link-child" onclick="myFunction2()">Reviews</a></li>
                     </ul>
@@ -117,12 +117,17 @@
                         </div>
                         <div id="view-content">
                             <h6 class="description-heading">Reviews</h6>
+                            <!-- Phần danh sách comment bình luận trong php -->
                             <div class="review">
                                 <div class="review-content">
                                     <div class="grid__row" style="justify-content: flex-start;">
                                         <img src="/duan1/asset/img/nav__pc.jpg" width="60px" height="60px" alt="">
                                         <div class="review-ct">
-                                            <p>Hiếu - 24/11/2021</p>
+                                            <p>Hiếu - 24/11/2021
+                                            <div class="rating">
+                                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                            </div>
+                                            </p>
                                             <p>
                                                 Your email address will not be published. Required fields are marked *
                                                 Add a review
@@ -130,14 +135,19 @@
                                                 Add a review
                                                 Your email address will not be published. Required fields are marked *
                                             </p>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <hr style="margin-top: 16px;">
-                            <p>Add a review</p>
-                            <span>Your email address will not be published. Required fields are marked *</span>
+                            <!-- <p>Add a review</p>
+                            <span>Your email address will not be published. Required fields are marked *</span> -->
                             <form action="" class="form">
+                                <div class="form-group" style="margin-bottom: 16px;">
+                                    <lable class="lable">Your rating *</lable> <br>
+                                    <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                                </div>
                                 <div class="form-group">
                                     <lable class="lable">Your review *</lable> <br>
                                     <textarea name="" class="textarea" rows="4"></textarea>

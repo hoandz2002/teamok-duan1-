@@ -44,9 +44,14 @@
                     </li>
                 </div>
 
-                <label for="menu" class="header__navbar-icon">
-                    <i class="fas fa-bars"></i>
-                </label>
+                <div style="width: 200px;">
+                    <a href="/duan1/login_form.php" style='display: inline-block; padding-left: 140px; padding-right: 24px; color: white; font-size: 1.8rem; cursor: pointer;'>
+                        <i class='fas fa-user'></i>
+                    </a>
+                    <label for="menu" class="header__navbar-icon">
+                        <i class="fas fa-bars"></i>
+                    </label>
+                </div>
 
                 <!-- iput -->
                 <input type="checkbox" class="menu_tablet" id="menu" hidden>

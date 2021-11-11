@@ -66,7 +66,7 @@
 .header__navbar-icon {
     color: white;
     font-size: 1.8rem;
-    padding-left: 200px;
+    /* padding-left: 20px; */
     cursor: pointer;
 }
 
@@ -266,7 +266,7 @@
 /* banner */
 
 .body__banner {
-    padding: 10%;
+    /* padding: 10%; */
     background-repeat: no-repeat;
     background-size: auto;
     background-position: center;
