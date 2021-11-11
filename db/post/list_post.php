@@ -1,8 +1,7 @@
 <?php
-require_once "./service.php";
-$data = getall();
+require_once "./post.php";
+$data = getAll();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,30 +28,33 @@ $data = getall();
                 <?php require_once './../../admin/header.php'; ?>
                 <!-- Nội dung ở đây  -->
                 <div class="right-heading">
-                    <h2>Danh sách dịch vụ</h2>
+                    <h2>Danh sách bài viết</h2>
                 </div>
                 <div class="right_body">
                     <table class="table" cellspacing="12">
                         <thead class="thead">
                             <tr>
                                 <th>ID</th>
-                                <th>Tên dịch vụ</th>
+                                <th>Ảnh bài viết</th>
+                                <th>Tên bài viết</th>
                                 <th>Mô tả</th>
-                                <th>Giá dịch vụ</th>
-                                <th>Chức năng</th>
+                                <th>Loại bài viết</th>
+                                <th colspan="2">Chức năng</th>
                             </tr>
                         </thead>
                         <tbody class="tbody">
                             <?php foreach ($data as $datas) { ?>
                                 <tr>
-                                    <td style="border: solid 1px black;font-weight: bold; text-align: center;height: 50px;"><?= $datas['id_service'] ?></td>
-                                    <td style="border: solid 1px black;font-weight: bold; text-align: center;"><?= $datas['name_service'] ?></td>
-                                    <td style="border: solid 1px black;font-weight: bold; text-align: center;"><?= $datas['description_service'] ?></td>
-                                    <td style="border: solid 1px black;font-weight: bold; text-align: center;"><?= $datas['price_service'] ?> </td>
+                                    <td><?= $datas['id_post'] ?></td>
+                                    <td><img width="60px" src="./../../asset/img/<?= $datas['image_post'] ?>" alt=""></td>
+                                    <td><?= $datas['name_post'] ?></td>
+                                    <td><?= $datas['description_post'] ?></td>
+                                    <td><?= $datas['name_cate_post'] ?> </td>
+
 
                                     <td>
-                                        <a href="./edit.php?id_service=<?= $datas['id_service'] ?>"><i class="mr-8 fas fa-cogs"></i></a>
-                                        <a href="./delete.php?id_service=<?= $datas['id_service'] ?>"><i class="fas fa-trash-alt"></i></a>
+                                        <a href="./edit.php?id_post=<?= $datas['id_post'] ?>"><i class="mr-8 fas fa-cogs"></i></a>
+                                        <a href="./delete.php?id_post=<?= $datas['id_post'] ?>"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
                             <?php } ?>

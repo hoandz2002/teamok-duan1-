@@ -1,8 +1,7 @@
-<?php
-require_once "./service.php";
-$data = getall();
+<?php 
+require_once "./cate_post.php";
+$data = getAll();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,34 +28,35 @@ $data = getall();
                 <?php require_once './../../admin/header.php'; ?>
                 <!-- Nội dung ở đây  -->
                 <div class="right-heading">
-                    <h2>Danh sách dịch vụ</h2>
+                    <h2>Danh sách bài viết</h2>
                 </div>
                 <div class="right_body">
                     <table class="table" cellspacing="12">
                         <thead class="thead">
                             <tr>
                                 <th>ID</th>
-                                <th>Tên dịch vụ</th>
-                                <th>Mô tả</th>
-                                <th>Giá dịch vụ</th>
-                                <th>Chức năng</th>
+                                <th>Tên loại</th>
+                                <th colspan="2">Chức năng</th>
                             </tr>
                         </thead>
                         <tbody class="tbody">
-                            <?php foreach ($data as $datas) { ?>
-                                <tr>
-                                    <td style="border: solid 1px black;font-weight: bold; text-align: center;height: 50px;"><?= $datas['id_service'] ?></td>
-                                    <td style="border: solid 1px black;font-weight: bold; text-align: center;"><?= $datas['name_service'] ?></td>
-                                    <td style="border: solid 1px black;font-weight: bold; text-align: center;"><?= $datas['description_service'] ?></td>
-                                    <td style="border: solid 1px black;font-weight: bold; text-align: center;"><?= $datas['price_service'] ?> </td>
+                        <?php foreach ($data as $datas) { ?>
+                <tr>
+                    <td><?= $datas['id_cate_post'] ?></td>
+                    <td ><?= $datas['name_cate_post'] ?></td>
+                  
+                  
+                   
+                    <td>
+                        <a href="./edit.php?id_cate_post=<?= $datas['id_cate_post'] ?>"><i class="mr-8 fas fa-cogs"></i></a>
 
-                                    <td>
-                                        <a href="./edit.php?id_service=<?= $datas['id_service'] ?>"><i class="mr-8 fas fa-cogs"></i></a>
-                                        <a href="./delete.php?id_service=<?= $datas['id_service'] ?>"><i class="fas fa-trash-alt"></i></a>
-                                    </td>
-                                </tr>
-                            <?php } ?>
-                        </tbody>
+                   
+                    <a href="./delete.php?id_cate_post=<?= $datas['id_cate_post'] ?>"><i class="fas fa-trash-alt"></i></a>
+                </td>
+
+                </tr>
+            <?php } ?>
+        </tbody>
                     </table>
                     <div class="form_group-list">
                         <a href="./create.php" class="btn">Thêm mới</a>

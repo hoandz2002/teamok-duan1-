@@ -19,6 +19,14 @@ $data = getid($id);
         <input type="file" name="image_tours" value="<?php echo $data['image_tours'] ?>" id="">
     </div>
     <div>
+        <label for="">image tours1</label>
+        <input type="file" name="image_tours" value="<?php echo $data['image_tours'] ?>" id="">
+    </div>
+    <div>
+        <label for="">image tours2</label>
+        <input type="file" name="image_tours" value="<?php echo $data['image_tours'] ?>" id="">
+    </div>
+    <div>
         <label for="">name tours</label>
         <input type="text" name="name_tours" value="<?php echo $data['name_tours'] ?>" id="">
     </div>
@@ -30,10 +38,7 @@ $data = getid($id);
         <label for="">price tours</label>
         <input type="text" name="price_tours" value="<?php echo $data['price_tours'] ?>" id="">
     </div>
-    <div>
-        <label for="">time tours</label>
-        <input type="date" name="time_tours" value="<?php echo $data['time_tours'] ?>" id="">
-    </div>
+   
     <div>
         <label for="">id location</label>
         <input type="text" name="id_location" value="<?php echo $data['id_location'] ?>" id="">

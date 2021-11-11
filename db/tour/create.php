@@ -13,6 +13,14 @@
         <input type="file" name="image_tours" id="">
     </div>
     <div>
+        <label for="">image tours1</label>
+        <input type="file" name="image_tours" id="">
+    </div>
+    <div>
+        <label for="">image tours2</label>
+        <input type="file" name="image_tours" id="">
+    </div>
+    <div>
         <label for="">name tours</label>
         <input type="text" name="name_tours" id="">
     </div>
@@ -23,10 +31,6 @@
     <div>
         <label for="">price tours</label>
         <input type="text" name="price_tours" id="">
-    </div>
-    <div>
-        <label for="">time tours</label>
-        <input type="date" name="time_tours" id="">
     </div>
     <div>
         <label for="">id location</label>

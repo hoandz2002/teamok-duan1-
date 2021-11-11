@@ -4,6 +4,8 @@ $data = [
     'image_post' => $_FILES['image_post']['name'],
     'name_post' => $_POST['name_post'],
     'description_post' => $_POST['description_post'],
+    'id_cate_post' => $_POST['id_cate_post'],
+
 ];
 
 $file = $_FILES['image_post'];
