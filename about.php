@@ -108,7 +108,7 @@
                             <img src="/duan1/asset/img/ab-vd.jpg" alt="" class="body__img">
                             <img src="/duan1/asset/img/icon-play.png" alt="" class="icon-play js-modal-click">
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -159,21 +159,21 @@
             </div>
         </div>
         <div style="height: 640px;"></div>
-        <?php require_once './footer.php';?>
+        <?php require_once './footer.php'; ?>
         <div class="modal js-modal">
-                            <div class="modal-container js-modal-container">
-                                <div class="modal-close js-modal-close">
-                                    <i class="fas fa-times"></i>
-                                </div>
-                                <div class="modal-header">
-                                    <div class="header-name-modal">Giới thiệu về các địa điểm</div>
-                                </div>
-                                <div class="modal-body">
-                                    <!-- để ảnh ở đây -->
-                                    <iframe width="100%" height="500px" src="https://www.youtube.com/embed/Au6LqK1UH8g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                </div>
-                            </div>
-                        </div>
+            <div class="modal-container js-modal-container">
+                <div class="modal-close js-modal-close">
+                    <i class="fas fa-times"></i>
+                </div>
+                <div class="modal-header">
+                    <div class="header-name-modal">Giới thiệu về các địa điểm</div>
+                </div>
+                <div class="modal-body">
+                    <!-- để ảnh ở đây -->
+                    <iframe width="100%" height="500px" src="https://www.youtube.com/embed/Au6LqK1UH8g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
         <script>
             const buyBtns = document.querySelectorAll('.js-modal-click');
             const modal = document.querySelector('.js-modal');

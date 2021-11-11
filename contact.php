@@ -131,18 +131,81 @@
             </div>
             <div class="grid-with-width body-bottom">
                 <img src="/duan1/asset/img/ct-banner2.jpg" alt="" class="img">
-                <div class="sale-video" style="background-color: aqua;">
-                    <div class="sale-content">
-
-                    </div>
-                    <div class="video-content">
-                        
+                <div class="sale-video">
+                    <div class="grid">
+                        <div class="grid__row">
+                            <div class="grid__column-2">
+                                <div class="sale-content">
+                                    <div class="sale-block">
+                                        <h2>Destinations</h2>
+                                        <p>
+                                            Các tua du lịch 3 miền hấp dẫn giúp bạn có cảm giác thoải mái thích thú.
+                                        </p>
+                                        <p>
+                                            Liên kết với hệ thống nhà hàng khách sạn Ở mọi miền đất nước.
+                                        </p>
+                                        <p>
+                                            Với đội ngũ nhân viên, cán bộ dày dặn kinh nghiệm sẽ tư vấn cho bạn.
+                                        </p>
+                                        <p>
+                                            HTH Travel Với nhiều khuyến mãi ưu đãi hấp dẫn với mọi người, uy tín - an toàn - chất lượng.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid__column-2">
+                                <div class="video-content">
+                                    <img src="/duan1/asset/img/slide-pk-1.jpg" alt="" class="img">
+                                    <img src="/duan1/asset/img/icon-play.png" alt="" class="icon-play js-modal-click">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <?php require_once './footer.php'; ?>
+    <div class="modal js-modal">
+        <div class="modal-container js-modal-container">
+            <div class="modal-close js-modal-close">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="modal-header">
+                <div class="header-name-modal">Video</div>
+            </div>
+            <div class="modal-body">
+                <!-- để ảnh ở đây -->
+                <iframe width="100%" height="500" src="https://www.youtube.com/embed/DIgv-e18OzA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
-        <?php require_once './footer.php'; ?>
+    </div>
+    <script>
+            const buyBtns = document.querySelectorAll('.js-modal-click');
+            const modal = document.querySelector('.js-modal');
+            const modalContainer = document.querySelector('.js-modal-container');
+            const modalClose = document.querySelector('.js-modal-close');
+            //hàm hiển thị modal xem(thêm class open vào modal)
+            function showBuyTickets() {
+                modal.classList.add('open');
+            }
+            //hàm ẩn modal xem(gỡ bỏ class open vào modal)
+            function hideBuyTickets() {
+                modal.classList.remove('open');
+            }
+            //lặp qua từng thẻ button và nghe theo hành vi click
+            for (const buyBtn of buyBtns) {
+                buyBtn.addEventListener('click', showBuyTickets);
+            }
+
+            //nghe hành vi click vào button close
+            modalClose.addEventListener('click', hideBuyTickets);
+
+            modal.addEventListener('click', hideBuyTickets);
+            modalContainer.addEventListener('click', function(even) {
+                event.stopPropagation();
+            });
+        </script>
 </body>
 
 </html>

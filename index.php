@@ -30,12 +30,12 @@
                         <a href="/duan1/about.php" class="header__navbar-item__link">Giới Thiệu</a>
                     </li>
                     <li class="header__navbar-item">
-                        <a href="/duan1/post.php" class="header__navbar-item__link">Bài Viết</a>
+                        <a href="#" class="header__navbar-item__link">Bài Viết</a>
                         <ul class="header__navbar-list-child">
-                            <li class="header__navbar-item-child"><a href="" class="header__navbar-link-child">Services</a></li>
-                            <li class="header__navbar-item-child"><a href="" class="header__navbar-link-child">Agentcy
+                            <li class="header__navbar-item-child"><a href="/duan1/post.php" class="header__navbar-link-child">Services</a></li>
+                            <li class="header__navbar-item-child"><a href="/duan1/post.php" class="header__navbar-link-child">Agentcy
                                     Tours</a></li>
-                            <li class="header__navbar-item-child"><a href="" class="header__navbar-link-child">Testimonials</a></li>
+                            <li class="header__navbar-item-child"><a href="/duan1/post.php" class="header__navbar-link-child">Testimonials</a></li>
                         </ul>
                     </li>
 
@@ -44,9 +44,14 @@
                     </li>
                 </div>
 
-                <label for="menu" class="header__navbar-icon">
-                    <i class="fas fa-bars"></i>
-                </label>
+                <div style="width: 200px;">
+                    <a href="/duan1/login_form.php" style='display: inline-block; padding-left: 140px; padding-right: 24px; color: white; font-size: 1.8rem; cursor: pointer;'>
+                        <i class='fas fa-user'></i>
+                    </a>
+                    <label for="menu" class="header__navbar-icon">
+                        <i class="fas fa-bars"></i>
+                    </label>
+                </div>
 
                 <!-- iput -->
                 <input type="checkbox" class="menu_tablet" id="menu" hidden>
@@ -115,7 +120,7 @@
                                         <p>Amsterdam</p>
                                         <p>Tuscany</p>
                                     </div>
-                                    <button class="nav__full-hover-btn">VIEW DESTINATION</button>
+                                    <a href="/duan1/location_detail.php" class="nav__full-hover-btn">VIEW DESTINATION</a>
                                 </div>
                             </div>
 
@@ -176,7 +181,7 @@
                     <li class="header__navbar-item-child"><a href="/duan1/index.php" class="header__navbar-link-child">Trang chủ</a></li>
                     <li class="header__navbar-item-child"><a href="/duan1/tours.php" class="header__navbar-link-child">Tours</a></li>
                     <li class="header__navbar-item-child"><a href="/duan1/abput.php" class="header__navbar-link-child">Giới thiệu</a></li>
-                    <li class="header__navbar-item-child"><a href="/duan1/post.php" class="header__navbar-link-child">Bài viết</a></li>
+                    <li class="header__navbar-item-child"><a href="#" class="header__navbar-link-child">Bài viết</a></li>
                     <li class="header__navbar-item-child"><a href="/duan1/contact.php" class="header__navbar-link-child">Liên hệ</a></li>
 
                 </div>
@@ -235,7 +240,7 @@
                                         <p>Amsterdam</p>
                                         <p>Tuscany</p>
                                     </div>
-                                    <button class="nav__full-hover-btn">VIEW DESTINATION</button>
+                                    <a href="/duan1/location_detail.php" class="nav__full-hover-btn">VIEW DESTINATION</a>
                                 </div>
                             </div>
                         </div>
@@ -256,7 +261,7 @@
                                         <p>Amsterdam</p>
                                         <p>Tuscany</p>
                                     </div>
-                                    <button class="nav__full-hover-btn">VIEW DESTINATION</button>
+                                    <a href="/duan1/location_detail.php" class="nav__full-hover-btn">VIEW DESTINATION</a>
                                 </div>
                             </div>
                         </div>
@@ -277,7 +282,7 @@
                                         <p>Amsterdam</p>
                                         <p>Tuscany</p>
                                     </div>
-                                    <button class="nav__full-hover-btn">VIEW DESTINATION</button>
+                                    <a href="/duan1/location_detail.php" class="nav__full-hover-btn">VIEW DESTINATION</a>
                                 </div>
                             </div>
                         </div>
@@ -298,7 +303,7 @@
                                         <p>Amsterdam</p>
                                         <p>Tuscany</p>
                                     </div>
-                                    <button class="nav__full-hover-btn">VIEW DESTINATION</button>
+                                    <a href="/duan1/location_detail.php" class="nav__full-hover-btn">VIEW DESTINATION</a>
                                 </div>
                             </div>
                         </div>
@@ -319,7 +324,7 @@
                                         <p>Amsterdam</p>
                                         <p>Tuscany</p>
                                     </div>
-                                    <button class="nav__full-hover-btn">VIEW DESTINATION</button>
+                                    <a href="/duan1/location_detail.php" class="nav__full-hover-btn">VIEW DESTINATION</a>
                                 </div>
                             </div>
                         </div>
@@ -340,7 +345,7 @@
                                         <p>Amsterdam</p>
                                         <p>Tuscany</p>
                                     </div>
-                                    <button class="nav__full-hover-btn">VIEW DESTINATION</button>
+                                    <a href="/duan1/location_detail.php" class="nav__full-hover-btn">VIEW DESTINATION</a>
                                 </div>
                             </div>
                         </div>
