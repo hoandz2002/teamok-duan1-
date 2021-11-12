@@ -1,26 +1,29 @@
 <?php
+session_start();
 require_once './../../db/connection.php';
 require_once './../../db/post.php';
 require_once './../../db/cate_post.php';
-$data = getAll();
+$data1 = getAll();
+$id = $_GET['id_post'];
+$data = getId_post($id);
 // var_dump($data); die;
+
 if (isset($_POST['btn_save'])) {
-    $data_post = [
+    $data = [
+        'id_post' => $data['id_post'],
         'image_post' => $_FILES['image_post']['name'],
         'name_post' => $_POST['name_post'],
         'description_post' => $_POST['description_post'],
-        'id_cate_post' => $_POST['id_cate_post']
-
+        'id_cate_post' => $_POST['id_cate_post'],
     ];
-    // var_dump($data_post); die;
     $file = $_FILES['image_post'];
     $file_name = $file['name'];
     move_uploaded_file($file['tmp_name'], './../../asset/img/' . $file_name);
 
-    insert_post($data_post);
-    header('location: /duan1/admin/post/list_post.php');
+    update_post($data);
+    // var_dump(update($data)); die;
+    header("location: ./list_post.php");
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,27 +55,27 @@ if (isset($_POST['btn_save'])) {
                 </div>
                 <div class="right_body">
                     <div class="form_add">
-                        <form action="/duan1/admin/post/add_post.php    " method="post" enctype="multipart/form-data">
+                        <form action="/duan1/admin/post/update_post.php?id_post=<?=$data['id_post']?>" method="post" enctype="multipart/form-data">
                             <div class="form_group">
                                 <lable class="form_lable">Mã bài viết</lable>
                                 <input type="text" name="" disabled class="form_input" placeholder="Tự động tăng">
                             </div>
                             <div class="form_group">
                                 <lable class="form_lable">Ảnh bài viết</lable>
-                                <input type="file" name="image_post" class="form_input">
+                                <input type="file" value="<?=$data['id_post']?>" name="image_post" class="form_input">
                             </div>
                             <div class="form_group">
                                 <lable class="form_lable">Tên bài viết</lable>
-                                <input type="text" name="name_post" class="form_input">
+                                <input type="text" value="<?=$data['name_post']?>" name="name_post" class="form_input">
                             </div>
                             <div class="form_group">
                                 <lable class="form_lable">Mô tả</lable>
-                                <input type="text" name="description_post" class="form_input">
+                                <input type="text" value="<?=$data['description_post']?>" name="description_post" class="form_input">
                             </div>
                             <div class="form_group">
                                 <lable class="form_lable">Loại post</lable>
                                 <select class="form_input" name="id_cate_post">
-                                    <?php foreach ($data as $ds) { ?>
+                                    <?php foreach ($data1 as $ds) { ?>
                                         <option  value="<?=$ds['id_cate_post']?>"><?=$ds['name_cate_post']?></option>
                                     <?php } ?>
                                 </select>

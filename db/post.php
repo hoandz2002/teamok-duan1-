@@ -1,6 +1,5 @@
 <?php
-require_once "./../connection.php";
-function getAll()
+function getAll_post()
 {
     $conn = connect();
     $sql = "SELECT * FROM post inner join cate_post on post.id_cate_post = cate_post.id_cate_post";
@@ -24,7 +23,7 @@ function getAll()
     return $result;
 }
 
-function getId($id)
+function getId_post($id)
 {
     $conn = connect();
     $sql = "SELECT * FROM post inner join cate_post on post.id_cate_post = cate_post.id_cate_post WHERE id_post =:id_post";
@@ -43,7 +42,7 @@ function getId($id)
 
     return $row;
 }
-function insert(array $data)
+function insert_post(array $data)
 {
     $conn = connect();
     $sql  = "INSERT INTO post(image_post, name_post, description_post, id_cate_post)" .
@@ -51,7 +50,7 @@ function insert(array $data)
     $stmt = $conn->prepare($sql);
     $stmt->execute($data);
 }
-function update($data)
+function update_post($data)
 {
     $conn = connect();
     $sql = "UPDATE post SET image_post =:image_post, name_post =:name_post, description_post =:description_post, id_cate_post =:id_cate_post WHERE id_post = :id_post";
@@ -59,7 +58,7 @@ function update($data)
     $stmt->execute($data);
     return true;
 }
-function delete($id)
+function delete_post($id)
 {
     $conn = connect();
     $sql = "DELETE FROM post WHERE id_post = :id_post";

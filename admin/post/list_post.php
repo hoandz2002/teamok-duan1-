@@ -1,3 +1,8 @@
+<?php
+require_once './../../db/connection.php';
+require_once './../../db/post.php';
+$data = getAll_post();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,87 +40,26 @@
                                 <th>Tên bài viết</th>
                                 <th>Mô tả</th>
                                 <th>Loại bài viết</th>
-                                <th>Chức năng</th>
+                                <th colspan="2">Chức năng</th>
                             </tr>
                         </thead>
                         <tbody class="tbody">
-                            <tr>
-                                <td>ID</td>
-                                <td>NAME CATEGORY</td>
-                                <td>ACTION</td>
-                                <td>NAME CATEGORY</td>
-                                <td>ACTION</td>
-                                <td>
-                                    <a href=""><i class="mr-8 fas fa-cogs"></i></a>
-                                    <a href=""><i class="fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>ID</td>
-                                <td>NAME CATEGORY</td>
-                                <td>ACTION</td>
-                                <td>NAME CATEGORY</td>
-                                <td>ACTION</td>
-                                <td>
-                                    <a href=""><i class="mr-8 fas fa-cogs"></i></a>
-                                    <a href=""><i class="fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>ID</td>
-                                <td>NAME CATEGORY</td>
-                                <td>ACTION</td>
-                                <td>NAME CATEGORY</td>
-                                <td>ACTION</td>
-                                <td>
-                                    <a href=""><i class="mr-8 fas fa-cogs"></i></a>
-                                    <a href=""><i class="fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>ID</td>
-                                <td>NAME CATEGORY</td>
-                                <td>ACTION</td>
-                                <td>NAME CATEGORY</td>
-                                <td>ACTION</td>
-                                <td>
-                                    <a href=""><i class="mr-8 fas fa-cogs"></i></a>
-                                    <a href=""><i class="fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>ID</td>
-                                <td>NAME CATEGORY</td>
-                                <td>ACTION</td>
-                                <td>NAME CATEGORY</td>
-                                <td>ACTION</td>
-                                <td>
-                                    <a href=""><i class="mr-8 fas fa-cogs"></i></a>
-                                    <a href=""><i class="fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>ID</td>
-                                <td>NAME CATEGORY</td>
-                                <td>ACTION</td>
-                                <td>NAME CATEGORY</td>
-                                <td>ACTION</td>
-                                <td>
-                                    <a href=""><i class="mr-8 fas fa-cogs"></i></a>
-                                    <a href=""><i class="fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>ID</td>
-                                <td>NAME CATEGORY</td>
-                                <td>ACTION</td>
-                                <td>NAME CATEGORY</td>
-                                <td>ACTION</td>
-                                <td>
-                                    <a href=""><i class="mr-8 fas fa-cogs"></i></a>
-                                    <a href=""><i class="fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
+                            <?php foreach ($data as $datas) { ?>
+                                <tr>
+                                    <td><?= $datas['id_post'] ?></td>
+                                    <td><img width="60px" src="./../../asset/img/<?= $datas['image_post'] ?>" alt=""></td>
+                                    <td><?= $datas['name_post'] ?></td>
+                                    <td><?= $datas['description_post'] ?></td>
+                                    <td><?= $datas['name_cate_post'] ?> </td>
+
+
+                                    <td>
+                                        <a href="/duan1/admin/post/update_post.php?id_post=<?= $datas['id_post'] ?>"><i class="mr-8 fas fa-cogs"></i></a>
+                                        <a href="/duan1/admin/post/delete_post.php?id_post=<?= $datas['id_post'] ?>"><i class="fas fa-trash-alt"></i></a>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
                     </table>
                     <div class="form_group-list">
                         <a href="/duan1/admin/post/add_post.php" class="btn">Thêm mới</a>

@@ -1,6 +1,4 @@
-
 <?php
-require_once "./../connection.php";
 function getall()
 {
     $conn = connect();

@@ -1,9 +1,8 @@
 <?php
-require_once "./../connection.php";
 function getAll()
 {
     $conn = connect();
-    $sql = "SELECT * FROM cate_post ";
+    $sql = "SELECT * FROM cate_post";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $result = [];
@@ -14,7 +13,7 @@ function getAll()
         }
         $row = [
             'id_cate_post' => $data['id_cate_post'],
-            'name_cate_post' => $data['name_cate_post'],
+            'name_cate_post' => $data['name_cate_post']
            
         ];
         array_push($result, $row);
@@ -33,7 +32,7 @@ function getId($id)
 
     $row = [
         'id_cate_post' => $data['id_cate_post'],
-        'name_cate_post' => $data['name_cate_post'],
+        'name_cate_post' => $data['name_cate_post']
     ];
 
     return $row;

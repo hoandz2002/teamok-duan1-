@@ -1,6 +1,6 @@
 <?php 
 require_once './../../db/connection.php';
-require_once './../../db/location/location.php';
+require_once './../../db/location.php';
 $id = $_GET['id_location'];
 $data = getid_location($id);
 if(isset($_POST['submit'])){

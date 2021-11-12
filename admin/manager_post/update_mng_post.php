@@ -1,12 +1,21 @@
 <?php
+session_start();
 require_once './../../db/connection.php';
 require_once './../../db/cate_post.php';
+$id = $_GET['id_cate_post'];
+$data = getId($id);
+// var_dump($data); die;
+
 if (isset($_POST['btn_save'])) {
     $data = [
+        'id_cate_post' => $data['id_cate_post'],
         'name_cate_post' => $_POST['name_cate_post'],
+        
     ];
-    insert($data);
-    header('location:  /duan1/admin/manager_post/list_mng_post.php');
+    
+    update($data);
+    // var_dump(update($data)); die;
+    header("location: /duan1/admin/manager_post/list_mng_post.php");
 }
 ?>
 <!DOCTYPE html>
@@ -46,10 +55,10 @@ if (isset($_POST['btn_save'])) {
                             </div>
                             <div class="form_group">
                                 <lable class="form_lable">Tên loại bài viết</lable>
-                                <input type="text" name="name_cate_post" class="form_input">
+                                <input type="text" name="name_cate_post"  value="<?php echo $data['name_cate_post'] ?>" class="form_input">
                             </div>
                             <div class="form_group">
-                                <input type="submit" value="Thêm mới" name="btn_save" class="btn">
+                                <input type="submit" value="Sửa" name="btn_save" class="btn">
                                 <input type="reset" value="Nhập lại" class="btn btn-reset">
                                 <a href="/duan1/admin/manager_post/list_mng_post.php" class="btn">Danh sách</a>
                             </div>

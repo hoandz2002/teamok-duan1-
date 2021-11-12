@@ -32,7 +32,7 @@
                         <li class="header__navbar-item-child"><a href="/duan1/post.php" class="header__navbar-link-child">Testimonials</a></li>
                     </ul>
                 </li>
-                <li class="header__navbar-item">
+                <li class="header__navbar-item"> 
                     <a href="/duan1/contact.php" class="header__navbar-item__link">Liên Hệ</a>
                 </li>
             </div>

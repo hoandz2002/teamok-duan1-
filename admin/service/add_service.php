@@ -1,3 +1,18 @@
+<?php
+require_once './../../db/connection.php';
+require_once './../../db/service.php';
+
+if (isset($_POST['btn_submit'])) {
+    $data = [
+        'name_service' => $_POST['name_service'],
+        'description_service' => $_POST['description_service'],
+        'price_service' => $_POST['price_service'],
+    ];
+    insert($data);
+    header("location: /duan1/admin/service/list_service.php");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,9 +61,9 @@
                                 <input type="number" name="price_service" class="form_input">
                             </div>
                             <div class="form_group">
-                                <input type="submit" value="Thêm mới" class="btn btn-add">
+                                <input type="submit" value="Thêm mới" name="btn_submit" class="btn btn-add">
                                 <input type="reset" value="Nhập lại" class="btn btn-reset">
-                                <a href="/duan1/admin/service/list_service.php" class="btn">Thêm mới</a>
+                                <a href="/duan1/admin/service/list_service.php" class="btn">Danh sách</a>
                             </div>
                         </form>
                     </div>

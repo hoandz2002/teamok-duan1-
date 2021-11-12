@@ -181,3 +181,45 @@ span {
   margin-left: 20px;
   font-size: 12px;
 }
+/* accodition */
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+.accordion.active i {
+  transform: rotate(180deg);
+} 
+.active,
+.accordion:hover {
+  background-color: #ccc;
+}
+
+.panel {
+  padding: 8px 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+}
+.panel p {
+  font-size:14px;
+  letter-spacing: 1px;
+  color: #a8a8a8;
+}
+@keyframes accordion {
+  from {
+    opacity: 0;
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(10%);
+    opacity: 1;
+  }
+}

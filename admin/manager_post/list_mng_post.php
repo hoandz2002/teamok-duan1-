@@ -1,3 +1,9 @@
+<?php
+require_once './../../db/connection.php';
+require_once './../../db/cate_post.php';
+$data = getAll();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,36 +38,21 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Tên loại</th>
-                                <th>Chức năng</th>
+                                <th colspan="2">Chức năng</th>
                             </tr>
                         </thead>
                         <tbody class="tbody">
-                            <tr>
-                                <td>ID</td>
-                                <td>NAME CATEGORY</td>
-                                <td>
-                                    <a href=""><i class="mr-8 fas fa-cogs"></i></a>
-                                    <a href=""><i class="fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
-                            <br>
-                            <tr>
-                                <td>ID</td>
-                                <td>NAME CATEGORY</td>
-                                <td>
-                                    <a href=""><i class="mr-8 fas fa-cogs"></i></a>
-                                    <a href=""><i class="fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
-                            <br>
-                            <tr>
-                                <td>ID</td>
-                                <td>NAME CATEGORY</td>
-                                <td>
-                                    <a href=""><i class="mr-8 fas fa-cogs"></i></a>
-                                    <a href=""><i class="fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
+                            <?php foreach ($data as $datas) { ?>
+                                <tr>
+                                    <td><?= $datas['id_cate_post'] ?></td>
+                                    <td><?= $datas['name_cate_post'] ?></td>
+                                    <td>
+                                        <a href="/duan1/admin/manager_post/update_mng_post.php?id_cate_post=<?= $datas['id_cate_post'] ?>"><i class="mr-8 fas fa-cogs"></i></a>
+                                        <a href="/duan1/admin/manager_post/delete_mng_post.php?id_cate_post=<?= $datas['id_cate_post'] ?>"><i class="fas fa-trash-alt"></i></a>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
                     </table>
                     <div class="form_group-list">
                         <a href="/duan1/admin/manager_post/add_mng_post.php" class="btn">Thêm mới</a>

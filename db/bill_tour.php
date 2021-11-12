@@ -1,5 +1,4 @@
 <?php 
-require_once "./../connection.php";
 function getall(){
     $conn = connect();
     $sql = "SELECT * FROM bill_tours inner join customer on bill_tours.id_customer = customer.id_customer inner join tours on bill_tours.id_tours = tours.id_tours  inner join service on bill_tours.id_service = service.id_service ";

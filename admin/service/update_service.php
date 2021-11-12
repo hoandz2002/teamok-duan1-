@@ -1,17 +1,22 @@
-<?php 
-require_once "./service.php";
+<?php
+session_start();
+require_once './../../db/connection.php';
+require_once './../../db/service.php';
+$id = $_GET['id_service'];
+$data = getid($id);
+// var_dump($data); die;
 
-if(isset($_POST['btn_submit'])){
-    $data=[
+if(isset($_POST['btn_save'])){
+    $data = [
+        'id_service' => $data['id_service'],
         'name_service' => $_POST['name_service'],
         'description_service' => $_POST['description_service'],
         'price_service' => $_POST['price_service'],
     ];
-    insert($data);
-    header("location: ./list_service.php");
 
+    update($data);
+    header("location: /duan1/admin/service/list_service.php");
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,31 +44,33 @@ if(isset($_POST['btn_submit'])){
             <?php require_once './../../admin/header.php'; ?>
                 <!-- Nội dung ở đây  -->
                 <div class="right-heading">
-                    <h2>Thêm loại dịch vụ</h2>
+                    <h2>Udate dịch vụ</h2>
                 </div>
                 <div class="right_body">
                     <div class="form_add">
                         <form action="" method="post">
-                            <div class="form_group">
-                                <lable class="form_lable">Mã dịch vụ</lable>
-                                <input type="text" name="" disabled class="form_input" placeholder="Tự động tăng">
-                            </div>
+                        <fieldset hidden>
+            <div class="mb-3">
+                <label for="disabledTextInput" hidden class="form-label">Mã khách hàng</label>
+                <input style="background-color: rgba( 0, 0, 0, 0.3);" id="disabledTextInput" name="id_service" class="form-control" type="hidden" value="<?= $data['id_service'] ?>">
+            </div>
+        </fieldset>
                             <div class="form_group">
                                 <lable class="form_lable">Tên dịch vụ</lable>
-                                <input type="text" name="name_service" class="form_input">
+                                <input type="text" name="name_service" value="<?php echo $data['name_service'] ?>" class="form_input">
                             </div>
                             <div class="form_group">
                                 <lable class="form_lable">Mô tả</lable>
-                                <input type="text" name="description_service" class="form_input">
+                                <input type="text" name="description_service" value="<?php echo $data['description_service'] ?>" class="form_input">
                             </div>
                             <div class="form_group">
                                 <lable class="form_lable">Giá dịch vụ</lable>
-                                <input type="number" name="price_service" class="form_input">
+                                <input type="number" name="price_service" value="<?php echo $data['price_service'] ?>" class="form_input">
                             </div>
                             <div class="form_group">
-                            <input type="submit" name="btn_submit" class="btn btn-add id=">
+                            <input type="submit" name="btn_save" value="Sửa" class="btn btn-add id=">
                                 <input type="reset" value="Nhập lại" class="btn btn-reset">
-                                <a href="/duan1/admin/service/list_service.php" class="btn">Thêm mới</a>
+                                <a href="/duan1/admin/service/list_service.php" class="btn">Danh sách</a>
                             </div>
                         </form>
                     </div>

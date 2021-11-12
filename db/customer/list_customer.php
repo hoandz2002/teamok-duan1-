@@ -1,5 +1,5 @@
 <?php
-require_once "./customer.php";
+require_once "./../customer.php";
 $data = getall();
 ?>
 

@@ -1,6 +1,6 @@
 <?php
-require_once './../../db/connection.php';
-require_once './../../db/service.php';
+require_once "./../../db/connection.php";
+require_once "./../../db/comment.php";
 $data = getall();
 ?>
 <!DOCTYPE html>
@@ -29,38 +29,35 @@ $data = getall();
                 <?php require_once './../header.php'; ?>
                 <!-- Nội dung ở đây  -->
                 <div class="right-heading">
-                    <h2>Danh sách dịch vụ</h2>
+                    <h2>Danh sách bình luận</h2>
                 </div>
                 <div class="right_body">
                     <table class="table" cellspacing="12">
                         <thead class="thead">
                             <tr>
                                 <th>ID</th>
-                                <th>Tên dịch vụ</th>
-                                <th>Mô tả</th>
-                                <th>Giá dịch vụ</th>
+                                <th>Tên khách hàng</th>
+                                <th>Tên tours</th>
+                                <th>Nội dung</th>
+                                <th>Ngày bình luận</th>
+                                <th>Đánh giá sao</th>
                                 <th>Chức năng</th>
                             </tr>
                         </thead>
                         <tbody class="tbody">
                             <?php foreach ($data as $datas) { ?>
                                 <tr>
-                                    <td style="border: solid 1px black;font-weight: bold; text-align: center;height: 50px;"><?= $datas['id_service'] ?></td>
-                                    <td style="border: solid 1px black;font-weight: bold; text-align: center;"><?= $datas['name_service'] ?></td>
-                                    <td style="border: solid 1px black;font-weight: bold; text-align: center;"><?= $datas['description_service'] ?></td>
-                                    <td style="border: solid 1px black;font-weight: bold; text-align: center;"><?= $datas['price_service'] ?> </td>
+                                    <td><?= $datas['id_comment'] ?></td>
+                                    <td><?= $datas['name_customer'] ?></td>
+                                    <td><?= $datas['content_comment'] ?></td>
+                                    <td><?= $datas['date_comment'] ?></td>
+                                    <td><?= $datas['rating'] ?> </td>
+                                    <td><button><a href="./edit.php?id_comment=<?= $datas['id_comment'] ?>">Cập nhật</a></button><button><a href="./delete.php?id_comment=<?= $datas['id_comment'] ?>">Xóa</a></button></td>
 
-                                    <td>
-                                        <a href="/duan1/admin/service/update_service.php?id_service=<?= $datas['id_service'] ?>"><i class="mr-8 fas fa-cogs"></i></a>
-                                        <a href="/duan1/admin/service/delete_service.php?id_service=<?= $datas['id_service'] ?>"><i class="fas fa-trash-alt"></i></a>
-                                    </td>
                                 </tr>
                             <?php } ?>
                         </tbody>
                     </table>
-                    <div class="form_group-list">
-                        <a href="/duan1/admin/service/add_service.php" class="btn">Thêm mới</a>
-                    </div>
                 </div>
                 <?php require_once './../footer.php'; ?>
             </div>

@@ -67,14 +67,30 @@
                                 </div>
                             </div>
                             <div class="pd-24 detail-service">
-                                <div class="grid_row" style="align-items: center;">
-                                    <span>Service</span>
-                                    <select name="" id="">
-                                        <option value="">--Select category--</option>
-                                        <option value="">1 category</option>
-                                        <option value="">2 category</option>
-                                        <option value="">3 category</option>
-                                    </select>
+                                <div class="grid__row">
+                                    <h2>Service</h2>
+                                    <div style="flex: 1; margin: 0px 36px;">
+                                        <button class="accordion grid__row">Loại 1 <i class="fas fa-chevron-down"></i></button>
+                                        <div class="panel">
+                                            <p class="service_content">Giá : 1.000.000VND</p>
+                                            <p class="service_content"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at felis laoreet massa cursus pulvinar. Donec non eleifend augue, id tristique nisi. Nunc in leo augue. Cras sapien quam, dictum et molestie id, ultricies.
+                                            </p>
+                                        </div>
+
+                                        <button class="accordion grid__row">Loại 2 <i class="fas fa-chevron-down"></i></button>
+                                        <div class="panel">
+                                            <p class="service_content">Giá : 1.000.000VND</p>
+                                            <p class="service_content"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at felis laoreet massa cursus pulvinar. Donec non eleifend augue, id tristique nisi. Nunc in leo augue. Cras sapien quam, dictum et molestie id, ultricies.
+                                            </p>
+                                        </div>
+
+                                        <button class="accordion grid__row">Loại 3 <i class="fas fa-chevron-down"></i></button>
+                                        <div class="panel">
+                                            <p class="service_content">Giá : 1.000.000VND</p>
+                                            <p class="service_content"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at felis laoreet massa cursus pulvinar. Donec non eleifend augue, id tristique nisi. Nunc in leo augue. Cras sapien quam, dictum et molestie id, ultricies.
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div style="text-align: center; margin-top: 72px;">
@@ -85,7 +101,7 @@
                 </div>
                 <div class="grid-with-width">
                     <ul class="list-child">
-                        <li class="item-child" id="okK"  style="border-color: red;"><a class="link-child" onclick="myFunction()">Description</a></li>
+                        <li class="item-child" id="okK" style="border-color: red;"><a class="link-child" onclick="myFunction()">Description</a></li>
                         <li class="item-child" id="okK1"><a class="link-child" onclick="myFunction1()">Additional information</a></li>
                         <li class="item-child" id="okK2"><a class="link-child" onclick="myFunction2()">Reviews</a></li>
                     </ul>
@@ -242,6 +258,23 @@
                 document.getElementById("okK2").style = "border-color: red;";
                 document.getElementById("okK").style = "border-color: black;";
                 document.getElementById("okK1").style = "border-color: black;";
+            }
+        </script>
+        <script>
+            var acc = document.getElementsByClassName("accordion");
+            var i;
+
+            for (i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var panel = this.nextElementSibling;
+                    if (panel.style.display === "block") {
+                        panel.style.display = "none";
+                        panel.style = "animation: accordion ease 0.4s";
+                    } else {
+                        panel.style.display = "block";
+                    }
+                });
             }
         </script>
 </body>

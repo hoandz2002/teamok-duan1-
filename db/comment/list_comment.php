@@ -1,5 +1,5 @@
 <?php
-require_once "./comment.php";
+require_once "./../comment.php";
 $data = getall();
 ?>
 <!DOCTYPE html>

@@ -1,13 +1,45 @@
 
-<?php 
-require_once "./../connection.php";
-function getall(){
+<?php
+function login($email_customer, $password)
+{
+    $conn = connect();
+    $sql = "SELECT * FROM customer " .
+        " WHERE email = :email AND mat_khau = :mat_khau";
+    $stmt = $conn->prepare($sql);
+    $params = [
+        'email' => $email_customer,
+        'mat_khau' => $password
+    ];
+
+    $stmt->execute($params);
+    $result = [];
+    $data = $stmt->fetch();
+
+    if ($data == false) {
+        // Truy vấn không tìm đc bản ghi tương ứng hoặc truy vấn có lỗi
+        return [];
+    }
+
+    $result = [
+        'id_customer' => $data['id_customer'],
+        'name_customer' => $data['name_customer'],
+        'cmt_customer' => $data['cmt_customer'],
+        'phone_customer' => $data['phone_customer'],
+        'email_customer' => $data['email_customer'],
+        'password' => $data['password'],
+        'classify_customer' => $data['classify_customer']
+    ];
+
+    return $result;
+}
+function getall()
+{
     $conn = connect();
     $sql = "SELECT * FROM customer ";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $result = [];
-    while(true){
+    while (true) {
         $data = $stmt->fetch();
         if ($data == false) {
             break;
@@ -53,7 +85,7 @@ function insert(array $data)
 {
     $conn = connect();
     $sql = "INSERT INTO customer(name_customer, cmt_customer, phone_customer, email_customer, password, classify_customer)" .
-        "VALUES(:name_customer, :cmt_customer, :phone_customer, :email_customer, :password, :classify_customer)";
+        "VALUES(:name_customer, :cmt_customer, :phone_customer, :email_customer, :password, 0)";
     $statement = $conn->prepare($sql);
     $statement->execute($data);
 }

@@ -49,6 +49,7 @@
                 </ul>
             </li>
             <li class="left_item"><a class="left_link" href="/duan1/admin/bill_tour/list_bill_tour.php"><i class="mr-8 fas fa-file-invoice-dollar"></i>Bill tours</a></li>
+            <li class="left_item"><a class="left_link" href="/duan1/admin/comment/list_comment.php"><i class="fas fa-comments"></i>Comment</a></li>
         </ul>
     </div>
 </body>

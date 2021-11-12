@@ -1,3 +1,8 @@
+<?php
+require_once "./../../db/connection.php";
+require_once "./../../db/customer.php";
+$data = getall();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +32,7 @@
                     <h2>Danh sách người dùng</h2>
                 </div>
                 <div class="right_body">
-                    <table class="table" cellspacing="12">
+                <table class="table" cellspacing="12">
                         <thead class="thead">
                             <tr>
                                 <th>ID</th>
@@ -35,66 +40,30 @@
                                 <th>CMT/CCCD</th>
                                 <th>Số điện thoại</th>
                                 <th>Email</th>
+                                <th>Phân quyền</th>
                                 <th>Chức năng</th>
                             </tr>
                         </thead>
                         <tbody class="tbody">
-                            <tr>
-                                <td>ID</td>
-                                <td>Tên người dùng</td>
-                                <td>CMT/CCCD</td>
-                                <td>Số điện thoại</td>
-                                <td>Email</td>
-                                <td>
-                                    <a href=""><i class="mr-8 fas fa-cogs"></i></a>
-                                    <a href=""><i class="fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>ID</td>
-                                <td>Tên người dùng</td>
-                                <td>CMT/CCCD</td>
-                                <td>Số điện thoại</td>
-                                <td>Email</td>
-                                <td>
-                                    <a href=""><i class="mr-8 fas fa-cogs"></i></a>
-                                    <a href=""><i class="fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>ID</td>
-                                <td>Tên người dùng</td>
-                                <td>CMT/CCCD</td>
-                                <td>Số điện thoại</td>
-                                <td>Email</td>
-                                <td>
-                                    <a href=""><i class="mr-8 fas fa-cogs"></i></a>
-                                    <a href=""><i class="fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>ID</td>
-                                <td>Tên người dùng</td>
-                                <td>CMT/CCCD</td>
-                                <td>Số điện thoại</td>
-                                <td>Email</td>
-                                <td>
-                                    <a href=""><i class="mr-8 fas fa-cogs"></i></a>
-                                    <a href=""><i class="fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>ID</td>
-                                <td>Tên người dùng</td>
-                                <td>CMT/CCCD</td>
-                                <td>Số điện thoại</td>
-                                <td>Email</td>
-                                <td>
-                                    <a href=""><i class="mr-8 fas fa-cogs"></i></a>
-                                    <a href=""><i class="fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
-                            
+                            <?php foreach ($data as $datas) { ?>
+                                <tr>
+                                    <td><?= $datas['id_customer'] ?></td>
+                                    <td><?= $datas['name_customer'] ?></td>
+                                    <td><?= $datas['cmt_customer'] ?></td>
+                                    <td><?= $datas['phone_customer'] ?></td>
+                                    <td><?= $datas['email_customer'] ?> </td>
+                                    <td><?= $datas['classify_customer']?></td>
+
+
+                                    <td>
+
+                                        <a href="./edit.php?id_customer=<?= $datas['id_customer'] ?>"><i class="mr-8 fas fa-cogs"></i></a>
+                                        <a href="./delete.php?id_customer=<?= $datas['id_customer'] ?>"><i class="fas fa-trash-alt"></i></a>
+
+                                    </td>
+                                </tr>
+                            <?php } ?>
+
                     </table>
                 </div>
                 <?php require_once './../footer.php'; ?>

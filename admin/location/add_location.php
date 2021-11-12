@@ -1,6 +1,6 @@
 <?php 
 require_once './../../db/connection.php';
-require_once './../../db/location/location.php';
+require_once './../../db/location.php';
 if(isset($_POST['submit'])){
     $data = [
         'name_location' => $_POST['name_location'],
