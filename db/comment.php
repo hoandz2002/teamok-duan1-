@@ -1,5 +1,5 @@
 <?php
-function getall()
+function getall_comment()
 {
     $conn = connect();
     $sql = "SELECT * FROM comment inner join customer on comment.id_customer = customer.id_customer ";
@@ -25,7 +25,7 @@ function getall()
 }
 
 
-function getid($id)
+function getid_comment($id)
 {
     $conn = connect();
     $sql = "SELECT * FROM comment inner join customer on comment.id_customer = customer.id_customer
@@ -48,7 +48,7 @@ function getid($id)
     return $row;
 }
 
-function insert(array $data)
+function insert_comment(array $data)
 {
     $conn = connect();
     $sql = "INSERT INTO comment(id_customer, content_comment, date_comment, rating)" .
@@ -56,7 +56,7 @@ function insert(array $data)
     $statement = $conn->prepare($sql);
     $statement->execute($data);
 }
-function update($data)
+function update_comment($data)
 {
     $conn = connect();
     $sql = "UPDATE comment SET id_customer =:id_customer, id_customer =:id_customer, content_comment =:content_comment, date_comment =:date_comment,rating =:rating WHERE id_comment = :id_comment";
@@ -65,7 +65,7 @@ function update($data)
     return true;
 }
 
-function delete($id)
+function delete_comment($id)
 {
     $conn = connect();
     $sql = "DELETE FROM comment WHERE id_comment = :id_comment";

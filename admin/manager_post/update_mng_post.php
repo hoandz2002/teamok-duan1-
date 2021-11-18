@@ -3,7 +3,7 @@ session_start();
 require_once './../../db/connection.php';
 require_once './../../db/cate_post.php';
 $id = $_GET['id_cate_post'];
-$data = getId($id);
+$data = getId_cate($id);
 // var_dump($data); die;
 
 if (isset($_POST['btn_save'])) {
@@ -13,7 +13,7 @@ if (isset($_POST['btn_save'])) {
         
     ];
     
-    update($data);
+    update_cate($data);
     // var_dump(update($data)); die;
     header("location: /duan1/admin/manager_post/list_mng_post.php");
 }

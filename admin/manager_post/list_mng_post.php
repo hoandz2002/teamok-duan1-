@@ -1,7 +1,7 @@
 <?php
 require_once './../../db/connection.php';
 require_once './../../db/cate_post.php';
-$data = getAll();
+$data = getAll_cate();
 
 ?>
 <!DOCTYPE html>
@@ -42,16 +42,43 @@ $data = getAll();
                             </tr>
                         </thead>
                         <tbody class="tbody">
-                            <?php foreach ($data as $datas) { ?>
-                                <tr>
-                                    <td><?= $datas['id_cate_post'] ?></td>
-                                    <td><?= $datas['name_cate_post'] ?></td>
+                        <?php
+                            $conn = mysqli_connect('localhost', 'root', '');
+                            if (!$conn) {
+                                die("Connection failed" . mysqli_connect_error());
+                            } else {
+                                mysqli_select_db($conn, 'duan1');
+                            }
+                            $results_per_page = 5;
+                            $query = "select *from cate_post";
+                            $result = mysqli_query($conn, $query);
+                            $number_of_result = mysqli_num_rows($result);
+                            $number_of_page = ceil($number_of_result / $results_per_page);
+                            if (!isset($_GET['page'])) {
+                                $page = 1;
+                            } else {
+                                $page = $_GET['page'];
+                            }
+                            $page_first_result = ($page - 1) * $results_per_page;
+                            $query = "SELECT *FROM cate_post LIMIT " . $page_first_result . ',' . $results_per_page;
+                            $result = mysqli_query($conn, $query);
+                            while ($row = mysqli_fetch_array($result)) { ?>
+                               <tr>
+                                    <td><?= $row['id_cate_post'] ?></td>
+                                    <td><?= $row['name_cate_post'] ?></td>
                                     <td>
-                                        <a href="/duan1/admin/manager_post/update_mng_post.php?id_cate_post=<?= $datas['id_cate_post'] ?>"><i class="mr-8 fas fa-cogs"></i></a>
-                                        <a href="/duan1/admin/manager_post/delete_mng_post.php?id_cate_post=<?= $datas['id_cate_post'] ?>"><i class="fas fa-trash-alt"></i></a>
+                                        <a href="/duan1/admin/manager_post/update_mng_post.php?id_cate_post=<?= $row['id_cate_post'] ?>"><i class="mr-8 fas fa-cogs"></i></a>
+                                        <a href="/duan1/admin/manager_post/delete_mng_post.php?id_cate_post=<?= $row['id_cate_post'] ?>"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
+
                             <?php } ?>
+                            <div style="width: 100%; padding: 0px 40px;">
+                                <?php for ($page = 1; $page <= $number_of_page; $page++) {
+                                    echo '<a style="width: 30px; text-align: center; line-height: 30px; display: inline-block; margin: 0px 8px; background-color: blue; color: white;" href = "list_mng_post.php?page=' . $page . '">' . $page . ' </a>';
+                                }
+                                ?>
+                            </div>
                         </tbody>
                     </table>
                     <div class="form_group-list">

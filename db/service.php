@@ -1,6 +1,6 @@
 <?php 
 
-function getall(){
+function getall_service(){
     $conn = connect();
     $sql = "SELECT * FROM service";
     $stmt = $conn->prepare($sql);
@@ -22,7 +22,7 @@ function getall(){
     return $result;
 }
 
-function getid($id){
+function getid_service($id){
     $conn = connect();
     $sql = "SELECT * FROM service  WHERE id_service =:id_service ";
     $stmt = $conn->prepare($sql);
@@ -39,21 +39,21 @@ function getid($id){
    
     return $row;
 }
-function insert(array $data){
+function insert_service(array $data){
     $conn = connect();
     $sql = "INSERT INTO service(name_service, description_service,price_service)" . 
     "VALUES(:name_service, :description_service, :price_service)";
     $stmt = $conn->prepare($sql);
     $stmt->execute($data);
 }
-function update($data){
+function update_service($data){
     $conn = connect();
     $sql= "UPDATE service SET name_service=:name_service, description_service=:description_service, price_service=:price_service WHERE id_service=:id_service";
     $stmt = $conn->prepare($sql);
     $stmt->execute($data);
     return true;
 }
-function delete($id){
+function delete_service($id){
     $conn = connect();
     $sql = "DELETE FROM service WHERE id_service = :id_service";
     $stmt = $conn->prepare($sql);

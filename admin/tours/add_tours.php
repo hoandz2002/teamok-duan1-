@@ -1,3 +1,46 @@
+<?php
+require_once './../../db/connection.php';
+require_once './../../db/tour.php';
+require_once './../../db/location.php';
+$conn = mysqli_connect('localhost', 'root', '', 'duan1');
+if ($conn) {
+    mysqli_query($conn, "SET NAMES 'UTF8'");
+}
+
+$data_location = getall_location();
+
+if (isset($_POST['submit'])) {
+
+    $name_tours = $_POST['name_tours'];
+    $description_tours = $_POST['description_tours'];
+    $price_tours = $_POST['price_tours'];
+    $sale_tours = $_POST['sale_tours'];
+    $id_location = $_POST['id_location'];
+
+
+    if (isset($_FILES['image'])) {
+        $file = $_FILES['image'];
+        $file_name = $file['name'];
+        move_uploaded_file($file['tmp_name'], './../../asset/img/' . $file_name);
+    }
+
+    if (isset($_FILES['images'])) {
+        $files = $_FILES['images'];
+        $file_names = $files['name'];
+        foreach ($file_names as $key => $value) {
+            move_uploaded_file($files['tmp_name'][$key], './../../asset/img/' . $value);
+        }
+    }
+    $sql = "INSERT INTO tours(name_tours, description_tours, price_tours, sale_tours,id_location,image) VALUES('$name_tours', '$description_tours', '$price_tours', '$sale_tours','$id_location','$file_name')";
+    $query = mysqli_query($conn, $sql);
+    $id_tours = mysqli_insert_id($conn);
+    foreach ($file_names as $key => $value) {
+        mysqli_query($conn, "INSERT INTO img_tours(id_tours,images) VALUES('$id_tours','$value')");
+    }
+    header("location:/duan1/admin/tours/list_tours.php");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +52,7 @@
     <link rel="stylesheet" href="/duan1/asset/fonts/fontawesome-free-5.15.3-web/css/all.min.css">
     <link rel="stylesheet" href="/duan1/asset/css/css_admin/main.css">
     <style>
-        
+
     </style>
 </head>
 
@@ -28,14 +71,11 @@
                 </div>
                 <div class="right_body">
                     <div class="form_add">
-                        <form action="" method="post">
+                        <form action="" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="id_tours">
                             <div class="form_group">
                                 <lable class="form_lable">Mã tour</lable>
                                 <input type="text" name="" disabled class="form_input" placeholder="Tự động tăng">
-                            </div>
-                            <div class="form_group">
-                                <lable class="form_lable">Ảnh đại diện</lable>
-                                <input type="file" name="image_tours" class="form_input">
                             </div>
                             <div class="form_group">
                                 <lable class="form_lable">Tên tour</lable>
@@ -54,24 +94,24 @@
                                 <input type="number" name="sale_tours" class="form_input">
                             </div>
                             <div class="form_group">
-                                <lable class="form_lable">Thời gian</lable>
-                                <input type="date" name="time_tours" class="form_input">
+                                <lable class="form_lable">Ảnh đại diện</lable>
+                                <input type="file" name="image" class="form_input">
                             </div>
                             <div class="form_group">
                                 <lable class="form_lable">Thư viện ảnh</lable>
-                                <input type="file" name="gallery_tours" class="form_input">
+                                <input type="file" name="images[]" class="form_input" multiple="multiple">
                             </div>
                             <div class="form_group">
                                 <lable class="form_lable">Địa điểm</lable>
-                                <select class="form_input">
+                                <select class="form_input" name="id_location">
                                     <option value="">--Chọn địa điểm--</option>
-                                    <option name="id_location" value="">Hà Nội</option>
-                                    <option name="id_location" value="">Đà Nẵng</option>
-                                    <option name="id_location" value="">Sài Gòn</option>
+                                    <?php foreach ($data_location as $ds) { ?>
+                                        <option value="<?= $ds['id_location'] ?>"><?= $ds['name_location'] ?></option>
+                                    <?php } ?>
                                 </select>
                             </div>
                             <div class="form_group">
-                                <input type="submit" value="Thêm mới" class="btn btn-add">
+                                <input name="submit" type="submit" value="Thêm mới" class="btn btn-add">
                                 <input type="reset" value="Nhập lại" class="btn btn-reset">
                                 <a href="/duan1/admin/tours/list_tours.php" class="btn">Danh sách</a>
                             </div>

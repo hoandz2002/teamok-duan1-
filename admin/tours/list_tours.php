@@ -1,3 +1,9 @@
+<?php
+require_once './../../db/connection.php';
+require_once './../../db/tour.php';
+$data = getAllTours();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -97,181 +103,58 @@
                                 <th>Mô tả</th>
                                 <th>Giá tour</th>
                                 <th>Giảm giá</th>
-                                <th>Thời gian</th>
-                                <th>Thư viện ảnh</th>
                                 <th>Địa điểm</th>
+                                <th>Bộ sưu tập</th>
                                 <th>Chức năng</th>
                             </tr>
                         </thead>
                         <tbody class="tbody">
-                            <tr>
-                                <td>1</td>
-                                <td>Ảnh</td>
-                                <td>Sapa 3N2D</td>
-                                <td>Du lịch sapa 3N2D là trải nghiệm tuyệt con mẹ nói vời luôn ae à. Đi với ny thì hết nước chấm</td>
-                                <td>5.000.000đ</td>
-                                <td>0%</td>
-                                <td>26/11/2021</td>
-                                <td><button class="btn js-modal-click">Xem</button></td>
-                                <div class="modal js-modal">
-                                    <div class="modal-container js-modal-container">
-                                        <div class="modal-close js-modal-close">
-                                            <i class="fas fa-times"></i>
-                                        </div>
-                                        <div class="modal-header">
-                                            <div class="header-name-modal">Thư viện ảnh</div>
-                                        </div>
-                                        <div class="modal-body">
-                                            <!-- để ảnh ở đây -->
-                                        </div>
-                                    </div>
-                                </div>
-                                <td>Lào cai</td>
-                                <td>
-                                    <a class="js-modal-click1"><i class="mr-8 fas fa-cogs"></i></a>
-                                    <a href="" onclick="confirm('Bạn muốn xóa thông tin này!');"><i class="fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Ảnh</td>
-                                <td>Sapa 3N2D</td>
-                                <td>Du lịch sapa 3N2D là trải nghiệm tuyệt con mẹ nói vời luôn ae à. Đi với ny thì hết nước chấm</td>
-                                <td>5.000.000đ</td>
-                                <td>0%</td>
-                                <td>26/11/2021</td>
-                                <td><button class="btn js-modal-click">Xem</button></td>
-                                <div class="modal js-modal">
-                                    <div class="modal-container js-modal-container">
-                                        <div class="modal-close js-modal-close">
-                                            <i class="fas fa-times"></i>
-                                        </div>
-                                        <div class="modal-header">
-                                            <div class="header-name-modal">Thư viện ảnh</div>
-                                        </div>
-                                        <div class="modal-body">
-                                            <!-- để ảnh ở đây -->
-                                        </div>
-                                    </div>
-                                </div>
-                                <td>Lào cai</td>
-                                <td>
-                                    <a class="js-modal-click1"><i class="mr-8 fas fa-cogs"></i></a>
-                                    <a href="" onclick="confirm('Bạn muốn xóa thông tin này!');"><i class="fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Ảnh</td>
-                                <td>Sapa 3N2D</td>
-                                <td>Du lịch sapa 3N2D là trải nghiệm tuyệt con mẹ nói vời luôn ae à. Đi với ny thì hết nước chấm</td>
-                                <td>5.000.000đ</td>
-                                <td>0%</td>
-                                <td>26/11/2021</td>
-                                <td><button class="btn js-modal-click">Xem</button></td>
-                                <div class="modal js-modal">
-                                    <div class="modal-container js-modal-container">
-                                        <div class="modal-close js-modal-close">
-                                            <i class="fas fa-times"></i>
-                                        </div>
-                                        <div class="modal-header">
-                                            <div class="header-name-modal">Thư viện ảnh</div>
-                                        </div>
-                                        <div class="modal-body">
-                                            <!-- để ảnh ở đây -->
-                                        </div>
-                                    </div>
-                                </div>
-                                <td>Lào cai</td>
-                                <td>
-                                    <a href="" class="js-modal-click1"><i class="mr-8 fas fa-cogs"></i></a>
-                                    <a href="" onclick="confirm('Bạn muốn xóa thông tin này!');"><i class="fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Ảnh</td>
-                                <td>Sapa 3N2D</td>
-                                <td>Du lịch sapa 3N2D là trải nghiệm tuyệt con mẹ nói vời luôn ae à. Đi với ny thì hết nước chấm</td>
-                                <td>5.000.000đ</td>
-                                <td>0%</td>
-                                <td>26/11/2021</td>
-                                <td><button class="btn js-modal-click">Xem</button></td>
-                                <div class="modal js-modal">
-                                    <div class="modal-container js-modal-container">
-                                        <div class="modal-close js-modal-close">
-                                            <i class="fas fa-times"></i>
-                                        </div>
-                                        <div class="modal-header">
-                                            <div class="header-name-modal">Thư viện ảnh</div>
-                                        </div>
-                                        <div class="modal-body">
-                                            <!-- để ảnh ở đây -->
-                                        </div>
-                                    </div>
-                                </div>
-                                <td>Lào cai</td>
-                                <td>
-                                    <a class="js-modal-click1"><i class="mr-8 fas fa-cogs"></i></a>
-                                    <a href="" onclick="confirm('Bạn muốn xóa thông tin này!');"><i class="fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Ảnh</td>
-                                <td>Sapa 3N2D</td>
-                                <td>Du lịch sapa 3N2D là trải nghiệm tuyệt con mẹ nói vời luôn ae à. Đi với ny thì hết nước chấm</td>
-                                <td>5.000.000đ</td>
-                                <td>0%</td>
-                                <td>26/11/2021</td>
-                                <td><button class="btn js-modal-click">Xem</button></td>
-                                <div class="modal js-modal">
-                                    <div class="modal-container js-modal-container">
-                                        <div class="modal-close js-modal-close">
-                                            <i class="fas fa-times"></i>
-                                        </div>
-                                        <div class="modal-header">
-                                            <div class="header-name-modal">Thư viện ảnh</div>
-                                        </div>
-                                        <div class="modal-body">
-                                            <!-- để ảnh ở đây -->
-                                        </div>
-                                    </div>
-                                </div>
-                                <td>Lào cai</td>
-                                <td>
-                                    <a class="js-modal-click1"><i class="mr-8 fas fa-cogs"></i></a>
-                                    <a href="" onclick="confirm('Bạn muốn xóa thông tin này!');"><i class="fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Ảnh</td>
-                                <td>Sapa 3N2D</td>
-                                <td>Du lịch sapa 3N2D là trải nghiệm tuyệt con mẹ nói vời luôn ae à. Đi với ny thì hết nước chấm</td>
-                                <td>5.000.000đ</td>
-                                <td>0%</td>
-                                <td>26/11/2021</td>
-                                <td><button class="btn js-modal-click">Xem</button></td>
-                                <div class="modal js-modal">
-                                    <div class="modal-container js-modal-container">
-                                        <div class="modal-close js-modal-close">
-                                            <i class="fas fa-times"></i>
-                                        </div>
-                                        <div class="modal-header">
-                                            <div class="header-name-modal">Thư viện ảnh</div>
-                                        </div>
-                                        <div class="modal-body">
-                                            <!-- để ảnh ở đây -->
-                                        </div>
-                                    </div>
-                                </div>
-                                <td>Lào cai</td>
-                                <td>
-                                    <a class="js-modal-click1"><i class="mr-8 fas fa-cogs"></i></a>
-                                    <a href="" onclick="confirm('Bạn muốn xóa thông tin này!');"><i class="fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
+                            <?php for ($i = 0; $i < count($data); $i++) { ?>
+                                <tr>
+                                    <td><?php echo $data[$i]['id_tours'] ?></td>
+                                    <td><img width="100px" src="./../../asset/img/<?php echo $data[$i]['image'] ?>"></td>
+                                    <td><?php echo $data[$i]['name_tours'] ?></td>
+                                    <td><?php echo $data[$i]['description_tours'] ?></td>
+                                    <td><?php echo $data[$i]['price_tours'] ?></td>
+                                    <td>
+                                        <?php if ($data[$i]['sale_tours'] == null) {
+                                            echo 'null';
+                                        } else {
+                                            echo $data[$i]['sale_tours'];
+                                        } ?>
+                                    </td>
+                                    <td><?php echo $data[$i]['name_location'] ?></td>
+                                    <td>
+                                        <!-- <button class=" btn js-modal-click">Xem</button>
+                                        <div class="modal js-modal">
+                                            <div class="modal-container js-modal-container">
+                                                <div class="modal-close js-modal-close">
+                                                    <i class="fas fa-times"></i>
+                                                </div>
+                                                <div class="modal-header">
+                                                    <div class="header-name-modal">Thư viện ảnh</div>
+
+                                                </div>
+                                                <div class="modal-body"> -->
+                                                    <?php
+                                                    for ($k = 0; $k < count($data); $k++) {
+                                                        $data_img = getAllImage($data[$k]['id_tours']);
+                                                        // var_dump($data[$k]); die;
+                                                    }
+                                                    ?>
+                                                    <?php for ($j = 0; $j < count($data_img); $j++) { ?>
+                                                        <img width="100px" src="./../../asset/img/<?php echo $data_img[$j]['images'] ?>" alt="">
+                                                    <?php } ?>
+                                                <!-- </div>
+                                            </div>
+                                        </div> -->
+                                    </td>
+                                    <td>
+                                        <a class="js-modal-click1"><i class="mr-8 fas fa-cogs"></i></a>
+                                        <a href="" onclick="confirm('Bạn muốn xóa thông tin này!');"><i class="fas fa-trash-alt"></i></a>
+                                    </td>
+                                </tr>
+                            <?php } ?>
                     </table>
                     <div class="form_group-list">
                         <a href="/duan1/admin/tours/add_tours.php" class="btn">Thêm mới</a>
@@ -311,94 +194,7 @@
         });
     </script>
     <!-- update -->
-    <div class="modal js-modal1">
-        <div class="modal-container js-modal-container1">
-            <div class="modal-close js-modal-close1">
-                <i class="fas fa-times"></i>
-            </div>
-            <div class="modal-header">
-                <div class="header-name-modal">Sửa Tour</div>
-            </div>
-            <div class="modal-body">
-                <!--form sửa ở đây -->
-                <div class="form_add">
-                    <form action="" method="post" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
-                        <div class="form_group-2">
-                            <lable class="form_lable">Mã tour</lable>
-                            <input type="text" name="" disabled class="form_input" placeholder="Tự động tăng">
-                        </div>
-                        <div class="form_group-2">
-                            <lable class="form_lable">Ảnh đại diện</lable>
-                            <input type="file" name="image_tours" class="form_input">
-                        </div>
-                        <div class="form_group-2">
-                            <lable class="form_lable">Tên tour</lable>
-                            <input type="text" name="name_tours" class="form_input">
-                        </div>
-                        <div class="form_group-2">
-                            <lable class="form_lable">Mô tả</lable>
-                            <input type="text" name="description_tours" class="form_input">
-                        </div>
-                        <div class="form_group-2">
-                            <lable class="form_lable">Giá tour</lable>
-                            <input type="number" name="price_tours" class="form_input">
-                        </div>
-                        <div class="form_group-2">
-                            <lable class="form_lable">Giảm giá</lable>
-                            <input type="number" name="sale_tours" class="form_input">
-                        </div>
-                        <div class="form_group-2">
-                            <lable class="form_lable">Thời gian</lable>
-                            <input type="date" name="time_tours" class="form_input">
-                        </div>
-                        <div class="form_group-2">
-                            <lable class="form_lable">Thư viện ảnh</lable>
-                            <input type="file" name="gallery_tours" class="form_input">
-                        </div>
-                        <div class="form_group-2">
-                            <lable class="form_lable">Địa điểm</lable>
-                            <select class="form_input">
-                                <option value="">--Chọn địa điểm--</option>
-                                <option name="id_location" value="">Hà Nội</option>
-                                <option name="id_location" value="">Đà Nẵng</option>
-                                <option name="id_location" value="">Sài Gòn</option>
-                            </select>
-                        </div>
-                        <div class="form_group-2" style="display: flex; align-items: end; justify-content: center;">
-                            <input type="submit" value="Thêm mới" class="btn btn-add">
-                            <input type="reset" value="Nhập lại" class="btn btn-reset">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script>
-        const buyBtns1 = document.querySelectorAll('.js-modal-click1');
-        const modal1 = document.querySelector('.js-modal1');
-        const modalContainer1 = document.querySelector('.js-modal-container1');
-        const modalClose1 = document.querySelector('.js-modal-close1');
-        //hàm hiển thị modal xem(thêm class open vào modal)
-        function showBuyTickets1() {
-            modal1.classList.add('open');
-        }
-        //hàm ẩn modal xem(gỡ bỏ class open vào modal)
-        function hideBuyTickets1() {
-            modal1.classList.remove('open');
-        }
-        //lặp qua từng thẻ button và nghe theo hành vi click
-        for (const buyBtn1 of buyBtns1) {
-            buyBtn1.addEventListener('click', showBuyTickets1);
-        }
-
-        //nghe hành vi click vào button close
-        modalClose1.addEventListener('click', hideBuyTickets1);
-
-        modal1.addEventListener('click', hideBuyTickets1);
-        modalContainer1.addEventListener('click', function(even) {
-            event.stopPropagation();
-        });
-    </script>
+    
 </body>
 
 </html>

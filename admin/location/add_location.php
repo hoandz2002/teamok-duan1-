@@ -20,6 +20,7 @@ if(isset($_POST['submit'])){
     <title>Dashboard</title>
     <link rel="stylesheet" href="/duan1/asset/fonts/fontawesome-free-5.15.3-web/css/all.min.css">
     <link rel="stylesheet" href="/duan1/asset/css/css_admin/main.css">
+    <script src="./../../asset/fonts/ckeditor/ckeditor.js"></script>
     <style>
 
     </style>
@@ -51,7 +52,15 @@ if(isset($_POST['submit'])){
                             </div>
                             <div class="form_group">
                                 <lable class="form_lable">Mô tả</lable>
-                                <input type="text" name="description_location" class="form_input">
+                                <!-- <input type="text" name="description_location" class="form_input"> -->
+                                <textarea id="description_location" name="description_location" class="form_input">
+                                    <!-- <p><strong>Mô tả</strong></p> -->
+                                </textarea>
+
+                                <!-- (3): Code Javascript thay thế textarea có id='description_location' bởi CKEditor -->
+                                <script>
+                                    CKEDITOR.replace('description_location');
+                                </script>
                             </div>
                             <div class="form_group">
                                 <input type="submit" value="Thêm mới" name="submit" class="btn btn-add">

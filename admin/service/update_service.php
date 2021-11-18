@@ -3,10 +3,10 @@ session_start();
 require_once './../../db/connection.php';
 require_once './../../db/service.php';
 $id = $_GET['id_service'];
-$data = getid($id);
+$data = getid_service($id);
 // var_dump($data); die;
 
-if(isset($_POST['btn_save'])){
+if (isset($_POST['btn_save'])) {
     $data = [
         'id_service' => $data['id_service'],
         'name_service' => $_POST['name_service'],
@@ -14,7 +14,7 @@ if(isset($_POST['btn_save'])){
         'price_service' => $_POST['price_service'],
     ];
 
-    update($data);
+    update_service($data);
     header("location: /duan1/admin/service/list_service.php");
 }
 ?>
@@ -28,6 +28,7 @@ if(isset($_POST['btn_save'])){
     <title>Dashboard</title>
     <link rel="stylesheet" href="/duan1/asset/fonts/fontawesome-free-5.15.3-web/css/all.min.css">
     <link rel="stylesheet" href="/duan1/asset/css/css_admin/main.css">
+    <script src="./../../asset/fonts/ckeditor/ckeditor.js"></script>
     <style>
 
     </style>
@@ -37,11 +38,11 @@ if(isset($_POST['btn_save'])){
     <div class="container">
         <div class="row">
             <div class="left">
-            <?php require_once './../../admin/sidebar.php'; ?>
+                <?php require_once './../../admin/sidebar.php'; ?>
             </div>
             <!--left : siderbar-->
             <div class="right">
-            <?php require_once './../../admin/header.php'; ?>
+                <?php require_once './../../admin/header.php'; ?>
                 <!-- Nội dung ở đây  -->
                 <div class="right-heading">
                     <h2>Udate dịch vụ</h2>
@@ -49,26 +50,34 @@ if(isset($_POST['btn_save'])){
                 <div class="right_body">
                     <div class="form_add">
                         <form action="" method="post">
-                        <fieldset hidden>
-            <div class="mb-3">
-                <label for="disabledTextInput" hidden class="form-label">Mã khách hàng</label>
-                <input style="background-color: rgba( 0, 0, 0, 0.3);" id="disabledTextInput" name="id_service" class="form-control" type="hidden" value="<?= $data['id_service'] ?>">
-            </div>
-        </fieldset>
+                            <fieldset hidden>
+                                <div class="mb-3">
+                                    <label for="disabledTextInput" hidden class="form-label">Mã khách hàng</label>
+                                    <input style="background-color: rgba( 0, 0, 0, 0.3);" id="disabledTextInput" name="id_service" class="form-control" type="hidden" value="<?= $data['id_service'] ?>">
+                                </div>
+                            </fieldset>
                             <div class="form_group">
                                 <lable class="form_lable">Tên dịch vụ</lable>
                                 <input type="text" name="name_service" value="<?php echo $data['name_service'] ?>" class="form_input">
                             </div>
                             <div class="form_group">
                                 <lable class="form_lable">Mô tả</lable>
-                                <input type="text" name="description_service" value="<?php echo $data['description_service'] ?>" class="form_input">
+                                <!-- <input type="text" name="description_service" class="form_input"> -->
+                                <textarea id="description_service" name="description_service" class="form_input">
+                                    <p><?php echo $data['description_service'] ?></p>
+                                </textarea>
+
+                                <!-- (3): Code Javascript thay thế textarea có id='description_service' bởi CKEditor -->
+                                <script>
+                                    CKEDITOR.replace('description_service');
+                                </script>
                             </div>
                             <div class="form_group">
                                 <lable class="form_lable">Giá dịch vụ</lable>
                                 <input type="number" name="price_service" value="<?php echo $data['price_service'] ?>" class="form_input">
                             </div>
                             <div class="form_group">
-                            <input type="submit" name="btn_save" value="Sửa" class="btn btn-add id=">
+                                <input type="submit" name="btn_save" value="Sửa" class="btn btn-add id=">
                                 <input type="reset" value="Nhập lại" class="btn btn-reset">
                                 <a href="/duan1/admin/service/list_service.php" class="btn">Danh sách</a>
                             </div>

@@ -43,18 +43,43 @@ $data = getall_location();
                             </tr>
                         </thead>
                         <tbody class="tbody">
-                            <?php foreach ($data as $ds) {
-                                extract($ds); ?>
+                            <?php
+                            $conn = mysqli_connect('localhost', 'root', '');
+                            if (!$conn) {
+                                die("Connection failed" . mysqli_connect_error());
+                            } else {
+                                mysqli_select_db($conn, 'duan1');
+                            }
+                            $results_per_page = 5;
+                            $query = "select *from location";
+                            $result = mysqli_query($conn, $query);
+                            $number_of_result = mysqli_num_rows($result);
+                            $number_of_page = ceil($number_of_result / $results_per_page);
+                            if (!isset($_GET['page'])) {
+                                $page = 1;
+                            } else {
+                                $page = $_GET['page'];
+                            }
+                            $page_first_result = ($page - 1) * $results_per_page;
+                            $query = "SELECT *FROM location LIMIT " . $page_first_result . ',' . $results_per_page;
+                            $result = mysqli_query($conn, $query);
+                            while ($row = mysqli_fetch_array($result)) { ?>
                                 <tr>
-                                    <td><?= $id_location; ?></td>
-                                    <td><?= $name_location; ?></td>
-                                    <td><?= $description_location; ?></td>
+                                    <td><?= $row['id_location']; ?></td>
+                                    <td><?= $row['name_location']; ?></td>
+                                    <td><?= $row['description_location']; ?></td>
                                     <td>
-                                        <a href="/duan1/admin/location/update_location.php?id_location=<?= $id_location; ?>"><i class="mr-8 fas fa-cogs"></i></a>
-                                        <a href="/duan1/admin/location/delete_location.php?id_location=<?= $id_location; ?>"><i class="fas fa-trash-alt"></i></a>
+                                        <a href="/duan1/admin/location/update_location.php?id_location=<?= $row['id_location']; ?>"><i class="mr-8 fas fa-cogs"></i></a>
+                                        <a href="/duan1/admin/location/delete_location.php?id_location=<?= $row['id_location']; ?>"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
                             <?php } ?>
+                            <div style="width: 100%; padding: 0px 40px;">
+                                <?php for ($page = 1; $page <= $number_of_page; $page++) {
+                                    echo '<a style="width: 30px; text-align: center; line-height: 30px; display: inline-block; margin: 0px 8px; background-color: blue; color: white;" href = "list_location.php?page=' . $page . '">' . $page . ' </a>';
+                                }
+                                ?>
+                            </div>
                         </tbody>
                     </table>
                     <div class="form_group-list">

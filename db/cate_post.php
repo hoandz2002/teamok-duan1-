@@ -1,5 +1,5 @@
 <?php
-function getAll()
+function getAll_cate()
 {
     $conn = connect();
     $sql = "SELECT * FROM cate_post";
@@ -21,7 +21,7 @@ function getAll()
     return $result;
 }
 
-function getId($id)
+function getId_cate($id)
 {
     $conn = connect();
     $sql = "SELECT * FROM cate_post  WHERE id_cate_post =:id_cate_post";
@@ -37,7 +37,7 @@ function getId($id)
 
     return $row;
 }
-function insert(array $data)
+function insert_cate(array $data)
 {
     $conn = connect();
     $sql  ="INSERT INTO cate_post(name_cate_post)" .
@@ -45,7 +45,7 @@ function insert(array $data)
     $stmt = $conn->prepare($sql);
     $stmt->execute($data);
 }
-function update($data)
+function update_cate($data)
 {
     $conn = connect();
     $sql = "UPDATE cate_post SET  name_cate_post =:name_cate_post WHERE id_cate_post = :id_cate_post";
@@ -53,7 +53,7 @@ function update($data)
     $stmt->execute($data);
     return true;
 }
-function delete($id)
+function delete_cate($id)
 {
     $conn = connect();
     $sql = "DELETE FROM cate_post WHERE id_cate_post = :id_cate_post";

@@ -2,7 +2,7 @@
 require_once './../../db/connection.php';
 require_once './../../db/post.php';
 require_once './../../db/cate_post.php';
-$data = getAll();
+$data = getAll_cate();
 // var_dump($data); die;
 if (isset($_POST['btn_save'])) {
     $data_post = [
@@ -32,6 +32,7 @@ if (isset($_POST['btn_save'])) {
     <title>Dashboard</title>
     <link rel="stylesheet" href="/duan1/asset/fonts/fontawesome-free-5.15.3-web/css/all.min.css">
     <link rel="stylesheet" href="/duan1/asset/css/css_admin/main.css">
+    <script src="./../../asset/fonts/ckeditor/ckeditor.js"></script>
     <style>
 
     </style>
@@ -67,13 +68,20 @@ if (isset($_POST['btn_save'])) {
                             </div>
                             <div class="form_group">
                                 <lable class="form_lable">Mô tả</lable>
-                                <input type="text" name="description_post" class="form_input">
+                                <textarea id="description_post" name="description_post" class="form_input">
+                                    <!-- <p><strong>Mô tả</strong></p> -->
+                                </textarea>
+
+                                <!-- (3): Code Javascript thay thế textarea có id='description_post' bởi CKEditor -->
+                                <script>
+                                    CKEDITOR.replace('description_post');
+                                </script>
                             </div>
                             <div class="form_group">
                                 <lable class="form_lable">Loại post</lable>
                                 <select class="form_input" name="id_cate_post">
                                     <?php foreach ($data as $ds) { ?>
-                                        <option  value="<?=$ds['id_cate_post']?>"><?=$ds['name_cate_post']?></option>
+                                        <option value="<?= $ds['id_cate_post'] ?>"><?= $ds['name_cate_post'] ?></option>
                                     <?php } ?>
                                 </select>
                             </div>

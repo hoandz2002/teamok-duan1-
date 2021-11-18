@@ -5,7 +5,7 @@ if (isset($_POST['btn_save'])) {
     $data = [
         'name_cate_post' => $_POST['name_cate_post'],
     ];
-    insert($data);
+    insert_cate($data);
     header('location:  /duan1/admin/manager_post/list_mng_post.php');
 }
 ?>

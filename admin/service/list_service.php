@@ -1,7 +1,7 @@
 <?php
 require_once './../../db/connection.php';
 require_once './../../db/service.php';
-$data = getall();
+$data = getall_service();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,19 +43,46 @@ $data = getall();
                             </tr>
                         </thead>
                         <tbody class="tbody">
-                            <?php foreach ($data as $datas) { ?>
+                            <?php
+                            $conn = mysqli_connect('localhost', 'root', '');
+                            if (!$conn) {
+                                die("Connection failed" . mysqli_connect_error());
+                            } else {
+                                mysqli_select_db($conn, 'duan1');
+                            }
+                            $results_per_page = 5;
+                            $query = "select *from service";
+                            $result = mysqli_query($conn, $query);
+                            $number_of_result = mysqli_num_rows($result);
+                            $number_of_page = ceil($number_of_result / $results_per_page);
+                            if (!isset($_GET['page'])) {
+                                $page = 1;
+                            } else {
+                                $page = $_GET['page'];
+                            }
+                            $page_first_result = ($page - 1) * $results_per_page;
+                            $query = "SELECT *FROM service LIMIT " . $page_first_result . ',' . $results_per_page;
+                            $result = mysqli_query($conn, $query);
+                            while ($row = mysqli_fetch_array($result)) { ?>
                                 <tr>
-                                    <td style="border: solid 1px black;font-weight: bold; text-align: center;height: 50px;"><?= $datas['id_service'] ?></td>
-                                    <td style="border: solid 1px black;font-weight: bold; text-align: center;"><?= $datas['name_service'] ?></td>
-                                    <td style="border: solid 1px black;font-weight: bold; text-align: center;"><?= $datas['description_service'] ?></td>
-                                    <td style="border: solid 1px black;font-weight: bold; text-align: center;"><?= $datas['price_service'] ?> </td>
+                                    <td><?= $row['id_service'] ?></td>
+                                    <td><?= $row['name_service'] ?></td>
+                                    <td><?= $row['description_service'] ?></td>
+                                    <td><?= $row['price_service'] ?> </td>
 
                                     <td>
-                                        <a href="/duan1/admin/service/update_service.php?id_service=<?= $datas['id_service'] ?>"><i class="mr-8 fas fa-cogs"></i></a>
-                                        <a href="/duan1/admin/service/delete_service.php?id_service=<?= $datas['id_service'] ?>"><i class="fas fa-trash-alt"></i></a>
+                                        <a href="/duan1/admin/service/update_service.php?id_service=<?= $row['id_service'] ?>"><i class="mr-8 fas fa-cogs"></i></a>
+                                        <a href="/duan1/admin/service/delete_service.php?id_service=<?= $row['id_service'] ?>"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
+
                             <?php } ?>
+                            <div style="width: 100%; padding: 0px 40px;">
+                                <?php for ($page = 1; $page <= $number_of_page; $page++) {
+                                    echo '<a style="width: 30px; text-align: center; line-height: 30px; display: inline-block; margin: 0px 8px; background-color: blue; color: white;" href = "list_service.php?page=' . $page . '">' . $page . ' </a>';
+                                }
+                                ?>
+                            </div>
                         </tbody>
                     </table>
                     <div class="form_group-list">

@@ -1,3 +1,37 @@
+<?php
+session_start();
+require_once "./db/customer.php";
+require_once "./db/connection.php";
+
+if (isset($_POST['btn_khongthich'])) {
+    if (
+        empty($_POST['email_customer']) ||
+        empty($_POST['password'])
+    ) {
+        $_SESSION['thongbao'] = "Khônh được để trống";
+        header("Location:http://localhost/duan1/login_form.php ");
+        die;
+    }
+
+    $user = login($_POST['email_customer'], $_POST['password']);
+
+    if (empty($user) == true) {
+        $_SESSION['thongbao'] = "sai tài khoản mật khẩu";
+        header('location: http://localhost/duan1/login_form.php');
+        die;
+    }
+    $_SESSION['user'] = $user;
+
+    if ($user['classify_customer'] == 1) {
+        header('location: http://localhost/duan1/admin/index.php');
+    }
+
+    if ($user['classify_customer'] == 0) {
+        header('location: http://localhost/duan1/index.php');
+    }
+}
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -19,39 +53,44 @@
                 <div class="col-md-6 text-center mb-5">
                     <h2 style="margin-bottom:50px" class="heading-section">HTH TRAVEL</h2>
                 </div>
-                <div id="toast">
-                    <div class="tst_test tst--error">
-                        <div class="toast__icon">
-                            <i class="fas fa-exclamation"></i>
-                        </div>
-                        <div class="toast__body">
-                            <h3 class="toast__title" style="font-weight: 600;color: #333;">
-                                Error
-                            </h3>
-                            <p class="toast__msg">
-                                Không được để trống
-                            </p>
-                        </div>
-                        <div class="toast__close">
-                            <i class='fas fa-times'></i>
+                <?php if (isset($_SESSION['thongbao'])) { ?>
+                    <div id="toast">
+                        <div class="tst_test tst--error">
+                            <div class="toast__icon">
+                                <i class="fas fa-exclamation"></i>
+                            </div>
+                            <div class="toast__body">
+                                <h3 class="toast__title" style="font-weight: 600;color: #333;">
+                                    Error
+                                </h3>
+                                <p class="toast__msg">
+                                    <?php
+                                    echo $_SESSION['thongbao'];
+                                    unset($_SESSION['thongbao']);
+                                    ?>
+                                </p>
+                            </div>
+                            <div class="toast__close">
+                                <i class='fas fa-times'></i>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <?php } ?>
             </div>
 
             <div class="row justify-content-center">
                 <div class="col-md-6 col-lg-4">
                     <div class="login-wrap p-0">
-                        <form action="#" class="signin-form">
+                        <form action="login_form.php" method="POST" class="signin-form">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Username" required>
+                                <input type="text" class="form-control" name="email_customer" placeholder="Username" required>
                             </div>
                             <div class="form-group">
-                                <input id="password-field" type="password" class="form-control" placeholder="Password" required>
+                                <input id="password-field" type="password" name="password" class="form-control" placeholder="Password" required>
                                 <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="form-control btn btn-primary submit px-3">Sign In</button>
+                                <button type="submit" name="btn_khongthich" class="form-control btn btn-primary submit px-3">Sign In</button>
                             </div>
                             <div class="form-group d-md-flex">
                                 <div class="w-50">

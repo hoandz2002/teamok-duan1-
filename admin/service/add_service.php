@@ -8,7 +8,7 @@ if (isset($_POST['btn_submit'])) {
         'description_service' => $_POST['description_service'],
         'price_service' => $_POST['price_service'],
     ];
-    insert($data);
+    insert_service($data);
     header("location: /duan1/admin/service/list_service.php");
 }
 
@@ -23,6 +23,7 @@ if (isset($_POST['btn_submit'])) {
     <title>Dashboard</title>
     <link rel="stylesheet" href="/duan1/asset/fonts/fontawesome-free-5.15.3-web/css/all.min.css">
     <link rel="stylesheet" href="/duan1/asset/css/css_admin/main.css">
+    <script src="./../../asset/fonts/ckeditor/ckeditor.js"></script>
     <style>
 
     </style>
@@ -54,7 +55,15 @@ if (isset($_POST['btn_submit'])) {
                             </div>
                             <div class="form_group">
                                 <lable class="form_lable">Mô tả</lable>
-                                <input type="text" name="description_service" class="form_input">
+                                <!-- <input type="text" name="description_service" class="form_input"> -->
+                                <textarea id="description_service" name="description_service" class="form_input">
+                                    <!-- <p><strong>Mô tả</strong></p> -->
+                                </textarea>
+
+                                <!-- (3): Code Javascript thay thế textarea có id='description_service' bởi CKEditor -->
+                                <script>
+                                    CKEDITOR.replace('description_service');
+                                </script>
                             </div>
                             <div class="form_group">
                                 <lable class="form_lable">Giá dịch vụ</lable>

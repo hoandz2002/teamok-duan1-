@@ -4,11 +4,11 @@ function login($email_customer, $password)
 {
     $conn = connect();
     $sql = "SELECT * FROM customer " .
-        " WHERE email = :email AND mat_khau = :mat_khau";
+        " WHERE email_customer = :email_customer AND password = :password";
     $stmt = $conn->prepare($sql);
     $params = [
-        'email' => $email_customer,
-        'mat_khau' => $password
+        'email_customer' => $email_customer,
+        'password' => $password
     ];
 
     $stmt->execute($params);
@@ -32,7 +32,7 @@ function login($email_customer, $password)
 
     return $result;
 }
-function getall()
+function getall_customer()
 {
     $conn = connect();
     $sql = "SELECT * FROM customer ";
@@ -59,7 +59,7 @@ function getall()
 }
 
 
-function getid($id)
+function getid_customer($id)
 {
     $conn = connect();
     $sql = "SELECT * FROM customer WHERE id_customer = :id_customer";
@@ -81,7 +81,7 @@ function getid($id)
     return $row;
 }
 
-function insert(array $data)
+function insert_customer(array $data)
 {
     $conn = connect();
     $sql = "INSERT INTO customer(name_customer, cmt_customer, phone_customer, email_customer, password, classify_customer)" .
@@ -89,7 +89,7 @@ function insert(array $data)
     $statement = $conn->prepare($sql);
     $statement->execute($data);
 }
-function update($data)
+function update_customer($data)
 {
     $conn = connect();
     $sql = "UPDATE customer SET id_customer =:id_customer, name_customer =:name_customer, cmt_customer =:cmt_customer, phone_customer =:phone_customer," .
@@ -99,7 +99,7 @@ function update($data)
     return true;
 }
 
-function delete($id)
+function delete_customer($id)
 {
     $conn = connect();
     $sql = "DELETE FROM customer WHERE id_customer = :id_customer";

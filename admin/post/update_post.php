@@ -3,7 +3,7 @@ session_start();
 require_once './../../db/connection.php';
 require_once './../../db/post.php';
 require_once './../../db/cate_post.php';
-$data1 = getAll();
+$data1 = getAll_cate();
 $id = $_GET['id_post'];
 $data = getId_post($id);
 // var_dump($data); die;
@@ -35,6 +35,7 @@ if (isset($_POST['btn_save'])) {
     <title>Dashboard</title>
     <link rel="stylesheet" href="/duan1/asset/fonts/fontawesome-free-5.15.3-web/css/all.min.css">
     <link rel="stylesheet" href="/duan1/asset/css/css_admin/main.css">
+    <script src="./../../asset/fonts/ckeditor/ckeditor.js"></script>
     <style>
 
     </style>
@@ -70,7 +71,14 @@ if (isset($_POST['btn_save'])) {
                             </div>
                             <div class="form_group">
                                 <lable class="form_lable">Mô tả</lable>
-                                <input type="text" value="<?=$data['description_post']?>" name="description_post" class="form_input">
+                                <textarea id="description_post" name="description_post" class="form_input">
+                                    <p><?=$data['description_post']?></p>
+                                </textarea>
+
+                                <!-- (3): Code Javascript thay thế textarea có id='description_post' bởi CKEditor -->
+                                <script>
+                                    CKEDITOR.replace('description_post');
+                                </script>
                             </div>
                             <div class="form_group">
                                 <lable class="form_lable">Loại post</lable>

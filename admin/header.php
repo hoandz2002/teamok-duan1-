@@ -26,7 +26,7 @@
             <i class="fas fa-angle-down"></i>
             <ul class="acc_list">
                 <li class="acc_item"><a class="acc_link" href=""><i class="mr-8 fas fa-user"></i>Profile</a></li>
-                <li class="acc_item"><a class="acc_link" href=""><i class="mr-8 fas fa-sign-out-alt"></i>Log out</a></li>
+                <li class="acc_item"><a class="acc_link" href="/duan1/logout.php"><i class="mr-8 fas fa-sign-out-alt"></i>Log out</a></li>
             </ul>
         </label>
     </div>
