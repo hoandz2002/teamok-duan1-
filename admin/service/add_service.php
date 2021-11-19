@@ -1,8 +1,25 @@
 <?php
+session_start();
 require_once './../../db/connection.php';
 require_once './../../db/service.php';
 
 if (isset($_POST['btn_submit'])) {
+    if (
+        empty($_POST['name_service']) ||
+        empty($_POST['description_service']) ||
+        empty($_POST['price_service']) 
+    ) {
+        $_SESSION['thongbao'] = "Không để trống thông tin!";
+        header("location: ./add_service.php");
+        die;
+    }
+    if (
+        is_numeric($_POST['price_service']) == false || $_POST['price_service'] < 0
+    ) {
+        $_SESSION['thongbao'] = "giá là số (số dương)";
+        header("location: ./add_service.php");
+        die;
+    }
     $data = [
         'name_service' => $_POST['name_service'],
         'description_service' => $_POST['description_service'],
@@ -23,6 +40,7 @@ if (isset($_POST['btn_submit'])) {
     <title>Dashboard</title>
     <link rel="stylesheet" href="/duan1/asset/fonts/fontawesome-free-5.15.3-web/css/all.min.css">
     <link rel="stylesheet" href="/duan1/asset/css/css_admin/main.css">
+    <link rel="stylesheet" href="/duan1/asset/css/css_admin/error_mess.css">
     <script src="./../../asset/fonts/ckeditor/ckeditor.js"></script>
     <style>
 
@@ -42,6 +60,26 @@ if (isset($_POST['btn_submit'])) {
                 <div class="right-heading">
                     <h2>Thêm loại dịch vụ</h2>
                 </div>
+                <?php if (isset($_SESSION['thongbao'])) { ?>
+                    <div id="toast">
+                        <div class="tst_test tst--error">
+                            <div class="toast__icon">
+                                <i class="fas fa-exclamation"></i>
+                            </div>
+                            <div class="toast__body">
+                                <h3 class="toast__title" style="font-weight: 600;color: #333;">
+                                    Error
+                                </h3>
+                                <p class="toast__msg">
+                                    <?php
+                                    echo $_SESSION['thongbao'];
+                                    unset($_SESSION['thongbao']);
+                                    ?>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
                 <div class="right_body">
                     <div class="form_add">
                         <form action="" method="post">
