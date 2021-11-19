@@ -15,7 +15,7 @@ $data = getall_location();
     <link rel="stylesheet" href="/duan1/asset/fonts/fontawesome-free-5.15.3-web/css/all.min.css">
     <link rel="stylesheet" href="/duan1/asset/css/css_admin/main.css">
     <style>
-
+        
     </style>
 </head>
 
