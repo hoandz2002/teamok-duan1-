@@ -8,7 +8,7 @@ if (isset($_POST['btn_khongthich'])) {
         empty($_POST['email_customer']) ||
         empty($_POST['password'])
     ) {
-        $_SESSION['thongbao'] = "Khônh được để trống";
+        $_SESSION['thongbao'] = "Không được để trống";
         header("Location:http://localhost/duan1/login_form.php ");
         die;
     }
@@ -83,10 +83,10 @@ if (isset($_POST['btn_khongthich'])) {
                     <div class="login-wrap p-0">
                         <form action="login_form.php" method="POST" class="signin-form">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="email_customer" placeholder="Username" required>
+                                <input type="text" class="form-control" name="email_customer" placeholder="Username">
                             </div>
                             <div class="form-group">
-                                <input id="password-field" type="password" name="password" class="form-control" placeholder="Password" required>
+                                <input id="password-field" type="password" name="password" class="form-control" placeholder="Password">
                                 <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                             </div>
                             <div class="form-group">
