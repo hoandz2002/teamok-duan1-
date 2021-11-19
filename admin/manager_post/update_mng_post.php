@@ -7,12 +7,16 @@ $data = getId_cate($id);
 // var_dump($data); die;
 
 if (isset($_POST['btn_save'])) {
+    if(empty($_POST['name_cate_post'])){
+        $_SESSION['thongbao'] = "không được để trống tên loại!";
+        header("location: ./update_mng_post.php?id_cate_post=$id");
+        die;
+    }
     $data = [
         'id_cate_post' => $data['id_cate_post'],
-        'name_cate_post' => $_POST['name_cate_post'],
-        
+        'name_cate_post' => $_POST['name_cate_post']
     ];
-    
+
     update_cate($data);
     // var_dump(update($data)); die;
     header("location: /duan1/admin/manager_post/list_mng_post.php");
@@ -28,6 +32,7 @@ if (isset($_POST['btn_save'])) {
     <title>Dashboard</title>
     <link rel="stylesheet" href="/duan1/asset/fonts/fontawesome-free-5.15.3-web/css/all.min.css">
     <link rel="stylesheet" href="/duan1/asset/css/css_admin/main.css">
+    <link rel="stylesheet" href="/duan1/asset/css/css_admin/error_mess.css">
     <style>
 
     </style>
@@ -46,6 +51,26 @@ if (isset($_POST['btn_save'])) {
                 <div class="right-heading">
                     <h2>Thêm loại bài viết</h2>
                 </div>
+                <?php if (isset($_SESSION['thongbao'])) { ?>
+                    <div id="toast">
+                        <div class="tst_test tst--error">
+                            <div class="toast__icon">
+                                <i class="fas fa-exclamation"></i>
+                            </div>
+                            <div class="toast__body">
+                                <h3 class="toast__title" style="font-weight: 600;color: #333;">
+                                    Error
+                                </h3>
+                                <p class="toast__msg">
+                                    <?php
+                                    echo $_SESSION['thongbao'];
+                                    unset($_SESSION['thongbao']);
+                                    ?>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
                 <div class="right_body">
                     <div class="form_add">
                         <form action="" method="post">
@@ -55,7 +80,7 @@ if (isset($_POST['btn_save'])) {
                             </div>
                             <div class="form_group">
                                 <lable class="form_lable">Tên loại bài viết</lable>
-                                <input type="text" name="name_cate_post"  value="<?php echo $data['name_cate_post'] ?>" class="form_input">
+                                <input type="text" name="name_cate_post" value="<?php echo $data['name_cate_post'] ?>" class="form_input">
                             </div>
                             <div class="form_group">
                                 <input type="submit" value="Sửa" name="btn_save" class="btn">

@@ -72,7 +72,7 @@ $data = getall_service();
 
                                     <td>
                                         <a href="/duan1/admin/service/update_service.php?id_service=<?= $row['id_service'] ?>"><i class="mr-8 fas fa-cogs"></i></a>
-                                        <a href="/duan1/admin/service/delete_service.php?id_service=<?= $row['id_service'] ?>"><i class="fas fa-trash-alt"></i></a>
+                                        <a href="/duan1/admin/service/delete_service.php?id_service=<?= $row['id_service'] ?>" onclick="return confirm('Bạn muốn xóa dịch vụ này!');"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
 

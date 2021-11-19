@@ -15,67 +15,17 @@ $data = getAllTours();
     <link rel="stylesheet" href="/duan1/asset/fonts/fontawesome-free-5.15.3-web/css/all.min.css">
     <link rel="stylesheet" href="/duan1/asset/css/css_admin/main.css">
     <style>
-        .modal {
+        .box {
+            width: 600px;
+            padding: 50px 80px;
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.35);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            top: 25%;
+            left: 25%;
             display: none;
+            background-color: rgba( 0, 0, 0, 0.8);
         }
-
-        .modal.open {
-            display: flex;
-        }
-
-        .modal-container {
-            width: 900px;
-            max-width: calc(100% - 32px);
-            min-height: 300px;
-            background-color: #fff;
-            position: relative;
-            animation: modalFadeIn ease 0.3s;
-        }
-
-        .modal-close {
-            cursor: pointer;
-            position: absolute;
-            right: 0;
-            top: 0;
-            color: #fff;
-            padding: 12px;
-            opacity: 0.9;
-        }
-
-        .modal-close:hover {
-            opacity: 1;
-            background-color: #f44336;
-        }
-
-        /*  */
-        .modal-header {
-            height: 43px;
-            background-color: #009688;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 30px;
-            color: #fff;
-        }
-
-        .header-name-modal {
-            flex: 0;
-            font-size: 18px;
-            display: contents;
-        }
-
-        .modal-body {
-            padding: 16px;
-            color: #000;
+        .left_item:hover .box{
+            display: block;
         }
     </style>
 </head>
@@ -125,29 +75,19 @@ $data = getAllTours();
                                     </td>
                                     <td><?php echo $data[$i]['name_location'] ?></td>
                                     <td>
-                                        <!-- <button class=" btn js-modal-click">Xem</button>
-                                        <div class="modal js-modal">
-                                            <div class="modal-container js-modal-container">
-                                                <div class="modal-close js-modal-close">
-                                                    <i class="fas fa-times"></i>
-                                                </div>
-                                                <div class="modal-header">
-                                                    <div class="header-name-modal">Thư viện ảnh</div>
-
-                                                </div>
-                                                <div class="modal-body"> -->
-                                                    <?php
-                                                    for ($k = 0; $k < count($data); $k++) {
-                                                        $data_img = getAllImage($data[$k]['id_tours']);
-                                                        // var_dump($data[$k]); die;
-                                                    }
-                                                    ?>
-                                                    <?php for ($j = 0; $j < count($data_img); $j++) { ?>
-                                                        <img width="100px" src="./../../asset/img/<?php echo $data_img[$j]['images'] ?>" alt="">
-                                                    <?php } ?>
-                                                <!-- </div>
+                                        <li class="left_item" style="list-style: none; "><a class="left_link" href="#" style="color: black;">Xem</a>
+                                            <div class="box">
+                                                <?php
+                                                // for ($k = 0; $k < count($data); $k++) {
+                                                $data_img = getAllImage($data[$i]['id_tours']);
+                                                // var_dump($data[$k]); die;
+                                                // }
+                                                ?>
+                                                <?php for ($j = 0; $j < count($data_img); $j++) { ?>
+                                                    <img width="200px" src="./../../asset/img/<?php echo $data_img[$j]['images'] ?>" alt="">
+                                                <?php } ?>
                                             </div>
-                                        </div> -->
+                                        </li>
                                     </td>
                                     <td>
                                         <a class="js-modal-click1"><i class="mr-8 fas fa-cogs"></i></a>
@@ -155,6 +95,7 @@ $data = getAllTours();
                                     </td>
                                 </tr>
                             <?php } ?>
+                        </tbody>
                     </table>
                     <div class="form_group-list">
                         <a href="/duan1/admin/tours/add_tours.php" class="btn">Thêm mới</a>
@@ -165,36 +106,6 @@ $data = getAllTours();
             <!--right : content-->
         </div>
     </div>
-
-
-    <script>
-        const buyBtns = document.querySelectorAll('.js-modal-click');
-        const modal = document.querySelector('.js-modal');
-        const modalContainer = document.querySelector('.js-modal-container');
-        const modalClose = document.querySelector('.js-modal-close');
-        //hàm hiển thị modal xem(thêm class open vào modal)
-        function showBuyTickets() {
-            modal.classList.add('open');
-        }
-        //hàm ẩn modal xem(gỡ bỏ class open vào modal)
-        function hideBuyTickets() {
-            modal.classList.remove('open');
-        }
-        //lặp qua từng thẻ button và nghe theo hành vi click
-        for (const buyBtn of buyBtns) {
-            buyBtn.addEventListener('click', showBuyTickets);
-        }
-
-        //nghe hành vi click vào button close
-        modalClose.addEventListener('click', hideBuyTickets);
-
-        modal.addEventListener('click', hideBuyTickets);
-        modalContainer.addEventListener('click', function(even) {
-            event.stopPropagation();
-        });
-    </script>
-    <!-- update -->
-    
 </body>
 
 </html>

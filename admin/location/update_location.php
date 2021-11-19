@@ -1,14 +1,24 @@
-<?php 
+<?php
+session_start();
 require_once './../../db/connection.php';
 require_once './../../db/location.php';
 $id = $_GET['id_location'];
 $data = getid_location($id);
-if(isset($_POST['submit'])){
+if (isset($_POST['submit'])) {
+    if (
+        empty($_POST['name_location']) ||
+        empty($_POST['description_location'])
+    ) {
+        $_SESSION['thongbao'] = "Không để trống thông tin!";
+        header("location: ./update_location.php?id_location=$id");
+        die;
+    }
     $data = [
+        'id_location' => $data['id_location'],
         'name_location' => $_POST['name_location'],
         'description_location' => $_POST['description_location']
     ];
-    insert_location($data);
+    update_location($data);
     header("location: /duan1/admin/location/list_location.php");
 }
 ?>
@@ -22,6 +32,7 @@ if(isset($_POST['submit'])){
     <title>Dashboard</title>
     <link rel="stylesheet" href="/duan1/asset/fonts/fontawesome-free-5.15.3-web/css/all.min.css">
     <link rel="stylesheet" href="/duan1/asset/css/css_admin/main.css">
+    <link rel="stylesheet" href="/duan1/asset/css/css_admin/error_mess.css">
     <script src="./../../asset/fonts/ckeditor/ckeditor.js"></script>
     <style>
 
@@ -41,22 +52,41 @@ if(isset($_POST['submit'])){
                 <div class="right-heading">
                     <h2>Thêm địa điểm</h2>
                 </div>
+                <?php if (isset($_SESSION['thongbao'])) { ?>
+                    <div id="toast">
+                        <div class="tst_test tst--error">
+                            <div class="toast__icon">
+                                <i class="fas fa-exclamation"></i>
+                            </div>
+                            <div class="toast__body">
+                                <h3 class="toast__title" style="font-weight: 600;color: #333;">
+                                    Error
+                                </h3>
+                                <p class="toast__msg">
+                                    <?php
+                                    echo $_SESSION['thongbao'];
+                                    unset($_SESSION['thongbao']);
+                                    ?>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
                 <div class="right_body">
                     <div class="form_add">
-                        <form action="/duan1/admin/location/update_location.php" method="POST">
+                        <form action="/duan1/admin/location/update_location.php?id_location=<?= $data['id_location']; ?>" method="POST">
                             <div class="form_group">
                                 <lable class="form_lable">Mã địa điểm</lable>
-                                <input type="text" name="id_location" value="<?=$data['id_location'];?>" disabled class="form_input" placeholder="Tự động tăng">
+                                <input type="text" name="id_location" value="<?= $data['id_location']; ?>" disabled class="form_input" placeholder="Tự động tăng">
                             </div>
                             <div class="form_group">
                                 <lable class="form_lable">Tên địa điểm</lable>
-                                <input type="text" name="name_location" value="<?=$data['name_location'];?>" class="form_input">
+                                <input type="text" name="name_location" value="<?= $data['name_location']; ?>" class="form_input">
                             </div>
                             <div class="form_group">
                                 <lable class="form_lable">Mô tả</lable>
-                                <input type="text" name="description_location" class="form_input">
                                 <textarea id="description_location" name="description_location" class="form_input">
-                                    <p><?=$data['description_location'];?></p>
+                                    <p><?= $data['description_location']; ?></p>
                                 </textarea>
 
                                 <!-- (3): Code Javascript thay thế textarea có id='description_location' bởi CKEditor -->

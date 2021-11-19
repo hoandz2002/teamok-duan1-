@@ -1,7 +1,7 @@
 <?php
 require_once './db/connection.php';
 require_once './db/cate_post.php';
-$data_cate = getAll();
+$data_cate = getAll_cate();
 session_start();
 if (empty($_SESSION['user']) == false) {
     $name = '<li class="header__navbar-item-child"><a href="/duan1/acc.php" class="header__navbar-link-child">Thông tin</a></li>

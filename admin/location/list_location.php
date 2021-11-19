@@ -70,7 +70,7 @@ $data = getall_location();
                                     <td><?= $row['description_location']; ?></td>
                                     <td>
                                         <a href="/duan1/admin/location/update_location.php?id_location=<?= $row['id_location']; ?>"><i class="mr-8 fas fa-cogs"></i></a>
-                                        <a href="/duan1/admin/location/delete_location.php?id_location=<?= $row['id_location']; ?>"><i class="fas fa-trash-alt"></i></a>
+                                        <a href="/duan1/admin/location/delete_location.php?id_location=<?= $row['id_location']; ?>" onclick="return confirm('Bạn muốn xóa địa điểm này!');"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
                             <?php } ?>

@@ -5,21 +5,45 @@ require_once './../../db/post.php';
 require_once './../../db/cate_post.php';
 $data1 = getAll_cate();
 $id = $_GET['id_post'];
-$data = getId_post($id);
+$data_id = getId_post($id);
 // var_dump($data); die;
 
 if (isset($_POST['btn_save'])) {
+    if (
+        empty($_POST['name_post']) ||
+        empty($_POST['description_post']) ||
+        empty($_POST['id_cate_post'])
+    ) {
+        $_SESSION['thongbao'] = "không để trống thông tin!";
+        header("location: ./update_post.php?id_post=$id");
+        die;
+    }
     $data = [
-        'id_post' => $data['id_post'],
+        'id_post' => $data_id['id_post'],
         'image_post' => $_FILES['image_post']['name'],
         'name_post' => $_POST['name_post'],
         'description_post' => $_POST['description_post'],
         'id_cate_post' => $_POST['id_cate_post'],
     ];
-    $file = $_FILES['image_post'];
-    $file_name = $file['name'];
-    move_uploaded_file($file['tmp_name'], './../../asset/img/' . $file_name);
+    if ($_FILES['image_post']['name'] == '') {
+        $data['image_post'] = $data_id['image_post'];
+    } else {
+        $file_name = $_FILES['image_post']['name'];
+        if (strpos($_FILES['image_post']['type'], 'image') === false) {
+            $_SESSION['thongbao'] = "File phải là ảnh!";
+            header("location: ./update_post.php?id_post=$id");
+            die;
+        }
+    }
+    if (isset($_FILES['image_post'])) {
+        $file = $_FILES['image_post'];
+        $file_name = $file['name'];
+        move_uploaded_file($file['tmp_name'], './../../asset/img/' . $file_name);
+    }
 
+    // if (empty($_FILES['image_post']) === false) {
+
+    // }
     update_post($data);
     // var_dump(update($data)); die;
     header("location: ./list_post.php");
@@ -35,6 +59,7 @@ if (isset($_POST['btn_save'])) {
     <title>Dashboard</title>
     <link rel="stylesheet" href="/duan1/asset/fonts/fontawesome-free-5.15.3-web/css/all.min.css">
     <link rel="stylesheet" href="/duan1/asset/css/css_admin/main.css">
+    <link rel="stylesheet" href="/duan1/asset/css/css_admin/error_mess.css">
     <script src="./../../asset/fonts/ckeditor/ckeditor.js"></script>
     <style>
 
@@ -54,25 +79,45 @@ if (isset($_POST['btn_save'])) {
                 <div class="right-heading">
                     <h2>Thêm loại bài viết</h2>
                 </div>
+                <?php if (isset($_SESSION['thongbao'])) { ?>
+                    <div id="toast">
+                        <div class="tst_test tst--error">
+                            <div class="toast__icon">
+                                <i class="fas fa-exclamation"></i>
+                            </div>
+                            <div class="toast__body">
+                                <h3 class="toast__title" style="font-weight: 600;color: #333;">
+                                    Error
+                                </h3>
+                                <p class="toast__msg">
+                                    <?php
+                                    echo $_SESSION['thongbao'];
+                                    unset($_SESSION['thongbao']);
+                                    ?>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
                 <div class="right_body">
                     <div class="form_add">
-                        <form action="/duan1/admin/post/update_post.php?id_post=<?=$data['id_post']?>" method="post" enctype="multipart/form-data">
+                        <form action="/duan1/admin/post/update_post.php?id_post=<?= $data_id['id_post'] ?>" method="post" enctype="multipart/form-data">
                             <div class="form_group">
                                 <lable class="form_lable">Mã bài viết</lable>
-                                <input type="text" name="" disabled class="form_input" placeholder="Tự động tăng">
+                                <input type="text" name="id_post" value="<?= $data_id['id_post'] ?>" disabled class="form_input" placeholder="Tự động tăng">
                             </div>
                             <div class="form_group">
                                 <lable class="form_lable">Ảnh bài viết</lable>
-                                <input type="file" value="<?=$data['id_post']?>" name="image_post" class="form_input">
+                                <input type="file" value="<?= $data_id['id_post'] ?>" name="image_post" class="form_input">
                             </div>
                             <div class="form_group">
                                 <lable class="form_lable">Tên bài viết</lable>
-                                <input type="text" value="<?=$data['name_post']?>" name="name_post" class="form_input">
+                                <input type="text" value="<?= $data_id['name_post'] ?>" name="name_post" class="form_input">
                             </div>
                             <div class="form_group">
                                 <lable class="form_lable">Mô tả</lable>
                                 <textarea id="description_post" name="description_post" class="form_input">
-                                    <p><?=$data['description_post']?></p>
+                                    <p><?= $data_id['description_post'] ?></p>
                                 </textarea>
 
                                 <!-- (3): Code Javascript thay thế textarea có id='description_post' bởi CKEditor -->
@@ -83,13 +128,14 @@ if (isset($_POST['btn_save'])) {
                             <div class="form_group">
                                 <lable class="form_lable">Loại post</lable>
                                 <select class="form_input" name="id_cate_post">
+                                    <option value="">Chọn loại bài viết</option>
                                     <?php foreach ($data1 as $ds) { ?>
-                                        <option  value="<?=$ds['id_cate_post']?>"><?=$ds['name_cate_post']?></option>
+                                        <option value="<?= $ds['id_cate_post'] ?>"><?= $ds['name_cate_post'] ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
                             <div class="form_group">
-                                <input type="submit" value="Thêm mới" name="btn_save" class="btn">
+                                <input type="submit" value="Sửa" name="btn_save" class="btn">
                                 <input type="reset" value="Nhập lại" class="btn btn-reset">
                                 <a href="/duan1/admin/post/list_post.php" class="btn">Danh sách</a>
                             </div>

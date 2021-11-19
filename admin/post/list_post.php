@@ -75,7 +75,7 @@ $data = getAll_post();
 
                                     <td>
                                         <a href="/duan1/admin/post/update_post.php?id_post=<?= $row['id_post'] ?>"><i class="mr-8 fas fa-cogs"></i></a>
-                                        <a href="/duan1/admin/post/delete_post.php?id_post=<?= $row['id_post'] ?>"><i class="fas fa-trash-alt"></i></a>
+                                        <a href="/duan1/admin/post/delete_post.php?id_post=<?= $row['id_post'] ?>" onclick="return confirm('Bạn muốn xóa bài viết này!');"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
 

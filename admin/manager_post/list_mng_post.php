@@ -68,7 +68,7 @@ $data = getAll_cate();
                                     <td><?= $row['name_cate_post'] ?></td>
                                     <td>
                                         <a href="/duan1/admin/manager_post/update_mng_post.php?id_cate_post=<?= $row['id_cate_post'] ?>"><i class="mr-8 fas fa-cogs"></i></a>
-                                        <a href="/duan1/admin/manager_post/delete_mng_post.php?id_cate_post=<?= $row['id_cate_post'] ?>"><i class="fas fa-trash-alt"></i></a>
+                                        <a href="/duan1/admin/manager_post/delete_mng_post.php?id_cate_post=<?= $row['id_cate_post'] ?>" onclick="return confirm('Bạn muốn xóa loại bài viết này!');"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
 

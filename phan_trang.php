@@ -1,87 +1,51 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            width: 1480px;
+            height: auto;
 
-<title> Pagination </title>
+        }
 
+        h2 {
+            padding-top: 10%;
+            font-size: 20em;
+            text-transform: uppercase;
+            background: url(https://scontent.fhan5-7.fna.fbcdn.net/v/t39.30808-6/241268676_1067481820733172_3785740938617981904_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=Ez7wpsYEZo4AX9PM-jF&_nc_ht=scontent.fhan5-7.fna&oh=fe20dde0fe1fefc04ea3517ca95ad319&oe=619C43BB);
+            background-size: contain;
+            background-repeat: no-repeat;
+            letter-spacing: -40px;
+            line-height: 100px;
+            -webkit-background-clip: text;
+            background-clip: text;
+            font-family: 'Open Sans Pro', sans-serif;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
 </head>
 
 <body>
+    <div class="main">
 
-<?php
+        <h2>
+            iiiiiiiiiiiiiiiiiiiiiiiiiiiii
+            iiiiiiiiiiiiiiiiiiiiiiiiiiiii
+            iiiiiiiiiiiiiiiiiiiiiiiiiiiii
+            iiiiiiiiiiiiiiiiiiiiiiiiiiiii
+            iiiiiiiiiiiiiiiiiiiiiiiiiiiii
+            iiiiiiiiiiiiiiiiiiiiiiiiiiiii
+            iiiiiiiiiiiiiiiiiiiiiiiiiiiii
+            iiiiiiiiiiiiiiiiiiiiiiiiiiiii
+            iiiiiiiiiiiiiiiiiiiiiiiiiiiii
 
-//database connection
-
-$conn = mysqli_connect('localhost', 'root', '');
-
-if (! $conn) {
-
-die("Connection failed" . mysqli_connect_error());
-
-}
-
-else {
-
-mysqli_select_db($conn, 'duan1');
-
-}
-
-//define total number of results you want per page
-
-$results_per_page = 2;
-
-//find the total number of results stored in the database
-
-$query = "select *from location";
-
-$result = mysqli_query($conn, $query);
-
-$number_of_result = mysqli_num_rows($result);
-
-//determine the total number of pages available
-
-$number_of_page = ceil ($number_of_result / $results_per_page);
-
-//determine which page number visitor is currently on
-
-if (!isset ($_GET['page']) ) {
-
-$page = 1;
-
-} else {
-
-$page = $_GET['page'];
-
-}
-
-//determine the sql LIMIT starting number for the results on the displaying page
-
-$page_first_result = ($page-1) * $results_per_page;
-
-//retrieve the selected results from database
-
-$query = "SELECT *FROM location LIMIT " . $page_first_result . ',' . $results_per_page;
-
-$result = mysqli_query($conn, $query);
-
-//display the retrieved result on the webpage
-
-while ($row = mysqli_fetch_array($result)) {
-
-echo $row['id_location'] . ' ' . $row['name_location'] . '</br>';
-
-}
-
-//display the link of the pages in URL
-
-for($page = 1; $page<= $number_of_page; $page++) {
-
-echo '<a href = "phan_trang.php?page=' . $page . '">' . $page . ' </a>';
-
-}
-
-?>
-
+        </h2>
+    </div>
 </body>
 
 </html>
