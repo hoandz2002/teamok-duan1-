@@ -1,3 +1,8 @@
+<?php
+require_once './db/connection.php';
+require_once './db/tour.php';
+$data = getAllTours();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,86 +30,18 @@
         <div class="body">
             <div class="grid">
                 <div class="grid__row">
-                    <div class="pd-16 grid__column-4">
-                        <div class="tours-product">
-                            <img src="/duan1/asset/img/t-shop.jpg" alt="" class="img">
-                            <div class="tours-content">
-                                <h6 class="tours-heading">Redamancy</h6>
-                                <p>$1,000.00</p>
-                                <a href="/duan1/tours_detail.php" class="tours-btn">SELECT OPTION</a>
+                    <?php foreach ($data as $value) { ?>
+                        <div class="pd-16 grid__column-4">
+                            <div class="tours-product">
+                                <img src="/duan1/asset/img/<?=$value['image']?>" alt="" class="img">
+                                <div class="tours-content">
+                                    <h6 style="font-size: 14px;" class="tours-heading"><?=$value['name_tours'];?></h6>
+                                    <p><?=$value['price_tours'];?> Đ</p>
+                                    <a href="/duan1/tours_detail.php?id_tours=<?=$value['id_tours'];?>" class="tours-btn">SELECT OPTION</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="pd-16 grid__column-4">
-                        <div class="tours-product">
-                            <img src="/duan1/asset/img/t-shop.jpg" alt="" class="img">
-                            <div class="tours-content">
-                                <h6 class="tours-heading">Redamancy</h6>
-                                <p>$1,000.00</p>
-                                <a href="/duan1/tours_detail.php" class="tours-btn">SELECT OPTION</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pd-16 grid__column-4">
-                        <div class="tours-product">
-                            <img src="/duan1/asset/img/t-shop.jpg" alt="" class="img">
-                            <div class="tours-content">
-                                <h6 class="tours-heading">Redamancy</h6>
-                                <p>$1,000.00</p>
-                                <a href="/duan1/tours_detail.php" class="tours-btn">SELECT OPTION</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pd-16 grid__column-4">
-                        <div class="tours-product">
-                            <img src="/duan1/asset/img/t-shop.jpg" alt="" class="img">
-                            <div class="tours-content">
-                                <h6 class="tours-heading">Redamancy</h6>
-                                <p>$1,000.00</p>
-                                <a href="/duan1/tours_detail.php" class="tours-btn">SELECT OPTION</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pd-16 grid__column-4">
-                        <div class="tours-product">
-                            <img src="/duan1/asset/img/t-shop.jpg" alt="" class="img">
-                            <div class="tours-content">
-                                <h6 class="tours-heading">Redamancy</h6>
-                                <p>$1,000.00</p>
-                                <a href="/duan1/tours_detail.php" class="tours-btn">SELECT OPTION</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pd-16 grid__column-4">
-                        <div class="tours-product">
-                            <img src="/duan1/asset/img/t-shop.jpg" alt="" class="img">
-                            <div class="tours-content">
-                                <h6 class="tours-heading">Redamancy</h6>
-                                <p>$1,000.00</p>
-                                <a href="/duan1/tours_detail.php" class="tours-btn">SELECT OPTION</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pd-16 grid__column-4">
-                        <div class="tours-product">
-                            <img src="/duan1/asset/img/t-shop.jpg" alt="" class="img">
-                            <div class="tours-content">
-                                <h6 class="tours-heading">Redamancy</h6>
-                                <p>$1,000.00</p>
-                                <a href="/duan1/tours_detail.php" class="tours-btn">SELECT OPTION</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pd-16 grid__column-4">
-                        <div class="tours-product">
-                            <img src="/duan1/asset/img/t-shop.jpg" alt="" class="img">
-                            <div class="tours-content">
-                                <h6 class="tours-heading">Redamancy</h6>
-                                <p>$1,000.00</p>
-                                <a href="/duan1/tours_detail.php" class="tours-btn">SELECT OPTION</a>
-                            </div>
-                        </div>
-                    </div>
+                    <?php  } ?>
                 </div>
             </div>
         </div>

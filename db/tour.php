@@ -61,6 +61,7 @@ function getIdTours($id)
         'description_tours' => $data['description_tours'],
         'price_tours' => $data['price_tours'],
         'id_location' => $data['id_location'],
+        'image' => $data['image'],
     ];
 
     return $row;

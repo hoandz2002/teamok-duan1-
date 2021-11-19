@@ -1,3 +1,12 @@
+<?php
+require_once './db/connection.php';
+require_once './db/tour.php';
+require_once './db/service.php';
+$data_service = getall_service();
+$id_tours = $_GET['id_tours'];
+$data = getIdTours($id_tours);
+$data_img = getAllImage($id_tours);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,29 +37,21 @@
                     <div class="grid__row">
                         <!-- img -->
                         <div class="pd-16 grid__column-2">
-                            <img src="/duan1/asset/img/t-shop.jpg" alt="" class="img">
+                            <img src="/duan1/asset/img/<?= $data['image'] ?>" alt="" class="img">
                             <div class="grid__row">
-                                <div class="grid__column-4">
-                                    <img src="/duan1/asset/img/t-shop.jpg" alt="" class="img">
-                                </div>
-                                <div class="grid__column-4">
-                                    <img src="/duan1/asset/img/t-shop.jpg" alt="" class="img">
-                                </div>
-                                <div class="grid__column-4">
-                                    <img src="/duan1/asset/img/t-shop.jpg" alt="" class="img">
-                                </div>
-                                <div class="grid__column-4">
-                                    <img src="/duan1/asset/img/t-shop.jpg" alt="" class="img">
-                                </div>
+                                <?php foreach ($data_img as $value) { ?>
+                                    <div class="grid__column-4">
+                                        <img src="/duan1/asset/img/<?=$value['images'];?>" alt="" class="img">
+                                    </div>
+                                <?php    } ?>
                             </div>
                         </div>
                         <!-- content -->
                         <div class="pd-16 grid__column-2">
-                            <h6 class="detail-heading">Bora Bora</h6>
-                            <span class="detail-price">$100.00</span>
-                            <p class="detail-des">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at felis laoreet massa cursus pulvinar. Donec non eleifend augue, id tristique nisi. Nunc in leo augue. Cras sapien quam, dictum et molestie id, ultricies.
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at felis laoreet massa cursus pulvinar. Donec non eleifend augue, id tristique nisi. Nunc in leo augue. Cras sapien quam, dictum et molestie id, ultricies.
+                            <h6 style="font-size: 24px;line-height:24px" class="detail-heading"><?=$data['name_tours']?></h6>
+                            <span class="detail-price"><?=$data['price_tours'];?> Đ</span>
+                            <p style="font-size:20px;" class="detail-des">
+                               <?=$data['description_tours'];?>
                             </p>
                             <div class="pd-24 detail-qtt">
                                 <div class="grid__row" style="align-items: center;">
@@ -108,7 +109,7 @@
                     <div class="content-child">
                         <div id="description-content">
                             <h6 class="description-heading">Description</h6>
-                            <p class="description-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at felis laoreet massa cursus pulvinar. Donec non eleifend augue, id tristique nisi. Nunc in leo augue. Cras sapien quam, dictum et molestie id, ultricies et enim. Fusce malesuada augue augue, ut sodales purus dignissim sed. Praesent dignissim placerat ligula a efficitur lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at felis laoreet massa cursus pulvinar.</p>
+                            <p  class="description-p"><?=$data['description_tours']?></p>
                         </div>
                         <div id="information-content">
                             <h6 class="description-heading">Additional information</h6>
