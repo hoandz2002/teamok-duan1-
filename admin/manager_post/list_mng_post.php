@@ -33,7 +33,7 @@ $data = getAll_cate();
                     <h2>Danh sách loại bài viết</h2>
                 </div>
                 <div class="right_body">
-                    <table class="table" cellspacing="12">
+                    <table class="table">
                         <thead class="thead">
                             <tr>
                                 <th>ID</th>
@@ -75,7 +75,7 @@ $data = getAll_cate();
                             <?php } ?>
                             <div style="width: 100%; padding: 0px 40px;">
                                 <?php for ($page = 1; $page <= $number_of_page; $page++) {
-                                    echo '<a style="width: 30px; text-align: center; line-height: 30px; display: inline-block; margin: 0px 8px; background-color: blue; color: white;" href = "list_mng_post.php?page=' . $page . '">' . $page . ' </a>';
+                                    echo '<a style="text-decoration: none; width: 30px; text-align: center; line-height: 30px; display: inline-block; margin: 0px 8px; background-color: blue; color: white;" href = "list_mng_post.php?page=' . $page . '">' . $page . ' </a>';
                                 }
                                 ?>
                             </div>

@@ -44,7 +44,7 @@ session_start();
         .input {
             width: 96%;
             padding: 12px 24px;
-            border-radius: 16px;
+            border-radius: 4px;
             border: 1px solid black;
             outline: none;
         }
@@ -52,8 +52,9 @@ session_start();
         .btn-submit {
             padding: 8px 24px;
             border: none;
-            border-radius: 16px;
-            background-color: lightblue;
+            border-radius: 4px;
+            background-color: blue;
+            color: white;
         }
     </style>
 </head>

@@ -8,7 +8,7 @@
   height: auto;
   margin: 0;
   padding: 0;
-  background-color: rgb(222, 222, 222);
+  background-color: rgb(240, 240, 240);
 }
 
 .row {
@@ -173,9 +173,12 @@
 .right_body {
   width: 100%;
   min-height: 360px;
+  padding: 8px;
+  background-color: white;
   display: flex;
   flex-wrap: wrap;
   column-gap: 16px;
+  box-sizing: border-box;
 }
 /* dùng riêng */
 
@@ -198,8 +201,8 @@
 }
 .btn {
   padding: 8px 16px;
-  border-radius: 16px;
-  background-color: rgb(8, 73, 253);
+  border-radius: 4px;
+  background-color: blue;
   border: none;
   color: white;
   cursor: pointer;
@@ -214,13 +217,18 @@
   background-color: rgb(255, 0, 0);
 }
 /*form*/
+form {
+  padding: 8px;
+  background-color: white;
+}
 .form_add {
-  width: 96%;
-  margin: 0 auto;
+  width: 100%;
+  /* margin: 0 auto; */
+  /* padding: 8px; */
 }
 .form_group-list {
-  width: 94%;
-  margin: 0 auto;
+  width: 96%;
+  margin: 8px auto 0px;
 }
 .form_group {
   margin: 16px 0px;
@@ -239,7 +247,7 @@
   width: 100%;
   padding: 8px 16px;
   margin-top: 8px;
-  border-radius: 16px;
+  border-radius: 4px;
   outline: none;
   border: 1px solid black;
   box-sizing: border-box;
@@ -255,7 +263,8 @@
 }
 th {
   padding: 16px 0px;
-  border-radius: 4px;
+  background-color: rgb(24, 132, 255);
+  color: white;
 }
 .tbody {
   background-color: antiquewhite;
@@ -263,9 +272,25 @@ th {
 }
 td {
   padding: 12px 0px;
-  border-radius: 4px;
-  box-shadow: 0px 1px 3px black;
+  /* box-shadow: 0px 1px 3px black; */
   min-width: 50px;
+}
+table, th, td{
+  border:1px solid #868585;
+}
+table{
+  border-collapse:collapse;
+  width:100%;
+}
+/* th, td{
+  text-align:cen;
+  padding:10px;
+} */
+table tr:nth-child(odd){
+  background-color:#eee;
+}
+table tr:nth-child(even){
+  background-color:white;
 }
 /* -------------------modal--------------- */
 .modal {
