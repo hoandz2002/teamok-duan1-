@@ -61,6 +61,8 @@ function getIdTours($id)
         'description_tours' => $data['description_tours'],
         'price_tours' => $data['price_tours'],
         'id_location' => $data['id_location'],
+        'sale_tours' => $data['sale_tours'],
+        'name_location' => $data['name_location'],
         'image' => $data['image'],
     ];
 
@@ -87,6 +89,14 @@ function deleteTours($id)
 {
     $conn = connect();
     $sql = "DELETE FROM tours WHERE id_tours = :id_tours";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute(['id_tours' => $id]);
+}
+
+function deleteToursImage($id)
+{
+    $conn = connect();
+    $sql = "DELETE FROM img_tours WHERE id_tours = :id_tours";
     $stmt = $conn->prepare($sql);
     $stmt->execute(['id_tours' => $id]);
 }
