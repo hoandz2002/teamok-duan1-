@@ -97,8 +97,8 @@ $data = getAllTours();
                                         </li>
                                     </td>
                                     <td>
-                                        <a class="js-modal-click1"><i class="mr-8 fas fa-cogs"></i></a>
-                                        <a href="" onclick="confirm('Bạn muốn xóa thông tin này!');"><i class="fas fa-trash-alt"></i></a>
+                                        <a href="./edit.php?id_tours=<?=$data[$i]['id_tours']?>" class="js-modal-click1"><i class="mr-8 fas fa-cogs"></i></a>
+                                        <a href="./delete.php?id_tours=<?=$data[$i]['id_tours']?>" onclick="confirm('Bạn muốn xóa thông tin này!');"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
                             <?php } ?>
