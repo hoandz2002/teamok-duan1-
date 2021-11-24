@@ -1,10 +1,11 @@
 <?php
+// session_start();
 require_once './db/connection.php';
 require_once './db/cate_post.php';
 $data_cate = getAll_cate();
-session_start();
 if (empty($_SESSION['user']) == false) {
     $name = '<li class="header__navbar-item-child"><a href="/duan1/acc.php" class="header__navbar-link-child">Thông tin</a></li>
+    <li class="header__navbar-item-child"><a href="/duan1/cart.php" class="header__navbar-link-child">Giỏ hàng</a></li>
         <li class="header__navbar-item-child"><a href="/duan1/logout.php" class="header__navbar-link-child">Đăng xuất</a></li>';
 } else {
     $name = '<li class="header__navbar-item-child"><a href="/duan1/login_form.php" class="header__navbar-link-child">Đăng nhập</a></li>';
@@ -38,9 +39,9 @@ if (empty($_SESSION['user']) == false) {
                 <li class="header__navbar-item">
                     <a href="#" class="header__navbar-item__link">Bài Viết</a>
                     <ul class="header__navbar-list-child">
-                    <?php foreach($data_cate as $ds){ ?>
-                                <li class="header__navbar-item-child"><a href="/duan1/post.php" class="header__navbar-link-child"><?php echo $ds['name_cate_post'];?></a></li>
-                            <?php } ?>
+                        <?php foreach ($data_cate as $ds) { ?>
+                            <li class="header__navbar-item-child"><a href="/duan1/post.php" class="header__navbar-link-child"><?php echo $ds['name_cate_post']; ?></a></li>
+                        <?php } ?>
                     </ul>
                 </li>
                 <li class="header__navbar-item">
