@@ -3,7 +3,7 @@ session_start();
 require_once './../../db/connection.php';
 require_once './../../db/location.php';
 $id = $_GET['id_location'];
-$data = getid_location($id);
+$data_old = getid_location($id);
 if (isset($_POST['submit'])) {
     if (
         empty($_POST['name_location']) ||
@@ -13,10 +13,20 @@ if (isset($_POST['submit'])) {
         header("location: ./update_location.php?id_location=$id");
         die;
     }
+
+    if (isset($_FILES['img_location'])) {
+        $file = $_FILES['img_location'];
+        $file_name = $file['name'];
+        if(empty($file)) {
+            $data['img_location'] = $data_old['img_location'];
+        }
+        move_uploaded_file($file['tmp_name'], './../../asset/img/' . $file_name);
+    }
     $data = [
         'id_location' => $data['id_location'],
         'name_location' => $_POST['name_location'],
-        'description_location' => $_POST['description_location']
+        'description_location' => $_POST['description_location'],
+        'img_location' => $_POST['img_location']['name'],
     ];
     update_location($data);
     header("location: /duan1/admin/location/list_location.php");

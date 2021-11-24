@@ -51,7 +51,6 @@ $data_img = getAllImage($id_tours);
                             <h6 style="font-size: 24px;line-height:24px" class="detail-heading"><?=$data['name_tours']?></h6>
                             <span class="detail-price"><?=$data['price_tours'];?> Đ</span>
                             <p style="font-size:20px;" class="detail-des">
-                               <?=$data['description_tours'];?>
                             </p>
                             <div class="pd-24 detail-qtt">
                                 <div class="grid__row" style="align-items: center;">

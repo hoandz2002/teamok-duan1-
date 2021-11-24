@@ -10,8 +10,15 @@ if(isset($_POST['submit'])){
         header("location: ./add_location.php");
         die;
     }
+    
+    if (isset($_FILES['img_location'])) {
+        $file = $_FILES['img_location'];
+        $file_name = $file['name'];
+        move_uploaded_file($file['tmp_name'], './../../asset/img/' . $file_name);
+    }
     $data = [
         'name_location' => $_POST['name_location'],
+        'img_location'=> $_POST['img_location']['name'],
         'description_location' => $_POST['description_location']
     ];
     insert_location($data);
@@ -78,6 +85,10 @@ if(isset($_POST['submit'])){
                             <div class="form_group">
                                 <lable class="form_lable">Tên địa điểm</lable>
                                 <input type="text" name="name_location" class="form_input">
+                            </div>
+                            <div class="form_group">
+                                <lable class="form_lable">Ảnh đại diện</lable>
+                                <input type="file" name="img_location" class="form_input">
                             </div>
                             <div class="form_group">
                                 <lable class="form_lable">Mô tả</lable>
