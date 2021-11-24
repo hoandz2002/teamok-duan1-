@@ -32,7 +32,7 @@ $data = getall_service();
                     <h2>Danh sách dịch vụ</h2>
                 </div>
                 <div class="right_body">
-                    <table class="table" cellspacing="12">
+                    <table class="table">
                         <thead class="thead">
                             <tr>
                                 <th>ID</th>

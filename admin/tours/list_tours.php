@@ -53,7 +53,7 @@ $data = getAllTours();
                     <h2>List manager post</h2>
                 </div>
                 <div class="right_body">
-                    <table class="table" cellspacing="8">
+                    <table class="table">
                         <thead class="thead">
                             <tr>
                                 <th>ID</th>

@@ -9,11 +9,11 @@
     <link rel="stylesheet" href="/duan1/asset/fonts/fontawesome-free-5.15.3-web/css/all.min.css">
     <link rel="stylesheet" href="/duan1/asset/css/base.css">
     <link rel="stylesheet" href="/duan1/asset/css/main.css">
-    <!-- <link rel="stylesheet" href="/duan1/asset/css/index.css"> -->
+    <link rel="stylesheet" href="/duan1/asset/css/index.css">
     <link rel="stylesheet" href="/duan1/asset/css/location_detail.css">
     <link rel="stylesheet" href="/duan1/asset/css/responsive.css">
     <style>
-
+        
     </style>
 </head>
 

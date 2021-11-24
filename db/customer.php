@@ -89,11 +89,19 @@ function insert_customer(array $data)
     $statement = $conn->prepare($sql);
     $statement->execute($data);
 }
+function update_customer_pass($data)
+{
+    $conn = connect();
+    $sql = "UPDATE customer SET password =:password WHERE id_customer = :id_customer";
+    $statement = $conn->prepare($sql);
+    $statement->execute($data);
+    return true;
+}
 function update_customer($data)
 {
     $conn = connect();
-    $sql = "UPDATE customer SET id_customer =:id_customer, name_customer =:name_customer, cmt_customer =:cmt_customer, phone_customer =:phone_customer," .
-        "email_customer =:email_customer, password =:password, classify_customer =:classify_customer WHERE id_customer = :id_customer";
+    $sql = "UPDATE customer SET name_customer =:name_customer, cmt_customer =:cmt_customer, phone_customer =:phone_customer," .
+        "email_customer =:email_customer WHERE id_customer = :id_customer";
     $statement = $conn->prepare($sql);
     $statement->execute($data);
     return true;

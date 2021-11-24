@@ -33,11 +33,12 @@ $data = getall_location();
                     <h2>Danh sách địa điểm</h2>
                 </div>
                 <div class="right_body">
-                    <table class="table" cellspacing="12">
+                    <table class="table">
                         <thead class="thead">
                             <tr>
                                 <th>ID</th>
                                 <th>Tên địa điểm</th>
+                                <th>Mô tả</th>
                                 <th>Chức năng</th>
                             </tr>
                         </thead>
@@ -66,15 +67,16 @@ $data = getall_location();
                                 <tr>
                                     <td><?= $row['id_location']; ?></td>
                                     <td><?= $row['name_location']; ?></td>
+                                    <td><?= $row['description_location']; ?></td>
                                     <td>
                                         <a href="/duan1/admin/location/update_location.php?id_location=<?= $row['id_location']; ?>"><i class="mr-8 fas fa-cogs"></i></a>
                                         <a href="/duan1/admin/location/delete_location.php?id_location=<?= $row['id_location']; ?>" onclick="return confirm('Bạn muốn xóa địa điểm này!');"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
                             <?php } ?>
-                            <div style="width: 100%; padding: 0px 40px;">
+                            <div style="width: 100%; padding: 2px 40px 8px;">
                                 <?php for ($page = 1; $page <= $number_of_page; $page++) {
-                                    echo '<a style="width: 30px; text-align: center; line-height: 30px; display: inline-block; margin: 0px 8px; background-color: blue; color: white;" href = "list_location.php?page=' . $page . '">' . $page . ' </a>';
+                                    echo '<a style="text-decoration: none; width: 30px; text-align: center; line-height: 30px; display: inline-block; margin: 0px 8px; background-color: blue; color: white;" href = "list_location.php?page=' . $page . '">' . $page . ' </a>';
                                 }
                                 ?>
                             </div>

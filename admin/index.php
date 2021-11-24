@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once './../db/connection.php';
 require_once './../db/cate_post.php';
 require_once './../db/post.php';
@@ -16,6 +17,10 @@ $bill = getall_bill();
 $customer = getall_customer();
 $cate = getAll_cate();
 $service = getall_service();
+if (!isset($_SESSION['user']) || $_SESSION['user'] != null && $_SESSION['user']['classify_customer'] != 1) {
+    unset($_SESSION['user']);
+    header("location: /duan1/login_form.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
