@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once './db/connection.php';
 require_once './db/tour.php';
 $data = getAllTours();

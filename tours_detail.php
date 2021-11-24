@@ -1,11 +1,30 @@
 <?php
+session_start();
 require_once './db/connection.php';
 require_once './db/tour.php';
 require_once './db/service.php';
+require_once './db/comment.php';
 $data_service = getall_service();
 $id_tours = $_GET['id_tours'];
 $data = getIdTours($id_tours);
 $data_img = getAllImage($id_tours);
+$dataComment = getall_bl_id($id_tours);
+if (isset($_POST['comment'])) {
+
+    $id_tours = $_GET['id_tours'];
+
+    $data1 = [
+        'content_comment' => $_POST['content_comment'],
+        'date_comment' => $_POST['date_comment'],
+        'id_customer' => $_POST['id_customer'],
+        'id_tours' => $_POST['id_tours'],
+        'id_comment' => $_POST['id_comment'],
+    ];
+    // var_dump($data1);die;
+    insert_comment($data1);
+    header("location:/duan1/tours_detail.php?id_tours=$id_tours");
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,15 +60,15 @@ $data_img = getAllImage($id_tours);
                             <div class="grid__row">
                                 <?php foreach ($data_img as $value) { ?>
                                     <div class="grid__column-4">
-                                        <img src="/duan1/asset/img/<?=$value['images'];?>" alt="" class="img">
+                                        <img src="/duan1/asset/img/<?= $value['images']; ?>" alt="" class="img">
                                     </div>
                                 <?php    } ?>
                             </div>
                         </div>
                         <!-- content -->
                         <div class="pd-16 grid__column-2">
-                            <h6 style="font-size: 24px;line-height:24px" class="detail-heading"><?=$data['name_tours']?></h6>
-                            <span class="detail-price"><?=$data['price_tours'];?> Đ</span>
+                            <h6 style="font-size: 24px;line-height:24px" class="detail-heading"><?= $data['name_tours'] ?></h6>
+                            <span class="detail-price"><?= $data['price_tours']; ?> Đ</span>
                             <p style="font-size:20px;" class="detail-des">
                             </p>
                             <div class="pd-24 detail-qtt">
@@ -108,7 +127,7 @@ $data_img = getAllImage($id_tours);
                     <div class="content-child">
                         <div id="description-content">
                             <h6 class="description-heading">Description</h6>
-                            <p  class="description-p"><?=$data['description_tours']?></p>
+                            <p class="description-p"><?= $data['description_tours'] ?></p>
                         </div>
                         <div id="information-content">
                             <h6 class="description-heading">Additional information</h6>
@@ -135,51 +154,71 @@ $data_img = getAllImage($id_tours);
                             <h6 class="description-heading">Reviews</h6>
                             <!-- Phần danh sách comment bình luận trong php -->
                             <div class="review">
-                                <div class="review-content">
-                                    <div class="grid__row" style="justify-content: flex-start;">
-                                        <img src="/duan1/asset/img/nav__pc.jpg" width="60px" height="60px" alt="">
-                                        <div class="review-ct">
-                                            <p>Hiếu - 24/11/2021
-                                            <div class="rating">
-                                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <?php for ($i = 0; $i < count($dataComment); $i++) { ?>
+                                    <div class="review-content">
+                                        <div class="grid__row" style="justify-content: flex-start;">
+                                            <img src="/duan1/asset/img/nav__pc.jpg" width="60px" height="60px" alt="">
+                                            <div class="review-ct">
+                                                <p><?= $dataComment[$i]['name_customer'] ?> - <?= $dataComment[$i]['date_comment'] ?> </p>
+                                                <div class="rating">
+                                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                                </div>
+                                                </p>
+                                                <p>
+                                                    <?= $dataComment[$i]['content_comment'] ?>
+                                                </p>
                                             </div>
-                                            </p>
-                                            <p>
-                                                Your email address will not be published. Required fields are marked *
-                                                Add a review
-                                                Your email address will not be published. Required fields are marked *
-                                                Add a review
-                                                Your email address will not be published. Required fields are marked *
-                                            </p>
-
                                         </div>
+                                        <?php
+                                        if (empty($_SESSION['user']) == false) {
+                                            if ($_SESSION['user']['id_customer'] == $dataComment[$i]['id_customer']) { ?>
+                                                <a href="/duan1/db/comment/update.php?id_tours=<?= $dataComment[$i]['id_tours'] ?>"><button name="update" style="margin-top:30px;margin-left:880px" class="btn">Sửa bình luận</button></a>
+                                            <?php }
+                                            if ($_SESSION['user']['id_customer'] == $dataComment[$i]['id_customer'] || $_SESSION['user']['vai_tro'] == 0) { ?>
+                                                <a href="./db/comment/delete.php?id_comment=<?php echo $dataComment[$i]['id_comment'] ?>"><button name="delete" style="" class="btn">Xóa bình luận</button></a>
+                                        <?php } else {
+                                            }
+                                        }
+                                        ?>
                                     </div>
-                                </div>
+                                <?php } ?>
                             </div>
                             <hr style="margin-top: 16px;">
-                            <!-- <p>Add a review</p>
+                            <?php if (empty($_SESSION['user'])) { ?>
+                                <div class="message" style="text-align: center; padding:20px 0px;">
+                                    <span>Bạn cần đăng nhập để sử dụng chức năng bình luận</span>
+                                </div>
+                            <?php } else { ?>
+                                <!-- <p>Add a review</p>
                             <span>Your email address will not be published. Required fields are marked *</span> -->
-                            <form action="" class="form">
-                                <div class="form-group" style="margin-bottom: 16px;">
+                                <form action="/duan1/tours_detail.php?id_tours=<?= $data['id_tours'] ?>" class="form" method="POST">
+                                    <!-- <div class="form-group" style="margin-bottom: 16px;">
                                     <lable class="lable">Your rating *</lable> <br>
                                     <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-                                </div>
-                                <div class="form-group">
-                                    <lable class="lable">Your review *</lable> <br>
-                                    <textarea name="" class="textarea" rows="4"></textarea>
-                                </div>
-                                <div class="form-group">
+                                </div> -->
+                                    <div class="form-group">
+                                        <lable class="lable">Your review *</lable> <br>
+                                        <textarea name="content_comment" class="textarea" rows="4"></textarea>
+                                    </div>
+                                    <input type="date" hidden name="date_comment" value="<?php echo date('Y-m-d'); ?>">
+                                    <input type="hidden" name="id_comment">
+                                    <input type="hidden" name="id_customer" value="<?php if (empty($_SESSION['user']) == false) {
+                                                                                        echo $_SESSION['user']['id_customer'];
+                                                                                    } ?>">
+                                    <input type="hidden" name="id_tours" value="<?php echo $data['id_tours'] ?>">
+                                    <!-- <div class="form-group">
                                     <lable class="lable">Name *</lable> <br>
                                     <input type="text" class="input">
                                 </div>
                                 <div class="form-group">
                                     <lable class="lable">Email *</lable> <br>
                                     <input type="text" class="input" style="width: 40%;">
-                                </div>
-                                <div class="form-group">
-                                    <button class="btn">SUBMIT</button>
-                                </div>
-                            </form>
+                                </div> -->
+                                    <div class="form-group">
+                                        <button class="btn" name="comment">Comment</button>
+                                    </div>
+                                </form>
+                            <?php } ?>
                         </div>
                     </div>
                     <!-- bottom -->
