@@ -3,9 +3,11 @@ require_once './db/connection.php';
 require_once './db/cate_post.php';
 require_once './db/tour.php';
 require_once './db/location.php';
-$data_location = getall_location();
 $data_cate = getAll_cate();
 $data = getAllTours();
+$data_location = getall_location();
+// var_dump($data_location);die;
+
 session_start();
 if (empty($_SESSION['user']) == false) {
     $name = '<li class="header__navbar-item-child"><a href="/duan1/acc.php" class="header__navbar-link-child">Thông tin</a></li>
@@ -13,8 +15,7 @@ if (empty($_SESSION['user']) == false) {
     <li class="header__navbar-item-child"><a href="/duan1/logout.php" class="header__navbar-link-child">Đăng xuất</a></li>';
 } else {
     $name = '<li class="header__navbar-item-child"><a href="/duan1/login_form.php" class="header__navbar-link-child">Đăng nhập</a></li>
-    <li class="header__navbar-item-child"><a href="/duan1/cart.php" class="header__navbar-link-child">Giỏ hàng</a></li>    
-    ';
+    <li class="header__navbar-item-child"><a href="/duan1/cart.php" class="header__navbar-link-child">Giỏ hàng</a></li>    ';
 }
 ?>
 <!DOCTYPE html>
@@ -31,6 +32,11 @@ if (empty($_SESSION['user']) == false) {
     <link rel="stylesheet" href="./asset/css/index.css">
     <link rel="stylesheet" href="./asset/css/responsive.css">
 </head>
+<style>
+    .body__bottom-detail {
+        padding: 20px 0px 0px;
+    }
+</style>
 
 <body>
     <div class="main">
@@ -49,10 +55,10 @@ if (empty($_SESSION['user']) == false) {
                         <a href="/duan1/about.php" class="header__navbar-item__link">Giới Thiệu</a>
                     </li>
                     <li class="header__navbar-item">
-                        <a href="#" class="header__navbar-item__link">Bài Viết</a>
+                        <a href="/duan1/post.php" class="header__navbar-item__link">Bài Viết</a>
                         <ul class="header__navbar-list-child">
                             <?php foreach ($data_cate as $ds) { ?>
-                                <li class="header__navbar-item-child"><a href="/duan1/post.php" class="header__navbar-link-child"><?php echo $ds['name_cate_post']; ?></a></li>
+                                <li class="header__navbar-item-child"><a href="/duan1/post_cate.php?id_cate_post=<?php echo $ds['id_cate_post']; ?>" class="header__navbar-link-child"><?php echo $ds['name_cate_post']; ?></a></li>
                             <?php } ?>
                         </ul>
                     </li>
@@ -245,25 +251,25 @@ if (empty($_SESSION['user']) == false) {
                             <span>Đề xuất của chúng tôi</span>
                             <p>Các <u>Điểm Đến Du Lịch</u></p>
                         </div>
-                        <?php for ($i = 0; $i < count($data); $i++) { ?>
+                        <?php foreach ($data_location as  $value) { ?>
                             <div class="grid__column-3">
                                 <div class="nav__full">
-                                    <img src="./asset/img/<?php echo $data[$i]['image'] ?>" alt="" class="nav__full-img">
+                                    <img src="./asset/img/nav__pc.jpg" alt="" class="nav__full-img">
                                     <div class="nav__full-top">
                                         <img src="./asset/img/nav__pc-icon1.jpg" alt="">
                                     </div>
                                     <div class="nav__full-content">
-                                        <div class="nav__full-heading"><?php echo $data[$i]['name_tours'] ?></div>
-                                        <div class="nav__full-title">3 PACKAGES</div>
+                                        <div class="nav__full-heading"><?php echo $value['name_location'] ?></div>
+                                        <div class="nav__full-title">3 GÓI</div>
                                     </div>
                                     <div class="nav__full-hover">
-                                        <div class="nav__full-hover-heading">Packages</div>
+                                        <div class="nav__full-hover-heading">Gói</div>
                                         <div class="nav__full-hover-content">
                                             <p>Berlin</p>
                                             <p>Amsterdam</p>
                                             <p>Tuscany</p>
                                         </div>
-                                        <a href="/duan1/location_detail.php" class="nav__full-hover-btn">VIEW DESTINATION</a>
+                                        <a href="/duan1/location_detail.php" class="nav__full-hover-btn">Xem chi tiết</a>
                                     </div>
                                 </div>
                             </div>
@@ -404,13 +410,16 @@ if (empty($_SESSION['user']) == false) {
                             <span>KHUYẾN MÃI</span>
                             <p>CÁC <u>ĐỊA ĐIỂM</u></p>
                         </div>
-                        <?php for ($i = 0; $i < count($data); $i++) { ?>
+                        <?php foreach ($data as $value) { ?>
                             <div class="grid__column-3 bordered">
-                                <img src="./asset/img/<?php echo $data[$i]['image'] ?>" alt="" class="body__bottom-img">
+                                <img src="./asset/img/<?= $value['image'] ?>" alt="" class="body__bottom-img" style="height: 252px;overflow: hidden;">
                                 <div class="body__bottom-content">
                                     <div class="body__bottom-title">
-                                        <p><?php echo $data[$i]['name_tours'] ?>    </p>
-                                        <span><i class="fas fa-map-marked"></i> Europe</span>
+                                        <p style="overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;"><?= $value['name_tours'] ?></p>
+                                        <span><i class="fas fa-map-marked"></i><?= $value['name_location'] ?></span>
                                     </div>
                                     <div class="body__bottom-price">
                                         <div class="body__bottom-price-left">
@@ -421,15 +430,14 @@ if (empty($_SESSION['user']) == false) {
                                             </p>
                                         </div>
                                         <div class="body__bottom-price-right">
-                                            <p>500 $</p>
+                                            <p><?= $value['price_tours'] ?>Đ</p>
                                         </div>
                                     </div>
                                     <div class="body__bottom-detail">
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut efficitur ante.
-                                            Donec dapibus dictum scelerisque
+                                        <p style="overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; height: 50px;">
+                                            <?= $value['short_description_tours'] ?>
                                         </p>
-                                        <button>DETAILS</button>
+                                        <button><a href="./tours_detail.php?id_tours=<?= $value['id_tours'] ?>" style="text-decoration: none; color: white;">CHI TIẾT</a></button>
                                     </div>
                                     <div class="possition">
                                         <img src="./asset/img/nav__pc-icon1.jpg" alt="" style="width: 30px;">
@@ -437,7 +445,6 @@ if (empty($_SESSION['user']) == false) {
                                 </div>
                             </div>
                         <?php } ?>
-
                     </div>
                 </div>
             </div>

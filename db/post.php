@@ -22,7 +22,29 @@ function getAll_post()
     }
     return $result;
 }
-
+function getAllId($id)
+{
+    $conn = connect();
+    $sql = "SELECT * FROM post WHERE id_cate_post = :id_cate_post";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute(['id_cate_post' => $id]);
+    $result = [];
+    while (true) {
+        $data = $stmt->fetch();
+        if ($data == false) {
+            break;
+        }
+        $row = [
+            'id_post' => $data['id_post'],
+            'image_post' => $data['image_post'],
+            'name_post' => $data['name_post'],
+            'description_post' => $data['description_post'],
+            'id_cate_post' => $data['id_cate_post'],
+        ];
+        array_push($result, $row);
+    }
+    return $result;
+}
 function getId_post($id)
 {
     $conn = connect();

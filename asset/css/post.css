@@ -13,4 +13,6 @@
     font-size: 12px;
     line-height: 16px;
     letter-spacing: 2px;
+    min-height: 67px;
+    display: block;
 }

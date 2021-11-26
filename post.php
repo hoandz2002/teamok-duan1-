@@ -12,7 +12,11 @@
     <link rel="stylesheet" href="/duan1/asset/css/post.css">
     <link rel="stylesheet" href="/duan1/asset/css/responsive.css">
     <style>
-
+        .grid__column-2 {
+            width: 50%;
+            height: 234px;
+            overflow: hidden;
+        }
     </style>
 </head>
 
@@ -31,88 +35,58 @@
                         </div>
                         <div class="pd-24 grid__column-2" style="background-color: #1bbc9b;">
                             <div class="post-heading">
-                                <p>TRAVEL TIPS</p>
-                                <h2>New Routes</h2>
+                                <p>Danh Mục</p>
+                                <h2>Tin Tức</h2>
                                 <span>
-                                Phasellus enim libero, blandit vel sapien vitae, condimentum ultricies magna et. Quisque euismod orci ut et lobortis.
+                                    Cập nhật nhanh chóng tin tức liên quan về du lịch.
                                 </span>
                             </div>
-                            <a href="/duan1/post_detail.php" class="btn" style="padding: 8px 16px; margin-top: 20px; font-size: 10px;">READ MORE</a>
+                            <a href="/duan1/post_cate.php?id_cate_post=1" class="btn" style="padding: 8px 16px; margin-top: 20px; font-size: 10px;">Xem Thêm</a>
                         </div>
                     </div>
                     <div class="grid__row pd-16 grid__column-2">
                         <div class="grid__column-2">
-                            <img src="/duan1/asset/img/blog-4.jpg" alt="" class="img">
+                            <img src="/duan1/asset/img/blog-3.jpg" alt="" class="img">
                         </div>
-                        <div class="pd-24 grid__column-2" style="background-color: #1bbc9b;">
+                        <div class="pd-24 grid__column-2" style="background-color: #BA71DA;">
                             <div class="post-heading">
-                                <p>TRAVEL TIPS</p>
-                                <h2>New Routes</h2>
+                                <p>Danh Mục</p>
+                                <h2>Cẩm Nang</h2>
                                 <span>
-                                Phasellus enim libero, blandit vel sapien vitae, condimentum ultricies magna et. Quisque euismod orci ut et lobortis.
+                                    Cung cấp cho bạn nhiều cẩm nang du lịch hay và những mẹo khi đi du lịch
                                 </span>
                             </div>
-                            <a href="/duan1/post_detail.php" class="btn" style="padding: 8px 16px; margin-top: 20px; font-size: 10px;">READ MORE</a>
+                            <a href="/duan1/post_cate.php?id_cate_post=2" class="btn" style="padding: 8px 16px; margin-top: 20px; font-size: 10px;">Xem Thêm</a>
                         </div>
                     </div>
                     <div class="grid__row pd-16 grid__column-2">
                         <div class="grid__column-2">
-                            <img src="/duan1/asset/img/blog-4.jpg" alt="" class="img">
+                            <img src="/duan1/asset/img/blog-2.jpg" alt="" class="img">
                         </div>
-                        <div class="pd-24 grid__column-2" style="background-color: #1bbc9b;">
-                            <div class="post-heading">
-                                <p>TRAVEL TIPS</p>
-                                <h2>New Routes</h2>
+                        <div class="pd-24 grid__column-2" style="background-color: #ffffff;">
+                            <div class="post-heading"  style=" color: black;">
+                                <p>Danh Mục</p>
+                                <h2>Sự Kiện</h2>
                                 <span>
-                                Phasellus enim libero, blandit vel sapien vitae, condimentum ultricies magna et. Quisque euismod orci ut et lobortis.
+                                    Sự kiện khuyến mãi giảm giá hấp dẫn của công ty.
                                 </span>
                             </div>
-                            <a href="/duan1/post_detail.php" class="btn" style="padding: 8px 16px; margin-top: 20px; font-size: 10px;">READ MORE</a>
+                            <a href="/duan1/post_cate.php?id_cate_post=3" class="btn" style="padding: 8px 16px; margin-top: 20px; font-size: 10px;">Xem Thêm</a>
                         </div>
                     </div>
                     <div class="grid__row pd-16 grid__column-2">
                         <div class="grid__column-2">
-                            <img src="/duan1/asset/img/blog-4.jpg" alt="" class="img">
+                            <img src="/duan1/asset/img/blog-1.jpg" alt="" class="img">
                         </div>
-                        <div class="pd-24 grid__column-2" style="background-color: #1bbc9b;">
+                        <div class="pd-24 grid__column-2" style="background-color: #14B9D5;">
                             <div class="post-heading">
-                                <p>TRAVEL TIPS</p>
-                                <h2>New Routes</h2>
+                                <p>Danh Mục</p>
+                                <h2>Kiến Thức</h2>
                                 <span>
-                                Phasellus enim libero, blandit vel sapien vitae, condimentum ultricies magna et. Quisque euismod orci ut et lobortis.
+                                    Kiến thức cơ bản cho những người mới bắt đầu trải nghiệm du lịch.
                                 </span>
                             </div>
-                            <a href="/duan1/post_detail.php" class="btn" style="padding: 8px 16px; margin-top: 20px; font-size: 10px;">READ MORE</a>
-                        </div>
-                    </div>
-                    <div class="grid__row pd-16 grid__column-2">
-                        <div class="grid__column-2">
-                            <img src="/duan1/asset/img/blog-4.jpg" alt="" class="img">
-                        </div>
-                        <div class="pd-24 grid__column-2" style="background-color: #1bbc9b;">
-                            <div class="post-heading">
-                                <p>TRAVEL TIPS</p>
-                                <h2>New Routes</h2>
-                                <span>
-                                Phasellus enim libero, blandit vel sapien vitae, condimentum ultricies magna et. Quisque euismod orci ut et lobortis.
-                                </span>
-                            </div>
-                            <a href="/duan1/post_detail.php" class="btn" style="padding: 8px 16px; margin-top: 20px; font-size: 10px;">READ MORE</a>
-                        </div>
-                    </div>
-                    <div class="grid__row pd-16 grid__column-2">
-                        <div class="grid__column-2">
-                            <img src="/duan1/asset/img/blog-4.jpg" alt="" class="img">
-                        </div>
-                        <div class="pd-24 grid__column-2" style="background-color: #1bbc9b;">
-                            <div class="post-heading">
-                                <p>TRAVEL TIPS</p>
-                                <h2>New Routes</h2>
-                                <span>
-                                Phasellus enim libero, blandit vel sapien vitae, condimentum ultricies magna et. Quisque euismod orci ut et lobortis.
-                                </span>
-                            </div>
-                            <a href="/duan1/post_detail.php" class="btn" style="padding: 8px 16px; margin-top: 20px; font-size: 10px;">READ MORE</a>
+                            <a href="/duan1/post_cate.php?id_cate_post=4" class="btn" style="padding: 8px 16px; margin-top: 20px; font-size: 10px;">Xem Thêm</a>
                         </div>
                     </div>
                 </div>

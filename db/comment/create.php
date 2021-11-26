@@ -7,7 +7,7 @@ if(isset($_POST['btn_submit'])){
         'date_comment' => $_POST['date_comment'],
         'rating' => $_POST['rating'],
     ];
-    insert($data);
+    insert_comment($data);
     header("location: ./list_comment.php");
 }
 ?> 

@@ -2,7 +2,7 @@
 session_start();
 require_once './comment.php';
 $id = $_GET['id_comment'];
-$data = getid($id);
+$data = getid_comment($id);
 // var_dump($data); die;
 
 if(isset($_POST['btn_save'])){
@@ -14,7 +14,7 @@ if(isset($_POST['btn_save'])){
         'rating' => $_POST['rating'],
     ];
 
-    update($data);
+    update_comment($data);
     header("location: ./list_comment.php");
 }
 ?>
