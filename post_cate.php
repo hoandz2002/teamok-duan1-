@@ -2,6 +2,7 @@
 require_once './db/connection.php';
 require_once './db/post.php';
 require_once './db/cate_post.php';
+session_start();
 $id = $_GET['id_cate_post'];
 $name = getId_cate($id);
 $getAllId = getAllId($id);
