@@ -17,6 +17,8 @@ if (isset($_POST['submit'])) {
 
     if (empty($_POST['name_tours'])) {
         $_SESSION['error'] = "Không được để trống tên tour";
+    }if (empty($_POST['short_description_tours'])) {
+        $_SESSION['error'] = "Không được để trống mô tả ngắn tour";
     }
     if (empty($_POST['description_tours'])) {
         $_SESSION['error'] = "Không được để trống mô tả tour";
@@ -33,10 +35,12 @@ if (isset($_POST['submit'])) {
 
 
     $name_tours = $_POST['name_tours'];
+    $short_description_tours = $_POST['short_description_tours'];
     $description_tours = $_POST['description_tours'];
     $price_tours = $_POST['price_tours'];
     $sale_tours = $_POST['sale_tours'];
     $id_location = $_POST['id_location'];
+    // $id_category = $_POST['id_category'];
 
 
     if (isset($_FILES['image'])) {
@@ -67,11 +71,11 @@ if (isset($_POST['submit'])) {
         }
     }
 
-    $sql = "UPDATE tours SET name_tours = '$name_tours', description_tours = '$description_tours', price_tours='$price_tours', image ='$file_name', sale_tours='$sale_tours',"
+    $sql = "UPDATE tours SET name_tours = '$name_tours', short_description_tours = '$short_description_tours', description_tours = '$description_tours', price_tours='$price_tours', image ='$file_name', sale_tours='$sale_tours',"
         . "id_location='$id_location' WHERE id_tours = '$id_tours'";
 
     $query = mysqli_query($conn, $sql);
-
+    // var_dump($sql);die;
     header("location:/duan1/admin/tours/list_tours.php");
 }
 ?>
@@ -137,6 +141,10 @@ if (isset($_POST['submit'])) {
                             <div class="form_group">
                                 <lable class="form_lable">Tên tour</lable>
                                 <input value="<?= $data_old['name_tours'] ?>" type="text" name="name_tours" class="form_input">
+                            </div>
+                            <div class="form_group">
+                                <lable class="form_lable">Mô tả ngắn</lable>
+                                <input value="<?= $data_old['short_description_tours'] ?>" type="text" name="short_description_tours" class="form_input">
                             </div>
                             <div class="form_group">
                                 <lable class="form_lable">Mô tả</lable>

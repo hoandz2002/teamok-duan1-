@@ -15,6 +15,7 @@ function getAllTours()
         $row = [
             'id_tours' => $data['id_tours'],
             'name_tours' => $data['name_tours'],
+            'short_description_tours' => $data['short_description_tours'],
             'description_tours' => $data['description_tours'],
             'price_tours' => $data['price_tours'],
             'sale_tours' => $data['sale_tours'],
@@ -58,6 +59,7 @@ function getIdTours($id)
     $row = [
         'id_tours' => $data['id_tours'],
         'name_tours' => $data['name_tours'],
+        'short_description_tours' => $data['short_description_tours'],
         'description_tours' => $data['description_tours'],
         'price_tours' => $data['price_tours'],
         'id_location' => $data['id_location'],
@@ -71,8 +73,8 @@ function getIdTours($id)
 function insertTours(array $data)
 {
     $conn = connect();
-    $sql  = "INSERT INTO tours(name_tours, description_tours, price_tours, sale_tours,id_location)" .
-        "VALUES(:name_tours, :description_tours, :price_tours, :sale_tours,:id_location)";
+    $sql  = "INSERT INTO tours(name_tours, short_description_tours, description_tours, price_tours, sale_tours,id_location)" .
+        "VALUES(:name_tours, :short_description_tours, :description_tours, :price_tours, :sale_tours,:id_location)";
     $stmt = $conn->prepare($sql);
     $stmt->execute($data);
 }
@@ -80,7 +82,7 @@ function insertTours(array $data)
 function updateTours($data)
 {
     $conn = connect();
-    $sql = "UPDATE tours SET name_tours =:name_tours, description_tours =:description_tours, price_tours =:price_tours, id_location =:id_location WHERE id_tours =:id_tours";
+    $sql = "UPDATE tours SET name_tours =:name_tours, short_description_tours =:short_description_tours, description_tours =:description_tours, price_tours =:price_tours, id_location =:id_location WHERE id_tours =:id_tours";
     $stmt = $conn->prepare($sql);
     $stmt->execute($data);
     return true;
