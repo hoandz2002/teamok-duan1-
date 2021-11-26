@@ -12,7 +12,8 @@ if (isset($_POST['btn_save'])) {
     if (
         empty($_POST['name_post']) ||
         empty($_POST['description_post']) ||
-        empty($_POST['id_cate_post'])
+        empty($_POST['id_cate_post']) ||
+        empty($_POST['short_description_post']) 
     ) {
         $_SESSION['thongbao'] = "không để trống thông tin!";
         header("location: ./update_post.php?id_post=$id");
@@ -20,6 +21,7 @@ if (isset($_POST['btn_save'])) {
     }
     $data = [
         'id_post' => $data_id['id_post'],
+        'short_description_post' => $_POST['short_description_post'],
         'image_post' => $_FILES['image_post']['name'],
         'name_post' => $_POST['name_post'],
         'description_post' => $_POST['description_post'],
@@ -107,6 +109,10 @@ if (isset($_POST['btn_save'])) {
                                 <input type="text" name="id_post" value="<?= $data_id['id_post'] ?>" disabled class="form_input" placeholder="Tự động tăng">
                             </div>
                             <div class="form_group">
+                                <lable class="form_lable">Mô tả ngắn bài viết</lable>
+                                <input type="text" value="<?= $data_id['short_description_post'] ?>" name="short_description_post" class="form_input">
+                            </div>
+                            <div class="form_group">
                                 <lable class="form_lable">Ảnh bài viết</lable>
                                 <input type="file" value="<?= $data_id['id_post'] ?>" name="image_post" class="form_input">
                             </div>
@@ -130,7 +136,7 @@ if (isset($_POST['btn_save'])) {
                                 <select class="form_input" name="id_cate_post">
                                     <option value="">Chọn loại bài viết</option>
                                     <?php foreach ($data1 as $ds) { ?>
-                                        <option value="<?= $ds['id_cate_post'] ?>"><?= $ds['name_cate_post'] ?></option>
+                                        <option value="<?= $ds['id_cate_post'] ?>"<?php echo ($ds['id_cate_post'] == $data_id['id_cate_post'] ? 'selected' : '') ?>><?= $ds['name_cate_post'] ?></option>
                                     <?php } ?>
                                 </select>
                             </div>

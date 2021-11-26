@@ -43,9 +43,10 @@ if (isset($_POST['comment'])) {
 
     </style>
 </head>
-
+<form action="./cart.php" method="POST" enctype="multipart/form-data">
 <body>
-    <div class="main">
+  
+  <div class="main">
         <?php require_once './header.php'; ?>
         <div class="body__banner" style="background-image: url(/duan1/asset/img/t-banner.jpg); padding: 10%;">
             <div class="banner-text" style="text-shadow: 0px 1px 2px green;">Shop Detail</div>
@@ -62,9 +63,13 @@ if (isset($_POST['comment'])) {
                                     <div class="grid__column-4">
                                         <img src="/duan1/asset/img/<?= $value['images']; ?>" alt="" class="img">
                                     </div>
-                                <?php    } ?>
+                                <?php } ?>
                             </div>
                         </div>
+                        <input type="hidden" name="image" value="<?= $data['image'] ?>" hidden>
+                        
+                        <input type="text" name="name_tours"  value="<?= $data['name_tours'] ?>" hidden>
+                        <input type="number" name="price_tours"  value="<?= $data['price_tours'] ?>" hidden>
                         <!-- content -->
                         <div class="pd-16 grid__column-2">
                             <h6 style="font-size: 24px;line-height:24px" class="detail-heading"><?= $data['name_tours'] ?></h6>
@@ -73,9 +78,9 @@ if (isset($_POST['comment'])) {
                             </p>
                             <div class="pd-24 detail-qtt">
                                 <div class="grid__row" style="align-items: center;">
-                                    <form action="">
+                                    <form action="" method="POST">
                                         <p>People</p>
-                                        <select name="" id="">
+                                        <select name="quantity_pp" id="">
                                             <option value="">--Select people--</option>
                                             <option value="1">1 people</option>
                                             <option value="2">2 people</option>
@@ -101,7 +106,7 @@ if (isset($_POST['comment'])) {
                                 </div>
                             </div>
                             <div style="text-align: center; margin-top: 72px;">
-                                <a href="" class="btn-add">ADD TO CART</a>
+                            <input type="submit" name="addgiohang" class="cart-btn" value="Add to cart" id="">
                             </div>
                         </div>
                     </div>
@@ -306,4 +311,5 @@ if (isset($_POST['comment'])) {
         </script>
 </body>
 
+  </form>
 </html>

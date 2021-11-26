@@ -17,6 +17,7 @@ function getAll_post()
             'name_post' => $data['name_post'],
             'description_post' => $data['description_post'],
             'name_cate_post' => $data['name_cate_post'],
+            'short_description_post' => $data['short_description_post'],
         ];
         array_push($result, $row);
     }
@@ -40,6 +41,7 @@ function getAllId($id)
             'name_post' => $data['name_post'],
             'description_post' => $data['description_post'],
             'id_cate_post' => $data['id_cate_post'],
+            'short_description_post' => $data['short_description_post'],
         ];
         array_push($result, $row);
     }
@@ -60,6 +62,7 @@ function getId_post($id)
         'name_post' => $data['name_post'],
         'description_post' => $data['description_post'],
         'id_cate_post' => $data['id_cate_post'],
+        'short_description_post' => $data['short_description_post'],
     ];
 
     return $row;
@@ -67,15 +70,15 @@ function getId_post($id)
 function insert_post(array $data)
 {
     $conn = connect();
-    $sql  = "INSERT INTO post(image_post, name_post, description_post, id_cate_post)" .
-        "VALUES(:image_post, :name_post, :description_post, :id_cate_post)";
+    $sql  = "INSERT INTO post(short_description_post,image_post, name_post, description_post, id_cate_post)" .
+        "VALUES(:short_description_post,:image_post, :name_post, :description_post, :id_cate_post)";
     $stmt = $conn->prepare($sql);
     $stmt->execute($data);
 }
 function update_post($data)
 {
     $conn = connect();
-    $sql = "UPDATE post SET image_post =:image_post, name_post =:name_post, description_post =:description_post, id_cate_post =:id_cate_post WHERE id_post = :id_post";
+    $sql = "UPDATE post SET short_description_post =:short_description_post, image_post =:image_post, name_post =:name_post, description_post =:description_post, id_cate_post =:id_cate_post WHERE id_post = :id_post";
     $stmt = $conn->prepare($sql);
     $stmt->execute($data);
     return true;

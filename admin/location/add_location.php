@@ -18,7 +18,7 @@ if(isset($_POST['submit'])){
     }
     $data = [
         'name_location' => $_POST['name_location'],
-        'img_location'=> $_FILES['img_location']['name'],
+        'img_location'=> $_FILES['img_location'],
         'description_location' => $_POST['description_location']
     ];
     insert_location($data);
