@@ -49,7 +49,7 @@ function insert_location(array $data)
 function update_location($data)
 {
     $conn = connect();
-    $sql = "UPDATE location SET name_location = :name_location, description_location = :description_location,img_location = :img_location WHERE id_location = :id_location";
+    $sql = "UPDATE location SET name_location = :name_location, description_location = :description_location, img_location = :img_location WHERE id_location = :id_location";
     $stmt = $conn->prepare($sql);
     $stmt->execute($data);
     return true;

@@ -1,3 +1,19 @@
+<?php
+session_start();
+require_once './db/connection.php';
+require_once './db/location.php';
+$id = $_GET['id_location'];
+$data = getid_location($id);
+
+if (empty($_SESSION['user']) == false) {
+    $name = '<li class="header__navbar-item-child"><a href="/duan1/acc.php" class="header__navbar-link-child">Thông tin</a></li>
+    <li class="header__navbar-item-child"><a href="/duan1/cart.php" class="header__navbar-link-child">Giỏ hàng</a></li>    
+    <li class="header__navbar-item-child"><a href="/duan1/logout.php" class="header__navbar-link-child">Đăng xuất</a></li>';
+} else {
+    $name = '<li class="header__navbar-item-child"><a href="/duan1/login_form.php" class="header__navbar-link-child">Đăng nhập</a></li>
+    <li class="header__navbar-item-child"><a href="/duan1/cart.php" class="header__navbar-link-child">Giỏ hàng</a></li>    ';
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,24 +36,22 @@
 <body>
     <div class="main">
         <?php require_once './header.php'; ?>
-        <div class="body__banner" style="background-image: url(/duan1/asset/img/lc-banner.jpg); padding: 10%;">
+        <div class="body__banner" style="background-image: url(/duan1/asset/img/lc-banner.jpg); padding: 10%; margin-top: 0px;">
             <div class="banner-text" style="text-shadow: 0px 1px 2px green;">Location Detail</div>
         </div>
         <div class="body">
             <div class="grid">
                 <div class="grid__row">
                     <div class="pd-16 grid__column-2-3">
-                        <h3 class="location">Hà Nội</h3>
-                        <p class="location_content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut efficitur ante. Donec dapibus dictum scelerisque    
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut efficitur ante. Donec dapibus dictum scelerisqueLorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut efficitur ante. Donec dapibus dictum scelerisque</p>
+                        <h3 class="location"><?=$data['name_location'];?></h3>
+                        <p class="location_content"><?=$data['description_location'];?></p>
                     </div>
                     <div class="pd-16 grid__column-3" style="border: 0.8px solid #d8d8d8;">
                         <div class="contact-location grid__row">
                             <i class='mr-8 icon-contact fas fa-globe-asia'></i>
                             <div class="ml-8 body-contact">
                                 <h4 class="contact-heading">Địa điểm</h4>
-                                <p class="contact-ct">1 điạ điểm ở Hà Nội</p>
+                                <p class="contact-ct">1 điạ điểm ở <?=$data['name_location'];?></p>
                             </div>
                         </div>
                         <div class="mt-8 contact-location grid__row">

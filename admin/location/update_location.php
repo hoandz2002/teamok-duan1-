@@ -14,26 +14,20 @@ if (isset($_POST['submit'])) {
         die;
     }
     $data = [
-        'id_location' => $data['id_location'],
+        'id_location' => $data_old['id_location'],
         'name_location' => $_POST['name_location'],
         'description_location' => $_POST['description_location'],
         'img_location' => $_FILES['img_location']['name'],
     ];
-    // if (isset($_FILES['img_location'])) {
-    //     $file = $_FILES['img_location'];
-    //     $file_name = $file['name'];
-    //     if(empty($file)) {
-    //         $data['img_location'] = $data_old['img_location'];
-    //     }
-    //     move_uploaded_file($file['tmp_name'], './../../asset/img/' . $file_name);
-    // }
+    
+    //////
     if ($_FILES['img_location']['name'] == '') {
         $data['img_location'] = $data_old['img_location'];
     } else {
         $file_name = $_FILES['img_location']['name'];
         if (strpos($_FILES['img_location']['type'], 'image') === false) {
             $_SESSION['thongbao'] = "File phải là ảnh!";
-            header("location: ./update_location.php?id_location=$id");
+            header("location: ./update_post.php?id_post=$id");
             die;
         }
     }
@@ -42,7 +36,8 @@ if (isset($_POST['submit'])) {
         $file_name = $file['name'];
         move_uploaded_file($file['tmp_name'], './../../asset/img/' . $file_name);
     }
-
+    /////
+    // var_dump($data);die;
     update_location($data);
     header("location: /duan1/admin/location/list_location.php");
 }
@@ -111,7 +106,7 @@ if (isset($_POST['submit'])) {
                             <div class="form_group">
                                 <img src="./../../asset/img/<?= $data_old['img_location']; ?>" width="200px" alt="">
                                 <lable class="form_lable">Ảnh đại diện</lable>
-                                <input type="file" name="img_location" class="form_input">
+                                <input type="file" value="<?= $data_old['img_location']; ?>" name="img_location" class="form_input">
                             </div>
                             <div class="form_group">
                                 <lable class="form_lable">Mô tả</lable>

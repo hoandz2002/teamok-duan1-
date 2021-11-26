@@ -3,6 +3,7 @@ require_once './db/connection.php';
 require_once './db/cate_post.php';
 require_once './db/tour.php';
 require_once './db/location.php';
+
 $data_cate = getAll_cate();
 $data = getAllTours();
 $data_location = getall_location();
@@ -254,22 +255,21 @@ if (empty($_SESSION['user']) == false) {
                         <?php foreach ($data_location as  $value) { ?>
                             <div class="grid__column-3">
                                 <div class="nav__full">
-                                    <img src="./asset/img/nav__pc.jpg" alt="" class="nav__full-img">
+                                    <img src="./asset/img/<?php echo $value['img_location'] ?>" alt="" class="nav__full-img">
                                     <div class="nav__full-top">
                                         <img src="./asset/img/nav__pc-icon1.jpg" alt="">
                                     </div>
                                     <div class="nav__full-content">
                                         <div class="nav__full-heading"><?php echo $value['name_location'] ?></div>
-                                        <div class="nav__full-title">3 GÓI</div>
                                     </div>
                                     <div class="nav__full-hover">
                                         <div class="nav__full-hover-heading">Gói</div>
                                         <div class="nav__full-hover-content">
-                                            <p>Berlin</p>
-                                            <p>Amsterdam</p>
-                                            <p>Tuscany</p>
+                                            <p>Uy Tín</p>
+                                            <p>Chất Lượng</p>
+                                            <p>An Toàn</p>
                                         </div>
-                                        <a href="/duan1/location_detail.php" class="nav__full-hover-btn">Xem chi tiết</a>
+                                        <a href="/duan1/location_detail.php?id_location=<?php echo $value['id_location'] ?>" class="nav__full-hover-btn">Xem chi tiết</a>
                                     </div>
                                 </div>
                             </div>
