@@ -13,21 +13,36 @@ if (isset($_POST['submit'])) {
         header("location: ./update_location.php?id_location=$id");
         die;
     }
-
-    if (isset($_FILES['img_location'])) {
-        $file = $_FILES['img_location'];
-        $file_name = $file['name'];
-        if(empty($file)) {
-            $data['img_location'] = $data_old['img_location'];
-        }
-        move_uploaded_file($file['tmp_name'], './../../asset/img/' . $file_name);
-    }
     $data = [
         'id_location' => $data['id_location'],
         'name_location' => $_POST['name_location'],
         'description_location' => $_POST['description_location'],
-        'img_location' => $_POST['img_location']['name'],
+        'img_location' => $_FILES['img_location']['name'],
     ];
+    // if (isset($_FILES['img_location'])) {
+    //     $file = $_FILES['img_location'];
+    //     $file_name = $file['name'];
+    //     if(empty($file)) {
+    //         $data['img_location'] = $data_old['img_location'];
+    //     }
+    //     move_uploaded_file($file['tmp_name'], './../../asset/img/' . $file_name);
+    // }
+    if ($_FILES['img_location']['name'] == '') {
+        $data['img_location'] = $data_old['img_location'];
+    } else {
+        $file_name = $_FILES['img_location']['name'];
+        if (strpos($_FILES['img_location']['type'], 'image') === false) {
+            $_SESSION['thongbao'] = "File phải là ảnh!";
+            header("location: ./update_location.php?id_location=$id");
+            die;
+        }
+    }
+    if (isset($_FILES['img_location'])) {
+        $file = $_FILES['img_location'];
+        $file_name = $file['name'];
+        move_uploaded_file($file['tmp_name'], './../../asset/img/' . $file_name);
+    }
+
     update_location($data);
     header("location: /duan1/admin/location/list_location.php");
 }
@@ -84,19 +99,24 @@ if (isset($_POST['submit'])) {
                 <?php } ?>
                 <div class="right_body">
                     <div class="form_add">
-                        <form action="/duan1/admin/location/update_location.php?id_location=<?= $data['id_location']; ?>" method="POST">
+                        <form action="/duan1/admin/location/update_location.php?id_location=<?= $data_old['id_location']; ?>" method="POST" enctype="multipart/form-data">
                             <div class="form_group">
                                 <lable class="form_lable">Mã địa điểm</lable>
-                                <input type="text" name="id_location" value="<?= $data['id_location']; ?>" disabled class="form_input" placeholder="Tự động tăng">
+                                <input type="text" name="id_location" value="<?= $data_old['id_location']; ?>" disabled class="form_input" placeholder="Tự động tăng">
                             </div>
                             <div class="form_group">
                                 <lable class="form_lable">Tên địa điểm</lable>
-                                <input type="text" name="name_location" value="<?= $data['name_location']; ?>" class="form_input">
+                                <input type="text" name="name_location" value="<?= $data_old['name_location']; ?>" class="form_input">
+                            </div>
+                            <div class="form_group">
+                                <img src="./../../asset/img/<?= $data_old['img_location']; ?>" width="200px" alt="">
+                                <lable class="form_lable">Ảnh đại diện</lable>
+                                <input type="file" name="img_location" class="form_input">
                             </div>
                             <div class="form_group">
                                 <lable class="form_lable">Mô tả</lable>
                                 <textarea id="description_location" name="description_location" class="form_input">
-                                    <p><?= $data['description_location']; ?></p>
+                                    <p><?= $data_old['description_location']; ?></p>
                                 </textarea>
 
                                 <!-- (3): Code Javascript thay thế textarea có id='description_location' bởi CKEditor -->

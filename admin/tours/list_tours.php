@@ -59,6 +59,7 @@ $data = getAllTours();
                                 <th>ID</th>
                                 <th>Ảnh đại diện</th>
                                 <th>Tên tour</th>
+                                <th>Mô tả ngắn</th>
                                 <th>Giá tour</th>
                                 <th>Giảm giá</th>
                                 <th>Địa điểm</th>
@@ -72,6 +73,7 @@ $data = getAllTours();
                                     <td><?php echo $data[$i]['id_tours'] ?></td>
                                     <td><img width="100px" src="./../../asset/img/<?php echo $data[$i]['image'] ?>"></td>
                                     <td><?php echo $data[$i]['name_tours'] ?></td>
+                                    <td><?php echo $data[$i]['short_description_tours'] ?></td>
                                     <td><?php echo $data[$i]['price_tours'] ?></td>
                                     <td>
                                         <?php if ($data[$i]['sale_tours'] == null) {

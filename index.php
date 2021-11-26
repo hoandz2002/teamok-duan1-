@@ -32,6 +32,11 @@ if (empty($_SESSION['user']) == false) {
     <link rel="stylesheet" href="./asset/css/index.css">
     <link rel="stylesheet" href="./asset/css/responsive.css">
 </head>
+<style>
+    .body__bottom-detail {
+        padding: 20px 0px 0px;
+    }
+</style>
 
 <body>
     <div class="main">
@@ -407,11 +412,14 @@ if (empty($_SESSION['user']) == false) {
                         </div>
                         <?php foreach ($data as $value) { ?>
                             <div class="grid__column-3 bordered">
-                                <img src="./asset/img/<?=$value['image']?>" alt="" class="body__bottom-img">
+                                <img src="./asset/img/<?= $value['image'] ?>" alt="" class="body__bottom-img" style="height: 252px;overflow: hidden;">
                                 <div class="body__bottom-content">
                                     <div class="body__bottom-title">
-                                        <p><?=$value['name_tours']?></p>
-                                        <span><i class="fas fa-map-marked"></i><?=$value['name_location']?></span>
+                                        <p style="overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;"><?= $value['name_tours'] ?></p>
+                                        <span><i class="fas fa-map-marked"></i><?= $value['name_location'] ?></span>
                                     </div>
                                     <div class="body__bottom-price">
                                         <div class="body__bottom-price-left">
@@ -422,15 +430,14 @@ if (empty($_SESSION['user']) == false) {
                                             </p>
                                         </div>
                                         <div class="body__bottom-price-right">
-                                            <p>5<?=$value['price_tours']?>Đ</p>
+                                            <p><?= $value['price_tours'] ?>Đ</p>
                                         </div>
                                     </div>
                                     <div class="body__bottom-detail">
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut efficitur ante.
-                                            Donec dapibus dictum scelerisque
+                                        <p style="overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; height: 50px;">
+                                            <?= $value['short_description_tours'] ?>
                                         </p>
-                                        <button>CHI TIẾT</button>
+                                        <button><a href="./tours_detail.php?id_tours=<?= $value['id_tours'] ?>" style="text-decoration: none; color: white;">CHI TIẾT</a></button>
                                     </div>
                                     <div class="possition">
                                         <img src="./asset/img/nav__pc-icon1.jpg" alt="" style="width: 30px;">

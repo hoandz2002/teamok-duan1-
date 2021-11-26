@@ -12,6 +12,7 @@ $data_location = getall_location();
 if (isset($_POST['submit'])) {
 
     $name_tours = $_POST['name_tours'];
+    $short_description_tours = $_POST['short_description_tours'];
     $description_tours = $_POST['description_tours'];
     $price_tours = $_POST['price_tours'];
     $sale_tours = $_POST['sale_tours'];
@@ -31,7 +32,7 @@ if (isset($_POST['submit'])) {
             move_uploaded_file($files['tmp_name'][$key], './../../asset/img/' . $value);
         }
     }
-    $sql = "INSERT INTO tours(name_tours, description_tours, price_tours, sale_tours,id_location,image) VALUES('$name_tours', '$description_tours', '$price_tours', '$sale_tours','$id_location','$file_name')";
+    $sql = "INSERT INTO tours(name_tours, short_description_tours, description_tours, price_tours, sale_tours,id_location,image) VALUES('$name_tours', '$short_description_tours', '$description_tours', '$price_tours', '$sale_tours','$id_location','$file_name')";
     $query = mysqli_query($conn, $sql);
     $id_tours = mysqli_insert_id($conn);
     foreach ($file_names as $key => $value) {
@@ -81,6 +82,10 @@ if (isset($_POST['submit'])) {
                             <div class="form_group">
                                 <lable class="form_lable">Tên tour</lable>
                                 <input type="text" name="name_tours" class="form_input">
+                            </div>
+                            <div class="form_group">
+                                <lable class="form_lable">Mô tả ngắn</lable>
+                                <input type="text" name="short_description_tours" class="form_input">
                             </div>
                             <div class="form_group">
                                 <lable class="form_lable">Mô tả</lable>

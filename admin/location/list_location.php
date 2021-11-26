@@ -38,7 +38,7 @@ $data = getall_location();
                             <tr>
                                 <th>ID</th>
                                 <th>Tên địa điểm</th>
-                                <th>Mô tả</th>
+                                <!-- <th>Mô tả</th> -->
                                 <th>Chức năng</th>
                             </tr>
                         </thead>
@@ -67,7 +67,6 @@ $data = getall_location();
                                 <tr>
                                     <td><?= $row['id_location']; ?></td>
                                     <td><?= $row['name_location']; ?></td>
-                                    <td><?= $row['description_location']; ?></td>
                                     <td>
                                         <a href="/duan1/admin/location/update_location.php?id_location=<?= $row['id_location']; ?>"><i class="mr-8 fas fa-cogs"></i></a>
                                         <a href="/duan1/admin/location/delete_location.php?id_location=<?= $row['id_location']; ?>" onclick="return confirm('Bạn muốn xóa địa điểm này!');"><i class="fas fa-trash-alt"></i></a>

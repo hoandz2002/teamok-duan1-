@@ -89,26 +89,14 @@ if (isset($_POST['comment'])) {
                                 <div class="grid__row">
                                     <h2>Service</h2>
                                     <div style="flex: 1; margin: 0px 36px;">
-                                        <button class="accordion grid__row">Loại 1 <i class="fas fa-chevron-down"></i></button>
-                                        <div class="panel">
-                                            <p class="service_content">Giá : 1.000.000VND</p>
-                                            <p class="service_content"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at felis laoreet massa cursus pulvinar. Donec non eleifend augue, id tristique nisi. Nunc in leo augue. Cras sapien quam, dictum et molestie id, ultricies.
-                                            </p>
-                                        </div>
-
-                                        <button class="accordion grid__row">Loại 2 <i class="fas fa-chevron-down"></i></button>
-                                        <div class="panel">
-                                            <p class="service_content">Giá : 1.000.000VND</p>
-                                            <p class="service_content"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at felis laoreet massa cursus pulvinar. Donec non eleifend augue, id tristique nisi. Nunc in leo augue. Cras sapien quam, dictum et molestie id, ultricies.
-                                            </p>
-                                        </div>
-
-                                        <button class="accordion grid__row">Loại 3 <i class="fas fa-chevron-down"></i></button>
-                                        <div class="panel">
-                                            <p class="service_content">Giá : 1.000.000VND</p>
-                                            <p class="service_content"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at felis laoreet massa cursus pulvinar. Donec non eleifend augue, id tristique nisi. Nunc in leo augue. Cras sapien quam, dictum et molestie id, ultricies.
-                                            </p>
-                                        </div>
+                                        <?php foreach ($data_service as $value) { ?>
+                                            <a class="accordion grid__row"><?= $value['name_service'] ?><i class="fas fa-chevron-down"></i></a>
+                                            <div class="panel">
+                                            <p class="service_content"><input type="radio" name="id_service" id="service"><lable style="margin-left: 8px;" for="service">Chọn dịch vụ</lable></p>
+                                                <p class="service_content">Giá : <?= $value['price_service'] ?>VND</p>
+                                                <p class="service_content"> <?= $value['description_service'] ?></p>
+                                            </div>
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>
