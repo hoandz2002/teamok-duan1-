@@ -68,7 +68,7 @@ if (isset($_POST['submit'])) {
     }
 
     $sql = "UPDATE tours SET name_tours = '$name_tours', description_tours = '$description_tours', price_tours='$price_tours', image ='$file_name', sale_tours='$sale_tours',"
-        . "id_category='$id_category' WHERE id_tours = '$id_tours'";
+        . "id_location='$id_location' WHERE id_tours = '$id_tours'";
 
     $query = mysqli_query($conn, $sql);
 

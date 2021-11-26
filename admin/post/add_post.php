@@ -10,7 +10,8 @@ if (isset($_POST['btn_save'])) {
         empty($_FILES['image_post']['name']) ||
         empty($_POST['name_post']) ||
         empty($_POST['description_post']) ||
-        empty($_POST['id_cate_post'])
+        empty($_POST['id_cate_post']) ||
+        empty($_POST['short_description_post']) 
     ) {
         $_SESSION['thongbao'] = "không để trống thông tin!";
         header("location: ./add_post.php");
@@ -20,7 +21,8 @@ if (isset($_POST['btn_save'])) {
         'image_post' => $_FILES['image_post']['name'],
         'name_post' => $_POST['name_post'],
         'description_post' => $_POST['description_post'],
-        'id_cate_post' => $_POST['id_cate_post']
+        'id_cate_post' => $_POST['id_cate_post'],
+        'short_description_post' => $_POST['short_description_post'],
     ];
     // var_dump($data_post); die;
     if ($_FILES['image_post']['name'] == '') {
@@ -101,6 +103,10 @@ if (isset($_POST['btn_save'])) {
                             <div class="form_group">
                                 <lable class="form_lable">Mã bài viết</lable>
                                 <input type="text" name="" disabled class="form_input" placeholder="Tự động tăng">
+                            </div>
+                            <div class="form_group">
+                                <lable class="form_lable">Mô tả ngắn bài viết</lable>
+                                <input type="text" name="short_description_post" class="form_input" placeholder="Mô tả ngắn">
                             </div>
                             <div class="form_group">
                                 <lable class="form_lable">Ảnh bài viết</lable>

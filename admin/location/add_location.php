@@ -18,7 +18,7 @@ if(isset($_POST['submit'])){
     }
     $data = [
         'name_location' => $_POST['name_location'],
-        'img_location'=> $_POST['img_location']['name'],
+        'img_location'=> $_FILES['img_location'],
         'description_location' => $_POST['description_location']
     ];
     insert_location($data);
@@ -77,7 +77,7 @@ if(isset($_POST['submit'])){
                 <?php } ?>
                 <div class="right_body">
                     <div class="form_add">
-                        <form action="/duan1/admin/location/add_location.php" method="POST">
+                        <form action="/duan1/admin/location/add_location.php" method="POST" enctype="multipart/form-data">
                             <div class="form_group">
                                 <lable class="form_lable">Mã địa điểm</lable>
                                 <input type="text" name="" disabled class="form_input" placeholder="Tự động tăng">
