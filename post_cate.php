@@ -62,7 +62,7 @@ $ok = $name['name_cate_post'];
                                         <?= $ds['short_description_post']; ?>
                                     </span>
                                 </div>
-                                <a href="/duan1/post_detail.php?id_post=<?= $ds['id_post']; ?>" class="btn" style="padding: 8px 16px; margin-top: 20px; font-size: 10px;">Xem Ngay</a>
+                                <a href="/duan1/post_detail.php?id_post=<?= $ds['id_post']; ?>" class="btn" style="padding: 8px 16px; font-size: 10px;">Xem Ngay</a>
                             </div>
                         </div>
                     <?php } ?>
