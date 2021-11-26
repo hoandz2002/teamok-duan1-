@@ -24,9 +24,10 @@ $data_img = getAllImage($id_tours);
 
     </style>
 </head>
-
+<form action="./cart.php" method="POST" enctype="multipart/form-data">
 <body>
-    <div class="main">
+  
+  <div class="main">
         <?php require_once './header.php'; ?>
         <div class="body__banner" style="background-image: url(/duan1/asset/img/t-banner.jpg); padding: 10%;">
             <div class="banner-text" style="text-shadow: 0px 1px 2px green;">Shop Detail</div>
@@ -43,9 +44,13 @@ $data_img = getAllImage($id_tours);
                                     <div class="grid__column-4">
                                         <img src="/duan1/asset/img/<?=$value['images'];?>" alt="" class="img">
                                     </div>
-                                <?php    } ?>
+                                <?php } ?>
                             </div>
                         </div>
+                        <input type="hidden" name="image" value="<?= $data['image'] ?>" hidden>
+                        
+                        <input type="text" name="name_tours"  value="<?= $data['name_tours'] ?>" hidden>
+                        <input type="number" name="price_tours"  value="<?= $data['price_tours'] ?>" hidden>
                         <!-- content -->
                         <div class="pd-16 grid__column-2">
                             <h6 style="font-size: 24px;line-height:24px" class="detail-heading"><?=$data['name_tours']?></h6>
@@ -55,9 +60,9 @@ $data_img = getAllImage($id_tours);
                             </p>
                             <div class="pd-24 detail-qtt">
                                 <div class="grid__row" style="align-items: center;">
-                                    <form action="">
+                                    <form action="" method="POST">
                                         <p>People</p>
-                                        <select name="" id="">
+                                        <select name="quantity_pp" id="">
                                             <option value="">--Select people--</option>
                                             <option value="1">1 people</option>
                                             <option value="2">2 people</option>
@@ -71,21 +76,21 @@ $data_img = getAllImage($id_tours);
                                 <div class="grid__row">
                                     <h2>Service</h2>
                                     <div style="flex: 1; margin: 0px 36px;">
-                                        <button class="accordion grid__row">Loại 1 <i class="fas fa-chevron-down"></i></button>
+                                        <a class="accordion grid__row">Loại 1 <i class="fas fa-chevron-down"></i></a>
                                         <div class="panel">
                                             <p class="service_content">Giá : 1.000.000VND</p>
                                             <p class="service_content"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at felis laoreet massa cursus pulvinar. Donec non eleifend augue, id tristique nisi. Nunc in leo augue. Cras sapien quam, dictum et molestie id, ultricies.
                                             </p>
                                         </div>
 
-                                        <button class="accordion grid__row">Loại 2 <i class="fas fa-chevron-down"></i></button>
+                                        <a class="accordion grid__row">Loại 2 <i class="fas fa-chevron-down"></i></a>
                                         <div class="panel">
                                             <p class="service_content">Giá : 1.000.000VND</p>
                                             <p class="service_content"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at felis laoreet massa cursus pulvinar. Donec non eleifend augue, id tristique nisi. Nunc in leo augue. Cras sapien quam, dictum et molestie id, ultricies.
                                             </p>
                                         </div>
 
-                                        <button class="accordion grid__row">Loại 3 <i class="fas fa-chevron-down"></i></button>
+                                        <a class="accordion grid__row">Loại 3 <i class="fas fa-chevron-down"></i></a>
                                         <div class="panel">
                                             <p class="service_content">Giá : 1.000.000VND</p>
                                             <p class="service_content"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at felis laoreet massa cursus pulvinar. Donec non eleifend augue, id tristique nisi. Nunc in leo augue. Cras sapien quam, dictum et molestie id, ultricies.
@@ -95,7 +100,7 @@ $data_img = getAllImage($id_tours);
                                 </div>
                             </div>
                             <div style="text-align: center; margin-top: 72px;">
-                                <a href="" class="btn-add">ADD TO CART</a>
+                            <input type="submit" name="addgiohang" class="cart-btn" value="Add to cart" id="">
                             </div>
                         </div>
                     </div>
@@ -280,4 +285,5 @@ $data_img = getAllImage($id_tours);
         </script>
 </body>
 
+  </form>
 </html>

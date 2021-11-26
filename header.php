@@ -8,7 +8,8 @@ if (empty($_SESSION['user']) == false) {
     <li class="header__navbar-item-child"><a href="/duan1/cart.php" class="header__navbar-link-child">Giỏ hàng</a></li>
         <li class="header__navbar-item-child"><a href="/duan1/logout.php" class="header__navbar-link-child">Đăng xuất</a></li>';
 } else {
-    $name = '<li class="header__navbar-item-child"><a href="/duan1/login_form.php" class="header__navbar-link-child">Đăng nhập</a></li>';
+    $name = '<li class="header__navbar-item-child"><a href="/duan1/login_form.php" class="header__navbar-link-child">Đăng nhập</a></li>     <li class="header__navbar-item-child"><a href="/duan1/cart.php" class="header__navbar-link-child">Giỏ hàng</a></li>
+    ';
 }
 ?>
 <!DOCTYPE html>

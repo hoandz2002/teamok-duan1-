@@ -1,14 +1,20 @@
 <?php
 require_once './db/connection.php';
 require_once './db/cate_post.php';
+require_once './db/tour.php';
+require_once './db/location.php';
+$data_location = getall_location();
 $data_cate = getAll_cate();
+$data = getAllTours();
 session_start();
 if (empty($_SESSION['user']) == false) {
     $name = '<li class="header__navbar-item-child"><a href="/duan1/acc.php" class="header__navbar-link-child">Thông tin</a></li>
     <li class="header__navbar-item-child"><a href="/duan1/cart.php" class="header__navbar-link-child">Giỏ hàng</a></li>    
     <li class="header__navbar-item-child"><a href="/duan1/logout.php" class="header__navbar-link-child">Đăng xuất</a></li>';
 } else {
-    $name = '<li class="header__navbar-item-child"><a href="/duan1/login_form.php" class="header__navbar-link-child">Đăng nhập</a></li>';
+    $name = '<li class="header__navbar-item-child"><a href="/duan1/login_form.php" class="header__navbar-link-child">Đăng nhập</a></li>
+    <li class="header__navbar-item-child"><a href="/duan1/cart.php" class="header__navbar-link-child">Giỏ hàng</a></li>    
+    ';
 }
 ?>
 <!DOCTYPE html>
@@ -45,8 +51,8 @@ if (empty($_SESSION['user']) == false) {
                     <li class="header__navbar-item">
                         <a href="#" class="header__navbar-item__link">Bài Viết</a>
                         <ul class="header__navbar-list-child">
-                            <?php foreach($data_cate as $ds){ ?>
-                                <li class="header__navbar-item-child"><a href="/duan1/post.php" class="header__navbar-link-child"><?php echo $ds['name_cate_post'];?></a></li>
+                            <?php foreach ($data_cate as $ds) { ?>
+                                <li class="header__navbar-item-child"><a href="/duan1/post.php" class="header__navbar-link-child"><?php echo $ds['name_cate_post']; ?></a></li>
                             <?php } ?>
                         </ul>
                     </li>
@@ -61,7 +67,7 @@ if (empty($_SESSION['user']) == false) {
                         <a href="#" class="header__navbar-item__link"><i class='fas fa-user'></i></a>
                         <ul class="header__navbar-list-child" style="right: 0; top: 120%;">
                             <!-- <li class="header__navbar-item-child"><a href="/duan1/login_form.php" class="header__navbar-link-child">Đăng nhập</a></li> -->
-                            <?php echo $name;?>
+                            <?php echo $name; ?>
                         </ul>
                     </li>
                     <label for="menu" class="header__navbar-icon">
@@ -239,132 +245,29 @@ if (empty($_SESSION['user']) == false) {
                             <span>Đề xuất của chúng tôi</span>
                             <p>Các <u>Điểm Đến Du Lịch</u></p>
                         </div>
-                        <div class="grid__column-3">
-                            <div class="nav__full">
-                                <img src="./asset/img/nav__pc.jpg" alt="" class="nav__full-img">
-                                <div class="nav__full-top">
-                                    <img src="./asset/img/nav__pc-icon1.jpg" alt="">
-                                </div>
-                                <div class="nav__full-content">
-                                    <div class="nav__full-heading">Europe</div>
-                                    <div class="nav__full-title">3 PACKAGES</div>
-                                </div>
-                                <div class="nav__full-hover">
-                                    <div class="nav__full-hover-heading">Packages</div>
-                                    <div class="nav__full-hover-content">
-                                        <p>Berlin</p>
-                                        <p>Amsterdam</p>
-                                        <p>Tuscany</p>
+                        <?php for ($i = 0; $i < count($data); $i++) { ?>
+                            <div class="grid__column-3">
+                                <div class="nav__full">
+                                    <img src="./asset/img/<?php echo $data[$i]['image'] ?>" alt="" class="nav__full-img">
+                                    <div class="nav__full-top">
+                                        <img src="./asset/img/nav__pc-icon1.jpg" alt="">
                                     </div>
-                                    <a href="/duan1/location_detail.php" class="nav__full-hover-btn">VIEW DESTINATION</a>
+                                    <div class="nav__full-content">
+                                        <div class="nav__full-heading"><?php echo $data[$i]['name_tours'] ?></div>
+                                        <div class="nav__full-title">3 PACKAGES</div>
+                                    </div>
+                                    <div class="nav__full-hover">
+                                        <div class="nav__full-hover-heading">Packages</div>
+                                        <div class="nav__full-hover-content">
+                                            <p>Berlin</p>
+                                            <p>Amsterdam</p>
+                                            <p>Tuscany</p>
+                                        </div>
+                                        <a href="/duan1/location_detail.php" class="nav__full-hover-btn">VIEW DESTINATION</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="grid__column-3">
-                            <div class="nav__full">
-                                <img src="./asset/img/nav__pc.jpg" alt="" class="nav__full-img">
-                                <div class="nav__full-top">
-                                    <img src="./asset/img/nav__pc-icon1.jpg" alt="">
-                                </div>
-                                <div class="nav__full-content">
-                                    <div class="nav__full-heading">Europe</div>
-                                    <div class="nav__full-title">3 PACKAGES</div>
-                                </div>
-                                <div class="nav__full-hover">
-                                    <div class="nav__full-hover-heading">Packages</div>
-                                    <div class="nav__full-hover-content">
-                                        <p>Berlin</p>
-                                        <p>Amsterdam</p>
-                                        <p>Tuscany</p>
-                                    </div>
-                                    <a href="/duan1/location_detail.php" class="nav__full-hover-btn">VIEW DESTINATION</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid__column-3">
-                            <div class="nav__full">
-                                <img src="./asset/img/nav__pc.jpg" alt="" class="nav__full-img">
-                                <div class="nav__full-top">
-                                    <img src="./asset/img/nav__pc-icon1.jpg" alt="">
-                                </div>
-                                <div class="nav__full-content">
-                                    <div class="nav__full-heading">Europe</div>
-                                    <div class="nav__full-title">3 PACKAGES</div>
-                                </div>
-                                <div class="nav__full-hover">
-                                    <div class="nav__full-hover-heading">Packages</div>
-                                    <div class="nav__full-hover-content">
-                                        <p>Berlin</p>
-                                        <p>Amsterdam</p>
-                                        <p>Tuscany</p>
-                                    </div>
-                                    <a href="/duan1/location_detail.php" class="nav__full-hover-btn">VIEW DESTINATION</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid__column-3">
-                            <div class="nav__full">
-                                <img src="./asset/img/nav__pc.jpg" alt="" class="nav__full-img">
-                                <div class="nav__full-top">
-                                    <img src="./asset/img/nav__pc-icon1.jpg" alt="">
-                                </div>
-                                <div class="nav__full-content">
-                                    <div class="nav__full-heading">Europe</div>
-                                    <div class="nav__full-title">3 PACKAGES</div>
-                                </div>
-                                <div class="nav__full-hover">
-                                    <div class="nav__full-hover-heading">Packages</div>
-                                    <div class="nav__full-hover-content">
-                                        <p>Berlin</p>
-                                        <p>Amsterdam</p>
-                                        <p>Tuscany</p>
-                                    </div>
-                                    <a href="/duan1/location_detail.php" class="nav__full-hover-btn">VIEW DESTINATION</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid__column-3">
-                            <div class="nav__full">
-                                <img src="./asset/img/nav__pc.jpg" alt="" class="nav__full-img">
-                                <div class="nav__full-top">
-                                    <img src="./asset/img/nav__pc-icon1.jpg" alt="">
-                                </div>
-                                <div class="nav__full-content">
-                                    <div class="nav__full-heading">Europe</div>
-                                    <div class="nav__full-title">3 PACKAGES</div>
-                                </div>
-                                <div class="nav__full-hover">
-                                    <div class="nav__full-hover-heading">Packages</div>
-                                    <div class="nav__full-hover-content">
-                                        <p>Berlin</p>
-                                        <p>Amsterdam</p>
-                                        <p>Tuscany</p>
-                                    </div>
-                                    <a href="/duan1/location_detail.php" class="nav__full-hover-btn">VIEW DESTINATION</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid__column-3">
-                            <div class="nav__full">
-                                <img src="./asset/img/nav__pc.jpg" alt="" class="nav__full-img">
-                                <div class="nav__full-top">
-                                    <img src="./asset/img/nav__pc-icon1.jpg" alt="">
-                                </div>
-                                <div class="nav__full-content">
-                                    <div class="nav__full-heading">Europe</div>
-                                    <div class="nav__full-title">3 PACKAGES</div>
-                                </div>
-                                <div class="nav__full-hover">
-                                    <div class="nav__full-hover-heading">Packages</div>
-                                    <div class="nav__full-hover-content">
-                                        <p>Berlin</p>
-                                        <p>Amsterdam</p>
-                                        <p>Tuscany</p>
-                                    </div>
-                                    <a href="/duan1/location_detail.php" class="nav__full-hover-btn">VIEW DESTINATION</a>
-                                </div>
-                            </div>
-                        </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -501,105 +404,40 @@ if (empty($_SESSION['user']) == false) {
                             <span>KHUYẾN MÃI</span>
                             <p>CÁC <u>ĐỊA ĐIỂM</u></p>
                         </div>
-                        <div class="grid__column-3 bordered">
-                            <img src="./asset/img/berlin.jpg" alt="" class="body__bottom-img">
-                            <div class="body__bottom-content">
-                                <div class="body__bottom-title">
-                                    <p>Berlin</p>
-                                    <span><i class="fas fa-map-marked"></i> Europe</span>
-                                </div>
-                                <div class="body__bottom-price">
-                                    <div class="body__bottom-price-left">
-                                        <p>CULTURAL</p>
+                        <?php for ($i = 0; $i < count($data); $i++) { ?>
+                            <div class="grid__column-3 bordered">
+                                <img src="./asset/img/<?php echo $data[$i]['image'] ?>" alt="" class="body__bottom-img">
+                                <div class="body__bottom-content">
+                                    <div class="body__bottom-title">
+                                        <p><?php echo $data[$i]['name_tours'] ?>    </p>
+                                        <span><i class="fas fa-map-marked"></i> Europe</span>
+                                    </div>
+                                    <div class="body__bottom-price">
+                                        <div class="body__bottom-price-left">
+                                            <p>CULTURAL</p>
+                                            <p>
+                                                RELAX
+                                                <span class="number">+ 1</span>
+                                            </p>
+                                        </div>
+                                        <div class="body__bottom-price-right">
+                                            <p>500 $</p>
+                                        </div>
+                                    </div>
+                                    <div class="body__bottom-detail">
                                         <p>
-                                            RELAX
-                                            <span class="number">+ 1</span>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut efficitur ante.
+                                            Donec dapibus dictum scelerisque
                                         </p>
+                                        <button>DETAILS</button>
                                     </div>
-                                    <div class="body__bottom-price-right">
-                                        <p>500 $</p>
+                                    <div class="possition">
+                                        <img src="./asset/img/nav__pc-icon1.jpg" alt="" style="width: 30px;">
                                     </div>
-                                </div>
-                                <div class="body__bottom-detail">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut efficitur ante.
-                                        Donec dapibus dictum scelerisque
-                                    </p>
-                                    <button>DETAILS</button>
-                                </div>
-                                <div class="possition">
-                                    <img src="./asset/img/nav__pc-icon1.jpg" alt="" style="width: 30px;">
                                 </div>
                             </div>
+                        <?php } ?>
 
-
-                        </div>
-                        <div class="grid__column-3 bordered">
-                            <img src="./asset/img/berlin.jpg" alt="" class="body__bottom-img">
-                            <div class="body__bottom-content">
-                                <div class="body__bottom-title">
-                                    <p>Berlin</p>
-                                    <span><i class="fas fa-map-marked"></i> Europe</span>
-                                </div>
-                                <div class="body__bottom-price">
-                                    <div class="body__bottom-price-left">
-                                        <p>CULTURAL</p>
-                                        <p>
-                                            RELAX
-                                            <span class="number">+ 1</span>
-                                        </p>
-                                    </div>
-                                    <div class="body__bottom-price-right">
-                                        <p>500 $</p>
-                                    </div>
-                                </div>
-                                <div class="body__bottom-detail">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut efficitur ante.
-                                        Donec dapibus dictum scelerisque
-                                    </p>
-                                    <button>DETAILS</button>
-                                </div>
-                                <div class="possition">
-                                    <img src="./asset/img/nav__pc-icon1.jpg" alt="" style="width: 30px;">
-                                </div>
-                            </div>
-
-
-                        </div>
-                        <div class="grid__column-3 bordered">
-                            <img src="./asset/img/berlin.jpg" alt="" class="body__bottom-img">
-                            <div class="body__bottom-content">
-                                <div class="body__bottom-title">
-                                    <p>Berlin</p>
-                                    <span><i class="fas fa-map-marked"></i> Europe</span>
-                                </div>
-                                <div class="body__bottom-price">
-                                    <div class="body__bottom-price-left">
-                                        <p>CULTURAL</p>
-                                        <p>
-                                            RELAX
-                                            <span class="number">+ 1</span>
-                                        </p>
-                                    </div>
-                                    <div class="body__bottom-price-right">
-                                        <p>500 $</p>
-                                    </div>
-                                </div>
-                                <div class="body__bottom-detail">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut efficitur ante.
-                                        Donec dapibus dictum scelerisque
-                                    </p>
-                                    <button>DETAILS</button>
-                                </div>
-                                <div class="possition">
-                                    <img src="./asset/img/nav__pc-icon1.jpg" alt="" style="width: 30px;">
-                                </div>
-                            </div>
-
-
-                        </div>
                     </div>
                 </div>
             </div>
