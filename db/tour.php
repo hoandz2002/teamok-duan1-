@@ -96,6 +96,31 @@ function getIdTours($id)
 
     return $row;
 }
+function getToursByIdLocation($id)
+{
+    $conn = connect();
+    $sql = "SELECT * FROM tours WHERE id_location =:id_location";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute(['id_location' => $id]);
+    $result = [];
+    while (true) {
+        $data = $stmt->fetch();
+        if ($data == false) {
+            break;
+        }
+        $row = [
+            'id_tours' => $data['id_tours'],
+            'name_tours' => $data['name_tours'],
+            'short_description_tours' => $data['short_description_tours'],
+            'description_tours' => $data['description_tours'],
+            'price_tours' => $data['price_tours'],
+            'sale_tours' => $data['sale_tours'],
+            'image' => $data['image'],
+        ];
+        array_push($result, $row);
+    }
+    return $result;
+}
 function insertTours(array $data)
 {
     $conn = connect();
