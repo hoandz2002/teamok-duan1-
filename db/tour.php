@@ -26,6 +26,32 @@ function getAllTours()
     }
     return $result;
 }
+function getcount($id)
+{
+    $conn = connect();
+    $sql = "SELECT * FROM tours inner join location on tours.id_location = location.id_location WHERE id_location = :id_location";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute(['id_location' => $id]);
+    $result = [];
+    while (true) {
+        $data = $stmt->fetch();
+        if ($data == false) {
+            break;
+        }
+        $row = [
+            'id_tours' => $data['id_tours'],
+            'name_tours' => $data['name_tours'],
+            'short_description_tours' => $data['short_description_tours'],
+            'description_tours' => $data['description_tours'],
+            'price_tours' => $data['price_tours'],
+            'sale_tours' => $data['sale_tours'],
+            'image' => $data['image'],
+            'name_location' => $data['name_location'],
+        ];
+        array_push($result, $row);
+    }
+    return $result;
+}
 function getAllImage($id_tours)
 {
     $conn = connect();

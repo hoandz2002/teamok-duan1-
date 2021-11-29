@@ -12,11 +12,11 @@ $data_location = getall_location();
 session_start();
 if (empty($_SESSION['user']) == false) {
     $name = '<li class="header__navbar-item-child"><a href="/duan1/acc.php" class="header__navbar-link-child">Thông tin</a></li>
-    <li class="header__navbar-item-child"><a href="/duan1/cart.php" class="header__navbar-link-child">Giỏ hàng</a></li>    
+    <li class="header__navbar-item-child"><a href="/duan1/cart.php" class="header__navbar-link-child">Tours</a></li>    
     <li class="header__navbar-item-child"><a href="/duan1/logout.php" class="header__navbar-link-child">Đăng xuất</a></li>';
 } else {
     $name = '<li class="header__navbar-item-child"><a href="/duan1/login_form.php" class="header__navbar-link-child">Đăng nhập</a></li>
-    <li class="header__navbar-item-child"><a href="/duan1/cart.php" class="header__navbar-link-child">Giỏ hàng</a></li>    ';
+    <li class="header__navbar-item-child"><a href="/duan1/regist_form.php" class="header__navbar-link-child">Đăng ký</a></li>    ';
 }
 ?>
 <!DOCTYPE html>
@@ -263,7 +263,7 @@ if (empty($_SESSION['user']) == false) {
                                         <div class="nav__full-heading"><?php echo $value['name_location'] ?></div>
                                     </div>
                                     <div class="nav__full-hover">
-                                        <div class="nav__full-hover-heading">Gói</div>
+                                        <div class="nav__full-hover-heading">Địa điểm</div>
                                         <div class="nav__full-hover-content">
                                             <p>Uy Tín</p>
                                             <p>Chất Lượng</p>

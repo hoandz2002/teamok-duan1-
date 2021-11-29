@@ -43,10 +43,10 @@ if (isset($_POST['comment'])) {
 
     </style>
 </head>
-<form action="./cart.php" method="POST" enctype="multipart/form-data">
+
 <body>
-  
-  <div class="main">
+
+    <div class="main">
         <?php require_once './header.php'; ?>
         <div class="body__banner" style="background-image: url(/duan1/asset/img/t-banner.jpg); padding: 10%;">
             <div class="banner-text" style="text-shadow: 0px 1px 2px green;">Shop Detail</div>
@@ -55,6 +55,7 @@ if (isset($_POST['comment'])) {
             <div class="grid">
                 <div class="grid-with-width">
                     <div class="grid__row">
+
                         <!-- img -->
                         <div class="pd-16 grid__column-2">
                             <img src="/duan1/asset/img/<?= $data['image'] ?>" alt="" class="img">
@@ -67,9 +68,9 @@ if (isset($_POST['comment'])) {
                             </div>
                         </div>
                         <input type="hidden" name="image" value="<?= $data['image'] ?>" hidden>
-                        
-                        <input type="text" name="name_tours"  value="<?= $data['name_tours'] ?>" hidden>
-                        <input type="number" name="price_tours"  value="<?= $data['price_tours'] ?>" hidden>
+
+                        <input type="text" name="name_tours" value="<?= $data['name_tours'] ?>" hidden>
+                        <input type="number" name="price_tours" value="<?= $data['price_tours'] ?>" hidden>
                         <!-- content -->
                         <div class="pd-16 grid__column-2">
                             <h6 style="font-size: 24px;line-height:24px" class="detail-heading"><?= $data['name_tours'] ?></h6>
@@ -78,16 +79,11 @@ if (isset($_POST['comment'])) {
                             </p>
                             <div class="pd-24 detail-qtt">
                                 <div class="grid__row" style="align-items: center;">
-                                    <form action="" method="POST">
-                                        <p>People</p>
-                                        <select name="quantity_pp" id="">
-                                            <option value="">--Select people--</option>
-                                            <option value="1">1 people</option>
-                                            <option value="2">2 people</option>
-                                            <option value="3">3 people</option>
-                                        </select>
-                                        <button type="reset">Clear</button>
-                                    </form>
+                                    <!-- <form action="" method="POST"> -->
+                                    <p>People</p>
+                                    <input type="number" name="quantity_pp" placeholder="Chọn số lượng người" style="width: 320px;padding: 8px 16px;border-radius: 16px;outline: none; border: 1px solid;">
+                                    <button type="reset">Clear</button>
+                                    <!-- </form> -->
                                 </div>
                             </div>
                             <div class="pd-24 detail-service">
@@ -97,25 +93,35 @@ if (isset($_POST['comment'])) {
                                         <?php foreach ($data_service as $value) { ?>
                                             <a class="accordion grid__row"><?= $value['name_service'] ?><i class="fas fa-chevron-down"></i></a>
                                             <div class="panel">
-                                            <p class="service_content"><input type="radio" name="id_service" id="service"><lable style="margin-left: 8px;" for="service">Chọn dịch vụ</lable></p>
-                                                <p class="service_content">Giá : <?= $value['price_service'] ?>VND</p>
-                                                <p class="service_content"> <?= $value['description_service'] ?></p>
+                                                <p class="service_content"><input type="radio" name="id_service" id="service">
+                                                    <lable style="margin-left: 8px;" for="service">Chọn dịch vụ</lable>
+                                                </p>
+                                                <p class="service_content"><b>Giá</b> : <span style="color: red; font-size: 14px;"><?= $value['price_service'] ?><b>VNĐ</b></span></p>
+                                                <p style="color: blue;" class="service_content"> <?= $value['description_service'] ?></p>
                                             </div>
                                         <?php } ?>
                                     </div>
                                 </div>
                             </div>
-                            <div style="text-align: center; margin-top: 72px;">
-                            <input type="submit" name="addgiohang" class="cart-btn" value="Add to cart" id="">
+                            <div class="pd-24 detail-qtt">
+                                <div class="grid__row" style="align-items: center;">
+                                    <form action="" method="POST">
+                                        <p>Date start</p>
+                                        <input type="date" name="date_start" style="width: 320px;padding: 8px 16px;border-radius: 16px;outline: none; border: 1px solid;">
+                                    </form>
+                                </div>
+                            </div>
+                            <div style="text-align: center; margin-top: 32px;">
+                                <input type="submit" name="addgiohang" class="btn" value="Đặt tours" id="">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="grid-with-width">
                     <ul class="list-child">
+                        <li class="item-child" id="okK2"><a class="link-child" onclick="myFunction2()">Reviews</a></li>
                         <li class="item-child" id="okK" style="border-color: red;"><a class="link-child" onclick="myFunction()">Description</a></li>
                         <li class="item-child" id="okK1"><a class="link-child" onclick="myFunction1()">Additional information</a></li>
-                        <li class="item-child" id="okK2"><a class="link-child" onclick="myFunction2()">Reviews</a></li>
                     </ul>
                     <div class="content-child">
                         <div id="description-content">
@@ -167,7 +173,7 @@ if (isset($_POST['comment'])) {
                                             if ($_SESSION['user']['id_customer'] == $dataComment[$i]['id_customer']) { ?>
                                                 <a href="/duan1/db/comment/update.php?id_tours=<?= $dataComment[$i]['id_tours'] ?>"><button name="update" style="margin-top:30px;margin-left:880px" class="btn">Sửa bình luận</button></a>
                                             <?php }
-                                            if ($_SESSION['user']['id_customer'] == $dataComment[$i]['id_customer'] || $_SESSION['user']['vai_tro'] == 0) { ?>
+                                            if ($_SESSION['user']['id_customer'] == $dataComment[$i]['id_customer'] || $_SESSION['user']['classify_customer'] == 1) { ?>
                                                 <a href="./db/comment/delete.php?id_comment=<?php echo $dataComment[$i]['id_comment'] ?>"><button name="delete" style="" class="btn">Xóa bình luận</button></a>
                                         <?php } else {
                                             }
@@ -311,5 +317,4 @@ if (isset($_POST['comment'])) {
         </script>
 </body>
 
-  </form>
 </html>
