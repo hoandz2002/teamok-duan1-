@@ -120,8 +120,8 @@ if (isset($_POST['comment'])) {
                 </div>
                 <div class="grid-with-width">
                     <ul class="list-child">
-                        <li class="item-child" id="okK2"><a class="link-child" onclick="myFunction2()">Reviews</a></li>
-                        <li class="item-child" id="okK" style="border-color: red;"><a class="link-child" onclick="myFunction()">Description</a></li>
+                        <li class="item-child" id="okK2" style="border-color: red;"><a class="link-child" onclick="myFunction2()">Reviews</a></li>
+                        <li class="item-child" id="okK"><a class="link-child" onclick="myFunction()">Description</a></li>
                         <li class="item-child" id="okK1"><a class="link-child" onclick="myFunction1()">Additional information</a></li>
                     </ul>
                     <div class="content-child">

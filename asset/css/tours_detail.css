@@ -105,6 +105,7 @@
 }
 #description-content {
   padding: 16px 24px;
+  display: none;
 }
 .description-heading {
   font-size: 28px;
@@ -124,7 +125,6 @@
 }
 #view-content {
   padding: 16px 24px;
-  display: none;
 }
 #view-content p,
 span {
