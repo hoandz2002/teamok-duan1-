@@ -44,7 +44,6 @@ if (isset($_POST['comment'])) {
 
     </style>
 </head>
-<form action="./cart.php" method="POST" enctype="multipart/form-data">
 <body>
   
   <div class="main">
@@ -312,5 +311,4 @@ if (isset($_POST['comment'])) {
         </script>
 </body>
 
-  </form>
 </html>
