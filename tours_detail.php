@@ -5,6 +5,7 @@ require_once './db/tour.php';
 require_once './db/service.php';
 require_once './db/comment.php';
 $data_service = getall_service();
+// var_dump($data_service);die;
 $id_tours = $_GET['id_tours'];
 $data = getIdTours($id_tours);
 $data_img = getAllImage($id_tours);

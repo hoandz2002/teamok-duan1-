@@ -2,6 +2,7 @@
 require_once './db/connection.php';
 require_once './db/post.php';
 require_once './db/cate_post.php';
+session_start();
 $id = $_GET['id_cate_post'];
 $name = getId_cate($id);
 $getAllId = getAllId($id);
@@ -61,7 +62,7 @@ $ok = $name['name_cate_post'];
                                         <?= $ds['short_description_post']; ?>
                                     </span>
                                 </div>
-                                <a href="/duan1/post_detail.php?id_post=<?= $ds['id_post']; ?>" class="btn" style="padding: 8px 16px; margin-top: 20px; font-size: 10px;">Xem Ngay</a>
+                                <a href="/duan1/post_detail.php?id_post=<?= $ds['id_post']; ?>" class="btn" style="padding: 8px 16px; font-size: 10px;">Xem Ngay</a>
                             </div>
                         </div>
                     <?php } ?>

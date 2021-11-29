@@ -2,8 +2,10 @@
 session_start();
 require_once './db/connection.php';
 require_once './db/location.php';
+require_once './db/tour.php';
 $id = $_GET['id_location'];
 $data = getid_location($id);
+$data_tours = getToursByIdLocation($id);
 
 if (empty($_SESSION['user']) == false) {
     $name = '<li class="header__navbar-item-child"><a href="/duan1/acc.php" class="header__navbar-link-child">Thông tin</a></li>
@@ -36,7 +38,7 @@ if (empty($_SESSION['user']) == false) {
 <body>
     <div class="main">
         <?php require_once './header.php'; ?>
-        <div class="body__banner" style="background-image: url(/duan1/asset/img/lc-banner.jpg); padding: 10%; margin-top: 0px;">
+        <div class="body__banner" style="background-image: url('/duan1/asset/img/<?=$data['img_location'];?>'); padding: 10%; margin-top: 0px;">
             <div class="banner-text" style="text-shadow: 0px 1px 2px green;">Location Detail</div>
         </div>
         <div class="body">
@@ -74,15 +76,15 @@ if (empty($_SESSION['user']) == false) {
                     <div class="grid">
                         <div class="grid__row">
                             <div class="body__content">
-                                <span>KHUYẾN MÃI</span>
                                 <p>CÁC <u>ĐỊA ĐIỂM</u></p>
                             </div>
-                            <div class="grid__column-3 bordered">
-                                <img src="./asset/img/berlin.jpg" alt="" class="body__bottom-img">
+                            <?php for ($i=0; $i < count($data_tours) ; $i++) { ?>
+                                <div class="grid__column-3 bordered">
+                                <img src="./asset/img/<?=$data_tours[$i]['image']?>" alt="" class="body__bottom-img">
                                 <div class="body__bottom-content">
                                     <div class="body__bottom-title">
-                                        <p>Berlin</p>
-                                        <span><i class="fas fa-map-marked"></i> Europe</span>
+                                        <p style="line-height:2.5rem"><?=$data_tours[$i]['name_tours']?></p>
+                                        <span><i class="fas fa-map-marked"></i> Đồng tháp</span>
                                     </div>
                                     <div class="body__bottom-price">
                                         <div class="body__bottom-price-left">
@@ -93,89 +95,21 @@ if (empty($_SESSION['user']) == false) {
                                             </p>
                                         </div>
                                         <div class="body__bottom-price-right">
-                                            <p>500 $</p>
+                                            <p><?=$data_tours[$i]['price_tours']?>Đ</p>
                                         </div>
                                     </div>
                                     <div class="body__bottom-detail">
                                         <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut efficitur ante.
-                                            Donec dapibus dictum scelerisque
+                                        <?=$data_tours[$i]['short_description_tours']?>
                                         </p>
-                                        <button>DETAILS</button>
+                                       <a href="./tours_detail.php?id_tours=<?=$data_tours[$i]['id_tours']?>"> <button>DETAILS</button></a>
                                     </div>
                                     <div class="possition">
                                         <img src="./asset/img/nav__pc-icon1.jpg" alt="" style="width: 30px;">
                                     </div>
                                 </div>
-
-
                             </div>
-                            <div class="grid__column-3 bordered">
-                                <img src="./asset/img/berlin.jpg" alt="" class="body__bottom-img">
-                                <div class="body__bottom-content">
-                                    <div class="body__bottom-title">
-                                        <p>Berlin</p>
-                                        <span><i class="fas fa-map-marked"></i> Europe</span>
-                                    </div>
-                                    <div class="body__bottom-price">
-                                        <div class="body__bottom-price-left">
-                                            <p>CULTURAL</p>
-                                            <p>
-                                                RELAX
-                                                <span class="number">+ 1</span>
-                                            </p>
-                                        </div>
-                                        <div class="body__bottom-price-right">
-                                            <p>500 $</p>
-                                        </div>
-                                    </div>
-                                    <div class="body__bottom-detail">
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut efficitur ante.
-                                            Donec dapibus dictum scelerisque
-                                        </p>
-                                        <button>DETAILS</button>
-                                    </div>
-                                    <div class="possition">
-                                        <img src="./asset/img/nav__pc-icon1.jpg" alt="" style="width: 30px;">
-                                    </div>
-                                </div>
-
-
-                            </div>
-                            <div class="grid__column-3 bordered">
-                                <img src="./asset/img/berlin.jpg" alt="" class="body__bottom-img">
-                                <div class="body__bottom-content">
-                                    <div class="body__bottom-title">
-                                        <p>Berlin</p>
-                                        <span><i class="fas fa-map-marked"></i> Europe</span>
-                                    </div>
-                                    <div class="body__bottom-price">
-                                        <div class="body__bottom-price-left">
-                                            <p>CULTURAL</p>
-                                            <p>
-                                                RELAX
-                                                <span class="number">+ 1</span>
-                                            </p>
-                                        </div>
-                                        <div class="body__bottom-price-right">
-                                            <p>500 $</p>
-                                        </div>
-                                    </div>
-                                    <div class="body__bottom-detail">
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut efficitur ante.
-                                            Donec dapibus dictum scelerisque
-                                        </p>
-                                        <button>DETAILS</button>
-                                    </div>
-                                    <div class="possition">
-                                        <img src="./asset/img/nav__pc-icon1.jpg" alt="" style="width: 30px;">
-                                    </div>
-                                </div>
-
-
-                            </div>
+                          <?php  }?>
                         </div>
                     </div>
                 </div>
