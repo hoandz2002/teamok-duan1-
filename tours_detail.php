@@ -44,7 +44,6 @@ if (isset($_POST['comment'])) {
 
     </style>
 </head>
-
 <body>
 
     <div class="main">
