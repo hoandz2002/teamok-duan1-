@@ -1,53 +1,64 @@
 .tours-content {
-  font-size: 24px;
+    font-size: 24px;
 }
+
 .tours-heading {
-  font-size: 24px;
-  margin: 20px 0px 16px;
-  font-weight: 200;
+    font-size: 24px;
+    margin: 20px 0px 16px;
+    font-weight: 200;
 }
+
 .tours-content p {
-  font-size: 16px;
-  color: #b8b8b8;
-  margin-bottom: 16px;
+    font-size: 16px;
+    color: #b8b8b8;
+    margin-bottom: 16px;
 }
+
 .tours-btn {
-  font-size: 14px;
-  color: #b8b8b8;
-  padding: 8px 16px;
-  border: 1px solid #b8b8b8;
+    font-size: 14px;
+    color: #b8b8b8;
+    padding: 8px 16px;
+    border: 1px solid #b8b8b8;
 }
+
 .detail-heading {
-  font-size: 32px;
-  letter-spacing: 1px;
-  font-weight: 200;
+    font-size: 32px;
+    letter-spacing: 1px;
+    font-weight: 200;
 }
+
 .detail-price {
-  font-size: 32px;
-  color: #b8b8b8;
-  margin: 32px 0px;
-  display: block;
+    font-size: 32px;
+    color: #b8b8b8;
+    margin: 32px 0px;
+    display: block;
 }
+
 .detail-des {
-  font-size: 16px;
-  letter-spacing: 2px;
-  line-height: 24px;
-  color: #a0a0a0;
+    font-size: 16px;
+    letter-spacing: 2px;
+    line-height: 24px;
+    color: #a0a0a0;
 }
+
 .detail-qtt {
-  margin: 24px 0px 0px;
+    margin: 24px 0px 0px;
 }
+
 .detail-qtt p {
-  font-size: 18px;
-  display: inline-block;
-  margin-right: 34px;
+    font-size: 18px;
+    display: inline-block;
+    margin-right: 34px;
 }
+
 .detail-qtt select {
-  width: 320px;
-  padding: 8px 16px;
-  border-radius: 16px;
-  outline: none;
+    width: 320px;
+    padding: 8px 16px;
+    border-radius: 16px;
+    outline: none;
 }
+
+
 /* .detail-qtt option {
   width: 320px;
   padding: 8px 16px;
@@ -55,171 +66,197 @@
   outline: none;
   border: none;
 } */
+
 .detail-qtt button {
-  padding: 8px 12px;
-  letter-spacing: 2px;
-  background-color: rgb(255, 116, 116);
-  border: none;
-  outline: none;
+    padding: 8px 12px;
+    letter-spacing: 2px;
+    background-color: rgb(255, 116, 116);
+    border: none;
+    outline: none;
 }
-.detail-service {
-}
+
 .detail-service span {
-  font-size: 18px;
-  display: inline-block;
-  margin-right: 34px;
+    font-size: 18px;
+    display: inline-block;
+    margin-right: 34px;
 }
+
 .detail-service select {
-  flex: 1;
-  padding: 8px 16px;
-  border-radius: 16px;
-  outline: none;
+    flex: 1;
+    padding: 8px 16px;
+    border-radius: 16px;
+    outline: none;
 }
+
 .btn-add {
-  background-color: #1bbc9b;
-  padding: 16px 48px;
-  text-decoration: none;
-  color: white;
-  font-size: 20px;
-  font-weight: 600;
+    background-color: #1bbc9b;
+    padding: 16px 48px;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
 }
+
 .list-child {
-  list-style: none;
-  padding: 0px 32px;
-  margin-top: 24px;
+    list-style: none;
+    padding: 0px 32px;
+    margin-top: 24px;
 }
+
 .item-child {
-  display: inline-block;
-  margin: 0px 12px;
-  padding: 8px 16px;
-  border-bottom: 2px solid;
+    display: inline-block;
+    margin: 0px 12px;
+    padding: 8px 16px;
+    border-bottom: 2px solid;
 }
+
 .link-child {
-  font-size: 24px;
-  text-decoration: none;
-  color: black;
-  cursor: pointer;
+    font-size: 24px;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
 }
+
 .content-child {
-  margin: 24px 0px;
+    margin: 24px 0px;
 }
+
 #description-content {
-  padding: 16px 24px;
-  display: none;
+    display: none;
+    padding: 16px 24px;
+    display: none;
 }
+
 .description-heading {
-  font-size: 28px;
-  font-weight: 200;
-  color: #a0a0a0;
-  margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: 200;
+    color: #a0a0a0;
+    margin-bottom: 20px;
 }
+
 .description-p {
-  font-size: 16px;
-  letter-spacing: 1px;
-  line-height: 24px;
-  color: #a0a0a0;
+    font-size: 16px;
+    letter-spacing: 1px;
+    line-height: 24px;
+    color: #a0a0a0;
 }
+
 #information-content {
-  padding: 16px 24px;
-  display: none;
+    padding: 16px 24px;
+    display: none;
 }
+
 #view-content {
-  padding: 16px 24px;
+    padding: 16px 24px;
 }
+
 #view-content p,
 span {
-  font-size: 18px;
-  line-height: 18px;
-  margin: 4px 0px;
-  color: #b8b8b8;
+    font-size: 18px;
+    line-height: 18px;
+    margin: 4px 0px;
+    color: #b8b8b8;
 }
+
 .ct {
-  padding: 12px 16px;
-  display: flex;
-  font-size: 14px;
-  border: 1px solid #a0a0a0;
+    padding: 12px 16px;
+    display: flex;
+    font-size: 14px;
+    border: 1px solid #a0a0a0;
 }
+
 .ct1 {
-  padding: 12px 16px;
-  display: flex;
-  font-size: 14px;
-  border: 1px solid #a0a0a0;
-  background-color: rgb(228, 228, 228);
+    padding: 12px 16px;
+    display: flex;
+    font-size: 14px;
+    border: 1px solid #a0a0a0;
+    background-color: rgb(228, 228, 228);
 }
+
 .ct p,
 .ct1 p {
-  width: 300px;
-  letter-spacing: 2px;
+    width: 300px;
+    letter-spacing: 2px;
 }
+
 .ct i,
 .ct1 i {
-  flex: 1;
-  text-align: center;
-  letter-spacing: 2px;
+    flex: 1;
+    text-align: center;
+    letter-spacing: 2px;
 }
+
 .form {
-  margin-top: 32px;
+    margin-top: 32px;
 }
+
 .lable {
-  font-size: 18px;
-  color: #a0a0a0;
+    font-size: 18px;
+    color: #a0a0a0;
 }
+
 .input,
 .textarea {
-  width: 100%;
-  padding: 8px 16px;
-  border-radius: 16px;
-  outline: none;
-  color: #a0a0a0;
-  border: 1px solid #b8b8b8;
-  margin: 8px 0px 16px;
+    width: 100%;
+    padding: 8px 16px;
+    border-radius: 16px;
+    outline: none;
+    color: #a0a0a0;
+    border: 1px solid #b8b8b8;
+    margin: 8px 0px 16px;
 }
-.review {
-}
+
 .review-ct {
-  flex: 1;
-  margin-left: 20px;
-  font-size: 12px;
+    flex: 1;
+    margin-left: 20px;
+    font-size: 12px;
 }
+
+
 /* accodition */
+
 .accordion {
-  background-color: #eee;
-  color: #444;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-  transition: 0.4s;
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
 }
+
 .accordion.active i {
-  transform: rotate(180deg);
-} 
+    transform: rotate(180deg);
+}
+
 .active,
 .accordion:hover {
-  background-color: #ccc;
+    background-color: #ccc;
 }
 
 .panel {
-  padding: 8px 18px;
-  display: none;
-  background-color: white;
-  overflow: hidden;
+    padding: 8px 18px;
+    display: none;
+    background-color: white;
+    overflow: hidden;
 }
+
 .panel p {
-  font-size:14px;
-  letter-spacing: 1px;
-  color: #a8a8a8;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #a8a8a8;
 }
+
 @keyframes accordion {
-  from {
-    opacity: 0;
-    transform: translateY(0%);
-  }
-  to {
-    transform: translateY(10%);
-    opacity: 1;
-  }
+    from {
+        opacity: 0;
+        transform: translateY(0%);
+    }
+    to {
+        transform: translateY(10%);
+        opacity: 1;
+    }
 }
