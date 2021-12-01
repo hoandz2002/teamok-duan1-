@@ -41,9 +41,11 @@ $data = getall_bill();
                                 <th>số người</th>
                                 <th>Giá</th>
                                 <th>Tên tour</th>
-                                <th>thời gian đặt tour</th>
+                                <th>thời gian đặt</th>
                                 <th>Loại dịch vụ</th>
-                                <th>thời gian khởi hành</th>
+                                <th>Giá dịch vụ</th>
+                                <th>Total</th>
+                                <th>thời gian đi</th>
                                 <th colspan="2">Chức năng</th>
                             </tr>
                         </thead>
@@ -69,6 +71,7 @@ $data = getall_bill();
                             $query = "SELECT * FROM bill_tours inner join customer on bill_tours.id_customer = customer.id_customer inner join tours on bill_tours.id_tours = tours.id_tours  inner join service on bill_tours.id_service = service.id_service LIMIT " . $page_first_result . ',' . $results_per_page;
                             $result = mysqli_query($conn, $query);
                             while ($row = mysqli_fetch_array($result)) { ?>
+                                <?php $total = intval($row['price_bill_tours']) + intval($row['price_service']) ?>
                                 <tr>
                                     <td><?= $row['id_bill_tours'] ?></td>
                                     <td><?= $row['name_customer'] ?></td>
@@ -78,9 +81,10 @@ $data = getall_bill();
                                     <td><?= $row['name_tours'] ?></td>
                                     <td><?= $row['date_book'] ?></td>
                                     <td><?= $row['name_service'] ?> </td>
+                                    <td><?= $row['price_service'] ?> </td>
+                                    <td><?= $total?> </td>
                                     <td><?= $row['date_start'] ?></td>
                                     <td>
-                                        <a href="./edit.php?id_bill_tour=<?= $row['id_bill_tours'] ?>"><i class="mr-8 fas fa-cogs"></i></a>
                                         <a href="./delete.php?id_bill_tour=<?= $row['id_bill_tours'] ?>"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>

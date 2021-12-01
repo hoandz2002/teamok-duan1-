@@ -4,6 +4,7 @@ require_once './db/connection.php';
 require_once './db/tour.php';
 require_once './db/service.php';
 require_once './db/comment.php';
+require_once './db/bill_tour.php';
 $data_service = getall_service();
 // var_dump($data_service);die;
 $id_tours = $_GET['id_tours'];
@@ -25,7 +26,24 @@ if (isset($_POST['comment'])) {
     insert_comment($data1);
     header("location:/duan1/tours_detail.php?id_tours=$id_tours");
 }
-
+if (isset($_POST['addgiohang'])) {
+    $id_customer = $_SESSION['user']['id_customer'];
+    $price = intval($_POST['quantity_pp']) * intval($_POST['price_tours']);
+    // var_dump($price);die;
+    $data = [
+        'id_customer' => $_POST['id_customer'],
+        'quantity_pp' => $_POST['quantity_pp'],
+        'price_bill_tours' => $price,
+        'id_tours' => $_POST['id_tours'],
+        'date_book' => $_POST['date_book'],
+        'id_service' => $_POST['id_service'],
+        'date_start' => $_POST['date_start'],
+        // 'bill_status' => $_POST['bill_status']
+    ];
+    insert_bill($data);
+    // var_dump($data);die;
+    header("location: ./cart.php?id_customer=$id_customer");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,78 +62,83 @@ if (isset($_POST['comment'])) {
 
     </style>
 </head>
+
 <body>
 
     <div class="main">
         <?php require_once './header.php'; ?>
         <div class="body__banner" style="background-image: url(/duan1/asset/img/t-banner.jpg); padding: 10%;">
-            <div class="banner-text" style="text-shadow: 0px 1px 2px green;">Shop Detail</div>
+            <div class="banner-text" style="text-shadow: 0px 1px 2px green;">View Detail</div>
         </div>
         <div class="body">
             <div class="grid">
                 <div class="grid-with-width">
-                    <div class="grid__row">
-
-                        <!-- img -->
-                        <div class="pd-16 grid__column-2">
-                            <img src="/duan1/asset/img/<?= $data['image'] ?>" alt="" class="img">
-                            <div class="grid__row">
-                                <?php foreach ($data_img as $value) { ?>
-                                    <div class="grid__column-4">
-                                        <img src="/duan1/asset/img/<?= $value['images']; ?>" alt="" class="img">
-                                    </div>
-                                <?php } ?>
-                            </div>
-                        </div>
-                        <input type="hidden" name="image" value="<?= $data['image'] ?>" hidden>
-
-                        <input type="text" name="name_tours" value="<?= $data['name_tours'] ?>" hidden>
-                        <input type="number" name="price_tours" value="<?= $data['price_tours'] ?>" hidden>
-                        <!-- content -->
-                        <div class="pd-16 grid__column-2">
-                            <h6 style="font-size: 24px;line-height:24px" class="detail-heading"><?= $data['name_tours'] ?></h6>
-                            <span class="detail-price"><?= $data['price_tours']; ?> Đ</span>
-                            <p style="font-size:20px;" class="detail-des">
-                            </p>
-                            <div class="pd-24 detail-qtt">
-                                <div class="grid__row" style="align-items: center;">
-                                    <!-- <form action="" method="POST"> -->
-                                    <p>People</p>
-                                    <input type="number" name="quantity_pp" placeholder="Chọn số lượng người" style="width: 320px;padding: 8px 16px;border-radius: 16px;outline: none; border: 1px solid;">
-                                    <button type="reset">Clear</button>
-                                    <!-- </form> -->
-                                </div>
-                            </div>
-                            <div class="pd-24 detail-service">
+                    <form action="tours_detail.php" method="POST">
+                        <div class="grid__row">
+                            <!-- img -->
+                            <div class="pd-16 grid__column-2">
+                                <img src="/duan1/asset/img/<?= $data['image'] ?>" alt="" class="img">
                                 <div class="grid__row">
-                                    <h2>Service</h2>
-                                    <div style="flex: 1; margin: 0px 36px;">
-                                        <?php foreach ($data_service as $value) { ?>
-                                            <a class="accordion grid__row"><?= $value['name_service'] ?><i class="fas fa-chevron-down"></i></a>
-                                            <div class="panel">
-                                                <p class="service_content"><input type="radio" name="id_service" id="service">
-                                                    <lable style="margin-left: 8px;" for="service">Chọn dịch vụ</lable>
-                                                </p>
-                                                <p class="service_content"><b>Giá</b> : <span style="color: red; font-size: 14px;"><?= $value['price_service'] ?><b>VNĐ</b></span></p>
-                                                <p style="color: blue;" class="service_content"> <?= $value['description_service'] ?></p>
-                                            </div>
-                                        <?php } ?>
+                                    <?php foreach ($data_img as $value) { ?>
+                                        <div class="grid__column-4">
+                                            <img src="/duan1/asset/img/<?= $value['images']; ?>" alt="" class="img">
+                                        </div>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                            <!-- content -->
+                            <div class="pd-16 grid__column-2">
+                                <h6 style="font-size: 24px;line-height:24px" class="detail-heading"><?= $data['name_tours'] ?></h6>
+                                <span class="detail-price" name="price_tours" ><?= $data['price_tours']; ?> Đ</span>
+                                <p style="font-size:20px;" class="detail-des">
+                                </p>
+                                <div class="pd-24 detail-qtt">
+                                    <div class="grid__row" style="align-items: center;">
+                                        <!-- <form action="" method="POST"> -->
+                                        <p>People</p>
+                                        <input type="number" name="quantity_pp" placeholder="Chọn số lượng người" style="width: 320px;padding: 8px 16px;border-radius: 16px;outline: none; border: 1px solid;">
+                                        <p style="width: 50px;" hidden></p>
+                                        <!-- </form> -->
                                     </div>
                                 </div>
-                            </div>
-                            <div class="pd-24 detail-qtt">
-                                <div class="grid__row" style="align-items: center;">
-                                    <form action="" method="POST">
+                                <div class="pd-24 detail-service">
+                                    <div class="grid__row">
+                                        <h2>Service</h2>
+                                        <div style="flex: 1; margin: 0px 36px;">
+                                            <?php foreach ($data_service as $value) { ?>
+                                                <a class="accordion grid__row"><?= $value['name_service'] ?><i class="fas fa-chevron-down"></i></a>
+                                                <div class="panel">
+                                                    <p class="service_content"><input type="radio" name="id_service" value="<?= $value['id_service'] ?>" id="service">
+                                                        <lable style="margin-left: 8px;" for="service">Chọn dịch vụ</lable>
+                                                    </p>
+                                                    <p class="service_content"><b>Giá</b> : <span style="color: red; font-size: 14px;"><?= $value['price_service'] ?><b>VNĐ</b></span></p>
+                                                    <p style="color: blue;" class="service_content"> <?= $value['description_service'] ?></p>
+                                                </div>
+                                            <?php } ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="text" name="id_customer" value="<?=$_SESSION['user']['id_customer']?>" hidden>
+                                <input type="text" name="id_tours" value="<?=$data['id_tours']?>" hidden>
+                                <input type="text" name="price_bill_tours" value="" hidden>
+                                <input type="text" name="price_tours" value="<?= $data['price_tours']; ?>" hidden>
+                                <div class="pd-24 detail-qtt">
+                                    <div class="grid__row" style="align-items: center;">
+                                        <!-- <form action="" method="POST"> -->
                                         <p>Date start</p>
+                                        <input type="date" name="date_book" value="<?php echo date('Y-m-d') ?>" hidden>
                                         <input type="date" name="date_start" style="width: 320px;padding: 8px 16px;border-radius: 16px;outline: none; border: 1px solid;">
-                                    </form>
+                                        <p style="width: 50px;" hidden></p>
+                                        <!-- </form> -->
+                                    </div>
+                                </div>
+                                <div style="text-align: center; margin-top: 32px;">
+                                    <input type="submit" name="addgiohang" class="btn" value="Đặt tours" id="">
                                 </div>
                             </div>
-                            <div style="text-align: center; margin-top: 32px;">
-                                <input type="submit" name="addgiohang" class="btn" value="Đặt tours" id="">
-                            </div>
+
                         </div>
-                    </div>
+                    </form>
                 </div>
                 <div class="grid-with-width">
                     <ul class="list-child">

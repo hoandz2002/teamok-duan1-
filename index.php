@@ -10,9 +10,10 @@ $data_location = getall_location();
 // var_dump($data_location);die;
 
 session_start();
+$ok = $_SESSION['user']['id_customer'];
 if (empty($_SESSION['user']) == false) {
     $name = '<li class="header__navbar-item-child"><a href="/duan1/acc.php" class="header__navbar-link-child">Thông tin</a></li>
-    <li class="header__navbar-item-child"><a href="/duan1/cart.php" class="header__navbar-link-child">Tours</a></li>    
+    <li class="header__navbar-item-child"><a href="/duan1/cart.php?id_customer='.$ok.'" class="header__navbar-link-child">Tours</a></li>    
     <li class="header__navbar-item-child"><a href="/duan1/logout.php" class="header__navbar-link-child">Đăng xuất</a></li>';
 } else {
     $name = '<li class="header__navbar-item-child"><a href="/duan1/login_form.php" class="header__navbar-link-child">Đăng nhập</a></li>

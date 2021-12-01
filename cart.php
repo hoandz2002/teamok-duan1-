@@ -1,95 +1,12 @@
 <?php
-
 session_start();
-require_once "./db/tour.php";
-if (isset($_POST['thanh_toan'])) {
-    if (isset($_SESSION['user'])) {
-        if (is_numeric($_POST['phone']) == false) {
-            $_SESSION['error'] = "Vui lòng nhập số điện thoại nhận hàng";
-        } else if (empty($_SESSION['giohang']) == true) {
-            $_SESSION['error'] = "Giỏ hàng trống! Mời bạn mua hàng!";
-        } else {
-            $_SESSION['error'] = "Mua hàng thành công!";
-            unset($_SESSION['giohang']);
-        }
-    } else {
-        $_SESSION['error'] = "Vui lòng đăng nhập để sử dụng tính năng thanh toán!";
-    }
-}
-if (!isset($_SESSION['giohang'])) $_SESSION['giohang'] = [];
-if (empty($_SESSION['giohang']) == true) {
-    $_SESSION['checkgiohang'] = "Giỏ hàng trống! Mời bạn mua thêm hàng!";
-}
-//xóa sp trong giỏ
-if (isset($_GET['delgiohang']) && ($_GET['delgiohang'] == 1)) unset($_SESSION['giohang']);
-//lấy dữ liệu từ form
-if (isset($_POST['addgiohang']) && ($_POST['addgiohang'])) {
-    // $id_tours = $data['id_tours'];
-    $image = $_POST['image'];
-    $name_tours = $_POST['name_tours'];
-    // $description_tours = $data['description_tours'];
-    $quantity_pp = $_POST['quantity_pp'];
-    $price_tours = $_POST['price_tours'];
-    // $sale_tours = $data['sale_tours'];
-    // $name_location = $_POST['name_location'];  
-    //ktra sp có trong giỏ hàng k 
+require_once './db/connection.php';
+require_once './db/bill_tour.php';
+$id_customer = $_GET['id_customer'];
+// var_dump($_SESSION['user']['id_customer']);die;
+$data_ds = getid_bill($id_customer);
 
-    $fl = 0; //ktra sp co trùng hay k
-    for ($i = 0; $i < sizeof($_SESSION['giohang']); $i++) {
-        if ($_SESSION['giohang'][$i][1] == $name_tours) {
-            $fl = 1;
-            // $quantity_pp = $so_luong + $_SESSION['giohang'][$i][3];
-            $_SESSION['giohang'][$i][3] = $quantity_pp;
-            break;
-        }
-    }
-    //neu k trung gio hang thi them moi 
-    if ($fl == 0) {
 
-        //them mới vào giỏ hàng
-        $prd = [$image, $name_tours,$quantity_pp, $price_tours];
-        $_SESSION['giohang'][] = $prd;
-        // var_dump($_SESSION['giohang']);
-    }
-}
-if (isset($_GET['delid']) && ($_GET['delid'] >= 0)) {
-    array_splice($_SESSION['giohang'], $_GET['delid'], 1);
-} 
-function showgiohang()
-{
-    if (isset($_SESSION['giohang']) && (is_array($_SESSION['giohang']))) {
-        $tong = 0;
-        for ($i = 0; $i < sizeof($_SESSION['giohang']); $i++) {
-
-            $tt = intval($_SESSION['giohang'][$i][2]) * intval($_SESSION['giohang'][$i][3]);
-            $tong += $tt;
-            echo '<tr>
-            <td>
-            <a href="cart.php?delid=' . $i . '"><i class="fas fa-times" style="color:red;"></i></a>
-            </td>            <td>
-                    <img style="width:100px;" src="./asset/img/' . $_SESSION['giohang'][$i][0] . '">
-            </td>
-            <td>' . $_SESSION['giohang'][$i][1] . '</td>
-
-            <td>' . $_SESSION['giohang'][$i][3] . '</td>
-            <td>' . $_SESSION['giohang'][$i][2] . '</td>
-            <td>
-                <div>' . $tt . '</div>
-            </td>
-          
-             
-        </tr>';
-        }
-        echo '<tr>
-        <th colspan="5">Tổng đơn hàng</th>
-        <th>
-            <div>' . $tong . '</div>
-        </th> 
-
-    </tr>';
-    }
-}
-// var_dump( $_SESSION['giohang'][$i][0] ); die;
 ?>
 
 <!DOCTYPE html>
@@ -169,28 +86,58 @@ function showgiohang()
             <div class="banner-text" style="text-shadow: 0px 1px 2px green;">Cart</div>
         </div>
         <div class="body">
-            <table cellspacing="0" class="table1">
+            <table cellspacing="0" class="table1"  style="margin: 0 auto; width: 90%;">
                 <tr class="thead" colspan="6">
                     <th>&nbsp</th>
                     <th>Image</th>
-                    <th>Product</th>
+                    <th>Name Tours</th>
                     <th>Price</th>
                     <th>Quantity</th>
+                    <th>Date book</th>
+                    <th>Name service</th>
+                    <th>Price service</th>
+                    <th>Date start</th>
                     <th>Total</th>
+                    <th>Status</th>
+                    <!-- <th>Function</th> -->
                 </tr>
-                <tr class="tbody" colspan="6">
+                <!-- <tr class="tbody" colspan="6">
                     <td><i class="fas fa-times" style="color:red;"></i></td>
                     <td>Image</td>
                     <td>Product</td>
                     <td>Price</td>
                     <td>Quantity</td>
+                    <td>Date book</td>
+                    <td>Name price</td>
+                    <td>Price service</td>
+                    <td>Date start</td>
                     <td>Total</td>
-                </tr>
-                <?php showgiohang(); ?>
 
+                </tr> -->
                 <a href="./tours.php"><button class="update">UPDATE CART</button></a>
-                </td>
-                </tr>
+                <?php foreach($data_ds as $ds) { ?>
+                    <tr>
+                        <?php $total = intval($ds['price_bill_tours']) + intval($ds['price_service']) ?>
+                        <td><a href="./db/bill_tour/delete_bill.php?id_bill_tours=<?=$ds['id_bill_tours']?>"><i class="fas fa-times" style="color:red;"></i></a></td>
+                        <td><img src="./asset/img/<?=$ds['image']?>" width="100px" alt=""></td>
+                        <td style="max-width: 250px;"><?=$ds['name_tours']?></td>
+                        <td><?=$ds['price_bill_tours']?></td>
+                        <td><?=$ds['quantity_pp']?></td>
+                        <td><?=$ds['date_book']?></td>
+                        <td><?=$ds['name_service']?></td>
+                        <td><?=$ds['price_service']?></td>
+                        <td><?=$ds['date_start']?></td>
+                        <td><?=$total?></td>
+                        <td><?php 
+                            if ($ds['bill_status'] == 0) {
+                                echo "Chưa thanh toán";
+                            }else {
+                                echo "Đã thanh toán";
+                            }
+                        ?></td>
+                        <td><a href="./tours.php"><button style="width: 80px;" class="update">PAYMENT</button></a></td>
+                    </tr>
+                <?php } ?>
             </table>
             <div style="margin-left: 780px;margin-top:100px;">
                 <span style="font-size: 24px;">Cart total</span>
