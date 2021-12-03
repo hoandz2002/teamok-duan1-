@@ -40,7 +40,6 @@ $data = getall_comment();
                                 <th>Tên tours</th>
                                 <th>Nội dung</th>
                                 <th>Ngày bình luận</th>
-                                <th>Đánh giá sao</th>
                                 <th>Chức năng</th>
                             </tr>
                         </thead>
@@ -72,7 +71,6 @@ $data = getall_comment();
                                     <td><?= $row['name_tours'] ?></td>
                                     <td><?= $row['content_comment'] ?></td>
                                     <td><?= $row['date_comment'] ?></td>
-                                    <td><?= $row['rating'] ?> </td>
                                     <td><a href="./delete.php?id_comment=<?= $row['id_comment'] ?>"><i class="fas fa-trash-alt"></i></a></td>
 
                                 </tr>

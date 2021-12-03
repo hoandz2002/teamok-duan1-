@@ -194,7 +194,6 @@ if (isset($_POST['addgiohang'])) {
                                         <?php
                                         if (empty($_SESSION['user']) == false) {
                                             if ($_SESSION['user']['id_customer'] == $dataComment[$i]['id_customer']) { ?>
-                                                <a href="/duan1/db/comment/update.php?id_tours=<?= $dataComment[$i]['id_tours'] ?>"><button name="update" style="margin-top:30px;margin-left:880px" class="btn">Sửa bình luận</button></a>
                                             <?php }
                                             if ($_SESSION['user']['id_customer'] == $dataComment[$i]['id_customer'] || $_SESSION['user']['classify_customer'] == 1) { ?>
                                                 <a href="./db/comment/delete.php?id_comment=<?php echo $dataComment[$i]['id_comment'] ?>"><button name="delete" style="" class="btn">Xóa bình luận</button></a>

@@ -114,7 +114,7 @@ $data_ds = getid_bill($id_customer);
                     <td>Total</td>
 
                 </tr> -->
-                <a href="./tours.php"><button class="update">UPDATE CART</button></a>
+                <!-- <a href="./tours.php"><button class="update">UPDATE CART</button></a> -->
                 <?php foreach($data_ds as $ds) { ?>
                     <tr>
                         <?php $total = intval($ds['price_bill_tours']) + intval($ds['price_service']) ?>
@@ -139,7 +139,7 @@ $data_ds = getid_bill($id_customer);
                     </tr>
                 <?php } ?>
             </table>
-            <div style="margin-left: 780px;margin-top:100px;">
+            <!-- <div style="margin-left: 780px;margin-top:100px;">
                 <span style="font-size: 24px;">Cart total</span>
                 <div class="table2">
                     <div class="grid__row" style="border-bottom:1px solid #9a9a9a;padding:23px 0px;color:#9a9a9a;font-size:13px">
@@ -155,7 +155,7 @@ $data_ds = getid_bill($id_customer);
                 <button class="submit">
                     PROCEED TO CHECKOUT
                 </button>
-            </div>
+            </div> -->
         </div>
         <?php require_once './footer.php'; ?>
 
