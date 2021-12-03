@@ -72,7 +72,11 @@ $data = getall_customer();
                                     <td><?= $row['cmt_customer'] ?></td>
                                     <td><?= $row['phone_customer'] ?></td>
                                     <td><?= $row['email_customer'] ?> </td>
-                                    <td><?= $row['classify_customer']?></td>
+                                    <td><?php if ($row['classify_customer'] == 0) {
+                                        echo 'Khách';
+                                    }else {
+                                        echo 'Quản trị';   
+                                    }?></td>
 
 
                                     <td>

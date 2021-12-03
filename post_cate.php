@@ -6,7 +6,7 @@ session_start();
 $id = $_GET['id_cate_post'];
 $name = getId_cate($id);
 $getAllId = getAllId($id);
-$ok = $name['name_cate_post'];
+$ok1 = $name['name_cate_post'];
 // var_dump($getAllId);die;
 // var_dump($name['name_cate_post']);die;
 ?>
@@ -40,7 +40,7 @@ $ok = $name['name_cate_post'];
         </div>
         <div class="body">
             <div class="grid">
-                <h1 style="padding-left: 12px;"><?php echo $ok; ?></h1>
+                <h1 style="padding-left: 12px;"><?php echo $ok1; ?></h1>
                 <div class="grid__row">
                     <?php foreach ($getAllId as $ds) { ?>
                         <div class="grid__row pd-16 grid__column-2">
