@@ -45,7 +45,8 @@ $data = getall_bill();
                                 <th>Loại dịch vụ</th>
                                 <th>Giá dịch vụ</th>
                                 <th>Total</th>
-                                <th>thời gian đi</th>
+                                <th>Thời gian </th>
+                                <th>Trạng thái</th>
                                 <th colspan="2">Chức năng</th>
                             </tr>
                         </thead>
@@ -84,8 +85,13 @@ $data = getall_bill();
                                     <td><?= $row['price_service'] ?> </td>
                                     <td><?= $total?> </td>
                                     <td><?= $row['date_start'] ?></td>
+                                    <td><?php if($row['bill_status'] == 0) {
+                                        echo 'Chưa thanh toán';
+                                    }else {
+                                        echo 'Đã thanh toán';
+                                    } ?></td>
                                     <td>
-                                        <a href="./delete.php?id_bill_tour=<?= $row['id_bill_tours'] ?>"><i class="fas fa-trash-alt"></i></a>
+                                        <a onclick="return confirm('Bạn có chắc chắn muốn xóa?');" href="./../../db/bill_tour/delete_bill.php?id_bill_tour=<?=$row['id_bill_tours'] ?>"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
 
