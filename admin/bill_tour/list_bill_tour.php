@@ -36,12 +36,12 @@ $data = getall_bill();
                         <thead class="thead">
                             <tr>
                                 <th>ID</th>
-                                <th>tên khách hàng</th>
-                                <th>số người</th>
+                                <th>Tên khách hàng</th>
+                                <th>Số người</th>
                                 <th>Sale</th>
                                 <th>Giá</th>
                                 <th>Tên tour</th>
-                                <th>thời gian đặt</th>
+                                <th>Thời gian đặt</th>
                                 <th>Loại dịch vụ</th>
                                 <th>Giá dịch vụ</th>
                                 <th>Total</th>
@@ -73,20 +73,22 @@ $data = getall_bill();
                                     <td><?= $row['name_customer'] ?></td>
                                     <td><?= $row['quantity_pp'] ?></td>
                                     <td><?= $row['sale_tours'] ?></td>
-                                    <td><?= $row['price_bill_tours'] ?> </td>
+                                    <td><?= number_format($row['price_bill_tours']) ?> Đ </td>
                                     <td><?= $row['name_tours'] ?></td>
                                     <td><?= $row['date_book'] ?></td>
                                     <td><?= $row['name_service'] ?> </td>
-                                    <td><?= $row['price_service'] ?> </td>
-                                    <td><?= $total ?> </td>
+                                    <td><?= number_format($row['price_service']) ?> </td>
+                                    <td><?= number_format($total) ?>Đ</td>
                                     <td><?= $row['date_start'] ?></td>
                                     <td><?php if ($row['bill_status'] == 0) {
-                                            echo 'Chưa thanh toán';
-                                        } else {
-                                            echo 'Đã thanh toán';
-                                        } ?></td>
+                                            echo 'Đang chờ xác nhận'; ?>
+                                            <a style="color:#000" href="./update_bill.php?id_bill_tours=<?=$row['id_bill_tours']?>">Xác nhận</a>
+                                      <?php  } else if($row['bill_status'] == 1) {
+                                            echo 'Đã xác nhận';
+                                        } ?>
+                                    </td>
                                     <td>
-                                        <a onclick="return confirm('Bạn có chắc chắn muốn xóa?');" href="./../../db/bill_tour/delete_bill.php?id_bill_tour=<?= $row['id_bill_tours'] ?>"><i class="fas fa-trash-alt"></i></a>
+                                        <a  onclick="return confirm('Bạn có chắc chắn muốn xóa?');" href="./../../db/bill_tour/delete_bill.php?id_bill_tour=<?= $row['id_bill_tours'] ?>"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
 

@@ -31,7 +31,7 @@
         </label>
     </div>
     <div class="right_nav">
-        <p class="nav_title">Home</p>
+        <a href="/duan1/index.php" class="nav_title">Home</a>
     </div>
 </body>
 
