@@ -10,15 +10,15 @@
 
 .tours-content p {
     font-size: 16px;
-    color: #b8b8b8;
+    color: #9a9a9a;
     margin-bottom: 16px;
 }
 
 .tours-btn {
     font-size: 14px;
-    color: #b8b8b8;
+    color: #9a9a9a;
     padding: 8px 16px;
-    border: 1px solid #b8b8b8;
+    border: 1px solid #9a9a9a;
 }
 
 .detail-heading {
@@ -29,7 +29,7 @@
 
 .detail-price {
     font-size: 32px;
-    color: #b8b8b8;
+    color: #9a9a9a;
     margin: 32px 0px;
     display: block;
 }
@@ -155,7 +155,7 @@ span {
     font-size: 18px;
     line-height: 18px;
     margin: 4px 0px;
-    color: #b8b8b8;
+    color: #9a9a9a;
 }
 
 .ct {
@@ -202,7 +202,7 @@ span {
     border-radius: 16px;
     outline: none;
     color: #a0a0a0;
-    border: 1px solid #b8b8b8;
+    border: 1px solid #9a9a9a;
     margin: 8px 0px 16px;
 }
 

@@ -49,11 +49,21 @@ $data = getAllTours();
                     while ($row = mysqli_fetch_array($result)) { ?>
                         <div class="pd-16 grid__column-4">
                             <div class="tours-product">
-                                <img src="/duan1/asset/img/<?= $row['image'] ?>" alt="" class="img">
+                                <img style="height:160px" src="/duan1/asset/img/<?= $row['image'] ?>" alt="" class="img">
                                 <div class="tours-content">
-                                    <h6 style="font-size: 14px;" class="tours-heading"><?= $row['name_tours']; ?></h6>
-                                    <p><?= $row['price_tours']; ?> Đ</p>
-                                    <a href="/duan1/tours_detail.php?id_tours=<?= $row['id_tours']; ?>" class="tours-btn">SELECT OPTION</a>
+                                    <h6 style="font-size: 14px;overflow: hidden;line-height: 24px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;" class="tours-heading"><?= $row['name_tours']; ?></h6>
+                                    <?php if ($row['sale_tours'] != 0) { ?>
+                                        <span style="display:inline-block;font-size:16px;margin-bottom:15px;color: #9a9a9a;text-decoration:line-through;"><?= number_format($row['price_tours']); ?> Đ</span>
+                                        <span style="display:inline-block;font-size:16px;margin-bottom:15px;color:#9a9a9a"><?= number_format($row['price_tours']-(($row['price_tours']*$row['sale_tours'])/100)); ?>Đ</span><br>
+                                    <?php } else { ?>
+                                        <p style="font-size:16px;color: #9a9a9a;"><?= number_format($row['price_tours']); ?> Đ</p>
+                                   <?php } ?>
+                                    <a style="color: #9a9a9a;
+    padding: 8px 16px;
+    border: 1px solid #9a9a9a;" href="/duan1/tours_detail.php?id_tours=<?= $row['id_tours']; ?>" class="tours-btn">SELECT OPTION</a>
                                 </div>
                             </div>
                         </div>
