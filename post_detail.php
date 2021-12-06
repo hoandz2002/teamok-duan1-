@@ -7,6 +7,8 @@ $post = getId_post($id);
 $name = getId_cate($post['id_cate_post']);
 $ok = $name['name_cate_post'];
 $cate = getAll_cate();
+$postcate = get4Id($post['id_cate_post']);
+// var_dump($postcate);
 
 ?>
 <!DOCTYPE html>
@@ -23,7 +25,12 @@ $cate = getAll_cate();
     <link rel="stylesheet" href="/duan1/asset/css/post_detail.css">
     <link rel="stylesheet" href="/duan1/asset/css/responsive.css">
     <style>
-
+        .post-name {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+        }
     </style>
 </head>
 
@@ -37,33 +44,17 @@ $cate = getAll_cate();
             <div class="grid">
                 <div class="grid-with-width">
                     <div class="grid__row">
-                        <div class="grid__column-2-3">
+                        <div class="grid__column-2-3" style="overflow: hidden;">
                             <h3 class="post_heading">
                                 <?= $post['name_post'] ?>
                                 <p>Loại : <?= $ok; ?></p>
                             </h3>
-
-                            <!-- <p class="post_content">
-                                Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim. Sed quis rutrum tellus, sit amet viverra felis. Cras sagittis sem sit amet urna feugiat rutrum. Nam nulla ipsum, venenatis malesuada felis quis, ultricies convallis neque. Pellentesque tristique fringilla tempus. Vivamus bibendum nibh in dolor pharetra, a euismod nulla dignissim. Aenean viverra tincidunt nibh, in imperdiet nunc. Suspendisse eu ante pretium, consectetur leo at, congue quam. Nullam hendrerit porta ante vitae tristique. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vestibulum ligula libero, feugiat faucibus mattis eget, pulvinar et ligula.
-                            </p> -->
                             <h3 class="post_heading">Nội dung</h3>
-                            <p class="post_content">
-                            <?= $post['description_post'] ?>
-                            </p>
-                            <!-- <div class="grid__row">
-                                <div class="pd-16 grid__column-2">
-                                    <img src="/duan1/asset/img/berlin.jpg" alt="" class="img">
-                                </div>
-                                <div class="pd-16 grid__column-2">
-                                    <img src="/duan1/asset/img/berlin.jpg" alt="" class="img">
-                                </div>
+                            <div style="text-align: center;" class="post_content">
+                                <?= $post['description_post'] ?>
                             </div>
-                            <p class="post_content">
-                                Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim. Sed quis rutrum tellus, sit amet viverra felis. Cras sagittis sem sit amet urna feugiat rutrum. Nam nulla ipsum, venenatis malesuada felis quis, ultricies convallis neque. Pellentesque tristique fringilla tempus. Vivamus bibendum nibh in dolor pharetra, a euismod nulla dignissim. Aenean viverra tincidunt nibh, in imperdiet nunc. Suspendisse eu ante pretium, consectetur leo at, congue quam. Nullam hendrerit porta ante vitae tristique. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vestibulum ligula libero, feugiat faucibus mattis eget, pulvinar et ligula.
-                            </p> -->
                         </div>
                         <div class="grid__column-3">
-                            <!--style="border: 1px solid grey;"-->
                             <div class="sider-bar">
                                 <div class="pd-16 cate_heading">Danh mục bài viết</div>
                                 <ul class="cate-list">
@@ -75,51 +66,19 @@ $cate = getAll_cate();
                             <div class="sider-bar">
                                 <div class="pd-16 cate_heading">Bài viết liên quan</div>
                                 <div class="pd-16 post">
-                                    <div class="grid grid__row">
-                                        <div class="grid__column-3">
-                                            <img src="/duan1/asset/img/berlin.jpg" alt="" class="img">
-                                        </div>
-                                        <div class="grid__column-2-3">
-                                            <div class="grid__column">
-                                                <p class="post-name">Heloomairen Heloomairen Heloomairen</p>
-                                                <a href="/duan1/post_detail.php" class="btn-small">Xem</a>
+                                    <?php foreach ($postcate as $row) { ?>
+                                        <div class="grid grid__row">
+                                            <div class="grid__column-3">
+                                                <img src="/duan1/asset/img/<?= $row['image_post'] ?>" alt="" class="img">
+                                            </div>
+                                            <div class="grid__column-2-3">
+                                                <div class="grid__column">
+                                                    <p class="post-name"><?= $row['name_post'] ?></p>
+                                                    <a href="/duan1/post_detail.php?id_post=<?= $row['id_post'] ?>" class="btn-small">Xem</a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="grid grid__row">
-                                        <div class="grid__column-3">
-                                            <img src="/duan1/asset/img/berlin.jpg" alt="" class="img">
-                                        </div>
-                                        <div class="grid__column-2-3">
-                                            <div class="grid__column">
-                                                <p class="post-name">Heloomairen Heloomairen Heloomairen</p>
-                                                <a href="/duan1/post_detail.php" class="btn-small">Xem</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="grid grid__row">
-                                        <div class="grid__column-3">
-                                            <img src="/duan1/asset/img/berlin.jpg" alt="" class="img">
-                                        </div>
-                                        <div class="grid__column-2-3">
-                                            <div class="grid__column">
-                                                <p class="post-name">Heloomairen Heloomairen Heloomairen</p>
-                                                <a href="/duan1/post_detail.php" class="btn-small">Xem</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="grid grid__row">
-                                        <div class="grid__column-3">
-                                            <img src="/duan1/asset/img/berlin.jpg" alt="" class="img">
-                                        </div>
-                                        <div class="grid__column-2-3">
-                                            <div class="grid__column">
-                                                <p class="post-name">Heloomairen Heloomairen Heloomairen</p>
-                                                <a href="/duan1/post_detail.php" class="btn-small">Xem</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
+                                    <?php } ?>
                                 </div>
                                 </ul>
                             </div>

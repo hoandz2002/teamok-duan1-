@@ -49,7 +49,9 @@
                 </ul>
             </li>
             <li class="left_item"><a class="left_link" href="/duan1/admin/bill_tour/list_bill_tour.php"><i class="mr-8 fas fa-file-invoice-dollar"></i>Bill tours</a></li>
-            <li class="left_item"><a class="left_link" href="/duan1/admin/comment/list_comment.php"><i class="fas fa-comments"></i>Comment</a></li>
+            <li class="left_item"><a class="left_link" href="/duan1/admin/comment/list_comment.php"><i style="padding-right: 8px;" class="fas fa-comments"></i>Comment</a></li>
+            <li class="left_item"><a class="left_link" href="/duan1/admin/contacts/list_contacts.php"><i style="padding-right: 8px;" class="far fa-id-card"></i>Contacts</a></li>
+
         </ul>
     </div>
 </body>
