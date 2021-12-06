@@ -61,7 +61,6 @@ $data = getAllTours();
                                 <th>ID</th>
                                 <th>Ảnh đại diện</th>
                                 <th>Tên tour</th>
-                                <th>Mô tả ngắn</th>
                                 <th>Giá tour</th>
                                 <th>Giảm giá</th>
                                 <th>Địa điểm</th>
@@ -90,7 +89,6 @@ $data = getAllTours();
                                     <td><?php echo $row['id_tours'] ?></td>
                                     <td><img width="100px" src="./../../asset/img/<?php echo $row['image'] ?>"></td>
                                     <td><?php echo $row['name_tours'] ?></td>
-                                    <td><?php echo $row['short_description_tours'] ?></td>
                                     <td><?php echo $row['price_tours'] ?></td>
                                     <td>
                                         <?php if ($row['sale_tours'] == null) {
@@ -101,7 +99,7 @@ $data = getAllTours();
                                     </td>
                                     <td><?php echo $row['name_location'] ?></td>
                                     <td>
-                                        <li class="left_item" style="list-style: none; "><a class="left_link" href="#" style="color: black;">Xem</a>
+                                        <li class="left_item" style="list-style: none; border:none;"><a class="left_link" href="#" style="color: black;">Xem</a>
                                             <div class="box">
                                                 <?php
                                                 // for ($k = 0; $k < count($data); $k++) {

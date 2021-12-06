@@ -22,6 +22,7 @@
   width: 230px;
   /* height: 1200px; */
   position: static;
+  z-index: 10;
   top: 0;
   left: 0;
   bottom: 0;
@@ -96,6 +97,7 @@
   display: flex;
   flex-direction: column;
   row-gap: 16px;
+  position: relative;
 }
 /* right_header  */
 .right_header {
@@ -172,7 +174,7 @@
 /*right  body */
 .right_body {
   width: 100%;
-  min-height: 360px;
+  /* min-height: 360px; */
   padding: 8px;
   background-color: white;
   display: flex;
@@ -190,6 +192,10 @@
   line-height: 36px;
   text-align: center;
   text-shadow: 0px 1px 3px green;
+  position: absolute;
+  bottom: 0;
+  right: 16px;
+  left: 0;
 }
 /* end-right -------------------------------------------------------------------------------------*/
 /* class chung -----------------------------------------------------------------------------------*/
@@ -256,6 +262,7 @@ form {
 .table {
   width: 96%;
   margin: 0 auto;
+  margin-top: 8px;
 }
 
 .thead {

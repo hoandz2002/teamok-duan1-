@@ -9,6 +9,9 @@ $data_service = getall_service();
 // var_dump($data_service);die;
 $id_tours = $_GET['id_tours'];
 $data = getIdTours($id_tours);
+$id_locatour = $data['id_location'];
+// var_dump($id_locatour);die;
+$locatour = randTourLoca($id_locatour);
 $data_img = getAllImage($id_tours);
 $dataComment = getall_bl_id($id_tours);
 if (isset($_POST['comment'])) {
@@ -89,6 +92,7 @@ if (isset($_POST['addgiohang'])) {
                             <!-- content -->
                             <div class="pd-16 grid__column-2">
                                 <h6 style="font-size: 24px;line-height:24px" class="detail-heading"><?= $data['name_tours'] ?></h6>
+                                <span style="margin-top: 24px; display: block;">Địa điểm : <?= $data['name_location']; ?></span>
                                 <span class="detail-price" name="price_tours"><?= $data['price_tours']; ?> Đ</span>
                                 <p style="font-size:20px;" class="detail-des">
                                 </p>
@@ -145,7 +149,7 @@ if (isset($_POST['addgiohang'])) {
                                         echo '<a style="font-size: 16px; color: blue; text-decoration: none;" href="./login_form.php">Vui lòng đăng nhập để đặt tours?</a>';
                                     }
                                     ?>
-                                    
+
                                 </div>
                             </div>
 
@@ -202,18 +206,19 @@ if (isset($_POST['addgiohang'])) {
                                                     <?= $dataComment[$i]['content_comment'] ?>
                                                 </p>
                                             </div>
-                                        </div>
-                                        <?php
-                                        if (empty($_SESSION['user']) == false) {
-                                            if ($_SESSION['user']['id_customer'] == $dataComment[$i]['id_customer']) { ?>
-                                            <?php }
-                                            if ($_SESSION['user']['id_customer'] == $dataComment[$i]['id_customer'] || $_SESSION['user']['classify_customer'] == 1) { ?>
-                                                <a href="./db/comment/delete.php?id_comment=<?php echo $dataComment[$i]['id_comment'] ?>"><button name="delete" style="" class="btn">Xóa bình luận</button></a>
-                                        <?php } else {
+                                            <?php
+                                            if (empty($_SESSION['user']) == false) {
+                                                if ($_SESSION['user']['id_customer'] == $dataComment[$i]['id_customer']) { ?>
+                                                <?php }
+                                                if ($_SESSION['user']['id_customer'] == $dataComment[$i]['id_customer'] || $_SESSION['user']['classify_customer'] == 1) { ?>
+                                                    <a href="./db/comment/delete.php?id_comment=<?php echo $dataComment[$i]['id_comment'] ?>"><button name="delete" style="" class="btn">Xóa bình luận</button></a>
+                                            <?php } else {
+                                                }
                                             }
-                                        }
-                                        ?>
+                                            ?>
+                                        </div>
                                     </div>
+
                                 <?php } ?>
                             </div>
                             <hr style="margin-top: 16px;">
@@ -256,48 +261,20 @@ if (isset($_POST['addgiohang'])) {
                     </div>
                     <!-- bottom -->
                     <div class="grid-with-width">
-                        <h3 style="padding: 16px 24px; font-size: 24px;">Related products</h3>
+                        <h3 style="padding: 16px 24px; font-size: 24px;">Sản phẩm liên quan</h3>
                         <div class="grid__row">
-                            <div class="pd-16 grid__column-4">
-                                <div class="tours-product">
-                                    <img src="/duan1/asset/img/t-shop.jpg" alt="" class="img">
-                                    <div class="tours-content">
-                                        <h6 class="tours-heading">Redamancy</h6>
-                                        <p>$1,000.00</p>
-                                        <a href="" class="tours-btn">SELECT OPTION</a>
+                            <?php foreach ($locatour as $row) { ?>
+                                <div class="pd-16 grid__column-4">
+                                    <div class="tours-product">
+                                        <img src="/duan1/asset/img/<?= $row['image'] ?>" alt="" class="img">
+                                        <div class="tours-content">
+                                            <h6 style="font-size: 14px;" class="tours-heading"><?= $row['name_tours']; ?></h6>
+                                            <p><?= $row['price_tours']; ?> Đ</p>
+                                            <a href="/duan1/tours_detail.php?id_tours=<?= $row['id_tours']; ?>" class="tours-btn">SELECT OPTION</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="pd-16 grid__column-4">
-                                <div class="tours-product">
-                                    <img src="/duan1/asset/img/t-shop.jpg" alt="" class="img">
-                                    <div class="tours-content">
-                                        <h6 class="tours-heading">Redamancy</h6>
-                                        <p>$1,000.00</p>
-                                        <a href="" class="tours-btn">SELECT OPTION</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pd-16 grid__column-4">
-                                <div class="tours-product">
-                                    <img src="/duan1/asset/img/t-shop.jpg" alt="" class="img">
-                                    <div class="tours-content">
-                                        <h6 class="tours-heading">Redamancy</h6>
-                                        <p>$1,000.00</p>
-                                        <a href="" class="tours-btn">SELECT OPTION</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pd-16 grid__column-4">
-                                <div class="tours-product">
-                                    <img src="/duan1/asset/img/t-shop.jpg" alt="" class="img">
-                                    <div class="tours-content">
-                                        <h6 class="tours-heading">Redamancy</h6>
-                                        <p>$1,000.00</p>
-                                        <a href="" class="tours-btn">SELECT OPTION</a>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>

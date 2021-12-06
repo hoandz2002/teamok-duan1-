@@ -32,17 +32,14 @@
                 </div>
                 <div class="footer__content">
                     <div class="footer__content-top grid__row">
-                        <div class="grid__column-2">
+                        <div class="grid__column-2" style="padding-right: 8px; box-sizing: border-box;">
                             <div class="footer__logo">
                                 <img src="/duan1/asset/img/logohthtravel.png" alt="" class="footer__logo-img">
                             </div>
                             <div class="footer__text">
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ut
-                                    diam
-                                    et nibh condimentum venenatis eu ac magnasin. Quisque interdum est
-                                    mauris,
-                                    eget ullamcorper.
+                                    Để phục vụ quý khách tốt hơn nữa, chúng tôi luôn không ngừng nỗ lực và nâng cao chất lượng sản phẩm, dịch vụ du lịch nhằm đáp ứng, đảm bảo nhu cầu của quý khách hàng.
+                                    HTH Travel chân thành cảm ơn mọi người đã và đang ủng hộ chúng tôi.
                                 </p>
                             </div>
                             <div class="footer__icons">
@@ -54,84 +51,7 @@
                         </div>
 
                         <div class="grid__column-2 flex__row">
-                            <div class="grid__column-3 footer__content-1">
-                                <div class="footer__heading-1">
-                                    OUR AGENCY
-                                </div>
-                                <p class="footer__item">
-                                    <i class="item-icon fas fa-angle-right"></i>
-                                    Redamancy
-                                </p>
-                                <p class="footer__item">
-                                    <i class="item-icon fas fa-angle-right"></i>
-                                    Redamancy
-                                </p>
-                                <p class="footer__item">
-                                    <i class="item-icon fas fa-angle-right"></i>
-                                    Redamancy
-                                </p>
-                                <p class="footer__item">
-                                    <i class="item-icon fas fa-angle-right"></i>
-                                    Redamancy
-                                </p>
-                                <p class="footer__item">
-                                    <i class="item-icon fas fa-angle-right"></i>
-                                    Redamancy
-                                </p>
-
-                            </div>
-                            <div class="grid__column-3 footer__content-1">
-                                <div class="footer__heading-1">
-                                    OUR AGENCY
-                                </div>
-                                <p class="footer__item">
-                                    <i class="item-icon fas fa-angle-right"></i>
-                                    Redamancy
-                                </p>
-                                <p class="footer__item">
-                                    <i class="item-icon fas fa-angle-right"></i>
-                                    Redamancy
-                                </p>
-                                <p class="footer__item">
-                                    <i class="item-icon fas fa-angle-right"></i>
-                                    Redamancy
-                                </p>
-                                <p class="footer__item">
-                                    <i class="item-icon fas fa-angle-right"></i>
-                                    Redamancy
-                                </p>
-                                <p class="footer__item">
-                                    <i class="item-icon fas fa-angle-right"></i>
-                                    Redamancy
-                                </p>
-
-                            </div>
-                            <div class="grid__column-3 footer__content-1">
-                                <div class="footer__heading-1">
-                                    OUR AGENCY
-                                </div>
-                                <p class="footer__item">
-                                    <i class="item-icon fas fa-angle-right"></i>
-                                    Redamancy
-                                </p>
-                                <p class="footer__item">
-                                    <i class="item-icon fas fa-angle-right"></i>
-                                    Redamancy
-                                </p>
-                                <p class="footer__item">
-                                    <i class="item-icon fas fa-angle-right"></i>
-                                    Redamancy
-                                </p>
-                                <p class="footer__item">
-                                    <i class="item-icon fas fa-angle-right"></i>
-                                    Redamancy
-                                </p>
-                                <p class="footer__item">
-                                    <i class="item-icon fas fa-angle-right"></i>
-                                    Redamancy
-                                </p>
-
-                            </div>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17130.435705489876!2d106.29244978497269!3d20.82870032771215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31359055a4943fb1%3A0xe73ef5a3e187da4f!2zSOG7k25nIEjGsG5nLCBHaWEgTOG7mWMgRGlzdHJpY3QsIEhhaSBEdW9uZywgVmlldG5hbQ!5e1!3m2!1sen!2s!4v1638759335121!5m2!1sen!2s" width="600" height="260" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 
                         </div>
 
@@ -139,13 +59,13 @@
                     <div class="grid__row-1 footer__content-bottom">
                         <div class="grid__column-2">
                             <div class="footer__content-bottom-left">
-                                <span>THE BEST WORDPRESS TRAVEL THEME</span>
+                                <span>HTH TRAVEL XIN KÍNH CHÀO QUÝ KHÁCH</span>
                             </div>
                         </div>
 
                         <div class="grid__column-2">
                             <div class="footer__content-bottom-right">
-                                <span>COPYRIGHT NICDARK THEMES 2018 BY TRỌNG</span>
+                                <span>COPYRIGHT 2021 BY HTH TRAVEL</span>
                             </div>
                         </div>
                     </div>

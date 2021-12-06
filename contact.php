@@ -1,4 +1,28 @@
-<?php session_start(); ?>
+<?php
+session_start();
+require_once './db/connection.php';
+require_once './db/contacts.php';
+if (isset($_POST['btn-submit'])) {
+    // filter_var($_POST['email_contacts'], FILTER_VALIDATE_EMAIL)
+    if (empty($_POST['email_contacts']) || empty($_POST['mess_contacts'])) {
+        $_SESSION['thongbao'] = "Vui lòng nhập đầy đủ nội dung!";
+        header("location: ./contact.php");
+        die;
+    }
+    if (!filter_var($_POST['email_contacts'], FILTER_VALIDATE_EMAIL)) {
+        $_SESSION['thongbao'] = "Vui lòng nhập đúng định dạng email!";
+        header("location: ./contact.php");
+        die;
+    }
+    $data = [
+        'email_contacts' => $_POST['email_contacts'],
+        'mess_contacts' => $_POST['mess_contacts'],
+        'date_contacts' => $_POST['date_contacts']
+    ];
+    insert_contacts($data);
+    header("location: ./contact.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,6 +36,7 @@
     <link rel="stylesheet" href="/duan1/asset/css/main.css">
     <link rel="stylesheet" href="/duan1/asset/css/contact.css">
     <link rel="stylesheet" href="/duan1/asset/css/responsive.css">
+    <link rel="stylesheet" href="/duan1/asset/css/css_admin/error_mess.css">
     <style>
 
     </style>
@@ -25,6 +50,26 @@
         </div>
         <div class="body">
             <div class="grid">
+                <?php if (isset($_SESSION['thongbao'])) { ?>
+                    <div id="toast">
+                        <div class="tst_test tst--error">
+                            <div class="toast__icon">
+                                <i class="fas fa-exclamation"></i>
+                            </div>
+                            <div class="toast__body">
+                                <h3 class="toast__title" style="font-weight: 600;color: #333;">
+                                    Error
+                                </h3>
+                                <p class="toast__msg">
+                                    <?php
+                                    echo $_SESSION['thongbao'];
+                                    unset($_SESSION['thongbao']);
+                                    ?>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
                 <div class="grid-with-width">
                     <div class="grid__row">
                         <div class="grid__column-2-3">
@@ -91,17 +136,18 @@
                                 <p>Form liên hệ</p>
                                 <h1>Giải đáp thắc mắc</h1>
                             </div>
-                            <form action="" class="form-contact" method="POST">
+                            <form action="./contact.php" class="form-contact" method="POST">
                                 <div>
                                     <lable class="lable">Email :</lable> <br>
-                                    <input type="text" class="input" name="">
+                                    <input type="text" class="input" name="email_contacts">
+                                    <input type="text" class="input" value="<?php echo date('Y-m-d'); ?>" hidden name="date_contacts">
                                 </div>
                                 <div>
                                     <lable class="lable">Message :</lable> <br>
-                                    <textarea class="input" name="" id="" cols="30" rows="6"></textarea>
+                                    <textarea class="input" name="mess_contacts" id="" cols="30" rows="6"></textarea>
                                 </div>
                                 <div>
-                                    <input type="submit" style="width: 100%;" class="btn" value="SEND NOW">
+                                    <input type="submit" style="width: 100%;" name="btn-submit" class="btn" value="SEND NOW">
                                 </div>
                             </form>
                         </div>
