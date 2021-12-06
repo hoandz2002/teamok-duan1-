@@ -30,6 +30,24 @@ if (isset($_POST['comment'])) {
     header("location:/duan1/tours_detail.php?id_tours=$id_tours");
 }
 if (isset($_POST['addgiohang'])) {
+    if (empty($_POST['quantity_pp'])) {
+        $id = $_GET['id_tours'];
+        $_SESSION['thongbao'] = "không được để trống số lượng người!";
+        header("location: tours_detail.php?id_tours=$id");
+        die;
+    }
+    if (empty($_POST['id_service'])) {
+        $id = $_GET['id_tours'];
+        $_SESSION['thongbao'] = "Mời bạn chọn dịch vụ!";
+        header("location: tours_detail.php?id_tours=$id");
+        die;
+    }
+    if (empty($_POST['date_start'])) {
+        $id = $_GET['id_tours'];
+        $_SESSION['thongbao'] = "Mời bạn chọn ngay dự kiến đi!";
+        header("location: tours_detail.php?id_tours=$id");
+        die;
+    }
     $id_customer = $_SESSION['user']['id_customer'];
     $price = intval($_POST['quantity_pp']) * intval($_POST['price_tours']);
     // var_dump($price);die;
@@ -61,6 +79,7 @@ if (isset($_POST['addgiohang'])) {
     <link rel="stylesheet" href="/duan1/asset/css/main.css">
     <link rel="stylesheet" href="/duan1/asset/css/tours_detail.css">
     <link rel="stylesheet" href="/duan1/asset/css/responsive.css">
+    <link rel="stylesheet" href="/duan1/asset/css/css_admin/error_mess.css">
     <style>
 
     </style>
@@ -75,8 +94,31 @@ if (isset($_POST['addgiohang'])) {
         </div>
         <div class="body">
             <div class="grid">
+                <?php if (isset($_SESSION['thongbao'])) { ?>
+                    <div id="toast">
+                        <div class="tst_test tst--error">
+                            <div class="toast__icon">
+                                <i class="fas fa-exclamation"></i>
+                            </div>
+                            <div class="toast__body">
+                                <h3 class="toast__title" style="font-weight: 600;color: #333;">
+                                    Error
+                                </h3>
+                                <p class="toast__msg">
+                                    <?php
+                                    echo $_SESSION['thongbao'];
+                                    unset($_SESSION['thongbao']);
+                                    ?>
+                                </p>
+                            </div>
+                            <div class="toast__close">
+                                <i class='fas fa-times'></i>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
                 <div class="grid-with-width">
-                    <form action="tours_detail.php" method="POST">
+                    <form action="tours_detail.php?id_tours=<?=$data['id_tours']?>" method="POST">
                         <div class="grid__row">
                             <!-- img -->
                             <div class="pd-16 grid__column-2">

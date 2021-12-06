@@ -118,7 +118,7 @@ $data_ds = getid_bill($id_customer);
                 <!-- <a href="./tours.php"><button class="update">UPDATE CART</button></a> -->
                 <?php foreach ($data_ds as $ds) { ?>
                     <tr>
-                        <?php $total = intval($ds['price_bill_tours']) + intval($ds['price_service']) - intval($ds['price_tours']) * intval($ds['sale_tours']) / 100 ?>
+                        <?php $total = intval($ds['price_bill_tours']) + intval($ds['price_service']) - intval($ds['price_tours']) * intval($ds['quantity_pp']) * intval($ds['sale_tours']) / 100 ?>
                         <td><a href="./db/bill_tour/delete_bill.php?id_bill_tours=<?= $ds['id_bill_tours'] ?>"><i class="fas fa-times" style="color:red;"></i></a></td>
                         <td><img src="./asset/img/<?= $ds['image'] ?>" width="100px" alt=""></td>
                         <td style="max-width: 250px;"><?= $ds['name_tours'] ?></td>
