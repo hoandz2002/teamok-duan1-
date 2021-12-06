@@ -33,6 +33,8 @@ if (empty($_SESSION['user']) == false) {
     <link rel="stylesheet" href="./asset/css/main.css">
     <link rel="stylesheet" href="./asset/css/index.css">
     <link rel="stylesheet" href="./asset/css/responsive.css">
+    <script src="demo.js"></script>
+
 </head>
 <style>
     .body__bottom-detail {
@@ -313,25 +315,25 @@ if (empty($_SESSION['user']) == false) {
                                     <div class="grid__row">
                                         <div class="grid__column-4 ">
                                             <div class="date-time">
-                                                <p>000</p>
+                                                <p id="ngay">000</p>
                                                 <span>DAYS</span>
                                             </div>
                                         </div>
                                         <div class="grid__column-4 ">
                                             <div class="date-time">
-                                                <p>00</p>
+                                                <p id="gio">00</p>
                                                 <span>HOUR</span>
                                             </div>
                                         </div>
                                         <div class="grid__column-4 ">
                                             <div class="date-time">
-                                                <p>00</p>
+                                                <p id="phut">00</p>
                                                 <span>MINUTES</span>
                                             </div>
                                         </div>
                                         <div class="grid__column-4 ">
                                             <div class="date-time">
-                                                <p>00</p>
+                                                <p id="giay">00</p>
                                                 <span>SECONDS</span>
                                             </div>
                                         </div>
@@ -342,7 +344,11 @@ if (empty($_SESSION['user']) == false) {
                     </div>
                 </div>
             </div>
+            <script>
+        thoigianden('1/1/2022',['ngay','gio','phut','giay']
+        )
 
+</script>
             <div class="body__view">
                 <div class="grid">
                     <div class="grid__row">
