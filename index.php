@@ -7,13 +7,14 @@ require_once './db/location.php';
 $data_cate = getAll_cate();
 $data = getAllTours();
 $data_location = getall_location();
-// var_dump($data_location);die;
+
+// echo $css;die;
 
 session_start();
 if (empty($_SESSION['user']) == false) {
     $ok = $_SESSION['user']['id_customer'];
     $name = '<li class="header__navbar-item-child"><a href="/duan1/acc.php" class="header__navbar-link-child">Thông tin</a></li>
-    <li class="header__navbar-item-child"><a href="/duan1/cart.php?id_customer=' . $ok . '" class="header__navbar-link-child">Tours</a></li>    
+    <li class="header__navbar-item-child"><a href="/duan1/cart.php?id_customer=' . $ok . '" class="header__navbar-link-child">Tours</a></li>
     <li class="header__navbar-item-child"><a href="/duan1/logout.php" class="header__navbar-link-child">Đăng xuất</a></li>';
 } else {
     $name = '<li class="header__navbar-item-child"><a href="/duan1/login_form.php" class="header__navbar-link-child">Đăng nhập</a></li>
@@ -345,10 +346,8 @@ if (empty($_SESSION['user']) == false) {
                 </div>
             </div>
             <script>
-        thoigianden('1/1/2022',['ngay','gio','phut','giay']
-        )
-
-</script>
+                thoigianden('1/1/2022', ['ngay', 'gio', 'phut', 'giay'])
+            </script>
             <div class="body__view">
                 <div class="grid">
                     <div class="grid__row">
@@ -396,16 +395,12 @@ if (empty($_SESSION['user']) == false) {
                             <div class="body__details-content-child">
                                 <div class="content-child__title">01. Du Lịch</div>
                                 <div class="content-child__heading">Khám Phá Thành Phố</div>
-                                <button class="content-child__button content-child__button-top">DETAILS</button>
                             </div>
                         </div>
                         <div class="grid__column-2 body__details-content" style="background-image: url(./asset/img/parallax-6-filter.jpg);">
                             <div class="body__details-content-child">
                                 <div class="content-child__title">02. Du Lịch</div>
                                 <div class="content-child__heading">Khám Phá Thiên Nhiên</div>
-                                <button class="content-child__button content-child__button-bottom">DETAILS</button>
-
-
                             </div>
                         </div>
                     </div>
@@ -419,12 +414,14 @@ if (empty($_SESSION['user']) == false) {
                             <span>KHUYẾN MÃI</span>
                             <p>CÁC <u>ĐỊA ĐIỂM</u></p>
                         </div>
-                        <?php for ($i = 0; $i < 6; $i++) { ?>
+                        <?php for ($i = 0; $i < 6; $i++) {
+                            $array_color = ['FFD205', 'F78269', 'BA71DA'];
+                            $css = array_rand($array_color); ?>
                             <div class="grid__column-3 bordered">
                                 <img src="./asset/img/<?= $data[$i]['image'] ?>" alt="" class="body__bottom-img" style="height: 252px;overflow: hidden;">
                                 <div class="body__bottom-content">
                                     <div class="body__bottom-title">
-                                        <p style="overflow: hidden;
+                                        <p style="overflow: hidden;line-height: 24px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;"><?= $data[$i]['name_tours'] ?></p>
@@ -435,20 +432,20 @@ if (empty($_SESSION['user']) == false) {
                                             <p>CULTURAL</p>
                                             <p>
                                                 RELAX
-                                                <span class="number">+ 1</span>
+                                                <span class="number" style="background-color: #<?= $array_color[$css] ?>;">+ 1</span>
                                             </p>
                                         </div>
                                         <div class="body__bottom-price-right">
-                                            <p><?= $data[$i]['price_tours'] ?>Đ</p>
+                                            <p><?= number_format($data[$i]['price_tours']) ?>Đ</p>
                                         </div>
                                     </div>
                                     <div class="body__bottom-detail">
                                         <p style="overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; height: 50px;">
                                             <?= $data[$i]['short_description_tours'] ?>
                                         </p>
-                                        <button><a href="./tours_detail.php?id_tours=<?= $data[$i]['id_tours'] ?>" style="text-decoration: none; color: white;">CHI TIẾT</a></button>
+                                        <button style="background-color: #<?= $array_color[$css] ?>;"><a href="./tours_detail.php?id_tours=<?= $data[$i]['id_tours'] ?>" style="text-decoration: none; color: white;">CHI TIẾT</a></button>
                                     </div>
-                                    <div class="possition">
+                                    <div class="possition" style="background-color:#<? $array_color[$css] ?>">
                                         <img src="./asset/img/nav__pc-icon1.jpg" alt="" style="width: 30px;">
                                     </div>
                                 </div>

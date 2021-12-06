@@ -58,9 +58,9 @@ $data = getAllTours();
                             </div>
                         </div>
                     <?php } ?>
-                    <div style="width: 100%; padding: 16px 40px 8px;">
+                    <div style="width: 100%; padding: 16px 40px 8px;text-align:center;">
                         <?php for ($page = 1; $page <= $number_of_page; $page++) {
-                            echo '<a style="text-decoration: none; width: 30px; text-align: center; line-height: 30px; display: inline-block; margin: 0px 8px; background-color: blue; color: white;" href = "tours.php?page=' . $page . '">' . $page . ' </a>';
+                            echo '<a style="text-decoration: none; width: 30px; text-align: center; line-height: 30px; display: inline-block; margin: 0px 8px; background-color: #007bff; color: white;" href = "tours.php?page=' . $page . '">' . $page . ' </a>';
                         }
                         ?>
                     </div>
