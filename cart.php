@@ -93,6 +93,7 @@ $data_ds = getid_bill($id_customer);
                     <th>Name Tours</th>
                     <th>Price</th>
                     <th>Quantity</th>
+                    <th>sale</th>
                     <th>Date book</th>
                     <th>Name service</th>
                     <th>Price service</th>
@@ -117,12 +118,13 @@ $data_ds = getid_bill($id_customer);
                 <!-- <a href="./tours.php"><button class="update">UPDATE CART</button></a> -->
                 <?php foreach($data_ds as $ds) { ?>
                     <tr>
-                        <?php $total = intval($ds['price_bill_tours']) + intval($ds['price_service']) ?>
+                        <?php $total = intval($ds['price_bill_tours']) + intval($ds['price_service']) - intval($ds['price_tours'])*intval($ds['sale_tours'])/100 ?>
                         <td><a href="./db/bill_tour/delete_bill.php?id_bill_tours=<?=$ds['id_bill_tours']?>"><i class="fas fa-times" style="color:red;"></i></a></td>
                         <td><img src="./asset/img/<?=$ds['image']?>" width="100px" alt=""></td>
                         <td style="max-width: 250px;"><?=$ds['name_tours']?></td>
                         <td><?=$ds['price_bill_tours']?></td>
                         <td><?=$ds['quantity_pp']?></td>
+                        <td><?=$ds['sale_tours']?>%</td>
                         <td><?=$ds['date_book']?></td>
                         <td><?=$ds['name_service']?></td>
                         <td><?=$ds['price_service']?></td>

@@ -21,7 +21,7 @@
     <div class="main">
         <?php require_once './header.php'; ?>
         <div class="body__banner" style="background-image: url(/duan1/asset/img/ct-banner.jpg); padding: 10%;">
-            <div class="banner-text">Contact Us</div>
+            <div class="banner-text">Liên hệ</div>
         </div>
         <div class="body">
             <div class="grid">
@@ -29,12 +29,10 @@
                     <div class="grid__row">
                         <div class="grid__column-2-3">
                             <p class="top-text">
-                                <span>A</span> ivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim. Sed quis rutrum tellus, sit amet viverra felis. Cras sagittis sem sit amet urna feugiat rutrum. Nam nulla ipsum, venenatis malesuada felis quis, ultricies convallis neque.
-
+                                <span>V</span> Việt Nam-đất nước cong cong hình chữ S được biết đến qua hàng loạt các danh lam thắng cảnh cùng nền văn hòa đậm đà bản sắc của nền văn hóa lúa nước. Miền Bắc có SaPa Hạ Long, Hà Nội, Tràng An Ninh Bình.... Miền Trung có Hội An, Đà Nẵng, Huế, Nha Trang .Hãy để HTH Travel giới thiệu những địa điểm nên đi du lịch ở Việt Nam cho sự lựa chọn chuyến đi sắp tới
                             </p>
                             <p class="top-text">
-                                Aivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim. Sed quis rutrum tellus, sit amet viverra felis. Cras sagittis sem sit amet urna feugiat rutrum. Nam nulla ipsum, venenatis malesuada felis quis, ultricies convallis neque.
-
+                                Mọi thắc mắc của bạn vui lòng liên hệ với chúng tôi. Xin chân thành cảm ơn!
                             </p>
                         </div>
                         <div class="grid__column-3">
@@ -90,8 +88,8 @@
                         </div>
                         <div class="grid__column-3">
                             <div class="form-text">
-                                <p>CONTACT US</p>
-                                <h1>Drop Us a Line</h1>
+                                <p>Form liên hệ</p>
+                                <h1>Giải đáp thắc mắc</h1>
                             </div>
                             <form action="" class="form-contact" method="POST">
                                 <div>
@@ -182,31 +180,31 @@
         </div>
     </div>
     <script>
-            const buyBtns = document.querySelectorAll('.js-modal-click');
-            const modal = document.querySelector('.js-modal');
-            const modalContainer = document.querySelector('.js-modal-container');
-            const modalClose = document.querySelector('.js-modal-close');
-            //hàm hiển thị modal xem(thêm class open vào modal)
-            function showBuyTickets() {
-                modal.classList.add('open');
-            }
-            //hàm ẩn modal xem(gỡ bỏ class open vào modal)
-            function hideBuyTickets() {
-                modal.classList.remove('open');
-            }
-            //lặp qua từng thẻ button và nghe theo hành vi click
-            for (const buyBtn of buyBtns) {
-                buyBtn.addEventListener('click', showBuyTickets);
-            }
+        const buyBtns = document.querySelectorAll('.js-modal-click');
+        const modal = document.querySelector('.js-modal');
+        const modalContainer = document.querySelector('.js-modal-container');
+        const modalClose = document.querySelector('.js-modal-close');
+        //hàm hiển thị modal xem(thêm class open vào modal)
+        function showBuyTickets() {
+            modal.classList.add('open');
+        }
+        //hàm ẩn modal xem(gỡ bỏ class open vào modal)
+        function hideBuyTickets() {
+            modal.classList.remove('open');
+        }
+        //lặp qua từng thẻ button và nghe theo hành vi click
+        for (const buyBtn of buyBtns) {
+            buyBtn.addEventListener('click', showBuyTickets);
+        }
 
-            //nghe hành vi click vào button close
-            modalClose.addEventListener('click', hideBuyTickets);
+        //nghe hành vi click vào button close
+        modalClose.addEventListener('click', hideBuyTickets);
 
-            modal.addEventListener('click', hideBuyTickets);
-            modalContainer.addEventListener('click', function(even) {
-                event.stopPropagation();
-            });
-        </script>
+        modal.addEventListener('click', hideBuyTickets);
+        modalContainer.addEventListener('click', function(even) {
+            event.stopPropagation();
+        });
+    </script>
 </body>
 
 </html>

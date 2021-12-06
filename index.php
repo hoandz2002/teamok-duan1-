@@ -13,7 +13,7 @@ session_start();
 if (empty($_SESSION['user']) == false) {
     $ok = $_SESSION['user']['id_customer'];
     $name = '<li class="header__navbar-item-child"><a href="/duan1/acc.php" class="header__navbar-link-child">Thông tin</a></li>
-    <li class="header__navbar-item-child"><a href="/duan1/cart.php?id_customer='.$ok.'" class="header__navbar-link-child">Tours</a></li>    
+    <li class="header__navbar-item-child"><a href="/duan1/cart.php?id_customer=' . $ok . '" class="header__navbar-link-child">Tours</a></li>    
     <li class="header__navbar-item-child"><a href="/duan1/logout.php" class="header__navbar-link-child">Đăng xuất</a></li>';
 } else {
     $name = '<li class="header__navbar-item-child"><a href="/duan1/login_form.php" class="header__navbar-link-child">Đăng nhập</a></li>
@@ -45,7 +45,9 @@ if (empty($_SESSION['user']) == false) {
         <header class="header" style="background-image: url(./asset/img/bannner-home.jpg); height: 720px;">
             <div class="header__navbar">
                 <div class="header__navbar-logo">
-                    <img src="./asset/img/logohthtravel.png" alt="" class="header__navbar-logo-img">
+                    <a href="/duan1/index.php">
+                        <img src="./asset/img/logohthtravel.png" alt="" class="header__navbar-logo-img">
+                    </a>
                 </div>
 
                 <div class="header__navbar-list">
@@ -280,7 +282,7 @@ if (empty($_SESSION['user']) == false) {
             </div>
 
             <div class="body__banner">
-                <div class="grid">
+                <div class="grid" style="padding-top: 60px;">
                     <div class="banner__block">
                         <div class="body__banner-content ">
                             <p class="banner__heading-1">Relax</p>
@@ -411,16 +413,16 @@ if (empty($_SESSION['user']) == false) {
                             <span>KHUYẾN MÃI</span>
                             <p>CÁC <u>ĐỊA ĐIỂM</u></p>
                         </div>
-                        <?php foreach ($data as $value) { ?>
+                        <?php for ($i = 0; $i < 6; $i++) { ?>
                             <div class="grid__column-3 bordered">
-                                <img src="./asset/img/<?= $value['image'] ?>" alt="" class="body__bottom-img" style="height: 252px;overflow: hidden;">
+                                <img src="./asset/img/<?= $data[$i]['image'] ?>" alt="" class="body__bottom-img" style="height: 252px;overflow: hidden;">
                                 <div class="body__bottom-content">
                                     <div class="body__bottom-title">
                                         <p style="overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;"><?= $value['name_tours'] ?></p>
-                                        <span><i class="fas fa-map-marked"></i><?= $value['name_location'] ?></span>
+  -webkit-line-clamp: 2;"><?= $data[$i]['name_tours'] ?></p>
+                                        <span><i class="fas fa-map-marked"></i><?= $data[$i]['name_location'] ?></span>
                                     </div>
                                     <div class="body__bottom-price">
                                         <div class="body__bottom-price-left">
@@ -431,14 +433,14 @@ if (empty($_SESSION['user']) == false) {
                                             </p>
                                         </div>
                                         <div class="body__bottom-price-right">
-                                            <p><?= $value['price_tours'] ?>Đ</p>
+                                            <p><?= $data[$i]['price_tours'] ?>Đ</p>
                                         </div>
                                     </div>
                                     <div class="body__bottom-detail">
                                         <p style="overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; height: 50px;">
-                                            <?= $value['short_description_tours'] ?>
+                                            <?= $data[$i]['short_description_tours'] ?>
                                         </p>
-                                        <button><a href="./tours_detail.php?id_tours=<?= $value['id_tours'] ?>" style="text-decoration: none; color: white;">CHI TIẾT</a></button>
+                                        <button><a href="./tours_detail.php?id_tours=<?= $data[$i]['id_tours'] ?>" style="text-decoration: none; color: white;">CHI TIẾT</a></button>
                                     </div>
                                     <div class="possition">
                                         <img src="./asset/img/nav__pc-icon1.jpg" alt="" style="width: 30px;">

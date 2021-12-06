@@ -22,11 +22,13 @@ $data = getAllTours();
             top: 25%;
             left: 25%;
             display: none;
-            background-color: rgba( 0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.8);
         }
-        .left_item:hover .box{
+
+        .left_item:hover .box {
             display: block;
         }
+
         .ok {
             max-height: 3rem;
             line-height: 1.8rem;
@@ -68,27 +70,42 @@ $data = getAllTours();
                             </tr>
                         </thead>
                         <tbody class="tbody">
-                            <?php for ($i = 0; $i < count($data); $i++) { ?>
+                            <?php
+                            require_once './../connect_list.php';
+                            $results_per_page = 5;
+                            $query = "select *from tours";
+                            $result = mysqli_query($conn, $query);
+                            $number_of_result = mysqli_num_rows($result);
+                            $number_of_page = ceil($number_of_result / $results_per_page);
+                            if (!isset($_GET['page'])) {
+                                $page = 1;
+                            } else {
+                                $page = $_GET['page'];
+                            }
+                            $page_first_result = ($page - 1) * $results_per_page;
+                            $query = "SELECT *FROM tours inner join location on tours.id_location = location.id_location LIMIT " . $page_first_result . ',' . $results_per_page;
+                            $result = mysqli_query($conn, $query);
+                            while ($row = mysqli_fetch_array($result)) { ?>
                                 <tr>
-                                    <td><?php echo $data[$i]['id_tours'] ?></td>
-                                    <td><img width="100px" src="./../../asset/img/<?php echo $data[$i]['image'] ?>"></td>
-                                    <td><?php echo $data[$i]['name_tours'] ?></td>
-                                    <td><?php echo $data[$i]['short_description_tours'] ?></td>
-                                    <td><?php echo $data[$i]['price_tours'] ?></td>
+                                    <td><?php echo $row['id_tours'] ?></td>
+                                    <td><img width="100px" src="./../../asset/img/<?php echo $row['image'] ?>"></td>
+                                    <td><?php echo $row['name_tours'] ?></td>
+                                    <td><?php echo $row['short_description_tours'] ?></td>
+                                    <td><?php echo $row['price_tours'] ?></td>
                                     <td>
-                                        <?php if ($data[$i]['sale_tours'] == null) {
+                                        <?php if ($row['sale_tours'] == null) {
                                             echo 'null';
                                         } else {
-                                            echo $data[$i]['sale_tours'];
+                                            echo $row['sale_tours'];
                                         } ?>
                                     </td>
-                                    <td><?php echo $data[$i]['name_location'] ?></td>
+                                    <td><?php echo $row['name_location'] ?></td>
                                     <td>
                                         <li class="left_item" style="list-style: none; "><a class="left_link" href="#" style="color: black;">Xem</a>
                                             <div class="box">
                                                 <?php
                                                 // for ($k = 0; $k < count($data); $k++) {
-                                                $data_img = getAllImage($data[$i]['id_tours']);
+                                                $data_img = getAllImage($row['id_tours']);
                                                 // var_dump($data[$k]); die;
                                                 // }
                                                 ?>
@@ -99,10 +116,20 @@ $data = getAllTours();
                                         </li>
                                     </td>
                                     <td>
-                                        <a href="./edit.php?id_tours=<?=$data[$i]['id_tours']?>" class="js-modal-click1"><i class="mr-8 fas fa-cogs"></i></a>
-                                        <a href="./delete.php?id_tours=<?=$data[$i]['id_tours']?>" onclick="confirm('Bạn muốn xóa thông tin này!');"><i class="fas fa-trash-alt"></i></a>
+                                        <a href="./edit.php?id_tours=<?= $row['id_tours'] ?>" class="js-modal-click1"><i class="mr-8 fas fa-cogs"></i></a>
+                                        <a href="./delete.php?id_tours=<?= $row['id_tours'] ?>" onclick="confirm('Bạn muốn xóa thông tin này!');"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
+
+                            <?php } ?>
+                            <div style="width: 100%; padding: 2px 40px 8px;">
+                                <?php for ($page = 1; $page <= $number_of_page; $page++) {
+                                    echo '<a style="text-decoration: none; width: 30px; text-align: center; line-height: 30px; display: inline-block; margin: 0px 8px; background-color: blue; color: white;" href = "list_tours.php?page=' . $page . '">' . $page . ' </a>';
+                                }
+                                ?>
+                            </div>
+                            <?php for ($i = 0; $i < count($data); $i++) { ?>
+
                             <?php } ?>
                         </tbody>
                     </table>

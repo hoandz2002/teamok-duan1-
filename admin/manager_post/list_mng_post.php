@@ -43,12 +43,7 @@ $data = getAll_cate();
                         </thead>
                         <tbody class="tbody">
                         <?php
-                            $conn = mysqli_connect('localhost', 'root', '');
-                            if (!$conn) {
-                                die("Connection failed" . mysqli_connect_error());
-                            } else {
-                                mysqli_select_db($conn, 'duan1');
-                            }
+                            require_once './../connect_list.php';
                             $results_per_page = 5;
                             $query = "select *from cate_post";
                             $result = mysqli_query($conn, $query);

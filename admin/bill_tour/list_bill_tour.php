@@ -37,8 +37,8 @@ $data = getall_bill();
                             <tr>
                                 <th>ID</th>
                                 <th>tên khách hàng</th>
-                                <th>Mã khách hàng</th>
                                 <th>số người</th>
+                                <th>Sale</th>
                                 <th>Giá</th>
                                 <th>Tên tour</th>
                                 <th>thời gian đặt</th>
@@ -52,12 +52,7 @@ $data = getall_bill();
                         </thead>
                         <tbody class="tbody">
                             <?php
-                            $conn = mysqli_connect('localhost', 'root', '');
-                            if (!$conn) {
-                                die("Connection failed" . mysqli_connect_error());
-                            } else {
-                                mysqli_select_db($conn, 'duan1');
-                            }
+                            require_once './../connect_list.php';
                             $results_per_page = 5;
                             $query = "select *from bill_tours";
                             $result = mysqli_query($conn, $query);
@@ -72,26 +67,26 @@ $data = getall_bill();
                             $query = "SELECT * FROM bill_tours inner join customer on bill_tours.id_customer = customer.id_customer inner join tours on bill_tours.id_tours = tours.id_tours  inner join service on bill_tours.id_service = service.id_service LIMIT " . $page_first_result . ',' . $results_per_page;
                             $result = mysqli_query($conn, $query);
                             while ($row = mysqli_fetch_array($result)) { ?>
-                                <?php $total = intval($row['price_bill_tours']) + intval($row['price_service']) ?>
+                                <?php $total = intval($row['price_bill_tours']) + intval($row['price_service']) - intval($row['price_tours']) * intval($row['sale_tours']) / 100 ?>
                                 <tr>
                                     <td><?= $row['id_bill_tours'] ?></td>
                                     <td><?= $row['name_customer'] ?></td>
-                                    <td><?= $row['id_customer'] ?></td>
                                     <td><?= $row['quantity_pp'] ?></td>
+                                    <td><?= $row['sale_tours'] ?></td>
                                     <td><?= $row['price_bill_tours'] ?> </td>
                                     <td><?= $row['name_tours'] ?></td>
                                     <td><?= $row['date_book'] ?></td>
                                     <td><?= $row['name_service'] ?> </td>
                                     <td><?= $row['price_service'] ?> </td>
-                                    <td><?= $total?> </td>
+                                    <td><?= $total ?> </td>
                                     <td><?= $row['date_start'] ?></td>
-                                    <td><?php if($row['bill_status'] == 0) {
-                                        echo 'Chưa thanh toán';
-                                    }else {
-                                        echo 'Đã thanh toán';
-                                    } ?></td>
+                                    <td><?php if ($row['bill_status'] == 0) {
+                                            echo 'Chưa thanh toán';
+                                        } else {
+                                            echo 'Đã thanh toán';
+                                        } ?></td>
                                     <td>
-                                        <a onclick="return confirm('Bạn có chắc chắn muốn xóa?');" href="./../../db/bill_tour/delete_bill.php?id_bill_tour=<?=$row['id_bill_tours'] ?>"><i class="fas fa-trash-alt"></i></a>
+                                        <a onclick="return confirm('Bạn có chắc chắn muốn xóa?');" href="./../../db/bill_tour/delete_bill.php?id_bill_tour=<?= $row['id_bill_tours'] ?>"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
 

@@ -83,24 +83,20 @@
     <div class="main">
         <?php require_once './header.php'; ?>
         <div class="body__banner" style="background-image: url(/duan1/asset/img/ab-bannner1.jpg); padding: 10%;">
-            <div class="banner-text">ABOUT US</div>
+            <div class="banner-text">Giới thiệu</div>
         </div>
         <div class="body">
             <div class="grid">
                 <div class="grid__row">
                     <div class="grid__column-2">
-                        <div class="body__heading">Hello. Our agency has been present for over 20 years in the market. We make the most of all our customers.</div>
+                        <div class="body__heading" style="line-height: 60px;">HTH Travel với mục tiêu quảng bá hình ảnh du lịch Việt Nam đến với bạn bè quốc tế</div>
                     </div>
                     <div class="grid__column-2" style="display: flex;">
                         <div class="grid__column-2">
-                            <div class="body__text"> Phasellus enim libero, blandit vel sapien vitae, condimentum ultricies magna et. Quisque euismod orci ut.
-
-                                Phasellus enim libero, blandit vel sapien vitae, condimentum ultricies magna et. Quisque euismod orci ut.ss</div>
+                            <div class="body__text"> Trở thành một trong những thương hiệu du lịch hàng đầu tại Việt Nam và khu vực trên các lĩnh vực lưu trú - ẩm thực - lữ hành - giải trí - đào tạo và các dịch vụ du lịch khác</div>
                         </div>
                         <div class="grid__column-2">
-                            <div class="body__text"> Phasellus enim libero, blandit vel sapien vitae, condimentum ultricies magna et. Quisque euismod orci ut.
-
-                                Phasellus enim libero, blandit vel sapien vitae, condimentum ultricies magna et. Quisque euismod orci ut.ss</div>
+                            <div class="body__text"> Với sứ mệnh nâng tầm vị thế du lịch Việt Nam, mang hình ảnh Việt Nam đến khắp năm châu thông qua việc cung cấp các trải nghiệm, sản phẩm, dịch vụ độc đáo, chứa đựng giá trị văn hóa tinh thần với chất lượng quốc tế.</div>
                         </div>
                     </div>
 
@@ -118,9 +114,8 @@
             <div class="grid-with-width body-bottom">
                 <img src="/duan1/asset/img/ab-banner2.jpg" alt="" class="body__banner-img">
                 <div class="banner__content">
-                    <h1>Our Staff</h1>
-                    <p>LOREM IPSUM DOLOR SIT AMET, CONSECTETURADIPISCING ELIT. DONEC AT LIGULA IN LIGULA ULTRICESVULPUTATE AT AC SAPIEN. IN JUSTO NEQUE, MALESUADAA LIBERO ET, LOREM IPSUM DOLOR SIT AMET,CONSECTETUR ADIPISCING ELIT
-                        CONTACT US</p>
+                    <h1>Quản lí</h1>
+                    <p>Với đội ngũ quản lí dày dặn kinh nghiệm , đội ngũ tư vấn 24/24 tư vấn cho mọi người chu đáo, giải quyết quyết mọi vấn đề thắc mắc của khách hàng, với thái độ thân thiện tôn trong khách hàng.</p>
                 </div>
             </div>
             <div class="banner__user">
@@ -130,9 +125,7 @@
                         <div class="content-user">
                             <h3>Hoàn ĐC</h3>
                             <p>admin</p>
-                            <span>LOREM IPSUM DOLOR SIT AMET, CONSECTETURADIPISCING ELIT. DONEC AT LIGULA IN LIGULA ULTRICESVULPUTATE AT AC SAPIEN. IN JUSTO NEQUE, MALESUADAA LIBERO ET, LOREM IPSUM DOLOR SIT AMET,CONSECTETUR ADIPISCING ELIT
-
-                                CONTACT US</span>
+                            <span>Quản lí, nhân viên</span>
                         </div>
                     </div>
                     <div class="grid__column-3">
@@ -140,9 +133,7 @@
                         <div class="content-user">
                             <h3>Hiếu NT</h3>
                             <p>admin</p>
-                            <span>LOREM IPSUM DOLOR SIT AMET, CONSECTETURADIPISCING ELIT. DONEC AT LIGULA IN LIGULA ULTRICESVULPUTATE AT AC SAPIEN. IN JUSTO NEQUE, MALESUADAA LIBERO ET, LOREM IPSUM DOLOR SIT AMET,CONSECTETUR ADIPISCING ELIT
-
-                                CONTACT US</span>
+                            <span>Quản lí, nhân viên</span>
                         </div>
                     </div>
                     <div class="grid__column-3">
@@ -150,9 +141,7 @@
                         <div class="content-user">
                             <h3>Trọng TĐ</h3>
                             <p>admin</p>
-                            <span>LOREM IPSUM DOLOR SIT AMET, CONSECTETURADIPISCING ELIT. DONEC AT LIGULA IN LIGULA ULTRICESVULPUTATE AT AC SAPIEN. IN JUSTO NEQUE, MALESUADAA LIBERO ET, LOREM IPSUM DOLOR SIT AMET,CONSECTETUR ADIPISCING ELIT
-
-                                CONTACT US</span>
+                            <span>Quản lí, nhân viên</span>
                         </div>
                     </div>
 

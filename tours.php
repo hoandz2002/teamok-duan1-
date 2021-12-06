@@ -32,12 +32,7 @@ $data = getAllTours();
             <div class="grid">
                 <div class="grid__row">
                     <?php
-                    $conn = mysqli_connect('localhost', 'root', '');
-                    if (!$conn) {
-                        die("Connection failed" . mysqli_connect_error());
-                    } else {
-                        mysqli_select_db($conn, 'duan1');
-                    }
+                    require_once './admin/connect_list.php';
                     $results_per_page = 8;
                     $query = "select *from tours inner join location on tours.id_location = location.id_location";
                     $result = mysqli_query($conn, $query);

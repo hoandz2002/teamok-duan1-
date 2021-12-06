@@ -6,7 +6,7 @@ $data_cate = getAll_cate();
 if (empty($_SESSION['user']) == false) {
     $ok = $_SESSION['user']['id_customer'];
     $name = '<li class="header__navbar-item-child"><a href="/duan1/acc.php" class="header__navbar-link-child">Thông tin</a></li>
-    <li class="header__navbar-item-child"><a href="/duan1/cart.php?id_customer='.$ok.'" class="header__navbar-link-child">Tours</a></li>    
+    <li class="header__navbar-item-child"><a href="/duan1/cart.php?id_customer=' . $ok . '" class="header__navbar-link-child">Tours</a></li>    
     <li class="header__navbar-item-child"><a href="/duan1/logout.php" class="header__navbar-link-child">Đăng xuất</a></li>';
 } else {
     $name = '<li class="header__navbar-item-child"><a href="/duan1/login_form.php" class="header__navbar-link-child">Đăng nhập</a></li>
@@ -27,7 +27,9 @@ if (empty($_SESSION['user']) == false) {
     <header class="header">
         <div class="header__navbar">
             <div class="header__navbar-logo">
-                <img src="/duan1/asset/img/logohthtravel.png" alt="" class="header__navbar-logo-img">
+                <a href="/duan1/index.php">
+                    <img src="./asset/img/logohthtravel.png" alt="" class="header__navbar-logo-img">
+                </a>
             </div>
 
             <div class="header__navbar-list">

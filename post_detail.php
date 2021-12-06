@@ -31,7 +31,7 @@ $cate = getAll_cate();
     <div class="main">
         <?php require_once './header.php'; ?>
         <div class="body__banner" style="background-image: url(/duan1/asset/img/pd-banner.jpg); padding: 10%;">
-            <div class="banner-text" style="text-shadow: 0px 1px 2px green;">Post Detail</div>
+            <div class="banner-text" style="text-shadow: 0px 1px 2px green;">Chi tiết bài viết</div>
         </div>
         <div class="body">
             <div class="grid">

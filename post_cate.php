@@ -36,7 +36,7 @@ $ok1 = $name['name_cate_post'];
     <div class="main">
         <?php require_once './header.php'; ?>
         <div class="body__banner" style="background-image: url(/duan1/asset/img/pt-banner.jpg); padding: 10%;">
-            <div class="banner-text">Our Post</div>
+            <div class="banner-text">Bài viết</div>
         </div>
         <div class="body">
             <div class="grid">

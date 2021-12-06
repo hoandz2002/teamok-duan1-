@@ -89,7 +89,7 @@ if (isset($_POST['addgiohang'])) {
                             <!-- content -->
                             <div class="pd-16 grid__column-2">
                                 <h6 style="font-size: 24px;line-height:24px" class="detail-heading"><?= $data['name_tours'] ?></h6>
-                                <span class="detail-price" name="price_tours" ><?= $data['price_tours']; ?> Đ</span>
+                                <span class="detail-price" name="price_tours"><?= $data['price_tours']; ?> Đ</span>
                                 <p style="font-size:20px;" class="detail-des">
                                 </p>
                                 <div class="pd-24 detail-qtt">
@@ -118,8 +118,13 @@ if (isset($_POST['addgiohang'])) {
                                         </div>
                                     </div>
                                 </div>
-                                <input type="text" name="id_customer" value="<?=$_SESSION['user']['id_customer']?>" hidden>
-                                <input type="text" name="id_tours" value="<?=$data['id_tours']?>" hidden>
+                                <input type="text" name="id_customer" value="<?php
+                                                                                if (isset($_SESSION['user'])) {
+                                                                                    echo $_SESSION['user']['id_customer'];
+                                                                                } else {
+                                                                                }
+                                                                                ?>" hidden>
+                                <input type="text" name="id_tours" value="<?= $data['id_tours'] ?>" hidden>
                                 <input type="text" name="price_bill_tours" value="" hidden>
                                 <input type="text" name="price_tours" value="<?= $data['price_tours']; ?>" hidden>
                                 <div class="pd-24 detail-qtt">
@@ -133,7 +138,14 @@ if (isset($_POST['addgiohang'])) {
                                     </div>
                                 </div>
                                 <div style="text-align: center; margin-top: 32px;">
-                                    <input type="submit" name="addgiohang" class="btn" value="Đặt tours" id="">
+                                    <?php
+                                    if (isset($_SESSION['user'])) {
+                                        echo '<input type="submit" name="addgiohang" class="btn" value="Đặt tours" id="">';
+                                    } else {
+                                        echo '<a style="font-size: 16px; color: blue; text-decoration: none;" href="./login_form.php">Vui lòng đăng nhập để đặt tours?</a>';
+                                    }
+                                    ?>
+                                    
                                 </div>
                             </div>
 

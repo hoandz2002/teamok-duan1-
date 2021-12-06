@@ -52,6 +52,8 @@ function getid_bill($id)
             'price_bill_tours' => $data['price_bill_tours'],
             'id_tours' => $data['id_tours'],
             'name_tours' => $data['name_tours'],
+            'price_tours' => $data['price_tours'],
+            'sale_tours' => $data['sale_tours'],
             'image' => $data['image'],
             'date_book' => $data['date_book'],
             'name_service' => $data['name_service'],
