@@ -260,7 +260,7 @@ if (empty($_SESSION['user']) == false) {
                         <?php foreach ($data_location as  $value) { ?>
                             <div class="grid__column-3">
                                 <div class="nav__full">
-                                    <img style="max-height:244.8px;over-flow:hidden;" src="./asset/img/<?php echo $value['img_location'] ?>" alt="" class="nav__full-img">
+                                    <img style="max-height:240px;overflow:hidden;" src="./asset/img/<?php echo $value['img_location'] ?>" alt="" class="nav__full-img">
                                     <div class="nav__full-top">
                                         <img src="./asset/img/nav__pc-icon1.jpg" alt="">
                                     </div>

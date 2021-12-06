@@ -76,7 +76,7 @@ if (empty($_SESSION['user']) == false) {
                     <div class="grid">
                         <div class="grid__row">
                             <div class="body__content">
-                                <p>CÁC <u>ĐỊA ĐIỂM</u></p>
+                                <p>CÁC <u>TOURS Ở ĐÂY</u></p>
                             </div>
                             <?php for ($i=0; $i < count($data_tours) ; $i++) { ?>
                                 <div class="grid__column-3 bordered">
