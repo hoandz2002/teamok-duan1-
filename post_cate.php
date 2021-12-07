@@ -42,12 +42,13 @@ $ok1 = $name['name_cate_post'];
             <div class="grid">
                 <h1 style="padding-left: 12px;"><?php echo $ok1; ?></h1>
                 <div class="grid__row">
-                    <?php foreach ($getAllId as $ds) { ?>
+                    <?php foreach ($getAllId as $ds) { $array_color = ['1BBC9B', 'BA71DA', 'F76570','14B9D5'];
+                            $css = array_rand($array_color);?>
                         <div class="grid__row pd-16 grid__column-2">
                             <div class="grid__column-2">
                                 <img style="min-height: 234px;" src="/duan1/asset/img/<?= $ds['image_post']; ?>" alt="" class="img">
                             </div>
-                            <div class="pd-24 grid__column-2" style="background-color: #1bbc9b;">
+                            <div class="pd-24 grid__column-2" style="background-color: #<?=$array_color[$css]?>;">
                                 <div class="post-heading">
                                     <p>TRAVEL TIPS</p>
                                     <h2 style="overflow: hidden;
@@ -62,7 +63,7 @@ $ok1 = $name['name_cate_post'];
                                         <?= $ds['short_description_post']; ?>
                                     </span>
                                 </div>
-                                <a href="/duan1/post_detail.php?id_post=<?= $ds['id_post']; ?>" class="btn" style="padding: 8px 16px; font-size: 10px;">Xem Ngay</a>
+                                <a href="/duan1/post_detail.php?id_post=<?= $ds['id_post']; ?>" class="btn" style="padding: 8px 16px; font-size: 10px;background-color:#fff;color:#<?=$array_color[$css]?>">Xem Ngay</a>
                             </div>
                         </div>
                     <?php } ?>

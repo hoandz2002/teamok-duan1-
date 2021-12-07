@@ -135,7 +135,7 @@ if (isset($_POST['addgiohang'])) {
                             <div class="pd-16 grid__column-2">
                                 <h6 style="font-size: 24px;line-height:24px" class="detail-heading"><?= $data['name_tours'] ?></h6>
                                 <span style="margin-top: 24px; display: block;">Địa điểm : <?= $data['name_location']; ?></span>
-                                <span class="detail-price" name="price_tours"><?= $data['price_tours']; ?> Đ</span>
+                                <span class="detail-price" name="price_tours"><?= number_format($data['price_tours']); ?> Đ</span>
                                 <p style="font-size:20px;" class="detail-des">
                                 </p>
                                 <div class="pd-24 detail-qtt">
@@ -188,7 +188,8 @@ if (isset($_POST['addgiohang'])) {
                                     if (isset($_SESSION['user'])) {
                                         echo '<input type="submit" name="addgiohang" class="btn" value="Đặt tours" id="">';
                                     } else {
-                                        echo '<a style="font-size: 16px; color: blue; text-decoration: none;" href="./login_form.php">Vui lòng đăng nhập để đặt tours?</a>';
+                                        echo '<a style="font-size: 16px; color: #4c4c4c; text-decoration: none;" href="./login_form.php">Vui lòng đăng nhập để đặt tours?</a><br>';
+                                        echo '<a style="font-size: 16px; color: #4c4c4c; text-decoration: none;" href="">Liên hệ ngay</a>';
                                     }
                                     ?>
 
@@ -311,7 +312,7 @@ if (isset($_POST['addgiohang'])) {
                                         <img src="/duan1/asset/img/<?= $row['image'] ?>" alt="" class="img">
                                         <div class="tours-content">
                                             <h6 style="font-size: 14px;" class="tours-heading"><?= $row['name_tours']; ?></h6>
-                                            <p><?= $row['price_tours']; ?> Đ</p>
+                                            <p><?= number_format($row['price_tours']); ?> Đ</p>
                                             <a href="/duan1/tours_detail.php?id_tours=<?= $row['id_tours']; ?>" class="tours-btn">SELECT OPTION</a>
                                         </div>
                                     </div>
