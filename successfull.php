@@ -1,5 +1,21 @@
 <?php
+require_once './db/bill_tour.php';
+require_once './db/connection.php';
 $id_customer = $_GET['id_customer'];
+$id_bill_tours = $_GET['id_bill_tours'];
+if(isset($_POST['btn_payment'])) {
+    function payment($id)
+    {
+        $conn = connect();
+        $sql = "UPDATE bill_tours SET bill_status = 2 WHERE id_bill_tours =:id_bill_tours";
+        $statement = $conn->prepare($sql);
+        $statement->execute(['id_bill_tours' => $id]);
+
+        return true;
+    }
+
+    payment($id_bill_tours);
+}
 ?>
 <html>
 

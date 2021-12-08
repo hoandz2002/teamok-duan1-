@@ -133,17 +133,21 @@ $data_ds = getid_bill($id_customer);
                         <td><?php
                             if ($ds['bill_status'] == 0) {
                                 echo "Đang chờ xác nhận";
-                            } else if($ds['bill_status'] != 0) {
+                            } else if($ds['bill_status'] == 1) {
                                 echo "Đã xác nhận";
-                            } else if (isset($_POST['btn_back'])) {
+                            } else if (isset($_POST['btn_back']) || $ds['bill_status'] == 2) {
                                 echo "Đã thanh toán";
+                            } elseif ($ds['bill_status'] == 3) {
+                                echo "Đã khởi hành";
+                            } elseif($ds['bill_status'] == 4) {
+                                echo 'Đã hoàn tất';
                             }
                             ?>
                         </td>
-                        <form action="./successfull.php?id_customer=<?=$ds['id_customer']?>" method="POST">
+                        <form action="./successfull.php?id_customer=<?=$ds['id_customer']?>&id_bill_tours=<?=$ds['id_bill_tours']?>" method="POST">
                         <td>
-                            <?php if ($ds['bill_status'] != 0) { ?>
-                                <button style="width: 80px;" class="update">PAYMENT</button>    
+                            <?php if ($ds['bill_status'] == 1) { ?>
+                                <button style="width: 80px;" name="btn_payment" class="update">PAYMENT</button>    
                         </td>
                         </form>
                     <?php } ?>

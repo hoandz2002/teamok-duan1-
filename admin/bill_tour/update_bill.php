@@ -120,7 +120,17 @@ if (isset($_POST['submit'])) {
                                     <?php } ?>
                                 </select>
                             </div>
-                            <input type="hidden" hidden name="bill_status" value="1">
+                            <div class="form_group">
+                                <lable class="form_lable">Trạng thái tours</lable>
+                                <select class="form_input" name="bill_status">
+                                    <option value="">--Chọn trạng thái tour--</option>
+                                        <option value="0">Chưa xác nhận</option>
+                                        <option value="1">Đã xác nhận</option>
+                                        <option value="2">Đã thanh toán</option>
+                                        <option value="3">Đang khởi hành</option>
+                                        <option value="4">Đã hoàn tất</option>
+                                </select>
+                            </div>
                             <div class="form_group">
                                 <input name="submit" type="submit" value="Xác nhận" class="btn btn-add">
                             </div>

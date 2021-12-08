@@ -82,13 +82,29 @@ $data = getall_bill();
                                     <td><?= $row['date_start'] ?></td>
                                     <td><?php if ($row['bill_status'] == 0) {
                                             echo 'Đang chờ xác nhận'; ?>
-                                            <a style="color:#000" href="./update_bill.php?id_bill_tours=<?=$row['id_bill_tours']?>">Xác nhận</a>
-                                      <?php  } else if($row['bill_status'] == 1) {
+                                            <a style="color:#000" href="./update_bill.php?id_bill_tours=<?= $row['id_bill_tours'] ?>">Xác nhận</a>
+                                        <?php  } else if ($row['bill_status'] == 1) {
                                             echo 'Đã xác nhận';
-                                        } ?>
+                                        ?>
+                                            <a style="color:#000" href="./update_bill.php?id_bill_tours=<?= $row['id_bill_tours'] ?>">Xác nhận</a>
+                                        <?php } elseif ($row['bill_status'] == 3) {
+                                            echo "Đã khởi hành";
+                                        ?>
+                                            <a style="color:#000" href="./update_bill.php?id_bill_tours=<?= $row['id_bill_tours'] ?>">Xác nhận</a>
+                                        <?php } elseif ($row['bill_status'] == 4) {
+                                            echo 'Đã hoàn tất';
+                                        ?>
+                                            <a style="color:#000" href="./update_bill.php?id_bill_tours=<?= $row['id_bill_tours'] ?>">Xác nhận</a>
+
+                                        <?php  } elseif ($row['bill_status'] == 2) {
+                                            echo 'Đã thanh toán';
+                                        ?>
+                                            <a style="color:#000" href="./update_bill.php?id_bill_tours=<?= $row['id_bill_tours'] ?>">Xác nhận</a>
+                                        <?php }
+                                        ?>
                                     </td>
                                     <td>
-                                        <a  onclick="return confirm('Bạn có chắc chắn muốn xóa?');" href="./../../db/bill_tour/delete_bill.php?id_bill_tour=<?= $row['id_bill_tours'] ?>"><i class="fas fa-trash-alt"></i></a>
+                                        <a onclick="return confirm('Bạn có chắc chắn muốn xóa?');" href="./../../db/bill_tour/delete_bill_admin.php?id_bill_tours=<?= $row['id_bill_tours'] ?>"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
 

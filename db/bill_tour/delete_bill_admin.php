@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once './../connection.php';
 require_once './../bill_tour.php';
 $id = $_SESSION['user']['id_customer'];
