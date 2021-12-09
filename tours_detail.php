@@ -48,6 +48,12 @@ if (isset($_POST['addgiohang'])) {
         header("location: tours_detail.php?id_tours=$id");
         die;
     }
+    if ($_POST['date_start'] < $_POST['date_book']) {
+        $id = $_GET['id_tours'];
+        $_SESSION['thongbao'] = "Mời nhập ngày đi sau ngày hôm nay";
+        header("location: tours_detail.php?id_tours=$id");
+        die;
+    }
     $id_customer = $_SESSION['user']['id_customer'];
     $price = intval($_POST['quantity_pp']) * intval($_POST['price_tours']);
     // var_dump($price);die;
@@ -178,7 +184,7 @@ if (isset($_POST['addgiohang'])) {
                                         <!-- <form action="" method="POST"> -->
                                         <p>Date start</p>
                                         <input type="date" name="date_book" value="<?php echo date('Y-m-d') ?>" hidden>
-                                        <input type="date" name="date_start" style="width: 320px;padding: 8px 16px;border-radius: 16px;outline: none; border: 1px solid;">
+                                        <input type="date" min="<?php echo date('Y-m-d') ?>" max="<?php echo date('Y-m-d',strtotime("+7 days")); ?>" name="date_start" style="width: 320px;padding: 8px 16px;border-radius: 16px;outline: none; border: 1px solid;">
                                         <p style="width: 50px;" hidden></p>
                                         <!-- </form> -->
                                     </div>
