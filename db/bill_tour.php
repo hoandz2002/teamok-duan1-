@@ -66,6 +66,41 @@ function getid_bill($id)
     }
     return $result;
 }
+function getbill_status($id)
+{
+    $conn = connect();
+    $sql = "SELECT * FROM bill_tours inner join customer on bill_tours.id_customer = customer.id_customer inner join tours on bill_tours.id_tours = tours.id_tours  inner join service on bill_tours.id_service = service.id_service 
+    WHERE bill_status = :bill_status";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute(['bill_status' => $id]);
+    $result = [];
+    while (true) {
+        $data = $stmt->fetch();
+        if ($data == false) {
+            break;
+        }
+
+        $row = [
+            'id_bill_tours' => $data['id_bill_tours'],
+            'name_customer' => $data['name_customer'],
+            'quantity_pp' => $data['quantity_pp'],
+            'price_bill_tours' => $data['price_bill_tours'],
+            'id_tours' => $data['id_tours'],
+            'name_tours' => $data['name_tours'],
+            'price_tours' => $data['price_tours'],
+            'sale_tours' => $data['sale_tours'],
+            'image' => $data['image'],
+            'date_book' => $data['date_book'],
+            'name_service' => $data['name_service'],
+            'price_service' => $data['price_service'],
+            'date_start' => $data['date_start'],
+            'bill_status' => $data['bill_status']
+        ];
+
+        array_push($result, $row);
+    }
+    return $result;
+}
 function getid_bill2($id)
 {
     $conn = connect();

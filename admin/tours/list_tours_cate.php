@@ -1,10 +1,13 @@
 <?php
+session_start();
 require_once './../../db/connection.php';
 require_once './../../db/tour.php';
 require_once './../../db/location.php';
 $data = getAllTours();
+$id = $_POST['id_location'];
+$tours_cate = getToursByIdLocation($id);
 $location = getall_location();
-
+$loca = getid_location($id);
 
 ?>
 <!DOCTYPE html>
@@ -58,18 +61,18 @@ $location = getall_location();
                     <h2>List manager post</h2>
                 </div>
                 <div class="grid-with-width" style="text-align: center; border-radius:  4px;">
-                        <form action="./list_tours_cate.php" method="post">
-                            <select style="width: 320px; padding: 4px;" name="id_location" id="">
-                                <option value="">---Mời chọn địa điểm---</option>
-                                <?php foreach ($location as $ds) { ?>
-                                    <option value="<?= $ds['id_location'] ?>"><?= $ds['name_location'] ?></option>
-                                <?php } ?>
-                            </select>
-                            <input type="submit" class="" style="padding: 5px;background-color: tomato; border-radius:  4px; margin-left: 4px; color: white; border: none; outline: none;" value="Tìm Kiếm">
-                        </form>
-                    </div>
+                    <form action="./list_tours_cate.php" method="post">
+                        <select style="width: 320px; padding: 4px;" name="id_location" id="">
+                            <option value="">---Mời chọn địa điểm---</option>
+                            <?php foreach ($location as $ds) { ?>
+                                <option value="<?= $ds['id_location'] ?>"><?= $ds['name_location'] ?></option>
+                            <?php } ?>
+                        </select>
+                        <input type="submit" class="" style="padding: 5px;background-color: tomato; border-radius:  4px; margin-left: 4px; color: white; border: none; outline: none;" value="Tìm Kiếm">
+                    </form>
+                </div>
                 <div class="right_body">
-                    
+
                     <table class="table">
                         <thead class="thead">
                             <tr>
@@ -85,21 +88,7 @@ $location = getall_location();
                         </thead>
                         <tbody class="tbody">
                             <?php
-                            require_once './../connect_list.php';
-                            $results_per_page = 5;
-                            $query = "select *from tours";
-                            $result = mysqli_query($conn, $query);
-                            $number_of_result = mysqli_num_rows($result);
-                            $number_of_page = ceil($number_of_result / $results_per_page);
-                            if (!isset($_GET['page'])) {
-                                $page = 1;
-                            } else {
-                                $page = $_GET['page'];
-                            }
-                            $page_first_result = ($page - 1) * $results_per_page;
-                            $query = "SELECT *FROM tours inner join location on tours.id_location = location.id_location LIMIT " . $page_first_result . ',' . $results_per_page;
-                            $result = mysqli_query($conn, $query);
-                            while ($row = mysqli_fetch_array($result)) { ?>
+                            foreach ($tours_cate as $row) { ?>
                                 <tr>
                                     <td><?php echo $row['id_tours'] ?></td>
                                     <td><img width="100px" src="./../../asset/img/<?php echo $row['image'] ?>"></td>
@@ -112,7 +101,7 @@ $location = getall_location();
                                             echo $row['sale_tours'];
                                         } ?>
                                     </td>
-                                    <td><?php echo $row['name_location'] ?></td>
+                                    <td><?php echo $loca['name_location'] ?></td>
                                     <td>
                                         <li class="left_item" style="list-style: none; border:none;"><a class="left_link" href="#" style="color: black;">Xem</a>
                                             <div class="box">
@@ -133,15 +122,6 @@ $location = getall_location();
                                         <a href="./delete.php?id_tours=<?= $row['id_tours'] ?>" onclick="confirm('Bạn muốn xóa thông tin này!');"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
-
-                            <?php } ?>
-                            <div style="width: 100%; padding: 2px 40px 8px;">
-                                <?php for ($page = 1; $page <= $number_of_page; $page++) {
-                                    echo '<a style="text-decoration: none; width: 30px; text-align: center; line-height: 30px; display: inline-block; margin: 0px 8px; background-color: blue; color: white;" href = "list_tours.php?page=' . $page . '">' . $page . ' </a>';
-                                }
-                                ?>
-                            </div>
-                            <?php for ($i = 0; $i < count($data); $i++) { ?>
 
                             <?php } ?>
                         </tbody>

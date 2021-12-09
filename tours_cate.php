@@ -3,8 +3,10 @@ session_start();
 require_once './db/connection.php';
 require_once './db/tour.php';
 require_once './db/location.php';
-$data = getAllTours();
+$id = $_POST['id_location'];
+$tours_cate = getToursByIdLocation($id);
 $location = getall_location();
+$loca = getid_location($id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,23 +45,11 @@ $location = getall_location();
                             </select>
                             <input type="submit" class="" style="padding: 5px;background-color: tomato; border-radius:  4px; margin-left: 4px; color: white; border: none; outline: none;" value="Tìm Kiếm">
                         </form>
+                        <h1 style="margin-top: 16px;"><?=$loca['name_location']?></h1>
                     </div>
                     <?php
-                    require_once './admin/connect_list.php';
-                    $results_per_page = 8;
-                    $query = "select *from tours inner join location on tours.id_location = location.id_location";
-                    $result = mysqli_query($conn, $query);
-                    $number_of_result = mysqli_num_rows($result);
-                    $number_of_page = ceil($number_of_result / $results_per_page);
-                    if (!isset($_GET['page'])) {
-                        $page = 1;
-                    } else {
-                        $page = $_GET['page'];
-                    }
-                    $page_first_result = ($page - 1) * $results_per_page;
-                    $query = "SELECT *FROM tours inner join location on tours.id_location = location.id_location LIMIT " . $page_first_result . ',' . $results_per_page;
-                    $result = mysqli_query($conn, $query);
-                    while ($row = mysqli_fetch_array($result)) { ?>
+
+                    foreach ($tours_cate as $row) { ?>
                         <div class="pd-16 grid__column-4">
                             <div class="tours-product">
                                 <img style="height:160px" src="/duan1/asset/img/<?= $row['image'] ?>" alt="" class="img">
@@ -81,12 +71,6 @@ $location = getall_location();
                             </div>
                         </div>
                     <?php } ?>
-                    <div style="width: 100%; padding: 16px 40px 8px;text-align:center;">
-                        <?php for ($page = 1; $page <= $number_of_page; $page++) {
-                            echo '<a style="text-decoration: none; width: 30px; text-align: center; line-height: 30px; display: inline-block; margin: 0px 8px; background-color: #007bff; color: white;" href = "tours.php?page=' . $page . '">' . $page . ' </a>';
-                        }
-                        ?>
-                    </div>
                 </div>
             </div>
         </div>

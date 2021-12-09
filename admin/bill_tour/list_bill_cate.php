@@ -2,6 +2,8 @@
 require_once "./../../db/connection.php";
 require_once "./../../db/bill_tour.php";
 $data = getall_bill();
+$id = $_POST['bill_status'];
+$bill_status = getbill_status($id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,13 +35,13 @@ $data = getall_bill();
                 </div>
                 <div class="grid-with-width" style="text-align: center;">
                     <form action="./list_bill_cate.php" method="post">
-                        <select style="width: 320px; padding: 4px;" name="bill_status" id="">
+                    <select style="width: 320px; padding: 4px;" name="bill_status" id="">
                             <option value="">---Mời chọn trạng thái---</option>
                             <option value="0">Đang chờ xác nhận</option>
-                            <option value="0">Đã xác nhận</option>
-                            <option value="0">Đã thanh toán</option>
-                            <option value="0">Đã khởi hành</option>
-                            <option value="0">Đã hoàn tất</option>
+                            <option value="1">Đã xác nhận</option>
+                            <option value="2">Đã thanh toán</option>
+                            <option value="3">Đã khởi hành</option>
+                            <option value="4">Đã hoàn tất</option>
                         </select>
                         <input type="submit" class="" style="padding: 5px;background-color: tomato; border-radius:  4px; margin-left: 4px; color: white; border: none; outline: none;" value="Tìm Kiếm">
                     </form>
@@ -65,21 +67,7 @@ $data = getall_bill();
                         </thead>
                         <tbody class="tbody">
                             <?php
-                            require_once './../connect_list.php';
-                            $results_per_page = 5;
-                            $query = "select *from bill_tours";
-                            $result = mysqli_query($conn, $query);
-                            $number_of_result = mysqli_num_rows($result);
-                            $number_of_page = ceil($number_of_result / $results_per_page);
-                            if (!isset($_GET['page'])) {
-                                $page = 1;
-                            } else {
-                                $page = $_GET['page'];
-                            }
-                            $page_first_result = ($page - 1) * $results_per_page;
-                            $query = "SELECT * FROM bill_tours inner join customer on bill_tours.id_customer = customer.id_customer inner join tours on bill_tours.id_tours = tours.id_tours  inner join service on bill_tours.id_service = service.id_service LIMIT " . $page_first_result . ',' . $results_per_page;
-                            $result = mysqli_query($conn, $query);
-                            while ($row = mysqli_fetch_array($result)) { ?>
+                            foreach($bill_status as $row) { ?>
                                 <?php $total = intval($row['price_bill_tours']) + intval($row['price_service']) - intval($row['price_tours']) * intval($row['sale_tours']) / 100 ?>
                                 <tr>
                                     <td><?= $row['id_bill_tours'] ?></td>
@@ -122,12 +110,6 @@ $data = getall_bill();
                                 </tr>
 
                             <?php } ?>
-                            <div style="width: 100%; padding: 0px 40px;">
-                                <?php for ($page = 1; $page <= $number_of_page; $page++) {
-                                    echo '<a style="text-decoration: none; width: 30px; text-align: center; line-height: 30px; display: inline-block; margin: 0px 8px; background-color: blue; color: white;" href = "list_bill_tour.php?page=' . $page . '">' . $page . ' </a>';
-                                }
-                                ?>
-                            </div>
                         </tbody>
                     </table>
                 </div>
