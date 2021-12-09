@@ -225,21 +225,6 @@ if (empty($_SESSION['user']) == false) {
             <div class="header__search">
                 <div class="header__search-content">
                     <h3 class="header__search-heading">Những Kỳ Nghỉ <u>Du Lịch</u></h3>
-                    <p class="header__search-title">
-                        KHUYẾN MÃI TỐT NHẤT
-                    </p>
-                    <!-- <div class="header__search-history">
-                        <select class="header__search-history-pla">
-                            <option class="header__search-history-op">Choose your Destination ... </option>
-                            <option class="header__search-history-op">Europe</option>
-                            <option class="header__search-history-op">-Italy</option>
-                            <option class="header__search-history-op">-Netherlands</option>
-                            <option class="header__search-history-op">Asia</option>
-                            <option class="header__search-history-op">-Thailandia</option>
-                            <option class="header__search-history-op">United States</option>
-                            <option class="header__search-history-op">Oceania</option>
-                        </select>
-                    </div> -->
                     <div class="header__search-item">
                         <a href=""><img src="./asset/img/t-relax.png" alt="" class="header__search-img"></a>
                         <a href=""><img src="./asset/img/t-cultural.png" alt="" class="header__search-img"></a>
@@ -353,12 +338,27 @@ if (empty($_SESSION['user']) == false) {
                     <div class="grid__row">
                         <div class="grid__column-3">
                             <div class="body__view-map">
-                                <img src="./asset/img/icon-landmark.png" alt="" class="body__view-img">
+                                <img src="./asset/img/td.png" alt="" class="body__view-img">
                                 <div class="body__view-content">
-                                    <div class="body__view-heading">Cruises</div>
-                                    <div class="body__view-datails">Lorem ipsum dolor sit amet conse ctetur adip iscing
-                                        elit Proin rhonc us urna dictum.</div>
-                                    <a href="" class="body__view-link">View more</a>
+                                    <div class="body__view-heading">Miền Bắc</div>
+                                    <div class="body__view-datails">Nhắc tới tour du lịch Miền Bắc thì người ta nghĩ ngay đến những
+                                        địa danh nổi tiếng,các nét đẹp văn hóa,phong tục tập quán của từng vùng miền,các lễ hội truyền
+                                        thống,nét mới lạ trong ẩm thực..
+                                    </div>
+                                    <a href="" class="body__view-link">Xem thêm</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid__column-3">
+                            <div class="body__view-map">
+                                <img src="./asset/img/thuyen.png" alt="" class="body__view-img">
+                                <div class="body__view-content">
+                                    <div class="body__view-heading">Miền Trung</div>
+                                    <div class="body__view-datails">Mỗi 1 tour Du Lịch Miền Trung là hành trình khám phá một mảnh đất sở
+                                        hữu nhiều di sản thiên nhiên và văn hóa thế giới giá trị nhất cả nước. Tham gia các chương trình
+                                        Du Lịch Miền Trung bạn..
+                                    </div>
+                                    <a href="" class="body__view-link">Xem thêm</a>
                                 </div>
                             </div>
                         </div>
@@ -366,21 +366,12 @@ if (empty($_SESSION['user']) == false) {
                             <div class="body__view-map">
                                 <img src="./asset/img/icon-landmark.png" alt="" class="body__view-img">
                                 <div class="body__view-content">
-                                    <div class="body__view-heading">Cruises</div>
-                                    <div class="body__view-datails">Lorem ipsum dolor sit amet conse ctetur adip iscing
-                                        elit Proin rhonc us urna dictum.</div>
-                                    <a href="" class="body__view-link">View more</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid__column-3">
-                            <div class="body__view-map">
-                                <img src="./asset/img/icon-landmark.png" alt="" class="body__view-img">
-                                <div class="body__view-content">
-                                    <div class="body__view-heading">Cruises</div>
-                                    <div class="body__view-datails">Lorem ipsum dolor sit amet conse ctetur adip iscing
-                                        elit Proin rhonc us urna dictum.</div>
-                                    <a href="" class="body__view-link">View more</a>
+                                    <div class="body__view-heading">Miền Nam</div>
+                                    <div class="body__view-datails">Du lịch Miền Nam - Miền đất hứa là vùng đất mang nhiều hy vọng của những
+                                        người dân xa quê, là vùng đất trù phú giàu có được thiên nhiên ưu ái ban tặng. Miền Namchính vì được
+                                        thiên nhiên ưu ái nên đây..
+                                    </div>
+                                    <a href="" class="body__view-link">Xem thêm</a>
                                 </div>
                             </div>
                         </div>
@@ -411,8 +402,7 @@ if (empty($_SESSION['user']) == false) {
                 <div class="grid">
                     <div class="grid__row">
                         <div class="body__content">
-                            <span>KHUYẾN MÃI</span>
-                            <p>CÁC <u>ĐỊA ĐIỂM</u></p>
+                            <p id="tours">CÁC <u>ĐỊA ĐIỂM</u></p>
                         </div>
                         <?php for ($i = 0; $i < 6; $i++) {
                             $array_color = ['FFD205', 'F78269', 'BA71DA'];
@@ -421,10 +411,9 @@ if (empty($_SESSION['user']) == false) {
                                 <img src="./asset/img/<?= $data[$i]['image'] ?>" alt="" class="body__bottom-img" style="height: 252px;overflow: hidden;">
                                 <div class="body__bottom-content">
                                     <div class="body__bottom-title">
-                                        <p style="overflow: hidden;line-height: 24px;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;"><?= $data[$i]['name_tours'] ?></p>
+                                        <p style="overflow: hidden;line-height: 24px; display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;">
+                                            <?= $data[$i]['name_tours'] ?>
+                                        </p>
                                         <span><i class="fas fa-map-marked"></i><?= $data[$i]['name_location'] ?></span>
                                     </div>
                                     <div class="body__bottom-price">
@@ -445,7 +434,7 @@ if (empty($_SESSION['user']) == false) {
                                         </p>
                                         <button style="background-color: #<?= $array_color[$css] ?>;"><a href="./tours_detail.php?id_tours=<?= $data[$i]['id_tours'] ?>" style="text-decoration: none; color: white;">CHI TIẾT</a></button>
                                     </div>
-                                    <div class="possition" style="background-color:#<? $array_color[$css] ?>">
+                                    <div class="possition" style="background-color:#<?=$array_color[$css] ?>">
                                         <img src="./asset/img/nav__pc-icon1.jpg" alt="" style="width: 30px;">
                                     </div>
                                 </div>
