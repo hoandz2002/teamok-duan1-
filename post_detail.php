@@ -55,7 +55,7 @@ $postcate = get4Id($post['id_cate_post']);
                             </div>
                         </div>
                         <div class="grid__column-3">
-                            <div class="sider-bar">
+                            <div class="slider-bar">
                                 <div class="pd-16 cate_heading">Danh mục bài viết</div>
                                 <ul class="cate-list">
                                     <?php foreach ($cate as $ds) { ?>
@@ -63,7 +63,7 @@ $postcate = get4Id($post['id_cate_post']);
                                     <?php } ?>
                                 </ul>
                             </div>
-                            <div class="sider-bar">
+                            <div class="slider-bar">
                                 <div class="pd-16 cate_heading">Bài viết liên quan</div>
                                 <div class="pd-16 post">
                                     <?php foreach ($postcate as $row) { ?>

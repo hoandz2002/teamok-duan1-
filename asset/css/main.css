@@ -551,7 +551,7 @@ i.footer__icon {
     display: flex;
 }
 
-@keyframes Inout {
+@keyframes InOut {
     from {
         opacity: 0;
     }
@@ -573,7 +573,7 @@ i.footer__icon {
     bottom: 0;
     background-color: #14b9d5;
     color: white;
-    animation: Inout linear 0.3s;
+    animation: InOut linear 0.3s;
     display: none;
 }
 

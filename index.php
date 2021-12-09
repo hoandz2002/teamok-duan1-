@@ -6,7 +6,7 @@ require_once './db/location.php';
 
 $data_cate = getAll_cate();
 $data = getAllTours();
-$data_location = getall_location();
+$data_location = getAllLocation();
 
 // echo $css;die;
 
@@ -88,7 +88,7 @@ if (empty($_SESSION['user']) == false) {
                     </label>
                 </div>
 
-                <!-- iput -->
+                <!-- input -->
                 <input type="checkbox" class="menu_tablet" id="menu" hidden>
                 <!-- nav__pc -->
                 <div class="nav__pc">
@@ -215,7 +215,7 @@ if (empty($_SESSION['user']) == false) {
                     <!-- <li class="header__navbar-item-child"></li> -->
                     <li class="header__navbar-item-child"><a href="/duan1/index.php" class="header__navbar-link-child">Trang chủ</a></li>
                     <li class="header__navbar-item-child"><a href="/duan1/tours.php" class="header__navbar-link-child">Tours</a></li>
-                    <li class="header__navbar-item-child"><a href="/duan1/abput.php" class="header__navbar-link-child">Giới thiệu</a></li>
+                    <li class="header__navbar-item-child"><a href="/duan1/about.php" class="header__navbar-link-child">Giới thiệu</a></li>
                     <li class="header__navbar-item-child"><a href="#" class="header__navbar-link-child">Bài viết</a></li>
                     <li class="header__navbar-item-child"><a href="/duan1/contact.php" class="header__navbar-link-child">Liên hệ</a></li>
 
@@ -331,7 +331,7 @@ if (empty($_SESSION['user']) == false) {
                 </div>
             </div>
             <script>
-                thoigianden('1/1/2022', ['ngay', 'gio', 'phut', 'giay'])
+                thoigianden('1/1/2022', ['ngay', 'gio', 'phut', 'giay']);
             </script>
             <div class="body__view">
                 <div class="grid">
@@ -341,7 +341,7 @@ if (empty($_SESSION['user']) == false) {
                                 <img src="./asset/img/td.png" alt="" class="body__view-img">
                                 <div class="body__view-content">
                                     <div class="body__view-heading">Miền Bắc</div>
-                                    <div class="body__view-datails">Nhắc tới tour du lịch Miền Bắc thì người ta nghĩ ngay đến những
+                                    <div class="body__view-details">Nhắc tới tour du lịch Miền Bắc thì người ta nghĩ ngay đến những
                                         địa danh nổi tiếng,các nét đẹp văn hóa,phong tục tập quán của từng vùng miền,các lễ hội truyền
                                         thống,nét mới lạ trong ẩm thực..
                                     </div>
@@ -354,7 +354,7 @@ if (empty($_SESSION['user']) == false) {
                                 <img src="./asset/img/thuyen.png" alt="" class="body__view-img">
                                 <div class="body__view-content">
                                     <div class="body__view-heading">Miền Trung</div>
-                                    <div class="body__view-datails">Mỗi 1 tour Du Lịch Miền Trung là hành trình khám phá một mảnh đất sở
+                                    <div class="body__view-details">Mỗi 1 tour Du Lịch Miền Trung là hành trình khám phá một mảnh đất sở
                                         hữu nhiều di sản thiên nhiên và văn hóa thế giới giá trị nhất cả nước. Tham gia các chương trình
                                         Du Lịch Miền Trung bạn..
                                     </div>
@@ -367,7 +367,7 @@ if (empty($_SESSION['user']) == false) {
                                 <img src="./asset/img/icon-landmark.png" alt="" class="body__view-img">
                                 <div class="body__view-content">
                                     <div class="body__view-heading">Miền Nam</div>
-                                    <div class="body__view-datails">Du lịch Miền Nam - Miền đất hứa là vùng đất mang nhiều hy vọng của những
+                                    <div class="body__view-details">Du lịch Miền Nam - Miền đất hứa là vùng đất mang nhiều hy vọng của những
                                         người dân xa quê, là vùng đất trù phú giàu có được thiên nhiên ưu ái ban tặng. Miền Namchính vì được
                                         thiên nhiên ưu ái nên đây..
                                     </div>
@@ -434,7 +434,7 @@ if (empty($_SESSION['user']) == false) {
                                         </p>
                                         <button style="background-color: #<?= $array_color[$css] ?>;"><a href="./tours_detail.php?id_tours=<?= $data[$i]['id_tours'] ?>" style="text-decoration: none; color: white;">CHI TIẾT</a></button>
                                     </div>
-                                    <div class="possition" style="background-color:#<?=$array_color[$css] ?>">
+                                    <div class="position" style="background-color:#<?=$array_color[$css] ?>">
                                         <img src="./asset/img/nav__pc-icon1.jpg" alt="" style="width: 30px;">
                                     </div>
                                 </div>

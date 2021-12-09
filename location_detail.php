@@ -4,7 +4,7 @@ require_once './db/connection.php';
 require_once './db/location.php';
 require_once './db/tour.php';
 $id = $_GET['id_location'];
-$data = getid_location($id);
+$data = getIdLocation($id);
 $data_tours = getToursByIdLocation($id);
 
 if (empty($_SESSION['user']) == false) {

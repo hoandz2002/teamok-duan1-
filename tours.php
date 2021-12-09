@@ -4,7 +4,7 @@ require_once './db/connection.php';
 require_once './db/tour.php';
 require_once './db/location.php';
 $data = getAllTours();
-$location = getall_location();
+$location = getAllLocation();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +20,84 @@ $location = getall_location();
     <link rel="stylesheet" href="/duan1/asset/css/tours.css">
     <link rel="stylesheet" href="/duan1/asset/css/responsive.css">
     <style>
+        #toast {
+            margin-left: 1000px;
+            position: fixed;
+            top: 300px;
+        }
 
+        .tst_test {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-left: 4px solid;
+            box-shadow: 0 5px 8px rgba(0, 0, 0, 0.08);
+            padding: 20px;
+            height: 50px;
+            width: 350px;
+            margin-bottom: 20px;
+            animation: slideInLeft ease 0.3s, fadeOut linear 1s 3s forwards;
+            transition: all linear 1s;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(950px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+            }
+        }
+
+        .toast_icon,
+        .icon_close {
+            padding: 0 16px;
+        }
+
+        .toast__icon {
+            font-size: 24px;
+        }
+
+        .toast__close {
+            font-size: 20px;
+            color: rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+        }
+
+        .toast__title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .toast__msg {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 10px;
+            line-height: 0;
+        }
+
+        .tst--error {
+            border-color: #ff623d;
+        }
+
+        .toast__body {
+            flex-grow: 1;
+            margin-left: 30px;
+        }
+
+        .tst--error .toast__icon {
+            color: #ff623d;
+        }
     </style>
 </head>
 
@@ -31,9 +108,30 @@ $location = getall_location();
             <div class="banner-text" style="text-shadow: 0px 1px 2px green;">Shop</div>
         </div>
         <div class="body">
+            <?php if (isset($_SESSION['error'])) { ?>
+                <div id="toast">
+                    <div class="tst_test tst--error">
+                        <div class="toast__icon">
+                            <i class="fas fa-exclamation"></i>
+                        </div>
+                        <div class="toast__body">
+                            <h3 class="toast__title" style="font-weight: 600;color: #333;margin-bottom:10px">
+                                Error
+                            </h3>
+                            <p class="toast__msg">
+                                <?= $_SESSION['error']; ?>
+                            </p>
+                        </div>
+                        <div class="toast__close">
+                            <i class="fas fa-times"></i>
+                        </div>
+                    </div>
+                </div>
+            <?php unset($_SESSION['error']);
+            } ?>
             <div class="grid">
                 <div class="grid__row">
-                    <div class="grid-with-width" style="text-align: center; border-radius:  4px;">
+                    <div class="grid-with-width" style="text-align: center;">
                         <form action="./tours_cate.php" method="post">
                             <select style="width: 320px; padding: 4px;" name="id_location" id="">
                                 <option value="">---Mời chọn địa điểm---</option>
@@ -41,7 +139,7 @@ $location = getall_location();
                                     <option value="<?= $ds['id_location'] ?>"><?= $ds['name_location'] ?></option>
                                 <?php } ?>
                             </select>
-                            <input type="submit" class="" style="padding: 5px;background-color: tomato; border-radius:  4px; margin-left: 4px; color: white; border: none; outline: none;" value="Tìm Kiếm">
+                            <input type="submit" class="" style="cursor:pointer;padding:5.5px;background-color: tomato; margin-left: 4px; color: white; border: none; outline: none;" value="Tìm Kiếm">
                         </form>
                     </div>
                     <?php
@@ -92,6 +190,7 @@ $location = getall_location();
         </div>
     </div>
     <?php require_once './footer.php'; ?>
+    <script src="./asset/js/toast.js"></script>
 </body>
 
 </html>

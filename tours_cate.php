@@ -4,9 +4,14 @@ require_once './db/connection.php';
 require_once './db/tour.php';
 require_once './db/location.php';
 $id = $_POST['id_location'];
+if($id == null) {
+    $_SESSION['error'] = "Không tìm thấy tour!";
+    header("location:/duan1/tours.php");
+    die;
+}
 $tours_cate = getToursByIdLocation($id);
-$location = getall_location();
-$loca = getid_location($id);
+$location = getAllLocation();
+$dataLocationById = getIdLocation($id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +50,7 @@ $loca = getid_location($id);
                             </select>
                             <input type="submit" class="" style="padding: 5px;background-color: tomato; border-radius:  4px; margin-left: 4px; color: white; border: none; outline: none;" value="Tìm Kiếm">
                         </form>
-                        <h1 style="margin-top: 16px;"><?=$loca['name_location']?></h1>
+                        <h1 style="margin-top: 16px;"><?= $dataLocationById['name_location'] ?></h1>
                     </div>
                     <?php
 

@@ -1,6 +1,6 @@
 <?php
 //List các hàm
-function getall_location()
+function getAllLocation()
 {
     $conn = connect();
     $sql = "SELECT * FROM location";
@@ -22,7 +22,7 @@ function getall_location()
     }
     return $result;
 }
-function getid_location($id)
+function getIdLocation($id)
 {
     $conn = connect();
     $sql = "SELECT * FROM location WHERE id_location = :id_location";

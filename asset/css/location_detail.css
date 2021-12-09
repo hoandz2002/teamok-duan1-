@@ -115,7 +115,7 @@
     cursor: pointer;
 }
 
-.possition {
+.position {
     position: absolute;
     top: -9%;
     /* transform: translateY(-10%); */

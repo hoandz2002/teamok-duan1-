@@ -112,7 +112,7 @@ if(isset($_POST['btn_payment'])) {
         transform: translateY(4%) rotate(0deg);
         border-radius: 0;
         opacity: 0;
-        animation: set-shaddow 0s 1.13s ease-in-out forwards;
+        animation: set-shadow 0s 1.13s ease-in-out forwards;
         z-index: -1;
     }
 
@@ -173,7 +173,7 @@ if(isset($_POST['btn_payment'])) {
     }
 
 
-    @keyframes set-shaddow {
+    @keyframes set-shadow {
         to {
             opacity: 1;
         }
