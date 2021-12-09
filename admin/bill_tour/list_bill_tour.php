@@ -1,7 +1,10 @@
 <?php
 require_once "./../../db/connection.php";
 require_once "./../../db/bill_tour.php";
-$data = getall_bill();
+require_once "./../../db/customer.php";
+    // $id=$_GET['id_customer'];
+    //  $ata =getid_customer($id);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,7 +86,7 @@ $data = getall_bill();
                                 <?php $total = intval($row['price_bill_tours']) + intval($row['price_service']) - intval($row['price_tours']) * intval($row['sale_tours']) / 100 ?>
                                 <tr>
                                     <td><?= $row['id_bill_tours'] ?></td>
-                                    <td><?= $row['name_customer'] ?></td>
+                                    <td><a href="./thongtinkhachhang.php?id_customer=<?= $row['id_customer']?>"><?= $row['name_customer'] ?></a></td>
                                     <td><?= $row['quantity_pp'] ?></td>
                                     <td><?= $row['sale_tours'] ?></td>
                                     <td><?= number_format($row['price_bill_tours']) ?> Đ </td>

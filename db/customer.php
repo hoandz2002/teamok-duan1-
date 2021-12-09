@@ -58,6 +58,26 @@ function getall_customer()
     return $result;
 }
 
+function getall_customer_byid($id)
+{
+    $conn = connect();
+    $sql = "SELECT * FROM customer WHERE id_customer = :id_customer ";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute(['id_customer' => $id]);
+    $result = [];
+
+    $data = $stmt->fetch();
+  
+    $row = [
+        'id_customer' => $data['id_customer'],
+        'name_customer' => $data['name_customer'],
+        'cmt_customer' => $data['cmt_customer'],
+        'phone_customer' => $data['phone_customer'],
+        'email_customer' => $data['email_customer'],
+    ];
+    return $row;
+}
+
 
 function getid_customer($id)
 {
