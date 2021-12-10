@@ -63,7 +63,7 @@ $data = getAllService();
                                     <td><?= $row['id_service'] ?></td>
                                     <td><?= $row['name_service'] ?></td>
                                     <td><?= $row['description_service'] ?></td>
-                                    <td><?= $row['price_service'] ?> </td>
+                                    <td><?= number_format($row['price_service'])?> Đ</td>
 
                                     <td>
                                         <a href="/duan1/admin/service/update_service.php?id_service=<?= $row['id_service'] ?>"><i class="mr-8 fas fa-cogs"></i></a>
@@ -74,7 +74,14 @@ $data = getAllService();
                             <?php } ?>
                             <div style="width: 100%; padding: 0px 40px;">
                                 <?php for ($page = 1; $page <= $number_of_page; $page++) {
-                                    echo '<a style="width: 30px; text-align: center; line-height: 30px; display: inline-block; margin: 0px 8px; background-color: blue; color: white;" href = "list_service.php?page=' . $page . '">' . $page . ' </a>';
+                                    echo '<a style="text-decoration: none;
+                                    width: 30px;
+                                    text-align: center;
+                                    line-height: 30px;
+                                    display: inline-block;
+                                    margin: 0px 8px;
+                                    background-color: #007bff;
+                                    color: white;" href = "list_service.php?page=' . $page . '">' . $page . ' </a>';
                                 }
                                 ?>
                             </div>

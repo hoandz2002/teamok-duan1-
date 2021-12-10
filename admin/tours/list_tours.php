@@ -104,7 +104,7 @@ $location = getAllLocation();
                                     <td><?php echo $row['id_tours'] ?></td>
                                     <td><img width="100px" src="./../../asset/img/<?php echo $row['image'] ?>"></td>
                                     <td><?php echo $row['name_tours'] ?></td>
-                                    <td><?php echo $row['price_tours'] ?></td>
+                                    <td><?php echo number_format($row['price_tours'])?> Đ</td>
                                     <td>
                                         <?php if ($row['sale_tours'] == null) {
                                             echo 'null';
@@ -137,7 +137,14 @@ $location = getAllLocation();
                             <?php } ?>
                             <div style="width: 100%; padding: 2px 40px 8px;">
                                 <?php for ($page = 1; $page <= $number_of_page; $page++) {
-                                    echo '<a style="text-decoration: none; width: 30px; text-align: center; line-height: 30px; display: inline-block; margin: 0px 8px; background-color: blue; color: white;" href = "list_tours.php?page=' . $page . '">' . $page . ' </a>';
+                                    echo '<a style="text-decoration: none;
+                                    width: 30px;
+                                    text-align: center;
+                                    line-height: 30px;
+                                    display: inline-block;
+                                    margin: 0px 8px;
+                                    background-color: #007bff;
+                                    color: white;" href = "list_tours.php?page=' . $page . '">' . $page . ' </a>';
                                 }
                                 ?>
                             </div>

@@ -106,7 +106,6 @@ if (isset($_POST['btn-pass'])) {
             margin-bottom: 12px;
         }
 
-        .lable {}
 
         .input {
             width: 96%;
