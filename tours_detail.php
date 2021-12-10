@@ -5,7 +5,7 @@ require_once './db/tour.php';
 require_once './db/service.php';
 require_once './db/comment.php';
 require_once './db/bill_tour.php';
-$data_service = getall_service();
+$data_service = getAllService();
 // var_dump($data_service);die;
 $id_tours = $_GET['id_tours'];
 $data = getIdTours($id_tours);
@@ -13,7 +13,7 @@ $id_locatour = $data['id_location'];
 // var_dump($id_locatour);die;
 $locatour = randTourLoca($id_locatour);
 $data_img = getAllImage($id_tours);
-$dataComment = getall_bl_id($id_tours);
+$dataComment = getAllBlId($id_tours);
 if (isset($_POST['comment'])) {
 
     $id_tours = $_GET['id_tours'];
@@ -87,7 +87,19 @@ if (isset($_POST['addgiohang'])) {
     <link rel="stylesheet" href="/duan1/asset/css/responsive.css">
     <link rel="stylesheet" href="/duan1/asset/css/css_admin/error_mess.css">
     <style>
+        .modal-item:hover .modal-img {
+            display: block;
+        }
 
+        .modal-img {
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            right: 1%;
+            bottom: 25%;
+            display: none;
+            box-shadow: 0px 1px 2px grey;
+        }
     </style>
 </head>
 
@@ -124,7 +136,7 @@ if (isset($_POST['addgiohang'])) {
                     </div>
                 <?php } ?>
                 <div class="grid-with-width">
-                    <form action="tours_detail.php?id_tours=<?=$data['id_tours']?>" method="POST">
+                    <form action="tours_detail.php?id_tours=<?= $data['id_tours'] ?>" method="POST">
                         <div class="grid__row">
                             <!-- img -->
                             <div class="pd-16 grid__column-2">
@@ -132,7 +144,13 @@ if (isset($_POST['addgiohang'])) {
                                 <div class="grid__row">
                                     <?php foreach ($data_img as $value) { ?>
                                         <div class="grid__column-4">
-                                            <img src="/duan1/asset/img/<?= $value['images']; ?>" alt="" class="img">
+                                            <div class="modal-item">
+                                                <img src="/duan1/asset/img/<?= $value['images']; ?>" alt="" class="img">
+                                                <div class="modal-img">
+                                                    <img src="/duan1/asset/img/<?= $value['images']; ?>" style="width: 100%;" alt="">
+                                                </div>
+                                            </div>
+
                                         </div>
                                     <?php } ?>
                                 </div>
@@ -184,7 +202,7 @@ if (isset($_POST['addgiohang'])) {
                                         <!-- <form action="" method="POST"> -->
                                         <p>Date start</p>
                                         <input type="date" name="date_book" value="<?php echo date('Y-m-d') ?>" hidden>
-                                        <input type="date" min="<?php echo date('Y-m-d') ?>" max="<?php echo date('Y-m-d',strtotime("+7 days")); ?>" name="date_start" style="width: 320px;padding: 8px 16px;border-radius: 16px;outline: none; border: 1px solid;">
+                                        <input type="date" min="<?php echo date('Y-m-d') ?>" max="<?php echo date('Y-m-d', strtotime("+7 days")); ?>" name="date_start" style="width: 320px;padding: 8px 16px;border-radius: 16px;outline: none; border: 1px solid;">
                                         <p style="width: 50px;" hidden></p>
                                         <!-- </form> -->
                                     </div>
