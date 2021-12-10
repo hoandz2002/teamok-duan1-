@@ -1,9 +1,9 @@
 <?php
 require_once "./../../db/connection.php";
 require_once "./../../db/bill_tour.php";
-$data = getall_bill();
+$data = getAllBill();
 $id = $_POST['bill_status'];
-$bill_status = getbill_status($id);
+$bill_status = getAllStatus($id);
 ?>
 <!DOCTYPE html>
 <html lang="en">

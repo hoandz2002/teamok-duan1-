@@ -1,7 +1,7 @@
 <?php
 require_once "./../../db/connection.php";
 require_once "./../../db/customer.php";
-$data = getall_customer();
+$data = getAllCustomer();
 ?>
 <!DOCTYPE html>
 <html lang="en">

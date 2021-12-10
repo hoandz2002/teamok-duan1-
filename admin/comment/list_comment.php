@@ -1,7 +1,7 @@
 <?php
 require_once "./../../db/connection.php";
 require_once "./../../db/comment.php";
-$data = getall_comment();
+$data = getAllComment();
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,6 +1,6 @@
 <?php 
 
-function getall_service(){
+function getAllService(){
     $conn = connect();
     $sql = "SELECT * FROM service";
     $stmt = $conn->prepare($sql);
@@ -22,7 +22,7 @@ function getall_service(){
     return $result;
 }
 
-function getid_service($id){
+function getIdService($id){
     $conn = connect();
     $sql = "SELECT * FROM service  WHERE id_service =:id_service ";
     $stmt = $conn->prepare($sql);

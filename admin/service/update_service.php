@@ -3,7 +3,7 @@ session_start();
 require_once './../../db/connection.php';
 require_once './../../db/service.php';
 $id = $_GET['id_service'];
-$data = getid_service($id);
+$data = getIdService($id);
 // var_dump($data); die;
 
 if (isset($_POST['btn_save'])) {

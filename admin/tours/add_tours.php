@@ -7,7 +7,7 @@ if ($conn) {
     mysqli_query($conn, "SET NAMES 'UTF8'");
 }
 
-$data_location = getall_location();
+$data_location = getAllLocation();
 
 if (isset($_POST['submit'])) {
 

@@ -1,5 +1,5 @@
 <?php
-function getall_contacts()
+function getAllContact()
 {
     $conn = connect();
     $sql = "SELECT * FROM contacts";
@@ -24,7 +24,7 @@ function getall_contacts()
 }
 
 
-function getid_contacts($id)
+function getIdContact($id)
 {
     $conn = connect();
     $sql = "SELECT * FROM contacts";

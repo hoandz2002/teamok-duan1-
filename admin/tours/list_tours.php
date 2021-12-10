@@ -3,7 +3,7 @@ require_once './../../db/connection.php';
 require_once './../../db/tour.php';
 require_once './../../db/location.php';
 $data = getAllTours();
-$location = getall_location();
+$location = getAllLocation();
 
 
 ?>

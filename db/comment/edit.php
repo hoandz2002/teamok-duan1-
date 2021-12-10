@@ -2,7 +2,7 @@
 session_start();
 require_once './comment.php';
 $id = $_GET['id_comment'];
-$data = getid_comment($id);
+$data = getIdComment($id);
 // var_dump($data); die;
 
 if(isset($_POST['btn_save'])){

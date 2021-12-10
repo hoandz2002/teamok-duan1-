@@ -1,5 +1,5 @@
 <?php
-function getall_comment()
+function getAllComment()
 {
     $conn = connect();
     $sql = "SELECT * FROM comment inner join customer on comment.id_customer = customer.id_customer ";
@@ -23,7 +23,7 @@ function getall_comment()
 }
 
 
-function getid_comment($id)
+function getIdComment($id)
 {
     $conn = connect();
     $sql = "SELECT * FROM comment inner join customer on comment.id_customer = customer.id_customer WHERE id_comment = :id_comment";
@@ -42,7 +42,7 @@ function getid_comment($id)
 
     return $row;
 }
-function getall_bl_id($id)
+function getAllBlId($id)
 {
     $conn = connect();
     $sql = "SELECT * FROM comment inner join customer on comment.id_customer = customer.id_customer where id_tours = :id_tours";

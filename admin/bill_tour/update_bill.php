@@ -4,8 +4,8 @@ require_once './../../db/connection.php';
 require_once './../../db/bill_tour.php';
 require_once './../../db/service.php';
 $id_bill_tours = $_GET['id_bill_tours'];
-$data_old = getid_bill2($id_bill_tours);
-$data_service = getall_service();
+$data_old = getIdBill2($id_bill_tours);
+$data_service = getAllService();
 if (isset($_POST['submit'])) {
 
     if (empty($_POST['name_customer'])) {

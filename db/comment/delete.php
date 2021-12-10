@@ -4,7 +4,7 @@ require_once './../comment.php';
 
 $id_comment = $_GET['id_comment'];
 // var_dump($id_comment);
-$id_tours = getid_comment($id_comment);
+$id_tours = getIdComment($id_comment);
 $ma = $id_tours['id_tours'];
 
 delete_comment($id_comment);

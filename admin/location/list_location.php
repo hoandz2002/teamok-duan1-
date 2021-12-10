@@ -1,7 +1,7 @@
 <?php
 require_once './../../db/connection.php';
 require_once './../../db/location.php';
-$data = getall_location();
+$data = getAllLocation();
 
 ?>
 <!DOCTYPE html>

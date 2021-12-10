@@ -1,7 +1,7 @@
 <?php
 require_once "./../../db/connection.php";
 require_once "./../../db/contacts.php";
-$data = getall_contacts();
+$data = getAllContact();
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,5 +1,5 @@
 <?php
-function getall_bill()
+function getAllBill()
 {
     $conn = connect();
     $sql = "SELECT * FROM bill_tours inner join customer on bill_tours.id_customer = customer.id_customer inner join tours on bill_tours.id_tours = tours.id_tours  inner join service on bill_tours.id_service = service.id_service ";
@@ -31,7 +31,7 @@ function getall_bill()
     return $result;
 }
 
-function getid_bill($id)
+function getIdBill($id)
 {
     $conn = connect();
     $sql = "SELECT * FROM bill_tours inner join tours on bill_tours.id_tours = tours.id_tours  inner join service on bill_tours.id_service = service.id_service 
@@ -66,7 +66,7 @@ function getid_bill($id)
     }
     return $result;
 }
-function getbill_status($id)
+function getBillStatus($id)
 {
     $conn = connect();
     $sql = "SELECT * FROM bill_tours inner join customer on bill_tours.id_customer = customer.id_customer inner join tours on bill_tours.id_tours = tours.id_tours  inner join service on bill_tours.id_service = service.id_service 
@@ -101,7 +101,7 @@ function getbill_status($id)
     }
     return $result;
 }
-function getid_bill2($id)
+function getIdBill2($id)
 {
     $conn = connect();
     $sql = "SELECT * FROM bill_tours inner join tours on bill_tours.id_tours = tours.id_tours  inner join service on bill_tours.id_service = service.id_service 

@@ -3,7 +3,7 @@ session_start();
 require_once './../../db/connection.php';
 require_once './../../db/location.php';
 $id = $_GET['id_location'];
-$data_old = getid_location($id);
+$data_old = getIdLocation($id);
 if (isset($_POST['submit'])) {
     if (
         empty($_POST['name_location']) ||

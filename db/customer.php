@@ -32,7 +32,7 @@ function login($email_customer, $password)
 
     return $result;
 }
-function getall_customer()
+function getAllCustomer()
 {
     $conn = connect();
     $sql = "SELECT * FROM customer ";
@@ -58,7 +58,7 @@ function getall_customer()
     return $result;
 }
 
-function getall_customer_byid($id)
+function getAllCustomerById($id)
 {
     $conn = connect();
     $sql = "SELECT * FROM customer WHERE id_customer = :id_customer ";
@@ -79,7 +79,7 @@ function getall_customer_byid($id)
 }
 
 
-function getid_customer($id)
+function getIdCustomer($id)
 {
     $conn = connect();
     $sql = "SELECT * FROM customer WHERE id_customer = :id_customer";

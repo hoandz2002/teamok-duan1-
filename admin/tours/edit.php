@@ -5,7 +5,7 @@ require_once './../../db/tour.php';
 require_once './../../db/location.php'; 
 $id_tours = $_GET['id_tours'];
 $data_old = getIdTours($id_tours);
-$data_location = getall_location();
+$data_location = getAllLocation();
 
 // var_dump($data_old);die;
 $data_img = getAllImage($id_tours);

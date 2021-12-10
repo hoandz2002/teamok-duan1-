@@ -2,8 +2,7 @@
 require_once "./../../db/connection.php";
 require_once "./../../db/bill_tour.php";
 require_once "./../../db/customer.php";
-    // $id=$_GET['id_customer'];
-    //  $ata =getid_customer($id);
+
 
 ?>
 <!DOCTYPE html>
@@ -27,7 +26,7 @@ require_once "./../../db/customer.php";
             <div class="left">
                 <?php require_once './../sidebar.php'; ?>
             </div>
-            <!--left : siderbar-->
+            <!--left : sliderbar-->
             <div class="right">
                 <?php require_once './../header.php'; ?>
                 <!-- Nội dung ở đây  -->

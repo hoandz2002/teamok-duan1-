@@ -1,7 +1,7 @@
 <?php
 require_once './../../db/connection.php';
 require_once './../../db/service.php';
-$data = getall_service();
+$data = getAllService();
 ?>
 <!DOCTYPE html>
 <html lang="en">

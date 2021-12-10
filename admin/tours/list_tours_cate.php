@@ -6,8 +6,8 @@ require_once './../../db/location.php';
 $data = getAllTours();
 $id = $_POST['id_location'];
 $tours_cate = getToursByIdLocation($id);
-$location = getall_location();
-$loca = getid_location($id);
+$location = getAllLocation();
+$loca = getIdLocation($id);
 
 ?>
 <!DOCTYPE html>

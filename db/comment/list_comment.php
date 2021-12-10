@@ -1,6 +1,6 @@
 <?php
 require_once "./../comment.php";
-$data = getall();
+$data = getAllComment();
 ?>
 <!DOCTYPE html>
 <html lang="en">
