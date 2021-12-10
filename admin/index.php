@@ -11,12 +11,12 @@ require_once './../db/bill_tour.php';
 require_once './../db/comment.php';
 $tour = getAllTours();
 $post = getAll_post();
-$location = getall_location();
-$comment = getall_comment();
-$bill = getall_bill();
-$customer = getall_customer();
+$location = getAllLocation();
+$comment = getAllComment();
+$bill = getAllBill();
+$customer = getAllCustomer();
 $cate = getAll_cate();
-$service = getall_service();
+$service = getAllService();
 if (!isset($_SESSION['user']) || $_SESSION['user'] != null && $_SESSION['user']['classify_customer'] != 1) {
     unset($_SESSION['user']);
     header("location: /duan1/login_form.php");
