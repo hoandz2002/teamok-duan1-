@@ -3,7 +3,10 @@ require_once "./../../db/connection.php";
 require_once "./../../db/bill_tour.php";
 $data = getAllBill();
 $id = $_POST['bill_status'];
-$bill_status = getAllStatus($id);
+
+
+$bill_status = getBillStatus($id);
+var_dump($bill_status);die;
 ?>
 <!DOCTYPE html>
 <html lang="en">

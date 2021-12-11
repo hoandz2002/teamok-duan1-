@@ -4,7 +4,7 @@ require_once './db/connection.php';
 require_once './db/bill_tour.php';
 $id_customer = $_GET['id_customer'];
 // var_dump($_SESSION['user']['id_customer']);die;
-$data_ds = getid_bill($id_customer);
+$data_ds = getIdBill($id_customer);
 
 
 ?>

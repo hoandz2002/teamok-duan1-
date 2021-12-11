@@ -5,6 +5,7 @@ require_once './db/tour.php';
 require_once './db/location.php';
 $data = getAllTours();
 $location = getAllLocation();
+$dataPrice = price();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -105,7 +106,7 @@ $location = getAllLocation();
     <div class="main">
         <?php require_once './header.php'; ?>
         <div class="body__banner" style="background-image: url(/duan1/asset/img/t-banner.jpg); padding: 10%;">
-            <div class="banner-text" style="text-shadow: 0px 1px 2px green;">Shop</div>
+            <div class="banner-text" style="text-shadow: 0px 1px 2px green;">Tours</div>
         </div>
         <div class="body">
             <?php if (isset($_SESSION['error'])) { ?>
@@ -139,8 +140,14 @@ $location = getAllLocation();
                                     <option value="<?= $ds['id_location'] ?>"><?= $ds['name_location'] ?></option>
                                 <?php } ?>
                             </select>
-                            <input type="submit" class="" style="cursor:pointer;padding:5.5px;background-color: tomato; margin-left: 4px; color: white; border: none; outline: none;" value="Tìm Kiếm">
+                            <input name="search" type="submit" class="" style="cursor:pointer;padding:5.5px;background-color: tomato; margin-left: 4px; color: white; border: none; outline: none;" value="Tìm Kiếm">
                         </form>
+                        <ul style="padding: 4px 0px; margin: 14px 16px 0px; background-color: rgb(20, 185, 213); color: white; font-size: 14px;">
+                            <li style="display: block; float:left; padding: 8px 24px;">Tìm kiếm theo giá</li>
+                            <?php foreach ($dataPrice as $value) { ?>
+                                <li style="display: inline-block; padding: 8px 24px;"><a href="./tours_cate.php?rangePrice=<?= $value['rangePrice'] ?>&id=<?= $value['id'] ?>" style="color: white; font-size: 14px; text-decoration: none;"><?= $value['rangePrice'] ?></a></li>
+                            <?php } ?>
+                        </ul>
                     </div>
                     <?php
                     require_once './admin/connect_list.php';

@@ -69,8 +69,8 @@ function getIdBill($id)
 function getBillStatus($id)
 {
     $conn = connect();
-    $sql = "SELECT * FROM bill_tours inner join customer on bill_tours.id_customer = customer.id_customer inner join tours on bill_tours.id_tours = tours.id_tours  inner join service on bill_tours.id_service = service.id_service 
-    WHERE bill_status = :bill_status";
+    $sql = "SELECT * FROM bill_tours inner join tours on bill_tours.id_tours = tours.id_tours  inner join customer on bill_tours.id_customer = customer.id_customer" .
+    "WHERE bill_status =: bill_status";
     $stmt = $conn->prepare($sql);
     $stmt->execute(['bill_status' => $id]);
     $result = [];

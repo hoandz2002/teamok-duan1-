@@ -3,15 +3,57 @@ session_start();
 require_once './db/connection.php';
 require_once './db/tour.php';
 require_once './db/location.php';
-$id = $_POST['id_location'];
-if($id == null) {
-    $_SESSION['error'] = "Không tìm thấy tour!";
-    header("location:/duan1/tours.php");
-    die;
+$dataPrice = price();
+if (isset($_POST['search'])) {
+    $id = $_POST['id_location'];
+    $dataLocationById = getIdLocation($id);
+    $tours_cate = getToursByIdLocation($id);
 }
-$tours_cate = getToursByIdLocation($id);
+
+if(isset($_GET['rangePrice'])) {
+$idPrice = $_GET['id'];
+function getPrice($id)
+{
+    $conn = connect();
+    $query = "SELECT * FROM tours";
+    $idPrice = $_GET['id'];
+
+    $namePrice = findPrice($idPrice);
+    $rangePrice = $namePrice['rangePrice'];
+    $range = preg_split('[\s]', $rangePrice);
+    $from = 0;
+    $to = 0;
+    if ($range[0] == 'Trên') {
+        $from = $range[1];
+    } else {
+        $rang1 = preg_split('[\-]', $range[0]);
+        $from = $rang1[0];
+        $to = $rang1[1];
+    }
+    $from *= 1000000;
+    $to *= 1000000;
+    if ($to == 0) {
+        $query .= " WHERE price_tours>=$from";
+    } else {
+        $query .= " WHERE  price_tours>=$from AND price_tours<=$to";
+    }
+    // var_dump($query);die;
+    $result = $conn->query($query);
+    return $result;
+}
+
+$tours_cate = getPrice($idPrice);
+}
+
+
+
+// if ($id == null) {
+//     $_SESSION['error'] = "Không tìm thấy tour!";
+//     header("location:/duan1/tours.php");
+//     die;
+// }
 $location = getAllLocation();
-$dataLocationById = getIdLocation($id);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,9 +90,17 @@ $dataLocationById = getIdLocation($id);
                                     <option value="<?= $ds['id_location'] ?>"><?= $ds['name_location'] ?></option>
                                 <?php } ?>
                             </select>
-                            <input type="submit" class="" style="padding: 5px;background-color: tomato; border-radius:  4px; margin-left: 4px; color: white; border: none; outline: none;" value="Tìm Kiếm">
+                            <input name="search" type="submit" class="" style="cursor:pointer;padding: 5px;background-color: tomato;margin-left: 4px; color: white; border: none; outline: none;" value="Tìm Kiếm">
                         </form>
-                        <h1 style="margin-top: 16px;"><?= $dataLocationById['name_location'] ?></h1>
+                        <ul style="padding: 4px 0px; margin: 14px 16px 0px; background-color: rgb(20, 185, 213); color: white; font-size: 14px;">
+                            <li style="display: block; float:left; padding: 8px 24px;">Tìm kiếm theo giá</li>
+                            <?php foreach ($dataPrice as $value) { ?>
+                                <li style="display: inline-block; padding: 8px 24px;"><a href="./tours_cate.php?rangePrice=<?= $value['rangePrice'] ?>&id=<?= $value['id'] ?>" style="color: white; font-size: 14px; text-decoration: none;"><?= $value['rangePrice'] ?></a></li>
+                            <?php } ?>
+                        </ul>
+                        <?php if (isset($_POST['search'])) { ?>
+                            <h1 style="margin-top: 16px;"><?= $dataLocationById['name_location'] ?></h1>
+                        <?php } ?>
                     </div>
                     <?php
 

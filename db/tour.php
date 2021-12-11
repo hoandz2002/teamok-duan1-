@@ -178,3 +178,46 @@ function deleteToursImage($id)
     $stmt = $conn->prepare($sql);
     $stmt->execute(['id_tours' => $id]);
 }
+
+function price()
+{
+    $conn  = connect();
+    $sql = "SELECT * FROM price WHERE status = 1";
+    $statement = $conn->prepare($sql);
+    $statement->execute();
+
+    $result = [];
+    while (true) {
+        $data = $statement->fetch();
+        if ($data == false) {
+            break;
+        }
+
+        $row = [
+            'id' => $data['id'],
+            'rangePrice' => $data['rangePrice'],
+            'status' => $data['status'],
+        ];
+
+        array_push($result, $row);
+    }
+
+    return $result;
+}
+
+function findPrice($id)
+{
+    $conn  = connect();
+    $sql = "SELECT * FROM price WHERE id=:id";
+    $statement = $conn->prepare($sql);
+    $statement->execute(['id'=>$id]);
+
+    $data = $statement->fetch();
+    $row = [
+        'id' => $data['id'],
+        'rangePrice' => $data['rangePrice'],
+        'status' => $data['status'],
+    ];
+
+    return $row;
+}

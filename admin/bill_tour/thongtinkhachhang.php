@@ -2,8 +2,7 @@
 require_once "./../../db/customer.php";
 require_once "./../../db/connection.php";
 $id = $_GET['id_customer'];
-$data = getAllCusstomerById($id);
-// $data1 = getall_customer();
+$data = getAllCustomerById($id);
 ?>
 
 <!DOCTYPE html>
