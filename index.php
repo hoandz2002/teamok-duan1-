@@ -345,7 +345,6 @@ if (empty($_SESSION['user']) == false) {
                                         địa danh nổi tiếng,các nét đẹp văn hóa,phong tục tập quán của từng vùng miền,các lễ hội truyền
                                         thống,nét mới lạ trong ẩm thực..
                                     </div>
-                                    <a href="" class="body__view-link">Xem thêm</a>
                                 </div>
                             </div>
                         </div>
@@ -358,7 +357,6 @@ if (empty($_SESSION['user']) == false) {
                                         hữu nhiều di sản thiên nhiên và văn hóa thế giới giá trị nhất cả nước. Tham gia các chương trình
                                         Du Lịch Miền Trung bạn..
                                     </div>
-                                    <a href="" class="body__view-link">Xem thêm</a>
                                 </div>
                             </div>
                         </div>
@@ -371,7 +369,6 @@ if (empty($_SESSION['user']) == false) {
                                         người dân xa quê, là vùng đất trù phú giàu có được thiên nhiên ưu ái ban tặng. Miền Namchính vì được
                                         thiên nhiên ưu ái nên đây..
                                     </div>
-                                    <a href="" class="body__view-link">Xem thêm</a>
                                 </div>
                             </div>
                         </div>

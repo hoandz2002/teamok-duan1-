@@ -50,7 +50,7 @@ $postcate = get4Id($post['id_cate_post']);
                                 <p>Loại : <?= $ok; ?></p>
                             </h3>
                             <h3 class="post_heading">Nội dung</h3>
-                            <div style="text-align: center;" class="post_content">
+                            <div style="text-align: left; font-size:10px" class="post_content">
                                 <?= $post['description_post'] ?>
                             </div>
                         </div>

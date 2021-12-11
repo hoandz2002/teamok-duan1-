@@ -179,9 +179,9 @@ if (isset($_POST['addgiohang'])) {
                                                 <a class="accordion grid__row"><?= $value['name_service'] ?><i class="fas fa-chevron-down"></i></a>
                                                 <div class="panel">
                                                     <p class="service_content"><input type="radio" name="id_service" value="<?= $value['id_service'] ?>" id="service">
-                                                        <lable style="margin-left: 8px;" for="service">Chọn dịch vụ</lable>
+                                                        <label style="margin-left: 8px;" for="service">Chọn dịch vụ</label>
                                                     </p>
-                                                    <p class="service_content"><b>Giá</b> : <span style="color: red; font-size: 14px;"><?= $value['price_service'] ?><b>VNĐ</b></span></p>
+                                                    <p class="service_content"><b>Giá</b> : <span style="color: red; font-size: 14px;"><?= number_format($value['price_service']) ?><b>VNĐ</b></span></p>
                                                     <p style="color: blue;" class="service_content"> <?= $value['description_service'] ?></p>
                                                 </div>
                                             <?php } ?>
