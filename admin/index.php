@@ -33,8 +33,12 @@ if (!isset($_SESSION['user']) || $_SESSION['user'] != null && $_SESSION['user'][
     <link rel="stylesheet" href="./../asset/fonts/fontawesome-free-5.15.3-web/css/all.min.css">
     <link rel="stylesheet" href="./../asset/css/css_admin/main.css">
     <link rel="stylesheet" href="./../asset/css/css_admin/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300&family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
     <style>
-
+        body {
+            font-family: 'Nunito Sans', sans-serif;        }
     </style>
 </head>
 
@@ -52,45 +56,45 @@ if (!isset($_SESSION['user']) || $_SESSION['user'] != null && $_SESSION['user'][
                     <h2>Thống kê số lượng</h2>
                 </div>
                 <div class="right_body">
-                    <div class="box" style="background-color: #99CC33;">
+                    <div class="box" style="background-color: #2255a4;">
                         <i class="box-icon fas fa-users"></i>
                         <div class="box-name">Customer</div>
-                        <div class="box-quantity"> <?php echo count($customer);?></div>
+                        <div class="box-quantity"> <?php echo count($customer); ?></div>
                     </div>
                     <div class="box" style="background-color: #999999;">
                         <i class="box-icon fas fa-torii-gate"></i>
                         <div class="box-name">Tours</div>
-                        <div class="box-quantity"> <?php echo count($tour);?></div>
+                        <div class="box-quantity"> <?php echo count($tour); ?></div>
                     </div>
-                    <div class="box" style="background-color: #990066;">
+                    <div class="box" style="background-color: #da542e;">
                         <i class="box-icon fas fa-compass"></i>
                         <div class="box-name">Location</div>
-                        <div class="box-quantity"> <?php echo count($location);?></div>
+                        <div class="box-quantity"> <?php echo count($location); ?></div>
                     </div>
-                    <div class="box" style="background-color: #FFCC66;">
+                    <div class="box" style="background-color: #ffb848;">
                         <i class="box-icon fab fa-servicestack"></i>
                         <div class="box-name">Service</div>
-                        <div class="box-quantity"> <?php echo count($service);?></div>
+                        <div class="box-quantity"> <?php echo count($service); ?></div>
                     </div>
                     <div class="box" style="background-color: #005500;">
                         <i class="box-icon fas fa-file-invoice-dollar"></i>
                         <div class="box-name">Bill Tours</div>
-                        <div class="box-quantity"> <?php echo count($bill);?></div>
+                        <div class="box-quantity"> <?php echo count($bill); ?></div>
                     </div>
-                    <div class="box" style="background-color: #339966;">
+                    <div class="box" style="background-color: #28b779;">
                         <i class="box-icon fas fa-book-open"></i>
                         <div class="box-name">Post</div>
-                        <div class="box-quantity"> <?php echo count($post);?></div>
+                        <div class="box-quantity"> <?php echo count($post); ?></div>
                     </div>
                     <div class="box" style="background-color: #FF3366;">
                         <i class="box-icon fas fa-tasks"></i>
                         <div class="box-name">Manage post</div>
-                        <div class="box-quantity"> <?php echo count($cate);?></div>
+                        <div class="box-quantity"> <?php echo count($cate); ?></div>
                     </div>
                     <div class="box" style="background-color: #FE0805;">
                         <i class="box-icon fas fa-comment"></i>
                         <div class="box-name">Comment</div>
-                        <div class="box-quantity"> <?php echo count($comment);?></div>
+                        <div class="box-quantity"> <?php echo count($comment); ?></div>
                     </div>
                 </div>
                 <?php require_once './footer.php'; ?>

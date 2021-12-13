@@ -6,6 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300&family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+        }
+    </style>
 </head>
 
 <body>
@@ -31,7 +39,7 @@
         </label>
     </div>
     <div class="right_nav">
-        <a href="/duan1/index.php" class="nav_title">Home</a>
+        <a href="/duan1/index.php" style="text-decoration: none;color:#000" class="nav_title">Trở về homepage</a>
     </div>
 </body>
 

@@ -85,7 +85,7 @@ require_once "./../../db/customer.php";
                                 <?php $total = intval($row['price_bill_tours']) + intval($row['price_service']) - intval($row['price_tours']) * intval($row['sale_tours']) / 100 ?>
                                 <tr>
                                     <td><?= $row['id_bill_tours'] ?></td>
-                                    <td><a href="./thongtinkhachhang.php?id_customer=<?= $row['id_customer']?>"><?= $row['name_customer'] ?></a></td>
+                                    <td><a href="./thongtinkhachhang.php?id_customer=<?= $row['id_customer'] ?>"><?= $row['name_customer'] ?></a></td>
                                     <td><?= $row['quantity_pp'] ?></td>
                                     <td><?= $row['sale_tours'] ?></td>
                                     <td><?= number_format($row['price_bill_tours']) ?> Đ </td>
@@ -97,28 +97,24 @@ require_once "./../../db/customer.php";
                                     <td><?= $row['date_start'] ?></td>
                                     <td><?php if ($row['bill_status'] == 0) {
                                             echo 'Đang chờ xác nhận'; ?>
-                                            <a style="color:#000" href="./update_bill.php?id_bill_tours=<?= $row['id_bill_tours'] ?>">Xác nhận</a>
                                         <?php  } else if ($row['bill_status'] == 1) {
                                             echo 'Đã xác nhận';
                                         ?>
-                                            <a style="color:#000" href="./update_bill.php?id_bill_tours=<?= $row['id_bill_tours'] ?>">Xác nhận</a>
                                         <?php } elseif ($row['bill_status'] == 3) {
                                             echo "Đã khởi hành";
                                         ?>
-                                            <a style="color:#000" href="./update_bill.php?id_bill_tours=<?= $row['id_bill_tours'] ?>">Xác nhận</a>
                                         <?php } elseif ($row['bill_status'] == 4) {
                                             echo 'Đã hoàn tất';
                                         ?>
-                                            <a style="color:#000" href="./update_bill.php?id_bill_tours=<?= $row['id_bill_tours'] ?>">Xác nhận</a>
 
                                         <?php  } elseif ($row['bill_status'] == 2) {
                                             echo 'Đã thanh toán';
                                         ?>
-                                            <a style="color:#000" href="./update_bill.php?id_bill_tours=<?= $row['id_bill_tours'] ?>">Xác nhận</a>
                                         <?php }
                                         ?>
                                     </td>
                                     <td>
+                                        <a href="./update_bill.php?id_bill_tours=<?= $row['id_bill_tours'] ?>" class="js-modal-click1"><i class="mr-8 fas fa-cogs"></i></a>
                                         <a onclick="return confirm('Bạn có chắc chắn muốn xóa?');" href="./../../db/bill_tour/delete_bill_admin.php?id_bill_tours=<?= $row['id_bill_tours'] ?>"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
