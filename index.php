@@ -243,15 +243,15 @@ if (empty($_SESSION['user']) == false) {
                             <span>Đề xuất của chúng tôi</span>
                             <p>Các <u>Điểm Đến Du Lịch</u></p>
                         </div>
-                        <?php foreach ($data_location as  $value) { ?>
+                        <?php for ($i = 0; $i < 9;$i++) { ?>
                             <div class="grid__column-3">
                                 <div class="nav__full">
-                                    <img style="max-height:240px;overflow:hidden;" src="./asset/img/<?php echo $value['img_location'] ?>" alt="" class="nav__full-img">
+                                    <img style="max-height:240px;overflow:hidden;" src="./asset/img/<?php echo $data_location[$i]['img_location'] ?>" alt="" class="nav__full-img">
                                     <div class="nav__full-top">
                                         <img src="./asset/img/nav__pc-icon1.jpg" alt="">
                                     </div>
                                     <div class="nav__full-content">
-                                        <div class="nav__full-heading"><?php echo $value['name_location'] ?></div>
+                                        <div class="nav__full-heading"><?php echo $data_location[$i]['name_location'] ?></div>
                                     </div>
                                     <div class="nav__full-hover">
                                         <div class="nav__full-hover-heading">Địa điểm</div>
@@ -260,7 +260,7 @@ if (empty($_SESSION['user']) == false) {
                                             <p>Chất Lượng</p>
                                             <p>An Toàn</p>
                                         </div>
-                                        <a href="/duan1/location_detail.php?id_location=<?php echo $value['id_location'] ?>" class="nav__full-hover-btn">Xem chi tiết</a>
+                                        <a href="/duan1/location_detail.php?id_location=<?php echo $data_location[$i]['id_location'] ?>" class="nav__full-hover-btn">Xem chi tiết</a>
                                     </div>
                                 </div>
                             </div>
