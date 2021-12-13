@@ -99,7 +99,30 @@ $dataPrice = price();
         .tst--error .toast__icon {
             color: #ff623d;
         }
-        
+
+        .box-img {
+            position: relative;
+        }
+
+        .box-sale {
+            position: absolute;
+            top: 4px;
+            right: -8px;
+            padding: 4px 8px;
+            background-color: #ff623d;
+            font-size: 14px;
+            color: white;
+        }
+
+        .box-sale::before {
+            content: "";
+            position: absolute;
+            top: 100%;
+            right: 0;
+            border-top: 8px solid #ff623d;
+            border-right: 8px solid transparent;
+            filter: brightness(60%);
+        }
     </style>
 </head>
 
@@ -168,7 +191,16 @@ $dataPrice = price();
                     while ($row = mysqli_fetch_array($result)) { ?>
                         <div class="pd-16 grid__column-4">
                             <div class="tours-product">
-                                <img style="height:160px" src="/duan1/asset/img/<?= $row['image'] ?>" alt="" class="img">
+                                <div class="box-img">
+                                    <img style="height:160px;" src="/duan1/asset/img/<?= $row['image'] ?>" alt="" class="img">
+                                    <?php
+                                    if ($row['sale_tours'] != 0) { ?>
+                                        <div class="box-sale">
+                                            <p>Sale</p>
+                                        </div>
+                                    <?php }
+                                    ?>
+                                </div>
                                 <div class="tours-content">
                                     <h6 style="font-size: 14px;overflow: hidden;line-height: 24px;
   display: -webkit-box;
