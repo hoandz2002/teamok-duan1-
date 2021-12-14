@@ -174,6 +174,7 @@ $data_ds = getIdBill($id_customer);
                     PROCEED TO CHECKOUT
                 </button>
             </div> -->
+            <?php require_once "./call.php" ?>
         </div>
         <?php require_once './footer.php'; ?>
 

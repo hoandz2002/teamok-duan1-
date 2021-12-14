@@ -124,6 +124,7 @@ $dataPrice = price();
             filter: brightness(60%);
         }
     </style>
+    
 </head>
 
 <body>
@@ -228,7 +229,9 @@ $dataPrice = price();
                 </div>
             </div>
         </div>
+       <?php require_once "./call.php" ?>
     </div>
+   
     <?php require_once './footer.php'; ?>
     <script src="./asset/js/toast.js"></script>
 </body>

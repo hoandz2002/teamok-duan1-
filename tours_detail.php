@@ -387,6 +387,7 @@ if (isset($_POST['addgiohang'])) {
                     </div>
                 </div>
             </div>
+            <?php require_once "./call.php" ?>
         </div>
         <?php require_once './footer.php'; ?>
         <script>
