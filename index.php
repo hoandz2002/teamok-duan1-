@@ -408,7 +408,7 @@ if (empty($_SESSION['user']) == false) {
                                 <img src="./asset/img/<?= $data[$i]['image'] ?>" alt="" class="body__bottom-img" style="height: 252px;overflow: hidden;">
                                 <div class="body__bottom-content">
                                     <div class="body__bottom-title">
-                                        <p style="overflow: hidden;line-height: 24px; display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;">
+                                        <p style="overflow: hidden;line-height: 24px; margin-top: 4px; height: 50px; display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;">
                                             <?= $data[$i]['name_tours'] ?>
                                         </p>
                                         <span><i class="fas fa-map-marked"></i><?= $data[$i]['name_location'] ?></span>
@@ -426,9 +426,6 @@ if (empty($_SESSION['user']) == false) {
                                         </div>
                                     </div>
                                     <div class="body__bottom-detail">
-                                        <p style="overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; height: 50px;">
-                                            <?= $data[$i]['short_description_tours'] ?>
-                                        </p>
                                         <button style="background-color: #<?= $array_color[$css] ?>;"><a href="./tours_detail.php?id_tours=<?= $data[$i]['id_tours'] ?>" style="text-decoration: none; color: white;">CHI TIẾT</a></button>
                                     </div>
                                     <div class="position" style="background-color:#<?=$array_color[$css] ?>">
