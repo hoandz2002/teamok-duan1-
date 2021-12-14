@@ -54,6 +54,12 @@
                     <li class="item-child"><a href="/duan1/admin/service/list_service.php" class="link-child"><i class="mr-8 fas fa-bars"></i>Danh sách</a></li>
                 </ul>
             </li>
+            <li class="left_item"><a class="left_link" href="#"><i class="mr-8 fab fa fa-tag fa-lg"></i></i>Mã giảm giá<i class="fl-right fas fa-angle-right"></i></a>
+                <ul class="list-child">
+                    <li class="item-child"><a href="/duan1/admin/coupon/add_coupon.php" class="link-child"><i class="mr-8 fas fa-plus-circle"></i>Thêm</a></li>
+                    <li class="item-child"><a href="/duan1/admin/coupon/list_coupon.php" class="link-child"><i class="mr-8 fas fa-bars"></i>Danh sách</a></li>
+                </ul>
+            </li>
             <li class="left_item"><a class="left_link" href="/duan1/admin/bill_tour/list_bill_tour.php"><i class="mr-8 fas fa-file-invoice-dollar"></i>Bill tours</a></li>
             <li class="left_item"><a class="left_link" href="/duan1/admin/comment/list_comment.php"><i style="padding-right: 8px;" class="fas fa-comments"></i>Comment</a></li>
             <li class="left_item"><a class="left_link" href="/duan1/admin/contacts/list_contacts.php"><i style="padding-right: 8px;" class="far fa-id-card"></i>Contacts</a></li>

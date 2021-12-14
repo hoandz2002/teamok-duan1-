@@ -3,7 +3,7 @@
 function getAllCoupon()
 {
     $conn = connect();
-    $sql = "SELECT * FROM coupon INNER JOIN bill_tours ON coupon";
+    $sql = "SELECT * FROM coupon INNER JOIN bill_tours ON coupon.id_coupon = bill_tours.id_coupon";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $result = [];
@@ -42,14 +42,14 @@ function getIdCoupon($id)
 function insertCoupon(array $data)
 {
     $conn = connect();
-    $sql = "INSERT INTO coupon(name_coupon, number_coupon, code_coupon)"."VALUES( :name_coupon, :number_coupon, :code_coupon)";
+    $sql = "INSERT INTO coupon(name_coupon, number_coupon, code_coupon) VALUES( :name_coupon, :number_coupon, :code_coupon)";
     $stmt = $conn->prepare($sql);
     $stmt->execute($data);
 }
 function updateCoupon($data)
 {
     $conn = connect();
-    $sql = "UPDATE coupon SET name_coupon = :name_coupon, number_coupon = :number_coupon, code_coupon = :code_coupon WHERE id_coupon = :id_coupon";
+    $sql = "UPDATE coupon SET name_coupon =:name_coupon, number_coupon =:number_coupon, code_coupon =:code_coupon WHERE id_coupon =:id_coupon";
     $stmt = $conn->prepare($sql);
     $stmt->execute($data);
     return true;

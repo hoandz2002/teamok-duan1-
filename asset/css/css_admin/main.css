@@ -24,7 +24,7 @@
 .left {
     width: 230px;
     /* height: 1200px; */
-    position: static;
+    position: fixed;
     z-index: 10;
     top: 0;
     left: 0;
@@ -118,6 +118,7 @@
     flex-direction: column;
     row-gap: 16px;
     position: relative;
+    margin-left: 246px;
 }
 
 

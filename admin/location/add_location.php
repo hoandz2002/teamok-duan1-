@@ -1,16 +1,17 @@
-<?php 
+<?php
 session_start();
 require_once './../../db/connection.php';
 require_once './../../db/location.php';
-if(isset($_POST['submit'])){
-    if (empty($_POST['name_location']) ||
+if (isset($_POST['submit'])) {
+    if (
+        empty($_POST['name_location']) ||
         empty(['description_location'])
     ) {
         $_SESSION['thongbao'] = "Không để trống thông tin!";
         header("location: ./add_location.php");
         die;
     }
-    
+
     if (isset($_FILES['img_location'])) {
         $file = $_FILES['img_location'];
         $file_name = $file['name'];
@@ -18,7 +19,7 @@ if(isset($_POST['submit'])){
     }
     $data = [
         'name_location' => $_POST['name_location'],
-        'img_location'=> $_FILES['img_location'],
+        'img_location' => $_FILES['img_location'],
         'description_location' => $_POST['description_location']
     ];
     insert_location($data);
@@ -72,6 +73,9 @@ if(isset($_POST['submit'])){
                                     ?>
                                 </p>
                             </div>
+                            <div class="toast__close">
+                                <i class='fas fa-times'></i>
+                            </div>
                         </div>
                     </div>
                 <?php } ?>
@@ -115,6 +119,7 @@ if(isset($_POST['submit'])){
             <!--right : content-->
         </div>
     </div>
+    <script src="./../../asset/js/toast.js"></script>
 </body>
 
 </html>
