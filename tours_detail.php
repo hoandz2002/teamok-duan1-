@@ -100,6 +100,30 @@ if (isset($_POST['addgiohang'])) {
             display: none;
             box-shadow: 0px 1px 2px grey;
         }
+
+        .box-img {
+            position: relative;
+        }
+
+        .box-sale {
+            position: absolute;
+            top: 4px;
+            right: -8px;
+            padding: 4px 8px;
+            background-color: #ff623d;
+            font-size: 14px;
+            color: white;
+        }
+
+        .box-sale::before {
+            content: "";
+            position: absolute;
+            top: 100%;
+            right: 0;
+            border-top: 8px solid #ff623d;
+            border-right: 8px solid transparent;
+            filter: brightness(60%);
+        }
     </style>
 </head>
 
@@ -333,10 +357,27 @@ if (isset($_POST['addgiohang'])) {
                             <?php foreach ($locatour as $row) { ?>
                                 <div class="pd-16 grid__column-4">
                                     <div class="tours-product">
-                                        <img src="/duan1/asset/img/<?= $row['image'] ?>" alt="" class="img">
+                                        <div class="box-img">
+                                            <img style="height:160px;" src="/duan1/asset/img/<?= $row['image'] ?>" alt="" class="img">
+                                            <?php
+                                            if ($row['sale_tours'] != 0) { ?>
+                                                <div class="box-sale">
+                                                    <p>Sale</p>
+                                                </div>
+                                            <?php }
+                                            ?>
+                                        </div>
                                         <div class="tours-content">
-                                            <h6 style="font-size: 14px;" class="tours-heading"><?= $row['name_tours']; ?></h6>
-                                            <p><?= number_format($row['price_tours']); ?> Đ</p>
+                                            <h6 style="font-size: 14px;overflow: hidden;line-height: 24px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;height:46px" class="tours-heading"><?= $row['name_tours']; ?></h6>
+                                            <?php if ($row['sale_tours'] != 0) { ?>
+                                                <span style="display:inline-block;font-size:16px;margin-bottom:15px;color: #9a9a9a;text-decoration:line-through;"><?= number_format($row['price_tours']); ?> Đ</span>
+                                                <span style="display:inline-block;font-size:16px;margin-bottom:15px;color:red"><?= number_format($row['price_tours'] - (($row['price_tours'] * $row['sale_tours']) / 100)); ?>Đ</span><br>
+                                            <?php } else { ?>
+                                                <p style="font-size:16px;color: red;"><?= number_format($row['price_tours']); ?> Đ</p>
+                                            <?php } ?>
                                             <a href="/duan1/tours_detail.php?id_tours=<?= $row['id_tours']; ?>" class="tours-btn">SELECT OPTION</a>
                                         </div>
                                     </div>

@@ -10,39 +10,39 @@ if (isset($_POST['search'])) {
     $tours_cate = getToursByIdLocation($id);
 }
 
-if(isset($_GET['rangePrice'])) {
-$idPrice = $_GET['id'];
-function getPrice($id)
-{
-    $conn = connect();
-    $query = "SELECT * FROM tours";
+if (isset($_GET['rangePrice'])) {
     $idPrice = $_GET['id'];
+    function getPrice($id)
+    {
+        $conn = connect();
+        $query = "SELECT * FROM tours";
+        $idPrice = $_GET['id'];
 
-    $namePrice = findPrice($idPrice);
-    $rangePrice = $namePrice['rangePrice'];
-    $range = preg_split('[\s]', $rangePrice);
-    $from = 0;
-    $to = 0;
-    if ($range[0] == 'Trên') {
-        $from = $range[1];
-    } else {
-        $rang1 = preg_split('[\-]', $range[0]);
-        $from = $rang1[0];
-        $to = $rang1[1];
+        $namePrice = findPrice($idPrice);
+        $rangePrice = $namePrice['rangePrice'];
+        $range = preg_split('[\s]', $rangePrice);
+        $from = 0;
+        $to = 0;
+        if ($range[0] == 'Trên') {
+            $from = $range[1];
+        } else {
+            $rang1 = preg_split('[\-]', $range[0]);
+            $from = $rang1[0];
+            $to = $rang1[1];
+        }
+        $from *= 1000000;
+        $to *= 1000000;
+        if ($to == 0) {
+            $query .= " WHERE price_tours>=$from";
+        } else {
+            $query .= " WHERE  price_tours>=$from AND price_tours<=$to";
+        }
+        // var_dump($query);die;
+        $result = $conn->query($query);
+        return $result;
     }
-    $from *= 1000000;
-    $to *= 1000000;
-    if ($to == 0) {
-        $query .= " WHERE price_tours>=$from";
-    } else {
-        $query .= " WHERE  price_tours>=$from AND price_tours<=$to";
-    }
-    // var_dump($query);die;
-    $result = $conn->query($query);
-    return $result;
-}
 
-$tours_cate = getPrice($idPrice);
+    $tours_cate = getPrice($idPrice);
 }
 
 
@@ -69,7 +69,29 @@ $location = getAllLocation();
     <link rel="stylesheet" href="/duan1/asset/css/tours.css">
     <link rel="stylesheet" href="/duan1/asset/css/responsive.css">
     <style>
+        .box-img {
+            position: relative;
+        }
 
+        .box-sale {
+            position: absolute;
+            top: 4px;
+            right: -8px;
+            padding: 4px 8px;
+            background-color: #ff623d;
+            font-size: 14px;
+            color: white;
+        }
+
+        .box-sale::before {
+            content: "";
+            position: absolute;
+            top: 100%;
+            right: 0;
+            border-top: 8px solid #ff623d;
+            border-right: 8px solid transparent;
+            filter: brightness(60%);
+        }
     </style>
 </head>
 
@@ -107,7 +129,16 @@ $location = getAllLocation();
                     foreach ($tours_cate as $row) { ?>
                         <div class="pd-16 grid__column-4">
                             <div class="tours-product">
-                                <img style="height:160px" src="/duan1/asset/img/<?= $row['image'] ?>" alt="" class="img">
+                                <div class="box-img">
+                                    <img style="height:160px;" src="/duan1/asset/img/<?= $row['image'] ?>" alt="" class="img">
+                                    <?php
+                                    if ($row['sale_tours'] != 0) { ?>
+                                        <div class="box-sale">
+                                            <p>Sale</p>
+                                        </div>
+                                    <?php }
+                                    ?>
+                                </div>
                                 <div class="tours-content">
                                     <h6 style="font-size: 14px;overflow: hidden;line-height: 24px;
   display: -webkit-box;
