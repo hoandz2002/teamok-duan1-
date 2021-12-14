@@ -124,6 +124,7 @@ $dataPrice = price();
             filter: brightness(60%);
         }
     </style>
+    
 </head>
 
 <body>
@@ -208,9 +209,9 @@ $dataPrice = price();
   -webkit-line-clamp: 2;height:46px" class="tours-heading"><?= $row['name_tours']; ?></h6>
                                     <?php if ($row['sale_tours'] != 0) { ?>
                                         <span style="display:inline-block;font-size:16px;margin-bottom:15px;color: #9a9a9a;text-decoration:line-through;"><?= number_format($row['price_tours']); ?> Đ</span>
-                                        <span style="display:inline-block;font-size:16px;margin-bottom:15px;color:red"><?= number_format($row['price_tours'] - (($row['price_tours'] * $row['sale_tours']) / 100)); ?>Đ</span><br>
+                                        <span style="display:inline-block;font-size:16px;margin-bottom:15px;color:red;font-weight: bold;"><?= number_format($row['price_tours'] - (($row['price_tours'] * $row['sale_tours']) / 100)); ?>Đ</span><br>
                                     <?php } else { ?>
-                                        <p style="font-size:16px;color: red;"><?= number_format($row['price_tours']); ?> Đ</p>
+                                        <p style="font-size:16px;color: red;font-weight: bold;"><?= number_format($row['price_tours']); ?> Đ</p>
                                     <?php } ?>
                                     <a style="color: #9a9a9a;
     padding: 8px 16px;
@@ -228,7 +229,9 @@ $dataPrice = price();
                 </div>
             </div>
         </div>
+       <?php require_once "./call.php" ?>
     </div>
+   
     <?php require_once './footer.php'; ?>
     <script src="./asset/js/toast.js"></script>
 </body>

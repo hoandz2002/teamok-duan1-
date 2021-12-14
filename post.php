@@ -93,6 +93,7 @@
                 </div>
             </div>
         </div>
+        <?php require_once "./call.php" ?>
     </div>
     <?php require_once './footer.php'; ?>
 </body>

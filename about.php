@@ -147,6 +147,7 @@
 
                 </div>
             </div>
+            <?php require_once "./call.php" ?>
         </div>
         <div style="height: 640px;"></div>
         <?php require_once './footer.php'; ?>

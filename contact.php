@@ -19,8 +19,10 @@ if (isset($_POST['btn-submit'])) {
         'mess_contacts' => $_POST['mess_contacts'],
         'date_contacts' => $_POST['date_contacts']
     ];
+    $_SESSION['ok'] = "Gửi phản hồi thành công";
     insert_contacts($data);
     header("location: ./contact.php");
+    die;
 }
 ?>
 <!DOCTYPE html>
@@ -64,6 +66,26 @@ if (isset($_POST['btn-submit'])) {
                                     <?php
                                     echo $_SESSION['thongbao'];
                                     unset($_SESSION['thongbao']);
+                                    ?>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
+                <?php if (isset($_SESSION['ok'])) { ?>
+                    <div id="toast">
+                        <div class="tst_test tst--done">
+                            <div class="toast__icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="toast__body">
+                                <h3 class="toast__title" style="font-weight: 600;color: #333;">
+                                    Successfull
+                                </h3>
+                                <p class="toast__msg">
+                                    <?php
+                                    echo $_SESSION['ok'];
+                                    unset($_SESSION['ok']);
                                     ?>
                                 </p>
                             </div>
@@ -209,6 +231,7 @@ if (isset($_POST['btn-submit'])) {
                 </div>
             </div>
         </div>
+        <?php require_once "./call.php" ?>
     </div>
     <?php require_once './footer.php'; ?>
     <div class="modal js-modal">

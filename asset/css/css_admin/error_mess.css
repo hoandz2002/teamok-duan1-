@@ -54,12 +54,16 @@
 .tst--error {
     border-color: #ff623d;
 }
-
+.tst--done {
+    border-color: #3dff9b;
+}
 .toast__body {
     flex-grow: 1;
     margin-left: 30px;
 }
-
+.tst--done .toast__icon {
+    color: #3dff9b;
+}
 .tst--error .toast__icon {
     color: #ff623d;
 }
