@@ -231,6 +231,7 @@ if (isset($_POST['btn-submit'])) {
                 </div>
             </div>
         </div>
+        <?php require_once "./call.php" ?>
     </div>
     <?php require_once './footer.php'; ?>
     <div class="modal js-modal">
