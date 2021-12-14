@@ -91,31 +91,18 @@ $data_ds = getIdBill($id_customer);
                     <th>&nbsp</th>
                     <th>Ảnh</th>
                     <th>Tên Tour</th>
-                    <th>Gía</th>
+                    <th>Giá</th>
                     <th>Số lượng người</th>
                     <th>Sale</th>
                     <th>Ngày đặt</th>
-                    <th>Loại dịch vụ</th>
-                    <th>Gía dịch vụ</th>
+                    <!-- <th>Loại dịch vụ</th> -->
+                    <th>Giá dịch vụ</th>
                     <th>Ngày khởi hành(dự kiến)</th>
                     <th>Tổng tiền</th>
+                    <th>Coupon</th>
                     <th>Trạng thái</th>
-                <th></th>
+                    <th></th>
                 </tr>
-                <!-- <tr class="tbody" colspan="6">
-                    <td><i class="fas fa-times" style="color:red;"></i></td>
-                    <td>Image</td>
-                    <td>Product</td>
-                    <td>Price</td>
-                    <td>Quantity</td>
-                    <td>Date book</td>
-                    <td>Name price</td>
-                    <td>Price service</td>
-                    <td>Date start</td>
-                    <td>Total</td>
-
-                </tr> -->
-                <!-- <a href="./tours.php"><button class="update">UPDATE CART</button></a> -->
                 <?php foreach ($data_ds as $ds) { ?>
                     <tr>
                         <?php $total = intval($ds['price_bill_tours']) + intval($ds['price_service']) - intval($ds['price_tours']) * intval($ds['quantity_pp']) * intval($ds['sale_tours']) / 100 ?>
@@ -126,29 +113,34 @@ $data_ds = getIdBill($id_customer);
                         <td><?= $ds['quantity_pp'] ?></td>
                         <td><?= $ds['sale_tours'] ?>%</td>
                         <td><?= $ds['date_book'] ?></td>
-                        <td><?= $ds['name_service'] ?></td>
                         <td><?= number_format($ds['price_service']) ?>Đ</td>
                         <td><?= $ds['date_start'] ?></td>
                         <td><?= number_format($total) ?>Đ</td>
+                        <td>
+                            <form action="./cart.php" method="POST">
+                                <input type="text" name="coupon" style="width: 80px; margin: 0px 4px 4px; padding: 2px 4px;" placeholder="Nhập mã">
+                                <input type="submit" style="background-color: #1BBC9B; color: white; border: none; padding: 4px 8px;" value="Apply">
+                            </form>
+                        </td>
                         <td><?php
                             if ($ds['bill_status'] == 0) {
                                 echo "Đang chờ xác nhận";
-                            } else if($ds['bill_status'] == 1) {
+                            } else if ($ds['bill_status'] == 1) {
                                 echo "Đã xác nhận";
                             } else if (isset($_POST['btn_back']) || $ds['bill_status'] == 2) {
                                 echo "Đã thanh toán";
                             } elseif ($ds['bill_status'] == 3) {
                                 echo "Đã khởi hành";
-                            } elseif($ds['bill_status'] == 4) {
+                            } elseif ($ds['bill_status'] == 4) {
                                 echo 'Đã hoàn tất';
                             }
                             ?>
                         </td>
-                        <form action="./successfull.php?id_customer=<?=$ds['id_customer']?>&id_bill_tours=<?=$ds['id_bill_tours']?>" method="POST">
-                        <td>
-                            <?php if ($ds['bill_status'] == 1) { ?>
-                                <button style="width: 80px;" name="btn_payment" class="update">PAYMENT</button>    
-                        </td>
+                        <form action="./successfull.php?id_customer=<?= $ds['id_customer'] ?>&id_bill_tours=<?= $ds['id_bill_tours'] ?>" method="POST">
+                            <td>
+                                <?php if ($ds['bill_status'] == 1) { ?>
+                                    <button style="width: 80px;" name="btn_payment" class="update">PAYMENT</button>
+                            </td>
                         </form>
                     <?php } ?>
                     </td>
