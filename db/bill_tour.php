@@ -24,6 +24,7 @@ function getAllBill()
             'price_service' => $data['price_service'],
             'date_start' => $data['date_start'],
             'bill_status' => $data['bill_status'],
+            'id_coupon' => $data['id_coupon'],
 
         ];
         array_push($result, $row);
@@ -34,8 +35,8 @@ function getAllBill()
 function getIdBill($id)
 {
     $conn = connect();
-    $sql = "SELECT * FROM bill_tours inner join tours on bill_tours.id_tours = tours.id_tours  inner join service on bill_tours.id_service = service.id_service 
-    WHERE id_customer = :id_customer";
+    $sql = "SELECT * FROM bill_tours inner join tours on bill_tours.id_tours = tours.id_tours  inner join service on bill_tours.id_service = service.id_service "
+        . "WHERE id_customer = :id_customer";
     $stmt = $conn->prepare($sql);
     $stmt->execute(['id_customer' => $id]);
     $result = [];
@@ -59,7 +60,8 @@ function getIdBill($id)
             'name_service' => $data['name_service'],
             'price_service' => $data['price_service'],
             'date_start' => $data['date_start'],
-            'bill_status' => $data['bill_status']
+            'bill_status' => $data['bill_status'],
+            'id_coupon' => $data['id_coupon'],
         ];
 
         array_push($result, $row);
@@ -70,7 +72,7 @@ function getBillStatus($id)
 {
     $conn = connect();
     $sql = "SELECT * FROM bill_tours inner join tours on bill_tours.id_tours = tours.id_tours  inner join customer on bill_tours.id_customer = customer.id_customer" .
-    "WHERE bill_status =: bill_status";
+        "WHERE bill_status =: bill_status";
     $stmt = $conn->prepare($sql);
     $stmt->execute(['bill_status' => $id]);
     $result = [];
@@ -94,7 +96,8 @@ function getBillStatus($id)
             'name_service' => $data['name_service'],
             'price_service' => $data['price_service'],
             'date_start' => $data['date_start'],
-            'bill_status' => $data['bill_status']
+            'bill_status' => $data['bill_status'],
+            'id_coupon' => $data['id_coupon'],
         ];
 
         array_push($result, $row);
@@ -110,31 +113,32 @@ function getIdBill2($id)
     $stmt->execute(['id_bill_tours' => $id]);
 
     $data = $stmt->fetch();
-        $row = [
-            'id_bill_tours' => $data['id_bill_tours'],
-            'id_customer' => $data['id_customer'],
-            'quantity_pp' => $data['quantity_pp'],
-            'price_bill_tours' => $data['price_bill_tours'],
-            'id_tours' => $data['id_tours'],
-            'name_tours' => $data['name_tours'],
-            'price_tours' => $data['price_tours'],
-            'sale_tours' => $data['sale_tours'],
-            'image' => $data['image'],
-            'date_book' => $data['date_book'],
-            'name_service' => $data['name_service'],
-            'price_service' => $data['price_service'],
-            'id_service' => $data['id_service'],
-            'date_start' => $data['date_start'],
-            'bill_status' => $data['bill_status']
-        ];
+    $row = [
+        'id_bill_tours' => $data['id_bill_tours'],
+        'id_customer' => $data['id_customer'],
+        'quantity_pp' => $data['quantity_pp'],
+        'price_bill_tours' => $data['price_bill_tours'],
+        'id_tours' => $data['id_tours'],
+        'name_tours' => $data['name_tours'],
+        'price_tours' => $data['price_tours'],
+        'sale_tours' => $data['sale_tours'],
+        'image' => $data['image'],
+        'date_book' => $data['date_book'],
+        'name_service' => $data['name_service'],
+        'price_service' => $data['price_service'],
+        'id_service' => $data['id_service'],
+        'date_start' => $data['date_start'],
+        'bill_status' => $data['bill_status'],
+        'id_coupon' => $data['id_coupon'],
+    ];
 
     return $row;
 }
 function insert_bill(array $data)
 {
     $conn = connect();
-    $sql = "INSERT INTO bill_tours( id_customer, quantity_pp, price_bill_tours, id_tours, date_book, id_service,date_start, bill_status)" .
-        "VALUES( :id_customer, :quantity_pp, :price_bill_tours, :id_tours,:date_book, :id_service,:date_start, 0)";
+    $sql = "INSERT INTO bill_tours( id_customer, quantity_pp, price_bill_tours, id_tours, date_book, id_service,date_start, bill_status, id_coupon)" .
+        "VALUES( :id_customer, :quantity_pp, :price_bill_tours, :id_tours,:date_book, :id_service,:date_start, 0, :id_coupon)";
     $stmt = $conn->prepare($sql);
     $stmt->execute($data);
 }
@@ -152,4 +156,42 @@ function delete_bill($id)
     $sql = "DELETE FROM bill_tours WHERE id_bill_tours = :id_bill_tours";
     $stmt = $conn->prepare($sql);
     $stmt->execute(['id_bill_tours' => $id]);
+}
+
+
+function couponCustomer($data)
+{
+    $conn = connect();
+    $sql = "SELECT * FROM bill_tours inner join coupon on bill_tours.id_coupon = coupon.id_coupon WHERE id_customer =:id_customer AND id_bill_tours=:id_bill_tours";
+    $statement = $conn->prepare($sql);
+    $statement->execute($data);
+
+    $data = $statement->fetch();
+    $row = [
+        'id_bill_tours' => $data['id_bill_tours'],
+        'id_coupon' => $data['id_coupon'],
+        'code_coupon' => $data['code_coupon'],
+        'percent_coupon' => $data['percent_coupon'],
+    ];
+
+    return $row;
+}
+function updateCouponInBill($data)
+{
+    $conn = connect();
+    $sql = "UPDATE bill_tours SET id_coupon =:id_coupon WHERE id_bill_tours =:id_bill_tours";
+    $statement = $conn->prepare($sql);
+    $statement->execute($data);
+
+    return true;
+}
+function checkCoupon($coupon)
+{
+    $conn = connect();
+    $sql = "SELECT count(*) FROM `coupon` WHERE code_coupon =:code_coupon"; 
+    $result = $conn->prepare($sql); 
+    $result->execute(['code_coupon'=> $coupon]); 
+    $number_of_rows = $result->fetchColumn(); 
+
+    return $number_of_rows;
 }

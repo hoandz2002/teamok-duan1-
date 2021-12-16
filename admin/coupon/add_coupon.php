@@ -16,7 +16,11 @@ if (isset($_POST['submit'])) {
         header("location: ./add_coupon.php");
         die;
     }
-
+    if (empty($_POST['percent_coupon'])) {
+        $_SESSION['error'] = "Không để trống phần trăm giảm giá!";
+        header("location: ./add_coupon.php");
+        die;
+    }
     if (empty($_POST['name_coupon'])) {
         $_SESSION['error'] = "Không để trống số lượng mã giảm giá!";
         header("location: ./add_coupon.php");
@@ -36,6 +40,7 @@ if (isset($_POST['submit'])) {
         'name_coupon' => $_POST['name_coupon'],
         'code_coupon' => $_POST['code_coupon'],
         'number_coupon' => $_POST['number_coupon'],
+        'percent_coupon' => $_POST['percent_coupon'],
     ];
     insertCoupon($data);
     header("location:/duan1/admin/coupon/list_coupon.php");
@@ -109,6 +114,10 @@ if (isset($_POST['submit'])) {
                             <div class="form_group">
                                 <label class="form_label">Số lượng mã</label>
                                 <input type="number" name="number_coupon" class="form_input">
+                            </div>
+                            <div class="form_group">
+                                <label class="form_label">Phần trăm giảm mã</label>
+                                <input type="number" name="percent_coupon" class="form_input">
                             </div>
                             <div class="form_group">
                                 <input name="submit" type="submit" value="Thêm mới" class="btn btn-add">

@@ -65,6 +65,7 @@ if (isset($_POST['addgiohang'])) {
         'date_book' => $_POST['date_book'],
         'id_service' => $_POST['id_service'],
         'date_start' => $_POST['date_start'],
+        'id_coupon' => $data['id_coupon'],
         // 'bill_status' => $_POST['bill_status']
     ];
     insert_bill($data);
@@ -183,7 +184,7 @@ if (isset($_POST['addgiohang'])) {
                             <div class="pd-16 grid__column-2">
                                 <h6 style="font-size: 24px;line-height:24px" class="detail-heading"><?= $data['name_tours'] ?></h6>
                                 <span style="margin-top: 24px; display: block;">Địa điểm : <?= $data['name_location']; ?></span>
-                                <span class="detail-price" name="price_tours"><?= number_format($data['price_tours']); ?> Đ</span>
+                                <span style="color: red;" class="detail-price" name="price_tours"><?= number_format($data['price_tours']); ?> Đ</span>
                                 <p style="font-size:20px;" class="detail-des">
                                 </p>
                                 <div class="pd-24 detail-qtt">
@@ -220,6 +221,7 @@ if (isset($_POST['addgiohang'])) {
                                                                                 ?>" hidden>
                                 <input type="text" name="id_tours" value="<?= $data['id_tours'] ?>" hidden>
                                 <input type="text" name="price_bill_tours" value="" hidden>
+                                <input type="hidden" name="id_coupon" value="" >
                                 <input type="text" name="price_tours" value="<?= $data['price_tours']; ?>" hidden>
                                 <div class="pd-24 detail-qtt">
                                     <div class="grid__row" style="align-items: center;">

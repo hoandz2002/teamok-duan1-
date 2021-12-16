@@ -17,7 +17,11 @@ if (isset($_POST['update'])) {
         header("location: ./edit.php?id_coupon=$id_coupon");
         die;
     }
-
+    if (empty($_POST['percent_coupon'])) {
+        $_SESSION['error'] = "Không để trống phần trăm giảm giá!";
+        header("location: ./add_coupon.php");
+        die;
+    }
     if (empty($_POST['name_coupon'])) {
         $_SESSION['error'] = "Không để trống số lượng mã giảm giá!";
         header("location: ./edit.php?id_coupon=$id_coupon");
@@ -38,6 +42,7 @@ if (isset($_POST['update'])) {
         'name_coupon' => $_POST['name_coupon'],
         'code_coupon' => $_POST['code_coupon'],
         'number_coupon' => $_POST['number_coupon'],
+        'percent_coupon' => $_POST['percent_coupon'],
     ];
     updateCoupon($data);
     header("location:/duan1/admin/coupon/list_coupon.php");
@@ -100,8 +105,8 @@ if (isset($_POST['update'])) {
                 <div class="right_body">
                     <div class="form_add">
                         <form action="/duan1/admin/coupon/edit.php?id_coupon=<?= $dataCoupon['id_coupon']; ?>" method="POST" enctype="multipart/form-data">
-                           <input value="<?= $dataCoupon['id_coupon']; ?>" type="hidden" name="id_coupon">
-                        <div class="form_group">
+                            <input value="<?= $dataCoupon['id_coupon']; ?>" type="hidden" name="id_coupon">
+                            <div class="form_group">
                                 <label class="form_label">Tên mã giảm giá</label>
                                 <input value="<?= $dataCoupon['name_coupon']; ?>" type="text" name="name_coupon" class="form_input">
                             </div>
@@ -112,6 +117,10 @@ if (isset($_POST['update'])) {
                             <div class="form_group">
                                 <label class="form_label">Số lượng mã</label>
                                 <input value="<?= $dataCoupon['number_coupon']; ?>" type="number" name="number_coupon" class="form_input">
+                            </div>
+                            <div class="form_group">
+                                <label class="form_label">Phần trăm giảm mã</label>
+                                <input value="<?= $dataCoupon['percent_coupon']; ?>" type="number" name="percent_coupon" class="form_input">
                             </div>
                             <div class="form_group">
                                 <input name="update" type="submit" value="Cập nhật" class="btn btn-add">

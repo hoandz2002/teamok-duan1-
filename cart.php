@@ -1,12 +1,64 @@
 <?php
 session_start();
+require_once './admin/connect_list.php';
 require_once './db/connection.php';
 require_once './db/bill_tour.php';
+require_once './db/coupon.php';
 $id_customer = $_GET['id_customer'];
-// var_dump($_SESSION['user']['id_customer']);die;
 $data_ds = getIdBill($id_customer);
+$dataCoupon = getAllCoupon();
+if (isset($_POST['apply'])) {
+    for ($i = 0; $i < count($dataCoupon); $i++) {
+        $coupon = $_POST['code_coupon'];
+        if ($coupon == null) {
+            $_SESSION['error'] = "Mã nhập không hợp lệ!";
+            header("location:/duan1/cart.php?id_customer=$id_customer");
+            die;
+        } else {
+            $rowcount = checkCoupon($coupon);
+            if ($rowcount == 0) {
+                $_SESSION['error'] = "Mã nhập không hợp lệ!!";
+                header("location:/duan1/cart.php?id_customer=$id_customer");
+                die;
+            }
+        }
+    }
+    $id_bill_tours = $_GET['id_bill_tours'];
+    foreach ($data_ds as $value) {
+        if ($value['id_coupon'] != null) {
+            $_SESSION['error'] = "Bạn chỉ được nhập mã tối đa 1 lần!";
+            header("location:/duan1/cart.php?id_customer=$id_customer");
+            die;
+        }
+    }
 
+    foreach ($dataCoupon as $value) {
 
+        if (strtoupper($_POST['code_coupon']) === $value['code_coupon']) {
+            if ($value['number_coupon'] <= 0) {
+                $_SESSION['error'] = "Số lượng mã đã hết!";
+                header("location:/duan1/cart.php?id_customer=$id_customer");
+                die;
+            }
+
+            $id_coupon = $value['id_coupon'];
+
+            $data = [
+                'id_bill_tours' => $id_bill_tours,
+                'id_coupon' => $id_coupon,
+            ];
+
+            updateCouponInBill($data);
+            $number_coupon = $value['number_coupon'] - 1;
+            $data_number = [
+                'id_coupon' => $id_coupon,
+                'number_coupon' => $number_coupon,
+            ];
+            updateNumberCoupon($data_number);
+            header("location:/duan1/cart.php?id_customer=$id_customer");
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +74,7 @@ $data_ds = getIdBill($id_customer);
     <link rel="stylesheet" href="/duan1/asset/css/main.css">
     <link rel="stylesheet" href="/duan1/asset/css/tours_detail.css">
     <link rel="stylesheet" href="/duan1/asset/css/responsive.css">
+    <link rel="stylesheet" href="/duan1/asset/css/css_admin/error_mess.css">
     <style>
         .table1 {
             font-size: 14px;
@@ -76,6 +129,11 @@ $data_ds = getIdBill($id_customer);
             background-color: #14B9D5;
             cursor: pointer;
         }
+
+        td {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
     </style>
 </head>
 
@@ -85,7 +143,30 @@ $data_ds = getIdBill($id_customer);
         <div class="body__banner" style="background-image: url(/duan1/asset/img/cart-banner.jpg); padding: 10%;">
             <div class="banner-text" style="text-shadow: 0px 1px 2px green;">Cart</div>
         </div>
-        <div class="body">
+        <?php if (isset($_SESSION['error'])) { ?>
+            <div id="toast">
+                <div class="tst_test tst--error">
+                    <div class="toast__icon">
+                        <i class="fas fa-exclamation"></i>
+                    </div>
+                    <div class="toast__body">
+                        <h3 class="toast__title" style="font-weight: 600;color: #333;">
+                            Error
+                        </h3>
+                        <p class="toast__msg">
+                            <?php
+                            echo $_SESSION['error'];
+                            unset($_SESSION['error']);
+                            ?>
+                        </p>
+                    </div>
+                    <div class="toast__close">
+                        <i class='fas fa-times'></i>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+        <div class="body" style="margin-bottom:30px;">
             <?php if ($data_ds == null) { ?>
                 <div style="text-align: center; height: 250px; overflow-y: hidden;">
                     <img src="./asset//img/cart_error.jpg" alt="">
@@ -125,12 +206,16 @@ $data_ds = getIdBill($id_customer);
                             <td><?= number_format($ds['price_service']) ?>Đ</td>
                             <td><?= $ds['date_start'] ?></td>
                             <td><?= number_format($total) ?>Đ</td>
-                            <td>
-                                <form action="./cart.php" method="POST">
-                                    <input type="text" name="coupon" style="width: 80px; margin: 0px 4px 4px; padding: 2px 4px;" placeholder="Nhập mã">
-                                    <input type="submit" style="background-color: #1BBC9B; color: white; border: none; padding: 4px 8px;" value="Apply">
-                                </form>
-                            </td>
+                            <?php if (!isset($ds['id_coupon'])) { ?>
+                                <td>
+                                    <form action="./cart.php?id_bill_tours=<?= $ds['id_bill_tours'] ?>&id_customer=<?= $ds['id_customer'] ?>" method="POST">
+                                        <input type="text" name="code_coupon" style="width: 80px; margin: 0px 4px 4px; padding: 2px 4px;outline:none;" placeholder="Nhập mã">
+                                        <input name="apply" type="submit" style="background-color: #1BBC9B; color: white; border: none; padding: 4px 8px;cursor:pointer;" value="Apply">
+                                    </form>
+                                </td>
+                            <?php } else { ?>
+                                <td>Đã sử dụng!</td>
+                            <?php } ?>
                             <td><?php
                                 if ($ds['bill_status'] == 0) {
                                     echo "Đang chờ xác nhận";
@@ -176,8 +261,72 @@ $data_ds = getIdBill($id_customer);
             </div> -->
             <?php require_once "./call.php" ?>
         </div>
-        <?php require_once './footer.php'; ?>
+        <div class="footer" style="margin-top: 100px;">
+            <div class="grid">
+                <!-- <div class="grid"> -->
+                <div class="grd-with-width">
+                    <div class="footer__header">
+                        <div class="footer__header-top">
+                            <span class="footer__header-span">
+                                KEEP IN TOUCH
+                            </span>
 
+                        </div>
+                        <div class="footer__header-bottom">
+                            <p class="footer__header-heading">
+                                Travel with Us
+                            </p>
+                            <div class="footer__header-form">
+                                <input type="text" class="footer__header-input">
+                                <button class="footer__header-button">SEND</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer__content">
+                        <div class="footer__content-top grid__row">
+                            <div class="grid__column-2" style="padding-right: 8px; box-sizing: border-box;">
+                                <div class="footer__logo">
+                                    <img src="/duan1/asset/img/logohthtravel.png" alt="" class="footer__logo-img">
+                                </div>
+                                <div class="footer__text">
+                                    <p>
+                                        Để phục vụ quý khách tốt hơn nữa, chúng tôi luôn không ngừng nỗ lực và nâng cao chất lượng sản phẩm, dịch vụ du lịch nhằm đáp ứng, đảm bảo nhu cầu của quý khách hàng.
+                                        HTH Travel chân thành cảm ơn mọi người đã và đang ủng hộ chúng tôi.
+                                    </p>
+                                </div>
+                                <div class="footer__icons">
+                                    <i class="footer__icon fab fa-twitter"></i>
+                                    <i class="footer__icon fab fa-youtube"></i>
+                                    <i class="footer__icon fab fa-facebook"></i>
+                                    <i class="footer__icon fab fa-vimeo-v"></i>
+                                </div>
+                            </div>
+
+                            <div class="grid__column-2 flex__row">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17130.435705489876!2d106.29244978497269!3d20.82870032771215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31359055a4943fb1%3A0xe73ef5a3e187da4f!2zSOG7k25nIEjGsG5nLCBHaWEgTOG7mWMgRGlzdHJpY3QsIEhhaSBEdW9uZywgVmlldG5hbQ!5e1!3m2!1sen!2s!4v1638759335121!5m2!1sen!2s" width="600" height="260" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+                            </div>
+
+                        </div>
+                        <div class="grid__row-1 footer__content-bottom">
+                            <div class="grid__column-2">
+                                <div class="footer__content-bottom-left">
+                                    <span>HTH TRAVEL XIN KÍNH CHÀO QUÝ KHÁCH</span>
+                                </div>
+                            </div>
+
+                            <div class="grid__column-2">
+                                <div class="footer__content-bottom-right">
+                                    <span>COPYRIGHT 2021 BY HTH TRAVEL</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- </div> -->
+            </div>
+        </div>
+        <script src="./asset/js/toast.js"></script>
 </body>
 
 </html>

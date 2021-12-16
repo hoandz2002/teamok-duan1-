@@ -11,7 +11,7 @@ $data = getAllCoupon();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Danh sách mã giảm giá</title>
     <link rel="stylesheet" href="/duan1/asset/fonts/fontawesome-free-5.15.3-web/css/all.min.css">
     <link rel="stylesheet" href="/duan1/asset/css/css_admin/main.css">
     <style>
@@ -63,6 +63,7 @@ $data = getAllCoupon();
                                 <th>Tên mã giảm giá</th>
                                 <th>Mã giảm giá</th>
                                 <th>Số lượng mã</th>
+                                <th>Gía trị</th>
                                 <th>Chức năng</th>
                             </tr>
                         </thead>
@@ -88,6 +89,7 @@ $data = getAllCoupon();
                                     <td><?php echo $row['name_coupon'] ?></td>
                                     <td><?php echo $row['code_coupon']; ?></td>
                                     <td><?php echo $row['number_coupon']; ?></td>
+                                    <td><?php echo $row['percent_coupon']; ?>%</td>
                                     <td>
                                         <a href="./edit.php?id_coupon=<?= $row['id_coupon'] ?>" class="js-modal-click1"><i class="mr-8 fas fa-cogs"></i></a>
                                         <a href="./delete.php?id_coupon=<?= $row['id_coupon'] ?>" onclick="confirm('Bạn muốn xóa mã giảm giá này!');"><i class="fas fa-trash-alt"></i></a>

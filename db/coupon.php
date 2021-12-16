@@ -3,7 +3,7 @@
 function getAllCoupon()
 {
     $conn = connect();
-    $sql = "SELECT * FROM coupon INNER JOIN bill_tours ON coupon.id_coupon = bill_tours.id_coupon";
+    $sql = "SELECT * FROM coupon";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $result = [];
@@ -17,6 +17,7 @@ function getAllCoupon()
             'name_coupon' => $data['name_coupon'],
             'number_coupon' => $data['number_coupon'],
             'code_coupon' => $data['code_coupon'],
+            'percent_coupon' => $data['percent_coupon'],
         ];
         array_push($result, $row);
     }
@@ -35,6 +36,7 @@ function getIdCoupon($id)
         'name_coupon' => $data['name_coupon'],
         'number_coupon' => $data['number_coupon'],
         'code_coupon' => $data['code_coupon'],
+        'percent_coupon' => $data['percent_coupon'],
     ];
 
     return $row;
@@ -42,14 +44,14 @@ function getIdCoupon($id)
 function insertCoupon(array $data)
 {
     $conn = connect();
-    $sql = "INSERT INTO coupon(name_coupon, number_coupon, code_coupon) VALUES( :name_coupon, :number_coupon, :code_coupon)";
+    $sql = "INSERT INTO coupon(name_coupon, number_coupon, code_coupon,percent_coupon) VALUES( :name_coupon, :number_coupon, :code_coupon,:percent_coupon)";
     $stmt = $conn->prepare($sql);
     $stmt->execute($data);
 }
 function updateCoupon($data)
 {
     $conn = connect();
-    $sql = "UPDATE coupon SET name_coupon =:name_coupon, number_coupon =:number_coupon, code_coupon =:code_coupon WHERE id_coupon =:id_coupon";
+    $sql = "UPDATE coupon SET name_coupon =:name_coupon, number_coupon =:number_coupon, code_coupon =:code_coupon,percent_coupon=:percent_coupon WHERE id_coupon =:id_coupon";
     $stmt = $conn->prepare($sql);
     $stmt->execute($data);
     return true;
@@ -60,4 +62,14 @@ function deleteCoupon($id)
     $sql = "DELETE FROM coupon WHERE id_coupon = :id_coupon";
     $stmt = $conn->prepare($sql);
     $stmt->execute(['id_coupon' => $id]);
+}
+
+function updateNumberCoupon($data)
+{
+    $conn = connect();
+        $sql = "UPDATE coupon SET number_coupon =:number_coupon WHERE id_coupon =:id_coupon";
+        $statement = $conn->prepare($sql);
+        $statement->execute($data);
+
+        return true;
 }
