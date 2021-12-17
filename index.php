@@ -38,6 +38,76 @@ if (empty($_SESSION['user']) == false) {
 
 </head>
 <style>
+    .form-flex {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.35);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        display: none;
+        z-index: 9999999;
+        text-align: center;
+    }
+
+    .form-flex.open {
+        display: flex;
+    }
+
+    .flex-container {
+        border-radius: 6px;
+        width: 980px;
+        max-width: calc(100% - 48px);
+        min-height: 700px;
+        padding-top: 32px;
+        background: url(https://phunugioi.com/wp-content/uploads/2020/08/anh-noel-hinh-nen-giang-sinh.jpg);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        /* animation: modalFadeIn ease 0.3s; */
+    }
+
+    .flex-text {
+        /* color: #e25d85; */
+        /* text-shadow: 20px; */
+        font-family: "Poppins", sans-serif;
+    }
+
+    .flex-content {
+        font-size: 32px !important;
+        font-weight: 400;
+        color: #e25d85;
+        font-style: italic;
+        text-shadow: 0px 0px 15px #e59b2b;
+    }
+
+    .flex-img {
+        /* width: 80%; */
+        text-align: center;
+    }
+
+    .flex-img img {
+        width: 60%;
+        /* text-align: center; */
+    }
+
+    .flex-btn {
+        background-color: #e60808;
+        border: none;
+        outline: none;
+        color: #f2f2f2;
+        padding: 8px 12px;
+        margin-bottom: 12px;
+        /* border-radius: 6px; */
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
     .body__bottom-detail {
         padding: 20px 0px 0px;
     }
@@ -657,7 +727,110 @@ if (empty($_SESSION['user']) == false) {
         <div class="footer">
             <?php require_once './footer.php'; ?>
         </div>
+        <div class="form-flex open">
+            <div class="flex-container">
+                <div class="flex-text">
+                    <div>
+                        <style>
+                            .highlight {
+                                font-size: 48px;
+                                font-weight: bold;
+                                /*cở chữ*/
+                                font-family: "Poppins", sans-serif;
+                                /*font chữ ví dụ times, arial...*/
+                                font-weight: bold;
+                                /*in đậm, nếu bạn không muốn in đậm text bạn có thể xóa dòng này*/
+                            }
+                        </style>
+                        <script>
+                            var text = "Giảm giá sốc"
+                            var speed = 80 //tốc độ chuyển đổi giữa các màu
+                            if (document.all || document.getElementById) {
+                                document.write('<span id="highlight" class="highlight">' + text + '</span>')
+                                var storetext = document.getElementById ? document.getElementById("highlight") : document.all.highlight
+                            } else
+                                document.write(text)
+                            var hex = new Array("00", "14", "28", "3C", "50", "64", "78", "8C", "A0", "B4", "C8", "DC", "F0")
+                            var r = 1
+                            var g = 1
+                            var b = 1
+                            var seq = 1
 
+                            function changetext() {
+                                rainbow = "#" + hex[r] + hex[g] + hex[b]
+                                storetext.style.color = rainbow
+                            }
+
+                            function change() {
+                                if (seq == 6) {
+                                    b--
+                                    if (b == 0)
+                                        seq = 1
+                                }
+                                if (seq == 5) {
+                                    r++
+                                    if (r == 12)
+                                        seq = 6
+                                }
+                                if (seq == 4) {
+                                    g--
+                                    if (g == 0)
+                                        seq = 5
+                                }
+                                if (seq == 3) {
+                                    b++
+                                    if (b == 12)
+                                        seq = 4
+                                }
+                                if (seq == 2) {
+                                    r--
+                                    if (r == 0)
+                                        seq = 3
+                                }
+                                if (seq == 1) {
+                                    g++
+                                    if (g == 12)
+                                        seq = 2
+                                }
+                                changetext()
+                            }
+
+                            function starteffect() {
+                                if (document.all || document.getElementById)
+                                    flash = setInterval("change()", speed)
+                            }
+                            starteffect()
+                        </script>
+                    </div>
+                    <div class="flex-img">
+                        <!-- <img src="./asset/img/an giang.jpg" alt=""> -->
+                    </div>
+                    <div class="flex-content">
+                        <p>Merry christmas </p>
+                    </div>
+                    <button class="flex-btn">
+                            <i class="fas fa-times" style="font-size: 2rem;"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const formflex = document.querySelector('.form-flex');
+            const flexContainer = document.querySelector('.flex-container');
+
+            const btn = document.querySelector('.flex-btn');
+
+            //hàm ẩn modal mua vé(gỡ bỏ class open vào modal)
+            function hideBuyTickets() {
+                formflex.classList.remove('open');
+            }
+
+            btn.addEventListener('click', hideBuyTickets);
+            flexContainer.addEventListener('click', function(even) {
+                event.stopPropagation();
+            });
+        </script>
 </body>
 
 </html>
