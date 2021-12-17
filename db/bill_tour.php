@@ -195,7 +195,22 @@ function checkCoupon($coupon)
 
     return $number_of_rows;
 }
+function checkIdCouponUpdate($coupon)
+{
+    $conn = connect();
+    $sql = "SELECT * FROM `coupon` WHERE code_coupon =:code_coupon";
+    $result = $conn->prepare($sql);
+    $result->execute(['code_coupon' => $coupon]);
+    $data = $result->fetch();
+    $row = [
+        'id_coupon' => $data['id_coupon'],
+        'percent_coupon' => $data['percent_coupon'],
+        'code_coupon' => $data['code_coupon'],
+        'number_coupon' => $data['number_coupon'],
+    ];
 
+    return $row;
+}
 function getPercentCoupon($id)
 {
     $conn = connect();

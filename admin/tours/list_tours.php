@@ -111,6 +111,7 @@ $location = getAllLocation();
                                         } else {
                                             echo $row['sale_tours'];
                                         } ?>
+                                        %
                                     </td>
                                     <td><?php echo $row['name_location'] ?></td>
                                     <td>

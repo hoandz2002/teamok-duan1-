@@ -195,8 +195,8 @@ if (isset($_POST['addgiohang'])) {
                                 <div class="pd-24 detail-qtt">
                                     <div class="grid__row" style="align-items: center;">
                                         <!-- <form action="" method="POST"> -->
-                                        <p>People</p>
-                                        <input type="number" name="quantity_pp" placeholder="Chọn số lượng người" style="width: 320px;padding: 8px 16px;border-radius: 16px;outline: none; border: 1px solid;">
+                                        <p>Số người</p>
+                                        <input max="5" min="1" step="1" type="number" name="quantity_pp" placeholder="Chọn số lượng người" style="width: 320px;padding: 8px 16px;border-radius: 16px;outline: none; border: 1px solid;">
                                         <p style="width: 50px;" hidden></p>
                                         <!-- </form> -->
                                     </div>

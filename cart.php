@@ -43,18 +43,24 @@ if (isset($_POST['apply'])) {
                     }
                 }
             }
-            $id_coupon = $value['id_coupon'];
+            $id = checkIdCouponUpdate($_POST['code_coupon']);
 
             $data = [
                 'id_bill_tours' => $id_bill_tours,
-                'id_coupon' => $id_coupon,
+                'id_coupon' => $id['id_coupon'],
             ];
 
             updateCouponInBill($data);
-            $number_coupon = $value['number_coupon'] - 1;
+            // $number_coupon = $value['number_coupon'];
+            
+            // $number_coupon = $number_coupon - 1;
+            // $valueCheck = getIdCoupon($id);
+            // if($valueCheck['number_coupon'] == NULL) {
+            //     $valueCheck['number_coupon'] = 1;
+            // }
             $data_number = [
-                'id_coupon' => $id_coupon,
-                'number_coupon' => $number_coupon,
+                'id_coupon' => $id['id_coupon'],
+                'number_coupon' => $id['number_coupon'] - 1,
             ];
             updateNumberCoupon($data_number);
             header("location:/duan1/cart.php?id_customer=$id_customer");

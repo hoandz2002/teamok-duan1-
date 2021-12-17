@@ -39,7 +39,6 @@ $data = getAllContact();
                                 <th>Email khách hàng</th>
                                 <th>Nội dung</th>
                                 <th>Ngày bình luận</th>
-                                <th>Trạng thái</th>
                                 <th>Chức năng</th>
                             </tr>
                         </thead>
@@ -65,11 +64,6 @@ $data = getAllContact();
                                     <td><?= $row['email_contacts'] ?></td>
                                     <td><?= $row['mess_contacts'] ?></td>
                                     <td><?= $row['date_contacts'] ?></td>
-                                    <td><?php if ($row['status_contacts'] == 0){
-                                        echo "chưa trả lời";
-                                    }else {
-                                        echo "Đã trả lời";
-                                    } ?></td>
                                     <td><a href="./delete.php?id_contacts=<?= $row['id_contacts'] ?>"><i class="fas fa-trash-alt"></i></a></td>
 
                                 </tr>

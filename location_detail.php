@@ -65,28 +65,28 @@ if (empty($_SESSION['user']) == false) {
         </div>
         <div class="body">
             <div class="grid">
-                <div class="grid__row">
-                    <div class="pd-16 grid__column-2-3">
-                        <h3 class="location"><?= $data['name_location']; ?></h3>
+                <div style="display:flex;grid-template-columns:2fr 1fr;grid-gap:100px">
+                    <div class="pd-16 grid__column-2-3" style="font-size: 14px;color:#9a9a9a;line-height:35px">
+                        <h3 style="color:#555" class="location"><?= $data['name_location']; ?></h3>
                         <p class="location_content"><?= $data['description_location']; ?></p>
                     </div>
-                    <div class="pd-16 grid__column-3" style="border: 0.8px solid #d8d8d8;">
+                    <div class="" style="border: 0.8px solid #d8d8d8;color:#fff;padding:30px;height: 230px;">
                         <div class="contact-location grid__row">
-                            <i class='mr-8 icon-contact fas fa-globe-asia'></i>
+                            <img class="mr-8 icon-contact" src="./asset/img/lc-icon1.png" alt="">
                             <div class="ml-8 body-contact">
                                 <h4 class="contact-heading">Địa điểm</h4>
                                 <p class="contact-ct">1 điạ điểm ở <?= $data['name_location']; ?></p>
                             </div>
                         </div>
                         <div class="mt-8 contact-location grid__row">
-                            <i class='mr-8 icon-contact fas fa-map-marker-alt'></i>
+                        <img class="mr-8 icon-contact" src="./asset/img/icon-map-location-white.png" alt="">
                             <div class="ml-8 body-contact">
                                 <h4 class="contact-heading">Du lịch Việt Nam</h4>
                                 <p class="contact-ct">Tuyệt vời luôn nhé</p>
                             </div>
                         </div>
                         <div class="mt-8 contact-location grid__row">
-                            <i class='mr-8 icon-contact far fa-paper-plane'></i>
+                        <img class="mr-8 icon-contact" src="./asset/img/icon-message-white.png" alt="">
                             <div class="ml-8 body-contact">
                                 <h4 class="contact-heading">Liên hệ</h4>
                                 <p class="contact-ct">hthtravel@gmail.com</p>
@@ -98,7 +98,7 @@ if (empty($_SESSION['user']) == false) {
                     <div class="grid">
                         <div class="grid__row">
                             <div class="body__content">
-                                <p>CÁC <u>TOURS Ở ĐÂY</u></p>
+                                <p style="color:#555">CÁC <u>TOURS Ở ĐÂY</u></p>
                             </div>
                             <?php for ($i = 0; $i < count($data_tours); $i++) { ?>
                                 <div class="grid__column-3 bordered">
