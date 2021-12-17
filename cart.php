@@ -23,15 +23,8 @@ if (isset($_POST['apply'])) {
             }
         }
     }
-    $id_bill_tours = $_GET['id_bill_tours'];
-    foreach ($data_ds as $value) {
-        if ($value['id_coupon'] != null) {
-            $_SESSION['error'] = "Bạn chỉ được nhập mã tối đa 1 lần!";
-            header("location:/duan1/cart.php?id_customer=$id_customer");
-            die;
-        }
-    }
 
+    $id_bill_tours = $_GET['id_bill_tours'];
     foreach ($dataCoupon as $value) {
 
         if (strtoupper($_POST['code_coupon']) === $value['code_coupon']) {
@@ -40,7 +33,16 @@ if (isset($_POST['apply'])) {
                 header("location:/duan1/cart.php?id_customer=$id_customer");
                 die;
             }
-
+            $dataCompare = checkSameCoupon($id_customer);
+            foreach ($dataCompare as  $value) {
+                if ($_POST['code_coupon'] != null) {
+                    if ($_POST['code_coupon'] === $value['code_coupon']) {
+                        $_SESSION['error'] = "Bạn đã sử dụng mã này!";
+                        header("location:/duan1/cart.php?id_customer=$id_customer");
+                        die;
+                    }
+                }
+            }
             $id_coupon = $value['id_coupon'];
 
             $data = [
@@ -195,18 +197,35 @@ if (isset($_POST['apply'])) {
                     </tr>
                     <?php foreach ($data_ds as $ds) { ?>
                         <tr>
-                            <?php $total = intval($ds['price_bill_tours']) + intval($ds['price_service']) - intval($ds['price_tours']) * intval($ds['quantity_pp']) * intval($ds['sale_tours']) / 100 ?>
+                            <?php
+                            if ($ds['id_coupon'] != NULL) {
+                                $percent_coupon = getPercentCoupon($ds['id_bill_tours']);
+                                if ($percent_coupon['id_coupon'] == NULL) {
+                                    $percent_coupon['percent_coupon'] = 0;
+                                }
+                            } else {
+                                $percent_coupon = getIdBill($ds['id_customer']);
+                                $percent_coupon['percent_coupon'] = 0;
+                            }
+                            ?>
+                            <?php $total = intval($ds['price_bill_tours']) + intval($ds['price_service']) - intval($ds['price_tours']) * intval($ds['quantity_pp']) * intval($ds['sale_tours'] + $percent_coupon['percent_coupon']) / 100 ?>
                             <td><a href="./db/bill_tour/delete_bill.php?id_bill_tours=<?= $ds['id_bill_tours'] ?>"><i class="fas fa-times" style="color:red;"></i></a></td>
                             <td><img src="./asset/img/<?= $ds['image'] ?>" width="100px" alt=""></td>
                             <td style="max-width: 250px;"><?= $ds['name_tours'] ?></td>
-                            <td><?= number_format($ds['price_bill_tours']) ?>Đ</td>
+                            <td>
+                                <?php if ($ds['sale_tours'] != 0) {
+                                    echo number_format($ds['price_tours'] - (($ds['price_tours'] * $ds['sale_tours']) / 100), 0, ',', '.');
+                                } else {
+                                    echo  number_format($ds['price_bill_tours'], 0, ',', '.');
+                                } ?> Đ
+                            </td>
                             <td><?= $ds['quantity_pp'] ?></td>
-                            <td><?= $ds['sale_tours'] ?>%</td>
+                            <td><?= $ds['sale_tours'] + $percent_coupon['percent_coupon']; ?>%</td>
                             <td><?= $ds['date_book'] ?></td>
-                            <td><?= number_format($ds['price_service']) ?>Đ</td>
+                            <td><?= number_format($ds['price_service'], 0, ',', '.') ?> Đ</td>
                             <td><?= $ds['date_start'] ?></td>
-                            <td><?= number_format($total) ?>Đ</td>
-                            <?php if (!isset($ds['id_coupon'])) { ?>
+                            <td><?= number_format($total, 0, ',', '.') ?> Đ</td>
+                            <?php if ($ds['id_coupon'] == NULL) { ?>
                                 <td>
                                     <form action="./cart.php?id_bill_tours=<?= $ds['id_bill_tours'] ?>&id_customer=<?= $ds['id_customer'] ?>" method="POST">
                                         <input type="text" name="code_coupon" style="width: 80px; margin: 0px 4px 4px; padding: 2px 4px;outline:none;" placeholder="Nhập mã">
@@ -230,14 +249,13 @@ if (isset($_POST['apply'])) {
                                 }
                                 ?>
                             </td>
-                            <form action="./successfull.php?id_customer=<?= $ds['id_customer'] ?>&id_bill_tours=<?= $ds['id_bill_tours'] ?>" method="POST">
-                                <td>
+                            <td>
+                                <form action="./successfull.php?id_customer=<?= $ds['id_customer'] ?>&id_bill_tours=<?= $ds['id_bill_tours'] ?>" method="POST">
                                     <?php if ($ds['bill_status'] == 1) { ?>
                                         <button style="width: 80px;" name="btn_payment" class="update">PAYMENT</button>
-                                </td>
-                            </form>
-                        <?php } ?>
-                        </td>
+                                    <?php } ?>
+                                </form>
+                            </td>
                         </tr>
                     <?php } ?>
                 </table>

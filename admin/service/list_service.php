@@ -63,7 +63,7 @@ $data = getAllService();
                                     <td><?= $row['id_service'] ?></td>
                                     <td><?= $row['name_service'] ?></td>
                                     <td><?= $row['description_service'] ?></td>
-                                    <td><?= number_format($row['price_service'])?> Đ</td>
+                                    <td><?= number_format($row['price_service'],0,',','.')?> Đ</td>
 
                                     <td>
                                         <a href="/duan1/admin/service/update_service.php?id_service=<?= $row['id_service'] ?>"><i class="mr-8 fas fa-cogs"></i></a>

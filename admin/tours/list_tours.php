@@ -104,7 +104,7 @@ $location = getAllLocation();
                                     <td><?php echo $row['id_tours'] ?></td>
                                     <td><img width="100px" src="./../../asset/img/<?php echo $row['image'] ?>"></td>
                                     <td><?php echo $row['name_tours'] ?></td>
-                                    <td><?php echo number_format($row['price_tours'])?> Đ</td>
+                                    <td><?php echo number_format($row['price_tours'],0,',','.')?> Đ</td>
                                     <td>
                                         <?php if ($row['sale_tours'] == null) {
                                             echo 'null';

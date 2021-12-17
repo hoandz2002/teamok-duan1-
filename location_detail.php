@@ -130,12 +130,12 @@ if (empty($_SESSION['user']) == false) {
                                             </div>
                                             <div class="body__bottom-price-right">
                                                 <?php if ($data_tours[$i]['sale_tours'] != 0) { ?>
-                                                    <span style="display:inline-block;font-size:24px;margin-top: 12px; margin-bottom:15px;color: #9a9a9a;text-decoration:line-through;"><?= number_format($data_tours[$i]['price_tours']); ?> Đ</span> <br>
-                                                    <span style="display:inline-block;font-size:24px;margin-bottom:15px;color:red"><?= number_format($data_tours[$i]['price_tours'] - (($data_tours[$i]['price_tours'] * $data_tours[$i]['sale_tours']) / 100)); ?>Đ</span><br>
+                                                    <span style="display:inline-block;font-size:24px;margin-top: 12px; margin-bottom:15px;color: #9a9a9a;text-decoration:line-through;"><?= number_format($data_tours[$i]['price_tours'],0,',','.'); ?> Đ</span> <br>
+                                                    <span style="display:inline-block;font-size:24px;margin-bottom:15px;color:red"><?= number_format($data_tours[$i]['price_tours'] - (($data_tours[$i]['price_tours'] * $data_tours[$i]['sale_tours']) / 100),0,',','.'); ?>Đ</span><br>
                                                 <?php } else { ?>
-                                                    <p style="font-size:24px;color: red;"><?= number_format($data_tours[$i]['price_tours']); ?> Đ</p>
+                                                    <p style="font-size:24px;color: red;"><?= number_format($data_tours[$i]['price_tours'],0,',','.'); ?> Đ</p>
                                                 <?php } ?>
-                                                <!-- <p style="color: red;"><?= number_format($data_tours[$i]['price_tours']) ?>Đ</p> -->
+                                                <!-- <p style="color: red;"><?= number_format($data_tours[$i]['price_tours'],0,',','.')?>Đ</p> -->
                                             </div>
                                         </div>
                                         <div class="body__bottom-detail">

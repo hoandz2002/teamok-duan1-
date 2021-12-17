@@ -245,7 +245,7 @@ if (empty($_SESSION['user']) == false) {
 
 <body>
     <div class="main">
-        <header class="header" style="background-image: url(./asset/img/bannner-home.jpg); height: 720px;">
+        <header class="header" style="background-image: url(./asset/img/nt.jpg); height: 720px;">
             <div class="header__navbar">
                 <div class="header__navbar-logo">
                     <a href="/duan1/index.php">
@@ -622,7 +622,7 @@ if (empty($_SESSION['user']) == false) {
                                             </p>
                                         </div>
                                         <div class="body__bottom-price-right">
-                                            <p><?= number_format($data[$i]['price_tours']) ?>Đ</p>
+                                            <p><?= number_format($data[$i]['price_tours'], 0, ',', '.') ?>Đ</p>
                                         </div>
                                     </div>
                                     <div class="body__bottom-detail">
