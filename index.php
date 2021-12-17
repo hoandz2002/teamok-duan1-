@@ -32,6 +32,7 @@ if (empty($_SESSION['user']) == false) {
     <link rel="stylesheet" href="./asset/css/main.css">
     <link rel="stylesheet" href="./asset/css/index.css">
     <link rel="stylesheet" href="./asset/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <script src="demo.js"></script>
 
 </head>
@@ -573,7 +574,7 @@ if (empty($_SESSION['user']) == false) {
                             <p style="color:#555;">Các <u>Điểm Đến Du Lịch</u></p>
                         </div>
                         <?php for ($i = 0; $i < 9; $i++) { ?>
-                            <div class="grid__column-3">
+                            <div class="grid__column-3 animate__animated animate__backInDown" >
                                 <div class="nav__full">
                                     <img style="max-height:240px;overflow:hidden;" src="./asset/img/<?php echo $data_location[$i]['img_location'] ?>" alt="" class="nav__full-img">
                                     <div class="nav__full-top">
@@ -735,7 +736,7 @@ if (empty($_SESSION['user']) == false) {
                             <p style="color:#555" id="tours">CÁC <u>TOUR NGẪU NHIÊN</u></p>
                         </div>
                         <?php for ($i = 0; $i < 6; $i++) {
-                            $array_color = ['FFD205', 'F78269', 'BA71DA','14b9d5','1bbc63','f3a46b'];
+                            $array_color = ['FFD205', 'F78269', 'BA71DA', '14b9d5', '1bbc63', 'f3a46b'];
                             $css = array_rand($array_color); ?>
                             <div class="grid__column-3 bordered">
                                 <img src="./asset/img/<?= $data[$i]['image'] ?>" alt="" class="body__bottom-img" style="height: 252px;overflow: hidden;">
@@ -790,7 +791,7 @@ if (empty($_SESSION['user']) == false) {
         <div class="footer">
             <?php require_once './footer.php'; ?>
         </div>
-        <div class="form-flex open">
+        <div class="form-flex open ">
             <div class="flex-container">
                 <div class="flex-text">
                     <div>
