@@ -1,7 +1,11 @@
 <?php
 // session_start();
 require_once './db/connection.php';
+require_once './db/tour.php';
 require_once './db/cate_post.php';
+require_once './db/location.php';
+$data_location = getAllLocation();
+$rand = getAllTours();
 $data_cate = getAll_cate();
 if (empty($_SESSION['user']) == false) {
     $ok = $_SESSION['user']['id_customer'];
@@ -86,106 +90,49 @@ if (empty($_SESSION['user']) == false) {
                         <div class="nav__pc-top-heading">
                             <u>PACKAGES</u>
                         </div>
-                        <div class="nav__pc-content">
-                            <img src="/duan1/asset/img/berlin150x150.jpg" alt="" class="nav__pc-img">
-                            <div class="nav__pc-title">
-                                <div class="nav__pc-title-name">Berlin</div>
-                                <div class="nav__pc-title-map">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    Europe
+                        <?php for ($i = 0; $i < 3; $i++) { ?>
+                            <div class="nav__pc-content">
+                                <img src="/duan1/asset/img/<?= $rand[$i]['image'] ?>" alt="" class="nav__pc-img">
+                                <div class="nav__pc-title">
+                                    <div class="nav__pc-title-name" style="
+    overflow: hidden;
+    line-height: 24px;
+    margin-top: 4px;
+    height: 50px;
+    font-size: 14px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;"><?= $rand[$i]['name_tours'] ?></div>
+                                    <button class="nav__pc-button">Xem</button>
                                 </div>
-                                <button class="nav__pc-button">From 700$</button>
                             </div>
-                        </div>
-
-                        <div class="nav__pc-content">
-                            <img src="/duan1/asset/img/berlin150x150.jpg" alt="" class="nav__pc-img">
-                            <div class="nav__pc-title">
-                                <div class="nav__pc-title-name">Berlin</div>
-                                <div class="nav__pc-title-map">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    Europe
-                                </div>
-                                <button class="nav__pc-button">From 700$</button>
-                            </div>
-                        </div>
-                        <div class="nav__pc-content">
-                            <img src="/duan1/asset/img/berlin150x150.jpg" alt="" class="nav__pc-img">
-                            <div class="nav__pc-title">
-                                <div class="nav__pc-title-name">Berlin</div>
-                                <div class="nav__pc-title-map">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    Europe
-                                </div>
-                                <button class="nav__pc-button">From 700$</button>
-                            </div>
-                        </div>
+                        <?php } ?>
                     </div>
 
                     <div class="nav__pc-top">
+
+                    <?php for ($i = 0; $i < 1; $i++) { ?>
                         <div class="nav__full">
-                            <img src="/duan1/asset/img/nav__pc.jpg" alt="" class="nav__full-img">
+                            <img style="max-height:240px;overflow:hidden;" src="./asset/img/<?php echo $data_location[$i]['img_location'] ?>" alt="" class="nav__full-img">
                             <div class="nav__full-top">
-                                <img src="/duan1/asset/img/nav__pc-icon1.jpg" alt="">
+                                <img src="./asset/img/nav__pc-icon1.jpg" alt="">
                             </div>
                             <div class="nav__full-content">
-                                <div class="nav__full-heading">Europe</div>
-                                <div class="nav__full-title">3 PACKAGES</div>
+                                <div class="nav__full-heading"><?php echo $data_location[$i]['name_location'] ?></div>
                             </div>
                             <div class="nav__full-hover">
-                                <div class="nav__full-hover-heading">Packages</div>
+                                <div class="nav__full-hover-heading">Địa điểm</div>
                                 <div class="nav__full-hover-content">
-                                    <p>Berlin</p>
-                                    <p>Amsterdam</p>
-                                    <p>Tuscany</p>
+                                    <p>Uy Tín</p>
+                                    <p>Chất Lượng</p>
+                                    <p>An Toàn</p>
                                 </div>
-                                <button class="nav__full-hover-btn">VIEW DESTINATION</button>
+                                <a href="/duan1/location_detail.php?id_location=<?php echo $data_location[$i]['id_location'] ?>" class="nav__full-hover-btn">Xem chi tiết</a>
                             </div>
                         </div>
+                        
+                    <?php }  ?>
 
-
-
-                    </div>
-
-                    <div class="nav__pc-top">
-                        <div class="nav__pc-top-title">LAST</div>
-                        <div class="nav__pc-top-heading">
-                            <u>MINUTES</u>
-                        </div>
-                        <div class="nav__pc-content">
-                            <img src="/duan1/asset/img/berlin150x150.jpg" alt="" class="nav__pc-img">
-                            <div class="nav__pc-title">
-                                <div class="nav__pc-title-name">Berlin</div>
-                                <div class="nav__pc-title-map">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    Europe
-                                </div>
-                                <button class="nav__pc-button">From 700$</button>
-                            </div>
-                        </div>
-
-                        <div class="nav__pc-content">
-                            <img src="/duan1/asset/img/berlin150x150.jpg" alt="" class="nav__pc-img">
-                            <div class="nav__pc-title">
-                                <div class="nav__pc-title-name">Berlin</div>
-                                <div class="nav__pc-title-map">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    Europe
-                                </div>
-                                <button class="nav__pc-button">From 700$</button>
-                            </div>
-                        </div>
-                        <div class="nav__pc-content">
-                            <img src="./asset/img/berlin150x150.jpg" alt="" class="nav__pc-img">
-                            <div class="nav__pc-title">
-                                <div class="nav__pc-title-name">Berlin</div>
-                                <div class="nav__pc-title-map">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    Europe
-                                </div>
-                                <button class="nav__pc-button">From 700$</button>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <!-- nav__pc -->
