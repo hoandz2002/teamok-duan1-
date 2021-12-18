@@ -117,7 +117,7 @@ if (isset($_POST['btn-regist'])) {
                                 <input type="text" name="email_customer" class="form-control" placeholder="Email" required>
                             </div>
                             <div class="form-group">
-                                <input type="text" name="cmt_customer" class="form-control" placeholder="Identity card number" required>
+                                <input type="text" name="cmt_customer" class="form-control" placeholder="Address" required>
                             </div>
                             <div class="form-group">
                                 <input type="text" name="phone_customer" class="form-control" placeholder="Phone number" required>
