@@ -8,6 +8,7 @@ $dataActive = getActive();
 $id_bill_tours = $_GET['id_bill_tours'];
 $data_old = getIdBill2($id_bill_tours);
 $data_service = getAllService();
+$dataBill = getAllBill();
 if (isset($_POST['submit'])) {
 
     if (empty($_POST['name_customer'])) {
@@ -35,6 +36,18 @@ if (isset($_POST['submit'])) {
         'bill_status' => $_POST['bill_status'],
         'id_tour_guide' => $_POST['id_tour_guide'],
     ];
+    foreach ($dataBill as $value) {
+        if($value['id_bill_tours'] == $_POST['id_bill_tours']) {
+            if($value['id_tour_guide'] != NULL) {
+                $getId = getIdTourGuide($value['id_tour_guide']);
+                $dataUpdate = [
+                    'status' => 0,
+                    'id_tour_guide' => $getId['id_tour_guide'],
+                ];
+                updateActive($dataUpdate);
+            }
+        }
+    }
     $active = [
         'status' => 1,
         'id_tour_guide' => $_POST['id_tour_guide'],
@@ -141,11 +154,11 @@ if (isset($_POST['submit'])) {
                                 <lable class="form_lable">Trạng thái tours</lable>
                                 <select class="form_input" name="bill_status">
                                     <option value="">--Chọn trạng thái tour--</option>
-                                        <option value="0">Chưa xác nhận</option>
-                                        <option value="1">Đã xác nhận</option>
-                                        <option value="2">Đã thanh toán</option>
-                                        <option value="3">Đang khởi hành</option>
-                                        <option value="4">Đã hoàn tất</option>
+                                    <option value="0">Chưa xác nhận</option>
+                                    <option value="1">Đã xác nhận</option>
+                                    <option value="2">Đã thanh toán</option>
+                                    <option value="3">Đang khởi hành</option>
+                                    <option value="4">Đã hoàn tất</option>
                                 </select>
                             </div>
                             <div class="form_group">

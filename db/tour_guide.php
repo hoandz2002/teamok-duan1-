@@ -77,6 +77,7 @@ function getIdTourGuide($id)
         'id_tour_guide' => $data['id_tour_guide'],
         'name_tour_guide' => $data['name_tour_guide'],
         'phone_tour_guide' => $data['phone_tour_guide'],
+        'status' => $data['status'],
     ];
 
     return $row;
@@ -91,7 +92,7 @@ function insertTourGuide(array $data)
 function updateTourGuide($data)
 {
     $conn = connect();
-    $sql = "UPDATE tour_guide SET name_tour_guide =:name_tour_guide, phone_tour_guide =:phone_tour_guide WHERE id_tour_guide =:id_tour_guide";
+    $sql = "UPDATE tour_guide SET name_tour_guide =:name_tour_guide, phone_tour_guide =:phone_tour_guide,status=:status WHERE id_tour_guide =:id_tour_guide";
     $stmt = $conn->prepare($sql);
     $stmt->execute($data);
     return true;

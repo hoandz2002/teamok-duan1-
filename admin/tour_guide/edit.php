@@ -84,11 +84,10 @@ if (isset($_POST['btn_save'])) {
                             </div>
                             <div class="form_group">
                                 <lable class="form_lable">Trạng thái</lable>
-                                <select class="form_input" name="id_service">
-                                    <option value="">--Chọn loại dịch vụ--</option>
-                                    <?php foreach ($data_service as $ds) { ?>
-                                        <option value="<?= $ds['id_service'] ?>" <?php echo ($ds['id_service'] == $data_old['id_service'] ? 'selected' : '') ?>><?= $ds['name_service'] ?></option>
-                                    <?php } ?>
+                                <select class="form_input" name="status">
+                                    <option value="">--Chọn trạng thái--</option>
+                                    <option value="1">Đang hoạt động</option>
+                                    <option value="0">Không hoạt động</option>
                                 </select>
                             </div>
                             <div class="form_group">
