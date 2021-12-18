@@ -24,6 +24,13 @@
     right: 0;
     left: 0;
     z-index: 10;
+    transition: all 0.5s ease-in-out;
+}
+
+.header__navbar.sticky {
+    background-color: rgba( 0, 0, 0, 0.8);
+    padding: 5px 56px;
+    transition: all 0.5s ease-in-out;
 }
 
 
