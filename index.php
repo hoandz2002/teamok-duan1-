@@ -445,7 +445,7 @@ if (empty($_SESSION['user']) == false) {
     font-size: 14px;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;"><?= $rand[$i]['name_tours'] ?></div>
-                                        <button class="nav__pc-button">Xem</button>
+                                        <button class="nav__pc-button"><a href="/duan1/tours_detail.php?id_tours=<?php echo $rand[$i]['id_tours'] ?>" >Xem</a></button>
                                     </div>
                                 </div>
                             <?php } ?>
@@ -493,19 +493,19 @@ if (empty($_SESSION['user']) == false) {
 
             </div>
             <label for="menu" class="overlay__tablet"></label>
-    </div>
-    <div class="header__search">
-        <div class="header__search-content">
-            <h3 class="header__search-heading">Những Kỳ Nghỉ <u>Du Lịch</u></h3>
-            <div class="header__search-item">
-                <a href=""><img src="./asset/img/t-relax.png" alt="" class="header__search-img"></a>
-                <a href=""><img src="./asset/img/t-cultural.png" alt="" class="header__search-img"></a>
-                <a href=""><img src="./asset/img/t-sport.png" alt="" class="header__search-img"></a>
-                <a href=""><img src="./asset/img/t-history.png" alt="" class="header__search-img"></a>
+            <div class="header__search">
+                <div class="header__search-content">
+                    <h3 class="header__search-heading">Những Kỳ Nghỉ <u>Du Lịch</u></h3>
+                    <div class="header__search-item">
+                        <a href=""><img src="./asset/img/t-relax.png" alt="" class="header__search-img"></a>
+                        <a href=""><img src="./asset/img/t-cultural.png" alt="" class="header__search-img"></a>
+                        <a href=""><img src="./asset/img/t-sport.png" alt="" class="header__search-img"></a>
+                        <a href=""><img src="./asset/img/t-history.png" alt="" class="header__search-img"></a>
+                    </div>
+                </div>
             </div>
-        </div>
+        </header>
     </div>
-    </header>
 
     <div class="body">
         <div class="body__top">

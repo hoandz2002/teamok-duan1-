@@ -126,6 +126,7 @@ function getIdBill2($id)
         'date_book' => $data['date_book'],
         'name_service' => $data['name_service'],
         'price_service' => $data['price_service'],
+        'description_service' => $data['description_service'],
         'id_service' => $data['id_service'],
         'date_start' => $data['date_start'],
         'bill_status' => $data['bill_status'],

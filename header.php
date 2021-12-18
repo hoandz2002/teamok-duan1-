@@ -103,7 +103,7 @@ if (empty($_SESSION['user']) == false) {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;"><?= $rand[$i]['name_tours'] ?></div>
-                                    <button class="nav__pc-button">Xem</button>
+                                        <button class="nav__pc-button"><a href="/duan1/tours_detail.php?id_tours=<?php echo $rand[$i]['id_tours'] ?>" >Xem</a></button>
                                 </div>
                             </div>
                         <?php } ?>

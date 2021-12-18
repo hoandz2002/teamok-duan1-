@@ -39,14 +39,14 @@ $data = getAllCustomerById($id);
                 </div>
                 <div>
                     <label for="" style="font-size: 18px;">Địa chi: </label>
-                    <span style="margin-left: 81px; font-weight: bold;"><?= $data['cmt_customer'] ?></span>
+                    <span style="margin-left: 81px; font-weight: bold;"><?= $data['address_customer'] ?></span>
                 </div>
                 <div>
                     <label for="" style="font-size: 18px;">Số điện thoại: </label>
                     <span style="margin-left: 36px; font-weight: bold;"><?= $data['phone_customer'] ?></span>
                 </div>
                 <div>
-                    <label for="" style="font-size: 18px;">Eamil: </label>
+                    <label for="" style="font-size: 18px;">Email: </label>
                     <span style="margin-left: 87px; font-weight: bold;"><?= $data['email_customer'] ?></span>
                 </div>
                 <?php require_once './../footer.php'; ?>

@@ -215,7 +215,8 @@ if (isset($_POST['apply'])) {
                             }
                             ?>
                             <?php $total = intval($ds['price_bill_tours']) + intval($ds['price_service']) - intval($ds['price_tours']) * intval($ds['quantity_pp']) * intval($ds['sale_tours'] + $percent_coupon['percent_coupon']) / 100 ?>
-                            <td><a href="./db/bill_tour/delete_bill.php?id_bill_tours=<?= $ds['id_bill_tours'] ?>"><i class="fas fa-times" style="color:red;"></i></a></td>
+                            <td><a href="./db/bill_tour/delete_bill.php?id_bill_tours=<?= $ds['id_bill_tours'] ?>"><i class="fas fa-times" style="color:red;"></i></a>
+                            <a style="margin-left: 12px;" href="./view_cart.php?id_bill_tours=<?= $ds['id_bill_tours'] ?>" class="js-modal-click1"><i class="mr-8 far fa-eye"></i></a></td>
                             <td><img src="./asset/img/<?= $ds['image'] ?>" width="100px" alt=""></td>
                             <td style="max-width: 250px;"><?= $ds['name_tours'] ?></td>
                             <td>

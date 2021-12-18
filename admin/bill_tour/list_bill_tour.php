@@ -118,6 +118,7 @@ require_once "./../../db/customer.php";
                                         ?>
                                     </td>
                                     <td>
+                                        <a href="./view_bill.php?id_bill_tours=<?= $row['id_bill_tours'] ?>" class="js-modal-click1"><i class="mr-8 far fa-eye"></i></a>
                                         <a href="./update_bill.php?id_bill_tours=<?= $row['id_bill_tours'] ?>" class="js-modal-click1"><i class="mr-8 fas fa-cogs"></i></a>
                                         <a onclick="return confirm('Bạn có chắc chắn muốn xóa?');" href="./../../db/bill_tour/delete_bill_admin.php?id_bill_tours=<?= $row['id_bill_tours'] ?>"><i class="fas fa-trash-alt"></i></a>
                                     </td>
