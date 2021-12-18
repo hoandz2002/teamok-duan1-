@@ -73,7 +73,7 @@ if (isset($_POST['submit'])) {
                 <?php require_once './../header.php'; ?>
                 <!-- Nội dung ở đây  -->
                 <div class="right-heading">
-                    <h2>Thêm loại bài viết</h2>
+                    <h2>Xác nhận Bill</h2>
                 </div>
                 <?php if (isset($_SESSION['error'])) { ?>
                     <div id="toast">
@@ -110,15 +110,18 @@ if (isset($_POST['submit'])) {
                                 <input value="<?= $data_old['quantity_pp'] ?>" type="number" name="quantity_pp" class="form_input">
                             </div>
                             <div class="form_group">
-                                <lable class="form_lable">Gía tour</lable>
+                                <lable class="form_lable">Giá tour</lable>
                                 <input value="<?= $data_old['price_bill_tours'] ?>" type="number" name="price_bill_tours" class="form_input">
                             </div>
-                            <div class="form_group">
+                            <!-- <div class="form_group">
                                 <lable class="form_lable">Giá tour</lable>
                                 <input value="<?= $data_old['price_tours'] ?>" type="number" name="price_tours" class="form_input">
+                            </div> -->
+                            <div class="form_group">
+                                <lable class="form_lable">Ngày khởi hành</lable>
+                                <input value="<?= $data_old['date_start'] ?>" type="date" name="date_start" style="width: 320px;padding: 8px 16px;border-radius: 16px;outline: none; border: 1px solid;">
                             </div>
                             <input type="date" name="date_book" value="<?php echo date('Y-m-d') ?>" hidden>
-                            <input value="<?= $data_old['date_start'] ?>" type="date" name="date_start" style="width: 320px;padding: 8px 16px;border-radius: 16px;outline: none; border: 1px solid;">
                             <div class="form_group">
                                 <lable class="form_lable">Loại dịch vụ</lable>
                                 <select class="form_input" name="id_service">
