@@ -36,7 +36,7 @@ if (isset($_POST['btn-regist'])) {
     }
     $data = [
         'name_customer' => $_POST['name_customer'],
-        'cmt_customer' => $_POST['cmt_customer'],
+        'address_customer' => $_POST['address_customer'],
         'phone_customer' => $_POST['phone_customer'],
         'email_customer' => $_POST['email_customer'],
         'password' => $_POST['password']
