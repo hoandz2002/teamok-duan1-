@@ -92,6 +92,7 @@ if (isset($_POST['btn-pass'])) {
             display: inline-block;
             margin: 0px 32px;
             border-bottom: 1px solid black;
+            cursor: pointer;
         }
 
         #acc,
@@ -122,7 +123,8 @@ if (isset($_POST['btn-pass'])) {
             padding: 8px 24px;
             border: none;
             border-radius: 16px;
-            background-color: lightblue;
+            background-color: #1bb9a1;
+            color: #fff;
         }
     </style>
 </head>
@@ -173,42 +175,39 @@ if (isset($_POST['btn-pass'])) {
                         <input type="text" value="<?= $_SESSION['user']['email_customer']; ?>" class="input" disabled>
                     </div>
                     <div class="form">
-                        <lable class="lable">Name</lable> <br>
+                        <lable class="lable">Họ và tên</lable> <br>
                         <input type="text" value="<?= $_SESSION['user']['name_customer']; ?>" class="input" disabled>
                     </div>
                     <div class="form">
-                        <lable class="lable">Phone</lable> <br>
+                        <lable class="lable">Số điện thoại</lable> <br>
                         <input type="text" value="<?= $_SESSION['user']['phone_customer']; ?>" class="input" disabled>
                     </div>
                     <div class="form">
-                        <lable class="lable">CMT</lable> <br>
+                        <lable class="lable">Địa chỉ</lable> <br>
                         <input type="text" value="<?= $_SESSION['user']['address_customer']; ?>" class="input" disabled>
                     </div>
                 </div>
                 <div id="update" style="display: none;">
                     <form action="acc.php?id_customer=<?= $_SESSION['user']['id_customer'] ?>" method="post">
-                        <div class="form">
-                            <lable class="lable">ID</lable> <br>
-                            <input type="text" name="id_customer" value="<?= $_SESSION['user']['id_customer']; ?>" class="input">
-                        </div>
+                            <input type="hidden" name="id_customer" value="<?= $_SESSION['user']['id_customer']; ?>" class="input">
                         <div class="form">
                             <lable class="lable">Email</lable> <br>
                             <input type="text" name="email_customer" value="<?= $_SESSION['user']['email_customer']; ?>" class="input">
                         </div>
                         <div class="form">
-                            <lable class="lable">Name</lable> <br>
+                            <lable class="lable">Họ và tên</lable> <br>
                             <input type="text" name="name_customer" value="<?= $_SESSION['user']['name_customer']; ?>" class="input">
                         </div>
                         <div class="form">
-                            <lable class="lable">Phone</lable> <br>
+                            <lable class="lable">Số điện thoại</lable> <br>
                             <input type="text" name="phone_customer" value="<?= $_SESSION['user']['phone_customer']; ?>" class="input">
                         </div>
                         <div class="form">
-                            <lable class="lable">CMT</lable> <br>
+                            <lable class="lable">Địa chỉ</lable><br>
                             <input type="text" name="address_customer" value="<?= $_SESSION['user']['address_customer']; ?>" class="input">
                         </div>
                         <div class="form">
-                            <input type="submit" name="btn-up" class="btn-submit" value="Cập nhật">
+                            <input style="cursor:pointer" type="submit" name="btn-up" class="btn-submit" value="Cập nhật">
                         </div>
                     </form>
                 </div>
@@ -228,7 +227,7 @@ if (isset($_POST['btn-pass'])) {
                             <input type="password" name="re_password" class="input">
                         </div>
                         <div class="form">
-                            <input type="submit" name="btn-pass" class="btn-submit" value="Cập nhật">
+                            <input style="cursor:pointer" type="submit" name="btn-pass" class="btn-submit" value="Cập nhật">
                         </div>
                     </form>
                 </div>

@@ -3,6 +3,8 @@ session_start();
 require_once './../../db/connection.php';
 require_once './../../db/bill_tour.php';
 require_once './../../db/service.php';
+require_once './../../db/tour_guide.php';
+$dataActive = getActive();
 $id_bill_tours = $_GET['id_bill_tours'];
 $data_old = getIdBill2($id_bill_tours);
 $data_service = getAllService();
@@ -31,8 +33,14 @@ if (isset($_POST['submit'])) {
         'date_start' => $_POST['date_start'],
         'id_service' => $_POST['id_service'],
         'bill_status' => $_POST['bill_status'],
+        'id_tour_guide' => $_POST['id_tour_guide'],
+    ];
+    $active = [
+        'status' => 1,
+        'id_tour_guide' => $_POST['id_tour_guide'],
     ];
     update_bill($data);
+    updateActive($active);
     header("location:/duan1/admin/bill_tour/list_bill_tour.php");
 }
 ?>
@@ -117,6 +125,15 @@ if (isset($_POST['submit'])) {
                                     <option value="">--Chọn loại dịch vụ--</option>
                                     <?php foreach ($data_service as $ds) { ?>
                                         <option value="<?= $ds['id_service'] ?>" <?php echo ($ds['id_service'] == $data_old['id_service'] ? 'selected' : '') ?>><?= $ds['name_service'] ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <div class="form_group">
+                                <label class="form_lable">Hướng dẫn viên</label>
+                                <select class="form_input" name="id_tour_guide">
+                                    <option value="">--Chọn nhân viên--</option>
+                                    <?php foreach ($dataActive as $dt) { ?>
+                                        <option value="<?= $dt['id_tour_guide'] ?>"><?= $dt['name_tour_guide'] ?></option>
                                     <?php } ?>
                                 </select>
                             </div>

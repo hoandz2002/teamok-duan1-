@@ -36,6 +36,12 @@
                 </ul>
             </li>
             <li class="left_item"><a class="left_link" href="/duan1/admin/customer/list_customer.php"><i class="mr-8 fas fa-users"></i>Customer</a></i></li>
+            <li class="left_item"><a class="left_link" href="#"><i class="mr-8 fas fa-users"></i>Tour guide<i class="fl-right fas fa-angle-right"></i></a>
+                <ul class="list-child">
+                    <li class="item-child"><a href="/duan1/admin/tour_guide/add_tour_guide.php" class="link-child"><i class="mr-8 fas fa-plus-circle"></i>Thêm</a></li>
+                    <li class="item-child"><a href="/duan1/admin/tour_guide/list_tour_guide.php" class="link-child"><i class="mr-8 fas fa-bars"></i>Danh sách</a></li>
+                </ul>
+            </li>
             <li class="left_item"><a class="left_link" href="#"><i class="mr-8 fas fa-torii-gate"></i>Tours<i class="fl-right fas fa-angle-right"></i></a>
                 <ul class="list-child">
                     <li class="item-child"><a href="/duan1/admin/tours/add_tours.php" class="link-child"><i class="mr-8 fas fa-plus-circle"></i>Thêm</a></li>

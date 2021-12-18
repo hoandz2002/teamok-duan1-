@@ -58,24 +58,24 @@ $location = getAllLocation();
                     <h2>List manager post</h2>
                 </div>
                 <div class="grid-with-width" style="text-align: center; border-radius:  4px;">
-                        <form action="./list_tours_cate.php" method="post">
-                            <select style="width: 320px; padding: 4px;" name="id_location" id="">
-                                <option value="">---Mời chọn địa điểm---</option>
-                                <?php foreach ($location as $ds) { ?>
-                                    <option value="<?= $ds['id_location'] ?>"><?= $ds['name_location'] ?></option>
-                                <?php } ?>
-                            </select>
-                            <input type="submit" class="" style="padding: 5px;background-color: tomato; border-radius:  4px; margin-left: 4px; color: white; border: none; outline: none;" value="Tìm Kiếm">
-                        </form>
-                    </div>
+                    <form action="./list_tours_cate.php" method="post">
+                        <select style="width: 320px; padding: 4px;" name="id_location" id="">
+                            <option value="">---Mời chọn địa điểm---</option>
+                            <?php foreach ($location as $ds) { ?>
+                                <option value="<?= $ds['id_location'] ?>"><?= $ds['name_location'] ?></option>
+                            <?php } ?>
+                        </select>
+                        <input type="submit" class="" style="padding: 5px;background-color: tomato; border-radius:  4px; margin-left: 4px; color: white; border: none; outline: none;" value="Tìm Kiếm">
+                    </form>
+                </div>
                 <div class="right_body">
-                    
+
                     <table class="table">
                         <thead class="thead">
                             <tr>
                                 <th>ID</th>
                                 <th>Ảnh đại diện</th>
-                                <th>Tên tour</th>
+                                <th style="width: 350px;">Tên tour</th>
                                 <th>Giá tour</th>
                                 <th>Giảm giá</th>
                                 <th>Địa điểm</th>
@@ -103,8 +103,13 @@ $location = getAllLocation();
                                 <tr>
                                     <td><?php echo $row['id_tours'] ?></td>
                                     <td><img width="100px" src="./../../asset/img/<?php echo $row['image'] ?>"></td>
-                                    <td><?php echo $row['name_tours'] ?></td>
-                                    <td><?php echo number_format($row['price_tours'],0,',','.')?> Đ</td>
+                                    <td style="width: 200px;
+    overflow: hidden;
+    line-height: 28px;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    height: 46px;"><?php echo $row['name_tours'] ?></td>
+                                    <td><?php echo number_format($row['price_tours'], 0, ',', '.') ?> Đ</td>
                                     <td>
                                         <?php if ($row['sale_tours'] == null) {
                                             echo 'null';

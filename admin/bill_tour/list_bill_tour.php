@@ -55,7 +55,7 @@ require_once "./../../db/customer.php";
                                 <th>Số người</th>
                                 <th>Sale</th>
                                 <th>Giá</th>
-                                <th>Tên tour</th>
+                                <th style="width:200px">Tên tour</th>
                                 <th>Thời gian đặt</th>
                                 <th>Giá dịch vụ</th>
                                 <th>Total</th>
@@ -87,11 +87,17 @@ require_once "./../../db/customer.php";
                                     <td><a style="text-decoration: none;color:#000;" href="./thongtinkhachhang.php?id_customer=<?= $row['id_customer'] ?>"><?= $row['name_customer'] ?></a></td>
                                     <td><?= $row['quantity_pp'] ?></td>
                                     <td><?= $row['sale_tours'] ?></td>
-                                    <td><?= number_format($row['price_bill_tours'],0,',','.') ?> Đ </td>
-                                    <td><?= $row['name_tours'] ?></td>
+                                    <td><?= number_format($row['price_bill_tours'], 0, ',', '.') ?> Đ </td>
+                                    <td style="width: 200px;
+    overflow: hidden;
+    line-height: 28px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    height: 46px;"><?= $row['name_tours'] ?></td>
                                     <td><?= $row['date_book'] ?></td>
-                                    <td><?= number_format($row['price_service'],0,',','.') ?> Đ</td>
-                                    <td><?= number_format($total,0,',','.') ?>Đ</td>
+                                    <td><?= number_format($row['price_service'], 0, ',', '.') ?> Đ</td>
+                                    <td><?= number_format($total, 0, ',', '.') ?>Đ</td>
                                     <td><?= $row['date_start'] ?></td>
                                     <td><?php if ($row['bill_status'] == 0) {
                                             echo 'Đang chờ xác nhận'; ?>

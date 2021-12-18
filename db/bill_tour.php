@@ -145,7 +145,7 @@ function insert_bill(array $data)
 function update_bill($data)
 {
     $conn = connect();
-    $sql = "UPDATE bill_tours SET  id_customer =:id_customer, quantity_pp =:quantity_pp, price_bill_tours =:price_bill_tours, id_tours =:id_tours, date_book =:date_book, id_service =:id_service, date_start =:date_start, bill_status =:bill_status WHERE id_bill_tours = :id_bill_tours";
+    $sql = "UPDATE bill_tours SET  id_customer =:id_customer, quantity_pp =:quantity_pp, price_bill_tours =:price_bill_tours, id_tours =:id_tours, date_book =:date_book, id_service =:id_service, date_start =:date_start, bill_status =:bill_status,id_tour_guide =:id_tour_guide WHERE id_bill_tours = :id_bill_tours";
     $stmt = $conn->prepare($sql);
     $stmt->execute($data);
     return true;

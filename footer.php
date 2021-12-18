@@ -24,10 +24,10 @@
                         <p class="footer__header-heading">
                             Travel with Us
                         </p>
-                        <div class="footer__header-form">
+                        <!-- <div class="footer__header-form">
                             <input type="text" class="footer__header-input">
                             <button class="footer__header-button">SEND</button>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="footer__content">

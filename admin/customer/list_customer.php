@@ -10,7 +10,7 @@ $data = getAllCustomer();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Danh sách khách hàng</title>
     <link rel="stylesheet" href="/duan1/asset/fonts/fontawesome-free-5.15.3-web/css/all.min.css">
     <link rel="stylesheet" href="/duan1/asset/css/css_admin/main.css">
     <style>
@@ -37,7 +37,7 @@ $data = getAllCustomer();
                             <tr>
                                 <th>ID</th>
                                 <th>Tên người dùng</th>
-                                <th>CMT/CCCD</th>
+                                <th>Địa chỉ</th>
                                 <th>Số điện thoại</th>
                                 <th>Email</th>
                                 <th>Phân quyền</th>
@@ -64,21 +64,16 @@ $data = getAllCustomer();
                                 <tr>
                                     <td><?= $row['id_customer'] ?></td>
                                     <td><?= $row['name_customer'] ?></td>
-                                    <td><?= $row['cmt_customer'] ?></td>
+                                    <td><?= $row['address_customer'] ?></td>
                                     <td><?= $row['phone_customer'] ?></td>
                                     <td><?= $row['email_customer'] ?> </td>
                                     <td><?php if ($row['classify_customer'] == 0) {
-                                        echo 'Khách';
+                                        echo 'Khách hàng';
                                     }else {
                                         echo 'Quản trị';   
                                     }?></td>
-
-
                                     <td>
-
-                                        <a href="./edit.php?id_customer=<?= $row['id_customer'] ?>"><i class="mr-8 fas fa-cogs"></i></a>
                                         <a href="./delete.php?id_customer=<?= $row['id_customer'] ?>"><i class="fas fa-trash-alt"></i></a>
-
                                     </td>
                                 </tr>
 
