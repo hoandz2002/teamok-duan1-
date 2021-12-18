@@ -155,6 +155,18 @@ if (empty($_SESSION['user']) == false) {
         </div>
 
     </header>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(window).scroll(function(event) {
+                if ($(this).scrollTop()) {
+                    $('.header__navbar').addClass('sticky');
+                } else {
+                    $('.header__navbar').removeClass('sticky');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

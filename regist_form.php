@@ -36,7 +36,7 @@ if (isset($_POST['btn-regist'])) {
     }
     $data = [
         'name_customer' => $_POST['name_customer'],
-        'cmt_customer' => $_POST['cmt_customer'],
+        'address_customer' => $_POST['address_customer'],
         'phone_customer' => $_POST['phone_customer'],
         'email_customer' => $_POST['email_customer'],
         'password' => $_POST['password']
@@ -117,7 +117,7 @@ if (isset($_POST['btn-regist'])) {
                                 <input type="text" name="email_customer" class="form-control" placeholder="Email" required>
                             </div>
                             <div class="form-group">
-                                <input type="text" name="cmt_customer" class="form-control" placeholder="Identity card number" required>
+                                <input type="text" name="address_customer" class="form-control" placeholder="Address" required>
                             </div>
                             <div class="form-group">
                                 <input type="text" name="phone_customer" class="form-control" placeholder="Phone number" required>
