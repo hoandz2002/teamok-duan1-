@@ -29,6 +29,21 @@ if (isset($_POST['comment'])) {
     insert_comment($data1);
     header("location:/duan1/tours_detail.php?id_tours=$id_tours");
 }
+if (isset($_POST['update_comment'])) {
+
+    $id_tours = $_GET['id_tours'];
+
+    $data1 = [
+        'content_comment' => $_POST['content_comment'],
+        'date_comment' => $_POST['date_comment'],
+        'id_customer' => $_POST['id_customer'],
+        'id_tours' => $_POST['id_tours'],
+        'id_comment' => $_POST['id_comment'],
+    ];
+    // var_dump($data1);die;
+    update_comment($data1);
+    header("location:/duan1/tours_detail.php?id_tours=$id_tours");
+}
 if (isset($_POST['addgiohang'])) {
     if (empty($_POST['quantity_pp'])) {
         $id = $_GET['id_tours'];
@@ -124,6 +139,37 @@ if (isset($_POST['addgiohang'])) {
             border-top: 8px solid #ff623d;
             border-right: 8px solid transparent;
             filter: brightness(60%);
+        }
+
+        .comment_edit {
+            position: fixed;
+            top: 40%;
+            left: 20%;
+            right: 20%;
+            /* bottom: 50%; */
+            display: none;
+            z-index: 10;
+            padding: 60px;
+            /* border: 1px solid black; */
+            background-color: white;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: none;
+            background: rgba(0, 0, 0, 0.35);
+        }
+
+        .update:checked~.comment_edit {
+            display: block;
+        }
+
+        .update:checked~.overlay {
+            display: block;
         }
     </style>
 </head>
@@ -221,7 +267,7 @@ if (isset($_POST['addgiohang'])) {
                                                                                 ?>" hidden>
                                 <input type="text" name="id_tours" value="<?= $data['id_tours'] ?>" hidden>
                                 <input type="text" name="price_bill_tours" value="" hidden>
-                                <input type="hidden" name="id_coupon" value="" >
+                                <input type="hidden" name="id_coupon" value="">
                                 <input type="text" name="price_tours" value="<?= $data['price_tours']; ?>" hidden>
                                 <div class="pd-24 detail-qtt">
                                     <div class="grid__row" style="align-items: center;">
@@ -302,6 +348,7 @@ if (isset($_POST['addgiohang'])) {
                                             <?php
                                             if (empty($_SESSION['user']) == false) {
                                                 if ($_SESSION['user']['id_customer'] == $dataComment[$i]['id_customer']) { ?>
+                                                    <label for="ok" class="btn" style="height: 42px; margin-right: 12px;"> Sửa</label>
                                                 <?php }
                                                 if ($_SESSION['user']['id_customer'] == $dataComment[$i]['id_customer'] || $_SESSION['user']['classify_customer'] == 1) { ?>
                                                     <a href="./db/comment/delete.php?id_comment=<?php echo $dataComment[$i]['id_comment'] ?>"><button name="delete" style="" class="btn">Xóa bình luận</button></a>
@@ -311,7 +358,24 @@ if (isset($_POST['addgiohang'])) {
                                             ?>
                                         </div>
                                     </div>
-
+                                    <input type="checkbox" id="ok" name="" class="update" hidden>
+                                    <!-- //chỉnh sửa bình luận -->
+                                    <div class="comment_edit">
+                                        <form action="/duan1/tours_detail.php?id_tours=<?= $dataComment[$i]['id_tours'] ?>" method="POST" class="input-group flex-nowrap">
+                                            <!-- <div > -->
+                                            <span class="input-group-text" id="addon-wrapping" style="font-size: 24px;">Nội dung :</span>
+                                            <input class="form-control" type="text" hidden name="id_comment" placeholder="Mã bình luận" value="<?= $dataComment[$i]['id_comment'] ?>">
+                                            <input type="text" class="form-control" style="width: 600px; outline: none; border: 1px solid grey; padding: 12px; border-radius: 16px;" name="content_comment" placeholder="Nhập nội dung bình luận mới" value="<?= $dataComment[$i]['content_comment'] ?>" aria-label="Username" aria-describedby="addon-wrapping">
+                                            <input type="date" hidden name="date_comment" value="<?php echo date('Y-m-d'); ?>">
+                                            <input type="hidden" name="id_customer" value="<?php if (empty($_SESSION['user']) == false) {
+                                                                                                echo $_SESSION['user']['id_customer'];
+                                                                                            } ?>">
+                                            <input type="hidden" name="id_tours" value="<?php echo $dataComment[$i]['id_tours'] ?>">
+                                            <button class="btn" name="update_comment">Sửa</button>
+                                            <!-- </div> -->
+                                        </form>
+                                    </div>
+                                    <label for="ok" class="overlay"></label>
                                 <?php } ?>
                             </div>
                             <hr style="margin-top: 16px;">

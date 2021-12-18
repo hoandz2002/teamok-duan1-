@@ -6,7 +6,7 @@ $id_customer = $_SESSION['user']['id_customer'];
 if (isset($_POST['btn-up'])) {
     if (
         empty($_POST['name_customer']) ||
-        empty($_POST['cmt_customer']) ||
+        empty($_POST['address_customer']) ||
         empty($_POST['phone_customer']) ||
         empty($_POST['email_customer'])
     ) {
@@ -19,7 +19,7 @@ if (isset($_POST['btn-up'])) {
         header("location: ./account.php?id_customer=$id_customer");
         die;
     }
-    if (!is_numeric($_POST['cmt_customer'])) {
+    if (!is_numeric($_POST['address_customer'])) {
         $_SESSION['thongbao'] = "Nhập đúng định dạng số cmt";
         header("location: ./account.php?id_customer=$id_customer");
         die;
@@ -32,7 +32,7 @@ if (isset($_POST['btn-up'])) {
     $data = [
         'id_customer' => $_POST['id_customer'],
         'name_customer' => $_POST['name_customer'],
-        'cmt_customer' => $_POST['cmt_customer'],
+        'address_customer' => $_POST['address_customer'],
         'phone_customer' => $_POST['phone_customer'],
         'email_customer' => $_POST['email_customer']
     ];
@@ -186,7 +186,7 @@ if (isset($_POST['btn-pass'])) {
                         </div>
                         <div class="form">
                             <lable class="lable">CMT</lable> <br>
-                            <input type="text" value="<?= $_SESSION['user']['cmt_customer']; ?>" class="input" disabled>
+                            <input type="text" value="<?= $_SESSION['user']['address_customer']; ?>" class="input" disabled>
                         </div>
                     </div>
                     <div id="update" style="display: none;">
@@ -209,7 +209,7 @@ if (isset($_POST['btn-pass'])) {
                             </div>
                             <div class="form">
                                 <lable class="lable">CMT</lable> <br>
-                                <input type="number" name="cmt_customer" value="<?= $_SESSION['user']['cmt_customer']; ?>" class="input">
+                                <input type="number" name="address_customer" value="<?= $_SESSION['user']['address_customer']; ?>" class="input">
                             </div>
                             <div class="form">
                                 <input type="submit" name="btn-up" class="btn-submit" value="Cập nhật">

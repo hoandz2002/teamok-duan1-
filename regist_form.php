@@ -2,10 +2,11 @@
 session_start();
 require_once './db/connection.php';
 require_once './db/customer.php';
+$data = getAllCustomer();
 if (isset($_POST['btn-regist'])) {
     if (
         empty($_POST['name_customer']) ||
-        empty($_POST['cmt_customer']) ||
+        empty($_POST['address_customer']) ||
         empty($_POST['phone_customer']) ||
         empty($_POST['email_customer']) ||
         empty($_POST['password'])
@@ -19,10 +20,14 @@ if (isset($_POST['btn-regist'])) {
         header("location: /duan1/regist_form.php");
         die;
     }
-    if (!is_numeric($_POST['cmt_customer'])) {
-        $_SESSION['thongbao'] = "Nhập đúng định dạng số cmt";
-        header("location: /duan1/regist_form.php");
-        die;
+    foreach ($data as $dt) {
+        if (
+           ($_POST['email_customer']) == $dt['email_customer']
+        ) {
+            $_SESSION['thongbao'] = "Email này đã tồn tại!";
+            header("Location: /duan1/regist_form.php");
+            die;
+        }
     }
     if (!is_numeric($_POST['phone_customer'])) {
         $_SESSION['thongbao'] = "Nhập đúng định dạng số điện thoại";

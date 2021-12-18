@@ -23,7 +23,7 @@ function login($email_customer, $password)
     $result = [
         'id_customer' => $data['id_customer'],
         'name_customer' => $data['name_customer'],
-        'cmt_customer' => $data['cmt_customer'],
+        'address_customer' => $data['address_customer'],
         'phone_customer' => $data['phone_customer'],
         'email_customer' => $data['email_customer'],
         'password' => $data['password'],
@@ -47,7 +47,7 @@ function getAllCustomer()
         $row = [
             'id_customer' => $data['id_customer'],
             'name_customer' => $data['name_customer'],
-            'cmt_customer' => $data['cmt_customer'],
+            'address_customer' => $data['address_customer'],
             'phone_customer' => $data['phone_customer'],
             'email_customer' => $data['email_customer'],
             'password' => $data['password'],
@@ -71,7 +71,7 @@ function getAllCustomerById($id)
     $row = [
         'id_customer' => $data['id_customer'],
         'name_customer' => $data['name_customer'],
-        'cmt_customer' => $data['cmt_customer'],
+        'address_customer' => $data['address_customer'],
         'phone_customer' => $data['phone_customer'],
         'email_customer' => $data['email_customer'],
     ];
@@ -91,7 +91,7 @@ function getIdCustomer($id)
     $row = [
         'id_customer' => $data['id_customer'],
         'name_customer' => $data['name_customer'],
-        'cmt_customer' => $data['cmt_customer'],
+        'address_customer' => $data['address_customer'],
         'phone_customer' => $data['phone_customer'],
         'email_customer' => $data['email_customer'],
         'password' => $data['password'],
@@ -104,8 +104,8 @@ function getIdCustomer($id)
 function insert_customer(array $data)
 {
     $conn = connect();
-    $sql = "INSERT INTO customer(name_customer, cmt_customer, phone_customer, email_customer, password, classify_customer)" .
-        "VALUES(:name_customer, :cmt_customer, :phone_customer, :email_customer, :password, 0)";
+    $sql = "INSERT INTO customer(name_customer, address_customer, phone_customer, email_customer, password, classify_customer)" .
+        "VALUES(:name_customer, :address_customer, :phone_customer, :email_customer, :password, 0)";
     $statement = $conn->prepare($sql);
     $statement->execute($data);
 }
@@ -120,7 +120,7 @@ function update_customer_pass($data)
 function update_customer($data)
 {
     $conn = connect();
-    $sql = "UPDATE customer SET name_customer =:name_customer, cmt_customer =:cmt_customer, phone_customer =:phone_customer," .
+    $sql = "UPDATE customer SET name_customer =:name_customer, address_customer =:address_customer, phone_customer =:phone_customer," .
         "email_customer =:email_customer WHERE id_customer = :id_customer";
     $statement = $conn->prepare($sql);
     $statement->execute($data);
