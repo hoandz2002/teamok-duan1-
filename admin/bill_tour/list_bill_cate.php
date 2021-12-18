@@ -6,7 +6,6 @@ $id = $_POST['bill_status'];
 
 
 $bill_status = getBillStatus($id);
-var_dump($bill_status);die;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,10 +73,10 @@ var_dump($bill_status);die;
                                 <?php $total = intval($row['price_bill_tours']) + intval($row['price_service']) - intval($row['price_tours']) * intval($row['sale_tours']) / 100 ?>
                                 <tr>
                                     <td><?= $row['id_bill_tours'] ?></td>
-                                    <td><?= $row['name_customer'] ?></td>
+                                    <td><a style="text-decoration: none;color:#000;" href="./thongtinkhachhang.php?id_customer=<?= $row['id_customer'] ?>"><?= $row['name_customer'] ?></a></td>
                                     <td><?= $row['quantity_pp'] ?></td>
                                     <td><?= $row['sale_tours'] ?></td>
-                                    <td><?= number_format($row['price_bill_tours']) ?> Đ </td>
+                                    <td><?= number_format($row['price_bill_tours'],0,',','.') ?> Đ </td>
                                     <td><?= $row['name_tours'] ?></td>
                                     <td><?= $row['date_book'] ?></td>
                                     <td><?= $row['name_service'] ?> </td>

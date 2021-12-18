@@ -8,8 +8,6 @@ $data_cate = getAll_cate();
 $data = getAllTours();
 $data_location = getAllLocation();
 
-// echo $css;die;
-
 session_start();
 if (empty($_SESSION['user']) == false) {
     $ok = $_SESSION['user']['id_customer'];
@@ -34,6 +32,7 @@ if (empty($_SESSION['user']) == false) {
     <link rel="stylesheet" href="./asset/css/main.css">
     <link rel="stylesheet" href="./asset/css/index.css">
     <link rel="stylesheet" href="./asset/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <script src="demo.js"></script>
 
 </head>
@@ -311,11 +310,72 @@ if (empty($_SESSION['user']) == false) {
             display: none;
         }
     }
+
+    .show {
+        width: 155px;
+        height: 50px;
+        border: 1px solid #fff;
+        color: #fff;
+        font-size: 14px;
+        cursor: pointer;
+        left: 44%;
+    }
+
+    .show:hover {
+        cursor: pointer
+    }
+
+    .show {
+        background: transparent;
+        background-color: #14b9d5;
+        outline: none;
+        position: relative;
+        overflow: hidden;
+        border-radius: 30px;
+    }
+
+
+    /*.show:before (attr data-hover)*/
+
+    .show:hover:before {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+
+    .show:before {
+        content: attr(data-hover);
+        position: absolute;
+        left: 0;
+        width: 100%;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-weight: 800;
+        font-size: .8em;
+        opacity: 0;
+        transform: translate(-100%, 0);
+        transition: all .3s ease-in-out;
+    }
+
+
+    /*.show div (.show text before hover)*/
+
+    .show:hover div {
+        opacity: 0;
+        transform: translate(100%, 0)
+    }
+
+    .show div {
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-weight: 800;
+        font-size: .8em;
+        transition: all .3s ease-in-out;
+    }
 </style>
 
 <body>
     <div class="main">
-        <header class="header" style="background-image: url(./asset/img/bannner-home.jpg); height: 720px;">
+        <header class="header" style="background-image: url(./asset/img/nt.jpg); height: 720px;">
             <div class="header__navbar">
                 <div class="header__navbar-logo">
                     <a href="/duan1/index.php">
@@ -511,10 +571,10 @@ if (empty($_SESSION['user']) == false) {
                     <div class="grid__row">
                         <div class="body__content">
                             <span>Đề xuất của chúng tôi</span>
-                            <p>Các <u>Điểm Đến Du Lịch</u></p>
+                            <p style="color:#555;">Các <u>Điểm Đến Du Lịch</u></p>
                         </div>
                         <?php for ($i = 0; $i < 9; $i++) { ?>
-                            <div class="grid__column-3">
+                            <div class="grid__column-3 animate__animated animate__backInDown" >
                                 <div class="nav__full">
                                     <img style="max-height:240px;overflow:hidden;" src="./asset/img/<?php echo $data_location[$i]['img_location'] ?>" alt="" class="nav__full-img">
                                     <div class="nav__full-top">
@@ -538,7 +598,11 @@ if (empty($_SESSION['user']) == false) {
                     </div>
                 </div>
             </div>
-
+            <a href="./location.php">
+                <button class="show" data-hover="LET'S GO ! ">
+                    <div>Xem thêm</div>
+                </button>
+            </a>
             <div class="body__banner">
                 <div class="grid" style="padding-top: 60px;">
                     <div class="banner__block">
@@ -558,7 +622,7 @@ if (empty($_SESSION['user']) == false) {
                             <div class="body__sale-left">
                                 <div class="sale-left__heading">
                                     <span>KHÁM PHÁ</span>
-                                    <p>Địa Điểm Du Lịch</p>
+                                    <p style="color:#555">Địa Điểm Du Lịch</p>
                                 </div>
                                 <div class="sale-left__body">
                                     <p>Du lịch là việc đi lại nhằm mục đích niềm vui hoặc kinh doanh; cũng là lý thuyết và thực hành về tổ chức các chương trình đi du lịch, ngành kinh doanh nhằm thu hút, cung cấp và giải trí cho khách du lịch, và việc kinh doanh của các tổ chức điều hành các tour du lịch.Chúng ta cùng khám phá.</p>
@@ -669,10 +733,10 @@ if (empty($_SESSION['user']) == false) {
                 <div class="grid">
                     <div class="grid__row">
                         <div class="body__content">
-                            <p id="tours">CÁC <u>ĐỊA ĐIỂM</u></p>
+                            <p style="color:#555" id="tours">CÁC <u>TOUR NGẪU NHIÊN</u></p>
                         </div>
                         <?php for ($i = 0; $i < 6; $i++) {
-                            $array_color = ['FFD205', 'F78269', 'BA71DA'];
+                            $array_color = ['FFD205', 'F78269', 'BA71DA', '14b9d5', '1bbc63', 'f3a46b'];
                             $css = array_rand($array_color); ?>
                             <div class="grid__column-3 bordered">
                                 <img src="./asset/img/<?= $data[$i]['image'] ?>" alt="" class="body__bottom-img" style="height: 252px;overflow: hidden;">
@@ -692,7 +756,7 @@ if (empty($_SESSION['user']) == false) {
                                             </p>
                                         </div>
                                         <div class="body__bottom-price-right">
-                                            <p><?= number_format($data[$i]['price_tours']) ?>Đ</p>
+                                            <p><?= number_format($data[$i]['price_tours'], 0, ',', '.') ?>Đ</p>
                                         </div>
                                     </div>
                                     <div class="body__bottom-detail">
@@ -727,7 +791,7 @@ if (empty($_SESSION['user']) == false) {
         <div class="footer">
             <?php require_once './footer.php'; ?>
         </div>
-        <div class="form-flex open">
+        <div class="form-flex open ">
             <div class="flex-container">
                 <div class="flex-text">
                     <div>
@@ -809,7 +873,7 @@ if (empty($_SESSION['user']) == false) {
                         <p>Merry christmas </p>
                     </div>
                     <button class="flex-btn">
-                            <i class="fas fa-times" style="font-size: 2rem;"></i>
+                        <i class="fas fa-times" style="font-size: 2rem;"></i>
                     </button>
                 </div>
             </div>

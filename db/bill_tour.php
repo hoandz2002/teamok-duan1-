@@ -188,10 +188,66 @@ function updateCouponInBill($data)
 function checkCoupon($coupon)
 {
     $conn = connect();
-    $sql = "SELECT count(*) FROM `coupon` WHERE code_coupon =:code_coupon"; 
-    $result = $conn->prepare($sql); 
-    $result->execute(['code_coupon'=> $coupon]); 
-    $number_of_rows = $result->fetchColumn(); 
+    $sql = "SELECT count(*) FROM `coupon` WHERE code_coupon =:code_coupon";
+    $result = $conn->prepare($sql);
+    $result->execute(['code_coupon' => $coupon]);
+    $number_of_rows = $result->fetchColumn();
 
     return $number_of_rows;
+}
+function checkIdCouponUpdate($coupon)
+{
+    $conn = connect();
+    $sql = "SELECT * FROM `coupon` WHERE code_coupon =:code_coupon";
+    $result = $conn->prepare($sql);
+    $result->execute(['code_coupon' => $coupon]);
+    $data = $result->fetch();
+    $row = [
+        'id_coupon' => $data['id_coupon'],
+        'percent_coupon' => $data['percent_coupon'],
+        'code_coupon' => $data['code_coupon'],
+        'number_coupon' => $data['number_coupon'],
+    ];
+
+    return $row;
+}
+function getPercentCoupon($id)
+{
+    $conn = connect();
+    $sql = "SELECT * FROM bill_tours inner join coupon on bill_tours.id_coupon = coupon.id_coupon WHERE id_bill_tours = :id_bill_tours";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute(['id_bill_tours' => $id]);
+    $data = $stmt->fetch();
+    $row = [
+        'id_bill_tours' => $data['id_bill_tours'],
+        'id_coupon' => $data['id_coupon'],
+        'percent_coupon' => $data['percent_coupon'],
+        'code_coupon' => $data['code_coupon'],
+    ];
+
+    return $row;
+}
+
+function checkSameCoupon($id_customer)
+{
+    $conn = connect();
+    $sql = "SELECT * FROM bill_tours inner join coupon on bill_tours.id_coupon = coupon.id_coupon WHERE id_customer = :id_customer";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute(['id_customer' => $id_customer]);
+    $result = [];
+    while (true) {
+        $data = $stmt->fetch();
+        if ($data == false) {
+            break;
+        }
+        $row = [
+            'id_bill_tours' => $data['id_bill_tours'],
+            'id_coupon' => $data['id_coupon'],
+            'percent_coupon' => $data['percent_coupon'],
+            'code_coupon' => $data['code_coupon'],
+        ];
+
+        array_push($result, $row);
+    }
+    return $result;
 }

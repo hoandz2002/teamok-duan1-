@@ -20,6 +20,7 @@ $dataPrice = price();
     <link rel="stylesheet" href="/duan1/asset/css/main.css">
     <link rel="stylesheet" href="/duan1/asset/css/tours.css">
     <link rel="stylesheet" href="/duan1/asset/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <style>
         #toast {
             margin-left: 1000px;
@@ -124,7 +125,7 @@ $dataPrice = price();
             filter: brightness(60%);
         }
     </style>
-    
+
 </head>
 
 <body>
@@ -157,7 +158,7 @@ $dataPrice = price();
             } ?>
             <div class="grid">
                 <div class="grid__row">
-                    <div class="grid-with-width" style="text-align: center;">
+                    <div class="grid-with-width animate__animated animate__fadeInLeft" style="text-align: center;">
                         <form action="./tours_cate.php" method="post">
                             <select style="width: 320px; padding: 4px;" name="id_location" id="">
                                 <option value="">---Mời chọn địa điểm---</option>
@@ -191,7 +192,7 @@ $dataPrice = price();
                     $result = mysqli_query($conn, $query);
                     while ($row = mysqli_fetch_array($result)) { ?>
                         <div class="pd-16 grid__column-4">
-                            <div class="tours-product">
+                            <div class="tours-product animate__animated  animate__fadeInDown ">
                                 <div class="box-img">
                                     <img style="height:160px;" src="/duan1/asset/img/<?= $row['image'] ?>" alt="" class="img">
                                     <?php
@@ -208,10 +209,10 @@ $dataPrice = price();
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;height:46px" class="tours-heading"><?= $row['name_tours']; ?></h6>
                                     <?php if ($row['sale_tours'] != 0) { ?>
-                                        <span style="display:inline-block;font-size:16px;margin-bottom:15px;color: #9a9a9a;text-decoration:line-through;"><?= number_format($row['price_tours']); ?> Đ</span>
-                                        <span style="display:inline-block;font-size:16px;margin-bottom:15px;color:red;font-weight: bold;"><?= number_format($row['price_tours'] - (($row['price_tours'] * $row['sale_tours']) / 100)); ?>Đ</span><br>
+                                        <span style="display:inline-block;font-size:16px;margin-bottom:15px;color: #9a9a9a;text-decoration:line-through;"><?= number_format($row['price_tours'], 0, ',', '.'); ?> Đ</span>
+                                        <span style="display:inline-block;font-size:16px;margin-bottom:15px;color:red;font-weight: bold;"><?= number_format($row['price_tours'] - (($row['price_tours'] * $row['sale_tours']) / 100), 0, ',', '.'); ?>Đ</span><br>
                                     <?php } else { ?>
-                                        <p style="font-size:16px;color: red;font-weight: bold;"><?= number_format($row['price_tours']); ?> Đ</p>
+                                        <p style="font-size:16px;color: red;font-weight: bold;"><?= number_format($row['price_tours'], 0, ',', '.'); ?> Đ</p>
                                     <?php } ?>
                                     <a style="color: #9a9a9a;
     padding: 8px 16px;
@@ -229,9 +230,9 @@ $dataPrice = price();
                 </div>
             </div>
         </div>
-       <?php require_once "./call.php" ?>
+        <?php require_once "./call.php" ?>
     </div>
-   
+
     <?php require_once './footer.php'; ?>
     <script src="./asset/js/toast.js"></script>
 </body>

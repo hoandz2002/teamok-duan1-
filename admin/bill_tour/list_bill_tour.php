@@ -38,10 +38,10 @@ require_once "./../../db/customer.php";
                         <select style="width: 320px; padding: 4px;" name="bill_status" id="">
                             <option value="">---Mời chọn trạng thái---</option>
                             <option value="0">Đang chờ xác nhận</option>
-                            <option value="0">Đã xác nhận</option>
-                            <option value="0">Đã thanh toán</option>
-                            <option value="0">Đã khởi hành</option>
-                            <option value="0">Đã hoàn tất</option>
+                            <option value="1">Đã xác nhận</option>
+                            <option value="2">Đã thanh toán</option>
+                            <option value="3">Đã khởi hành</option>
+                            <option value="4">Đã hoàn tất</option>
                         </select>
                         <input type="submit" class="" style="padding: 5px;background-color: tomato; border-radius:  4px; margin-left: 4px; color: white; border: none; outline: none;" value="Tìm Kiếm">
                     </form>
@@ -57,7 +57,6 @@ require_once "./../../db/customer.php";
                                 <th>Giá</th>
                                 <th>Tên tour</th>
                                 <th>Thời gian đặt</th>
-                                <th>Loại dịch vụ</th>
                                 <th>Giá dịch vụ</th>
                                 <th>Total</th>
                                 <th>Thời gian </th>
@@ -85,15 +84,14 @@ require_once "./../../db/customer.php";
                                 <?php $total = intval($row['price_bill_tours']) + intval($row['price_service']) - intval($row['price_tours']) * intval($row['sale_tours']) / 100 ?>
                                 <tr>
                                     <td><?= $row['id_bill_tours'] ?></td>
-                                    <td><a href="./thongtinkhachhang.php?id_customer=<?= $row['id_customer'] ?>"><?= $row['name_customer'] ?></a></td>
+                                    <td><a style="text-decoration: none;color:#000;" href="./thongtinkhachhang.php?id_customer=<?= $row['id_customer'] ?>"><?= $row['name_customer'] ?></a></td>
                                     <td><?= $row['quantity_pp'] ?></td>
                                     <td><?= $row['sale_tours'] ?></td>
-                                    <td><?= number_format($row['price_bill_tours']) ?> Đ </td>
+                                    <td><?= number_format($row['price_bill_tours'],0,',','.') ?> Đ </td>
                                     <td><?= $row['name_tours'] ?></td>
                                     <td><?= $row['date_book'] ?></td>
-                                    <td><?= $row['name_service'] ?> </td>
-                                    <td><?= number_format($row['price_service']) ?> Đ</td>
-                                    <td><?= number_format($total) ?>Đ</td>
+                                    <td><?= number_format($row['price_service'],0,',','.') ?> Đ</td>
+                                    <td><?= number_format($total,0,',','.') ?>Đ</td>
                                     <td><?= $row['date_start'] ?></td>
                                     <td><?php if ($row['bill_status'] == 0) {
                                             echo 'Đang chờ xác nhận'; ?>

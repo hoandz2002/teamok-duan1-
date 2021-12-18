@@ -11,7 +11,7 @@ if (isset($_POST['btn_save'])) {
         empty($_POST['name_post']) ||
         empty($_POST['description_post']) ||
         empty($_POST['id_cate_post']) ||
-        empty($_POST['short_description_post']) 
+        empty($_POST['short_description_post'])
     ) {
         $_SESSION['thongbao'] = "không để trống thông tin!";
         header("location: ./add_post.php");
@@ -29,19 +29,18 @@ if (isset($_POST['btn_save'])) {
         $data['image_post'] = $data_img['image_post'];
     }
     if (isset($_FILES['image_post'])) {
+        $file_name = $_FILES['image_post']['name'];
+        if (strpos($_FILES['image_post']['type'], 'image') === false) {
+            $_SESSION['thongbao'] = "Phải là ảnh!";
+            header("location: ./add_post.php");
+            die;
+        }
         $file = $_FILES['image_post'];
         $file_name = $file['name'];
         move_uploaded_file($file['tmp_name'], './../../asset/img/' . $file_name);
     }
 
-    if (empty($_FILES['image_post']) === false) {
-        $file_name = $_FILES['image_post']['name'];
-        if (strpos($_FILES['image_post']['type'], 'image') === false) {
-            $_SESSION['error'] = "Phải là ảnh!";
-            header("location: ./add_post.php");
-            die;
-        }
-    }
+
     insert_post($data_post);
     header('location: /duan1/admin/post/list_post.php');
 }
@@ -54,7 +53,7 @@ if (isset($_POST['btn_save'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Thêm bài viết</title>
     <link rel="stylesheet" href="/duan1/asset/fonts/fontawesome-free-5.15.3-web/css/all.min.css">
     <link rel="stylesheet" href="/duan1/asset/css/css_admin/main.css">
     <link rel="stylesheet" href="/duan1/asset/css/css_admin/error_mess.css">
@@ -75,7 +74,7 @@ if (isset($_POST['btn_save'])) {
                 <?php require_once './../header.php'; ?>
                 <!-- Nội dung ở đây  -->
                 <div class="right-heading">
-                    <h2>Thêm loại bài viết</h2>
+                    <h2>Thêm bài viết</h2>
                 </div>
                 <?php if (isset($_SESSION['thongbao'])) { ?>
                     <div id="toast">

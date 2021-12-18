@@ -230,14 +230,19 @@ if (isset($_POST['addgiohang'])) {
                             <div class="pd-16 grid__column-2">
                                 <h6 style="font-size: 24px;line-height:24px" class="detail-heading"><?= $data['name_tours'] ?></h6>
                                 <span style="margin-top: 24px; display: block;">Địa điểm : <?= $data['name_location']; ?></span>
-                                <span style="color: red;" class="detail-price" name="price_tours"><?= number_format($data['price_tours']); ?> Đ</span>
+                                <?php if ($data['sale_tours'] != 0) { ?>
+                                    <span  class="detail-price" style="color: #9a9a9a;text-decoration:line-through;"><?= number_format($data['price_tours'], 0, ',', '.'); ?> Đ</span>
+                                    <span class="detail-price" style="color:red;"><?= number_format($data['price_tours'] - (($data['price_tours'] * $data['sale_tours']) / 100), 0, ',', '.'); ?> Đ</span><br>
+                                <?php } else { ?>
+                                    <span class="detail-price" style="color: red;"><?= number_format($data['price_tours'], 0, ',', '.'); ?> Đ</span>
+                                <?php } ?>
                                 <p style="font-size:20px;" class="detail-des">
                                 </p>
                                 <div class="pd-24 detail-qtt">
                                     <div class="grid__row" style="align-items: center;">
                                         <!-- <form action="" method="POST"> -->
-                                        <p>People</p>
-                                        <input type="number" name="quantity_pp" placeholder="Chọn số lượng người" style="width: 320px;padding: 8px 16px;border-radius: 16px;outline: none; border: 1px solid;">
+                                        <p>Số người</p>
+                                        <input max="5" min="1" step="1" type="number" name="quantity_pp" placeholder="Chọn số lượng người" style="width: 320px;padding: 8px 16px;border-radius: 16px;outline: none; border: 1px solid;">
                                         <p style="width: 50px;" hidden></p>
                                         <!-- </form> -->
                                     </div>
@@ -252,7 +257,7 @@ if (isset($_POST['addgiohang'])) {
                                                     <p class="service_content"><input type="radio" name="id_service" value="<?= $value['id_service'] ?>" id="service">
                                                         <label style="margin-left: 8px;" for="service">Chọn dịch vụ</label>
                                                     </p>
-                                                    <p class="service_content"><b>Giá</b> : <span style="color: red; font-size: 14px;"><?= number_format($value['price_service']) ?><b>VNĐ</b></span></p>
+                                                    <p class="service_content"><b>Giá</b> : <span style="color: red; font-size: 14px;"><?= number_format($value['price_service'], 0, ',', '.') ?><b>VNĐ</b></span></p>
                                                     <p style="color: blue;" class="service_content"> <?= $value['description_service'] ?></p>
                                                 </div>
                                             <?php } ?>
@@ -439,10 +444,10 @@ if (isset($_POST['addgiohang'])) {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;height:46px" class="tours-heading"><?= $row['name_tours']; ?></h6>
                                             <?php if ($row['sale_tours'] != 0) { ?>
-                                                <span style="display:inline-block;font-size:16px;margin-bottom:15px;color: #9a9a9a;text-decoration:line-through;"><?= number_format($row['price_tours']); ?> Đ</span>
-                                                <span style="display:inline-block;font-size:16px;margin-bottom:15px;color:red"><?= number_format($row['price_tours'] - (($row['price_tours'] * $row['sale_tours']) / 100)); ?>Đ</span><br>
+                                                <span style="display:inline-block;font-size:16px;margin-bottom:15px;color: #9a9a9a;text-decoration:line-through;"><?= number_format($row['price_tours'], 0, ',', '.'); ?> Đ</span>
+                                                <span style="display:inline-block;font-size:16px;margin-bottom:15px;color:red"><?= number_format($row['price_tours'] - (($row['price_tours'] * $row['sale_tours']) / 100), 0, ',', '.'); ?>Đ</span><br>
                                             <?php } else { ?>
-                                                <p style="font-size:16px;color: red;"><?= number_format($row['price_tours']); ?> Đ</p>
+                                                <p style="font-size:16px;color: red;"><?= number_format($row['price_tours'], 0, ',', '.'); ?> Đ</p>
                                             <?php } ?>
                                             <a href="/duan1/tours_detail.php?id_tours=<?= $row['id_tours']; ?>" class="tours-btn">SELECT OPTION</a>
                                         </div>
